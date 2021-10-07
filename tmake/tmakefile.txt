@@ -1,0 +1,8 @@
+all: work
+
+work: main.o parse.o
+
+main.o: main.cpp
+parse.o: parse.cpp
+
+main.cpp: parse.hpp Makefile
