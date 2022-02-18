@@ -1,10 +1,9 @@
 #include "print.hpp"
 
-#include <cstdlib>
-
 int main(void)
 {
-	const int z[][4]
+	const std::size_t N1(4);
+	const int z[][N1]
 	{
 		{ 0, 1, 2, 3 },
 		{ 4, 5, 6, 7 },
@@ -13,8 +12,12 @@ int main(void)
 		{ 16, 17, 18, 19 }
 	};
 
+	std::cout << z << std::endl;
 	prn::print(z);
 	std::cout << std::endl;
-	prn::print(*z, sizeof z / sizeof *z);
+	const auto n0(sizeof z / sizeof *z);
+	prn::print(*z, n0);
+	std::cout << std::endl;
+	prn::print(*z, n0, N1);
 	return EXIT_SUCCESS;
 }

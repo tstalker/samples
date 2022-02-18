@@ -1,6 +1,6 @@
 TARGET = work
 CC = c++
-CFLAGS = -march=native -std=c++20 -pipe -O3 -Wall -Winline
+CFLAGS = -march=native -std=c++23 -pipe -O3 -Wall -Winline
 STRIP = strip
 
 all: $(TARGET)

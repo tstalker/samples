@@ -1,11 +1,9 @@
 #include "print.hpp"
 
-#include <cstdlib>
-
 int main(void)
 {
-	const std::size_t DIM1(4), DIM2(5);
-	const int z[][DIM1][DIM2]
+	const std::size_t N1(4), N2(5);
+	const int z[][N1][N2]
 	{
 		{
 			{ 0, 1, 2, 3, 4 },
@@ -26,12 +24,12 @@ int main(void)
 			{ 55, 56, 57, 58, 59 }
 		}
 	};
-	const std::size_t DIM0(sizeof z / sizeof *z);
-
 	prn::print(z);
 	std::cout << std::endl;
-	prn::print(*z, DIM0);
+	const auto N0(sizeof z / sizeof *z);
+	prn::print(*z, N0);
 	std::cout << std::endl;
-	prn::print(**z, DIM0, DIM1, DIM2);
+	prn::print(**z, N0, N1, N2);
+	std::cout << z;
 	return EXIT_SUCCESS;
 }
