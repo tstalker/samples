@@ -15,6 +15,8 @@ int main(void)
 
 	const int z[] LIST;
 	prn::print(z);
+	const auto N(sizeof z / sizeof *z);
+	prn::print(z, N);
 	std::cout << z;
 	return EXIT_SUCCESS;
 }
