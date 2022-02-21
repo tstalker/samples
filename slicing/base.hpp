@@ -15,9 +15,9 @@ namespace ier
 template <typename T>
 	class Base;
 template <typename T>
-	decltype(auto) operator << (std::ostream&, const Base <T> &);
+	decltype(auto) operator << (std::ostream&, const Base<T>&);
 template <typename T>
-	decltype(auto) operator << (std::ostream&, const std::unique_ptr <T> &);
+	decltype(auto) operator << (std::ostream&, const std::unique_ptr<T>&);
 }
 
 template <typename T>
@@ -39,10 +39,10 @@ public:
 	void Print(void) const;
 
 private:
-	element_type* p { nullptr };
+	element_type* p{nullptr};
 
 public:
-	static std::optional <bool> FlagSpace;
+	static std::optional<bool> FlagSpace;
 
 protected:
 	decltype(auto) get(void);
@@ -53,13 +53,14 @@ public:
 };
 
 template <typename T>
-decltype(auto) ier::Base <T>::get(void)
+decltype(auto)
+ier::Base<T>::get(void)
 {
 	return *this;
 }
 
 template <typename T>
-ier::Base <T>::Base(void)
+ier::Base<T>::Base(void)
 {
 #ifdef DEBUG
 	std::cout << "Base::Base() -> " << *this << std::endl;
@@ -67,7 +68,7 @@ ier::Base <T>::Base(void)
 }
 
 template <typename T>
-ier::Base <T>::Base(const element_type& x):
+ier::Base<T>::Base(const element_type& x):
 	p(new element_type(x))
 {
 #ifdef DEBUG
@@ -76,7 +77,7 @@ ier::Base <T>::Base(const element_type& x):
 }
 
 template <typename T>
-ier::Base <T>::Base(const Base& x):
+ier::Base<T>::Base(const Base& x):
 	p(x.p ? new element_type(*x.p) : nullptr)
 {
 #ifdef DEBUG
@@ -85,7 +86,7 @@ ier::Base <T>::Base(const Base& x):
 }
 
 template <typename T>
-ier::Base <T>::Base(Base&& x):
+ier::Base<T>::Base(Base&& x):
 	p(x.p)
 {
 #ifdef DEBUG
@@ -96,7 +97,7 @@ ier::Base <T>::Base(Base&& x):
 }
 
 template <typename T>
-ier::Base <T>::~Base(void)
+ier::Base<T>::~Base(void)
 {
 #ifdef DEBUG
 	std::cout << "Base::~Base() -> " << *this << std::endl;
@@ -106,7 +107,8 @@ ier::Base <T>::~Base(void)
 }
 
 template <typename T>
-decltype(auto) ier::Base <T>::operator = (const Base& x)
+decltype(auto)
+ier::Base<T>::operator = (const Base& x)
 {
 #ifdef DEBUG
 	std::cout << "Base::operator = (" << x << "): " << *this << " -> ";
@@ -123,7 +125,8 @@ decltype(auto) ier::Base <T>::operator = (const Base& x)
 }
 
 template <typename T>
-decltype(auto) ier::Base <T>::operator = (Base&& x)
+decltype(auto)
+ier::Base<T>::operator = (Base&& x)
 {
 #ifdef DEBUG
 	std::cout << "Base::operator = (&&" << x << "): " << *this << " -> ";
@@ -141,13 +144,14 @@ decltype(auto) ier::Base <T>::operator = (Base&& x)
 }
 
 template <typename T>
-void ier::Base <T>::Print(void) const
+void ier::Base<T>::Print(void) const
 {
 	PrintSpace(std::cout) << *this;
 }
 
 template <typename T>
-decltype(auto) ier::Base <T>::PrintSpace(std::ostream& s)
+decltype(auto)
+ier::Base<T>::PrintSpace(std::ostream& s)
 {
 	if(FlagSpace)
 	{
@@ -162,7 +166,7 @@ decltype(auto) ier::Base <T>::PrintSpace(std::ostream& s)
 }
 
 template <typename T>
-auto ier::Base <T>::PrintBraces(std::ostream& s) const
+auto ier::Base<T>::PrintBraces(std::ostream& s) const
 -> std::ostream&
 {
 	s << '{';
@@ -176,19 +180,21 @@ auto ier::Base <T>::PrintBraces(std::ostream& s) const
 }
 
 template <typename T>
-auto ier::Base <T>::Value(void) const
+auto ier::Base<T>::Value(void) const
 {
 	return p ? *p : element_type();
 }
 
 template <typename T>
-decltype(auto) ier::operator << (std::ostream& s, const Base <T> &x)
+decltype(auto)
+ier::operator << (std::ostream& s, const Base<T> &x)
 {
 	return x.PrintBraces(s);
 }
 
 template <typename T>
-decltype(auto) ier::operator << (std::ostream& s, const std::unique_ptr <T> &p)
+decltype(auto)
+ier::operator << (std::ostream& s, const std::unique_ptr<T> &p)
 {
 	return s << *p;
 }

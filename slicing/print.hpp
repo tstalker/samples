@@ -24,22 +24,22 @@ template <typename T>
 	void PrintCopy(const T&);
 
 template <typename T>
-	const std::vector <std::pair <std::string_view, std::function <void(const T&)>>> lst
+	const std::vector<std::pair<std::string_view, std::function<void(const T&)>>> lst
 	{
-		{ "for ", PrintFor <T> },
-		{ "each", PrintEach <T> },
-		{ "copy", PrintCopy <T> }
+		{ "for ", PrintFor<T> },
+		{ "each", PrintEach<T> },
+		{ "copy", PrintCopy<T> }
 	};
 }
 
 template <typename T>
 void prn::Print(const T& v)
 {
-	for(auto& f: lst <T>)
+	for(auto& f: lst<T>)
 	{
 		std::cout << f.first << ": ";
 		f.second(v);
-		gen::TW <T>::FlagSpace.reset();
+		gen::TW<T>::FlagSpace.reset();
 		std::cout << std::endl;
 	}
 }
@@ -49,18 +49,18 @@ void prn::PrintFor(const T& v)
 {
 	for(auto& x: v)
 	{
-		std::invoke(&gen::TW <T>::Print, x);
+		std::invoke(&gen::TW<T>::Print, x);
 	}
 }
 
 template <typename T>
 void prn::PrintEach(const T& v)
 {
-	std::for_each(v.cbegin(), v.cend(), std::mem_fn(&gen::TW <T>::Print));
+	std::for_each(v.cbegin(), v.cend(), std::mem_fn(&gen::TW<T>::Print));
 }
 
 template <typename T>
 void prn::PrintCopy(const T& v)
 {
-	std::copy(v.cbegin(), v.cend(), std::ostream_iterator <gen::TV <T>>(std::cout, " "));
+	std::copy(v.cbegin(), v.cend(), std::ostream_iterator<gen::TV<T>>(std::cout, " "));
 }

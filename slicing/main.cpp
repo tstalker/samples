@@ -8,21 +8,20 @@ namespace ini
 
 #include "work.hpp"
 
-#include <cstdlib>
-
 namespace
 {
 template <typename T>
-	std::vector <T> v;
+	std::vector<T> v;
 }
 
 int main(void)
 {
 	const auto MAX(10u);
-	job::Work(v <ier::Base <ini::TypeBase>>, MAX, "Base");
-	job::Work(v <std::unique_ptr <ier::Base <ini::TypeBase>>>, MAX, "unique_ptr <Base>");
+	job::Work(v<ier::Base<ini::TypeBase>>, MAX, "Base");
+	job::Work(v<std::unique_ptr<ier::Base<ini::TypeBase>>>, MAX, "unique_ptr <Base>");
 	return EXIT_SUCCESS;
 }
 
 template <typename T>
-std::optional <bool> ier::Base <T>::FlagSpace;
+std::optional<bool>
+ier::Base<T>::FlagSpace;

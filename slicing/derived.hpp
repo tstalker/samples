@@ -13,14 +13,14 @@ namespace ier
 template <typename T, typename U>
 	class Derived;
 template <typename T, typename U>
-	decltype(auto) operator << (std::ostream&, const Derived <T, U> &);
+	decltype(auto) operator << (std::ostream&, const Derived<T, U>&);
 }
 
 template <typename T, typename U>
 class ier::Derived final:
-	public Base <T>
+	public Base<T>
 {
-	using Base <T>::get;
+	using Base<T>::get;
 
 public:
 	Derived(void);
@@ -39,11 +39,11 @@ public:
 	std::ostream& PrintBraces(std::ostream&) const override final;
 
 private:
-	U* p { nullptr };
+	U* p{nullptr};
 };
 
 template <typename T, typename U>
-ier::Derived <T, U>::Derived(void)
+ier::Derived<T, U>::Derived(void)
 {
 #ifdef DEBUG
 	std::cout << "Derived::Derived() -> " << *this << std::endl;
@@ -51,7 +51,7 @@ ier::Derived <T, U>::Derived(void)
 }
 
 template <typename T, typename U>
-ier::Derived <T, U>::Derived(const U& x):
+ier::Derived<T, U>::Derived(const U& x):
 	p(x.p ? new U(*x.p) : nullptr)
 {
 #ifdef DEBUG
@@ -60,8 +60,8 @@ ier::Derived <T, U>::Derived(const U& x):
 }
 
 template <typename T, typename U>
-ier::Derived <T, U>::Derived(const T& x, const U& y):
-	Base <T>(x), p(new U(y))
+ier::Derived<T, U>::Derived(const T& x, const U& y):
+	Base<T>(x), p(new U(y))
 {
 #ifdef DEBUG
 	std::cout << "Derived::Derived(" << x << ", " << y << ") -> " << *this << std::endl;
@@ -69,8 +69,8 @@ ier::Derived <T, U>::Derived(const T& x, const U& y):
 }
 
 template <typename T, typename U>
-ier::Derived <T, U>::Derived(const Derived& x):
-	Base <T>(x), p(x.p ? new U(*x.p) : nullptr)
+ier::Derived<T, U>::Derived(const Derived& x):
+	Base<T>(x), p(x.p ? new U(*x.p) : nullptr)
 {
 #ifdef DEBUG
 	std::cout << "Derived::Derived(" << x << ") -> " << *this << std::endl;
@@ -78,8 +78,8 @@ ier::Derived <T, U>::Derived(const Derived& x):
 }
 
 template <typename T, typename U>
-ier::Derived <T, U>::Derived(Derived&& x):
-	Base <T>(x), p(x.p)
+ier::Derived<T, U>::Derived(Derived&& x):
+	Base<T>(x), p(x.p)
 {
 #ifdef DEBUG
 	std::cout << "Derived::Derived(&&" << x << ") -> " << *this << std::endl;
@@ -89,7 +89,7 @@ ier::Derived <T, U>::Derived(Derived&& x):
 }
 
 template <typename T, typename U>
-ier::Derived <T, U>::~Derived(void)
+ier::Derived<T, U>::~Derived(void)
 {
 #ifdef DEBUG
 	std::cout << "Derived::~Derived() -> " << *this << std::endl;
@@ -99,7 +99,8 @@ ier::Derived <T, U>::~Derived(void)
 }
 
 template <typename T, typename U>
-decltype(auto) ier::Derived <T, U>::operator = (const Derived& x)
+decltype(auto)
+ier::Derived<T, U>::operator = (const Derived& x)
 {
 #ifdef DEBUG
 	std::cout << "Derived::operator = (" << x << "): " << *this << " -> ";
@@ -117,7 +118,8 @@ decltype(auto) ier::Derived <T, U>::operator = (const Derived& x)
 }
 
 template <typename T, typename U>
-decltype(auto) ier::Derived <T, U>::operator = (Derived&& x)
+decltype(auto)
+ier::Derived<T, U>::operator = (Derived&& x)
 {
 #ifdef DEBUG
 	std::cout << "Derived::operator = (&&" << x << "): " << *this << " -> ";
@@ -136,18 +138,18 @@ decltype(auto) ier::Derived <T, U>::operator = (Derived&& x)
 }
 
 template <typename T, typename U>
-void ier::Derived <T, U>::Print(void) const
+void ier::Derived<T, U>::Print(void) const
 {
 	Derived::PrintSpace(std::cout) << *this;
 }
 
 template <typename T, typename U>
-auto ier::Derived <T, U>::PrintBraces(std::ostream& s) const
+auto ier::Derived<T, U>::PrintBraces(std::ostream& s) const
 -> std::ostream&
 {
-	Base <T>::PrintBraces(s << '{') << ' ';
+	Base<T>::PrintBraces(s << '{') << ' ';
 
-	if constexpr(std::is_floating_point_v <U>)
+	if constexpr(std::is_floating_point_v<U>)
 	{
 		s << std::showpoint << std::setprecision(PRECISION);
 	}
@@ -156,13 +158,14 @@ auto ier::Derived <T, U>::PrintBraces(std::ostream& s) const
 }
 
 template <typename T, typename U>
-auto ier::Derived <T, U>::Value(void) const
+auto ier::Derived<T, U>::Value(void) const
 {
 	return p ? *p : U();
 }
 
 template <typename T, typename U>
-decltype(auto) ier::operator << (std::ostream& s, const Derived <T, U> &x)
+decltype(auto)
+ier::operator << (std::ostream& s, const Derived<T, U> &x)
 {
 	return x.PrintBraces(s);
 }
