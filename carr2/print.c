@@ -2,44 +2,47 @@
 
 #include <stdio.h>
 
-void print0(const type v[][DIM1][DIM2], const size_t n0)
+void print0(const int v[][N1][N2], const size_t n0)
 {
 	for(size_t i = 0; i < n0; i++)
 	{
-		for(size_t j = 0; j < DIM1; j++)
+		for(size_t j = 0; j < N1; j++)
 		{
 			shift(i);
-			for(size_t k = 0; k < DIM2; k++)
-				printf("%3d", v[i][j][k]);
-			putchar(NL);
+			print3(v[i][j], N2);
 		}
 	}
 }
 
-void print1(const type v[][DIM2], const size_t n0, const size_t n1)
+void print1(const int v[][N2], const size_t n0, const size_t n1)
 {
 	for(size_t i = 0; i < n0; i++)
 	{
 		for(size_t j = 0; j < n1; j++)
 		{
 			shift(i);
-			for(size_t k = 0; k < DIM2; k++)
-				printf("%3d", v[i * n1 + j][k]);
-			putchar(NL);
+			print3(v[i * n1 + j], N2);
 		}
 	}
 }
 
-void print2(const type v[], const size_t n0, const size_t n1, const size_t n2)
+void print2(const int v[], const size_t n0, const size_t n1, const size_t n2)
 {
 	for(size_t i = 0; i < n0; i++)
 	{
 		for(size_t j = 0; j < n1; j++)
 		{
 			shift(i);
-			for(size_t k = 0; k < n2; k++)
-				printf("%3d", v[(i * n1 + j) * n2 + k]);
-			putchar(NL);
+			print3(v + (i * n1 + j) * n2, n2);
 		}
 	}
+}
+
+void print3(const int v[], const size_t n)
+{
+	for(size_t i = 0; i < n; i++)
+	{
+		printf("%3d", v[i]);
+	}
+	putchar(NL);
 }

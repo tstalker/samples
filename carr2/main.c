@@ -5,7 +5,7 @@
 
 int main(void)
 {
-	const type src[][DIM1][DIM2] =
+	const int v[][N1][N2] =
 	{
 		{
 			{ 0, 1, 2, 3, 4 },
@@ -26,11 +26,11 @@ int main(void)
 			{ 55, 56, 57, 58, 59 }
 		}
 	};
-	const size_t DIM0 = sizeof src / sizeof *src;
-	print0(src, DIM0);
+	const size_t N0 = sizeof v / sizeof *v;
+	print0(v, N0);
 	putchar(NL);
-	print1(*src, DIM0, DIM1);
+	print1(*v, N0, N1);
 	putchar(NL);
-	print2(**src, DIM0, DIM1, DIM2);
+	print2(**v, N0, N1, N2);
 	return EXIT_SUCCESS;
 }
