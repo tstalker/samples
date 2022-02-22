@@ -8,8 +8,6 @@ namespace prn
 {
 	using namespace std;
 
-	const auto width(3);
-
 template <typename T, size_t N0, size_t N1>
 	void print(const T(&)[N0][N1]);
 template <typename T, size_t N>
@@ -18,6 +16,10 @@ template <typename T, size_t N1>
 	void print(const T(&)[N1], const size_t);
 template <typename T>
 	void print(const T[], const size_t, const size_t);
+template <typename T>
+	void printx(const T&);
+template <typename T>
+	void printy(ostream&, const T&);
 template <typename T>
 	void printv(const T[], const size_t);
 template <typename T, size_t N0, size_t N1>
@@ -38,11 +40,20 @@ void prn::print(const T(&v)[N0][N1])
 template <typename T, size_t N>
 void prn::print(const T(&v)[N])
 {
-	for(auto& x: v)
-	{
-		cout << setw(width) << x;
-	}
+	for_each(cbegin(v), cend(v), printx<T>);
 	cout << endl;
+}
+
+template <typename T>
+void prn::printx(const T& x)
+{
+	printy(cout, x);
+}
+
+template <typename T>
+void prn::printy(ostream& o, const T& x)
+{
+	o << setw(3) << x;
 }
 
 template <typename T, size_t N1>
@@ -66,10 +77,7 @@ void prn::print(const T v[], const size_t n0, const size_t n1)
 template <typename T>
 void prn::printv(const T v[], const size_t n)
 {
-	for_each_n(v, n, [](auto& x)
-	{
-		cout << setw(width) << x;
-	});
+	for_each_n(v, n, printx<T>);
 	cout << endl;
 }
 
@@ -88,10 +96,8 @@ template <typename T, size_t N>
 decltype(auto)
 prn::operator << (ostream& o, const T(&v)[N])
 {
-	for(auto& x: v)
-	{
-		o << setw(width) << x;
-	}
+	auto f(bind(printy<T>, ref(o), placeholders::_1));
+	for_each(cbegin(v), cend(v), f);
 	o << endl;
 	return o;
 }

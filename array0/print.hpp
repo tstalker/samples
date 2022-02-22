@@ -7,10 +7,10 @@ namespace prn
 {
 	using namespace std;
 
-template <typename T, size_t N>
-	void print(const T(&)[N]);
 template <typename T>
 	void print(const T[], const size_t);
+template <typename T, size_t N>
+	void print(const T(&)[N]);
 template <typename T>
 	void print(const initializer_list<T>&);
 template <typename T, size_t N>
