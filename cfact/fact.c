@@ -1,6 +1,6 @@
 #include "fact.h"
 
-unsigned long long fact(const unsigned short x)
+ull fact(const unsigned x)
 {
-	return x ? x * fact(x - 1) : 1;
+	return x ? x * fact(x - 1u) : 1u;
 }

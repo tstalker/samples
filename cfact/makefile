@@ -1,7 +1,7 @@
 TARGET = work
-OBJLIST = main.o print.o shift.o
-DEPENDS = print.h makefile
-CFLAGS = -march=native -std=c2x -O3 -pipe -Wall -Winline
+OBJLIST = fact.o main.o
+DEPENDS = fact.h makefile
+CFLAGS = -march=native -O3 -pipe -std=c2x -Wall -Winline
 STRIP = strip
 
 all: $(TARGET)
@@ -19,6 +19,5 @@ allclean: clean
 clean:
 	$(RM) $(OBJLIST)
 
+fact.o: fact.c $(DEPENDS)
 main.o: main.c $(DEPENDS)
-print.o: print.c $(DEPENDS)
-shift.o: shift.c $(DEPENDS)

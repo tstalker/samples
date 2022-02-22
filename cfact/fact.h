@@ -1,7 +1,5 @@
-#ifdef FACT_H
-#error Redefined header fact.h
-#endif
+#pragma once
 
-#define FACT_H
+typedef unsigned long long ull;
 
-unsigned long long fact(const unsigned short);
+ull fact(const unsigned);

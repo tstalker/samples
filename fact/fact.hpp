@@ -1,32 +1,39 @@
-#ifdef FACT_HPP
-#error Redefined header fact.hpp
-#endif
+#pragma once
 
-#define FACT_HPP
-
-using ull = unsigned long long;
+namespace prn
+{
+	using ull = unsigned long long;
 
 template <ull N>
-class Factorial
+	class Factorial;
+template <>
+	class Factorial<0>;
+
+template <ull N>
+	const ull value{N * value<N - 1>};
+template <>
+	const ull value<0>{1};
+
+	constexpr ull fact(const ull);
+}
+
+template <prn::ull N>
+class prn::Factorial
 {
 public:
-	static const ull value { N * Factorial <N - 1> ::value };
+	static const ull value{N * Factorial<N - 1>::value};
 };
 
 template <>
-class Factorial <0>
+class prn::Factorial<0>
 {
 public:
-	static const ull value { 1 };
+	static const ull value{1};
 };
 
-template <ull N>
-const ull value { N * value <N - 1> };
-
-template <>
-const ull value <0> { 1 };
-
-constexpr ull fact(const ull x)
+constexpr auto
+prn::fact(const ull x)
+-> ull
 {
 	return x ? x * fact(x - 1) : 1;
 }
