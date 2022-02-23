@@ -22,27 +22,30 @@ int main(void)
 	}
 
 	bool first = true;
-	unsigned n;
+	unsigned n = 0;
 	while(fscanf(ifs, "%x", &n) != EOF)
 	{
 		if(first)
+		{
 			first = false;
+		}
 		else
 		{
 			putchar(' ');
 			fputc(' ', ofs);
 		}
 
-		for(; n; n -= min(n, MAXSIZE))
+		for(; n; n -= min(n, TOKENSIZE))
 		{
-			unsigned m;
+			unsigned m = 0;
 			if(fscanf(ifs, "%x", &m) == EOF)
 			{
 				fprintf(stderr, "Error: wrong format file \"%s\"\n", ofname);
 				return -3;
 			}
-			char w[100];
-			getword(m, w, sizeof w / sizeof *w);
+
+			char w[MAXSIZE];
+			getword(m, w, MAXSIZE);
 			printf(w);
 			fputs(w, ofs);
 		}

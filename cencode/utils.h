@@ -1,12 +1,10 @@
-#ifdef UTILS_H
-#error Redefined header utils.h
-#endif
-
-#define UTILS_H
+#pragma once
 
 #include <stddef.h>
 
-extern const size_t MAXSIZE;
+#define MAXSIZE 100
+
+extern const size_t TOKENSIZE;
 
 size_t min(const size_t, const size_t);
 unsigned find(const char*);
