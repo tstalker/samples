@@ -4,5 +4,6 @@
 
 ulong bine(culong n)
 {
-	return round(pow(phi, n) / sqrt5);
+	culong ret = lround(pow(phi, n) / sqrt5);
+	return ret;
 }

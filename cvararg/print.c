@@ -8,14 +8,11 @@ void print(const char* s, ...)
 {
 	va_list va;
 	va_start(va, s);
-	bool again = true;
-	while(again)
+	for(bool again = true; again;)
 	{
 		const char c = *s++;
 		switch(c)
 		{
-		default:
-			fprintf(stderr, "\nError format symbol \'%c\'\n", c);
 		case '\0':
 			putchar(NL);
 			again = false;
@@ -32,6 +29,9 @@ void print(const char* s, ...)
 			break;
 		case 's':
 			printf("%s", va_arg(va, const char*));
+			break;
+		default:
+			fprintf(stderr, "\nError format symbol \'%c\'\n", c);
 		}
 		putchar(' ');
 	}

@@ -1,5 +1,4 @@
 #include "pair.h"
-#include "decision.h"
 #include "vector_check_read_only.h"
 
 VECTOR_CHECK_READ_ONLY(int)

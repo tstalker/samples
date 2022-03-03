@@ -1,8 +1,4 @@
-#ifdef DECISION_H
-#error Redefined header decision.h
-#endif
-
-#define DECISION_H
+#pragma once
 
 typedef enum
 {

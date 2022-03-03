@@ -9,14 +9,16 @@ fold
 reduce
 */
 
-template <typename T> T sum0(const T& a, const T& b)
+template <typename T>
+T sum0(const T& a, const T& b)
 {
 	const auto r(a + b);
-	std::cout << '[' << a << ", " << b << "] -> " << r << std::endl;
+	std::cout << a << " + " << b << " -> " << r << std::endl;
 	return r;
 }
 
-template <typename... T> auto sum1(const T&... x)
+template <typename... T>
+auto sum1(const T&... x)
 {
 	([](const auto& x)
 	{
@@ -28,9 +30,10 @@ template <typename... T> auto sum1(const T&... x)
 
 int main(void)
 {
-	const int z[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-	using TZ = std::remove_extent_t <decltype(z)>;
-	std::cout << std::accumulate(std::cbegin(z), std::cend(z), TZ(), sum0 <TZ>) << std::endl;
-	std::cout << std::accumulate(std::crbegin(z), std::crend(z), TZ(), sum0 <TZ>) << std::endl;
+	const int v[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+	using TV = std::remove_extent_t<decltype(v)>;
+	std::cout << std::accumulate(std::cbegin(v), std::cend(v), TV(), sum0<TV>) << std::endl;
+	std::cout << std::accumulate(std::crbegin(v), std::crend(v), TV(), sum0<TV>) << std::endl;
 	std::cout << sum1(0, 1, 2, 3, 4, 5, 6, 7, 8, 9) << std::endl;
+	return EXIT_SUCCESS;
 }

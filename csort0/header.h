@@ -1,19 +1,10 @@
-#ifdef HEADER_H
-#error Redefined header header.h
-#endif
-
-#define HEADER_H
-#define RANK 100
+#pragma once
 
 #include <stddef.h>
 #include <stdbool.h>
 
-typedef int* pint;
-typedef const int* cpint;
-typedef const void* cpvoid;
-
-int compare0(cpvoid, cpvoid);
-int compare1(cpvoid, cpvoid);
-void init(pint, const size_t);
-void print(cpint, const size_t);
-bool find(const int, cpint, const size_t);
+int cmpfwd(const void*, const void*);
+int cmprev(const void*, const void*);
+void init(int*, const size_t);
+void print(const int*, const size_t);
+bool find(const int, const int*, const size_t);

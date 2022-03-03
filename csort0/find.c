@@ -1,9 +1,11 @@
 #include "header.h"
 
-bool find(const int x, cpint p, const size_t n)
+bool find(const int x, const int* p, const size_t n)
 {
-	for(size_t i = 0u; i < n; i++)
-		if(i[p] == x)
-			return true;
-	return false;
+	bool ret = false;
+	for(size_t i = 0u; i < n && !ret; i++)
+	{
+		ret = i[p] == x;
+	}
+	return ret;
 }

@@ -1,16 +1,13 @@
-#ifdef FIB_H
-#error Redefined header fib.h
-#endif
+#pragma once
 
-#define FIB_H
-
+typedef const char* cpchar;
 typedef unsigned long ulong;
 typedef const ulong culong;
 typedef ulong(*PF)(culong);
 
 typedef struct
 {
-	const char* name;
+	cpchar name;
 	PF pf;
 }
 deffn;
@@ -19,5 +16,5 @@ typedef cdeffn* cpdeffn;
 
 extern double phi, sqrt5;
 
-void print(cpdeffn, culong);
+void init(void), print(cpdeffn, culong);
 ulong bine(culong), cycle(culong), recur(culong);

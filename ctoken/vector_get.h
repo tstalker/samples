@@ -1,10 +1,11 @@
-#ifndef VECTOR_H
+#pragma once
+
 #include "vector.h"
-#endif
 
 #define VECTOR_GET(TYPE) \
 vector_t ## _ ## TYPE vector_get ## _ ## TYPE (cpvector ## _ ## TYPE this, csizet i) \
 { \
 	this->check_out_range(this, i); \
-	return this->cbegin(this)[i]; \
+	vector_ct ## _ ## TYPE ret = this->cbegin(this)[i]; \
+	return ret; \
 }

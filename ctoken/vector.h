@@ -1,14 +1,6 @@
-#ifdef VECTOR_H
-#error Redefined header vector.h
-#endif
+#pragma once
 
-#define VECTOR_H
-
-#ifndef TYPES_H
 #include "types.h"
-#endif
-
-#include <stdbool.h>
 
 #define VECTOR(TYPE) \
 struct svector ## _ ## TYPE; \

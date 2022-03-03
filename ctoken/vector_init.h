@@ -1,6 +1,6 @@
-#ifndef VECTOR_H
+#pragma once
+
 #include "vector.h"
-#endif
 
 #define VECTOR_INIT(TYPE) \
 void vector_init ## _ ## TYPE (pvector ## _ ## TYPE this, vector_pt ## _ ## TYPE pt, csizet sz) \

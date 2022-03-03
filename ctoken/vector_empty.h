@@ -1,9 +1,10 @@
-#ifndef VECTOR_H
+#pragma once
+
 #include "vector.h"
-#endif
 
 #define VECTOR_EMPTY(TYPE) \
 bool vector_empty ## _ ## TYPE (cpvector ## _ ## TYPE this) \
 { \
-	return !this->size(this); \
+	cbool ret = !this->size(this); \
+	return ret; \
 }

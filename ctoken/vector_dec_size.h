@@ -1,6 +1,6 @@
-#ifndef VECTOR_H
+#pragma once
+
 #include "vector.h"
-#endif
 
 #define VECTOR_DEC_SIZE(TYPE) \
 void vector_dec_size ## _ ## TYPE (pvector ## _ ## TYPE this) \

@@ -5,5 +5,6 @@ VECTOR(decision)
 
 int vector_cmp_decision(cpvoid px, cpvoid py)
 {
-	return vector_cmp_int(px, py);
+	cint ret = vector_cmp_int(px, py);
+	return ret;
 }

@@ -1,6 +1,6 @@
-#ifndef VECTOR_H
+#pragma once
+
 #include "vector.h"
-#endif
 
 #include <stdlib.h>
 

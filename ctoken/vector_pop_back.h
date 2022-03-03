@@ -1,6 +1,6 @@
-#ifndef VECTOR_H
+#pragma once
+
 #include "vector.h"
-#endif
 
 #define VECTOR_POP_BACK(TYPE) \
 vector_t ## _ ## TYPE vector_pop_back ## _ ## TYPE (pvector ## _ ## TYPE this) \

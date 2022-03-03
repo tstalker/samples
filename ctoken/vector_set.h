@@ -1,6 +1,6 @@
-#ifndef VECTOR_H
+#pragma once
+
 #include "vector.h"
-#endif
 
 #define VECTOR_SET(TYPE) \
 void vector_set ## _ ## TYPE (pvector ## _ ## TYPE this, csizet i, vector_ct ## _ ## TYPE t) \

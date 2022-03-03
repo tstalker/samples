@@ -1,5 +1,4 @@
 #include "pair.h"
-#include "decision.h"
 #include "vector_check_out_range.h"
 
 VECTOR_CHECK_OUT_RANGE(int)

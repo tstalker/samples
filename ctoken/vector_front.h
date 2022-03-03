@@ -1,10 +1,11 @@
-#ifndef VECTOR_H
+#pragma once
+
 #include "vector.h"
-#endif
 
 #define VECTOR_FRONT(TYPE) \
 vector_t ## _ ## TYPE vector_front ## _ ## TYPE (cpvector ## _ ## TYPE this) \
 { \
 	this->check_empty(this); \
-	return *this->cbegin(this); \
+	vector_ct ## _ ## TYPE ret = *this->cbegin(this); \
+	return ret; \
 }

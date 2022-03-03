@@ -1,3 +1,5 @@
+#pragma once
+
 #define PAIR(FIRST, SECOND) \
 struct spair ## _ ## FIRST ## _ ## SECOND; \
 typedef struct spair ## _ ## FIRST ## _ ## SECOND pair ## _ ## FIRST ## _ ## SECOND; \

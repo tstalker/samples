@@ -15,7 +15,11 @@ decision decision_get(cpvector_int pv)
 	size_t sz = sizeof dd / sizeof *dd;
 
 	if(pv->size(pv) == 2)
+	{
 		sz -= 2;
+	}
+
 	dv.cinit(&dv, dd, sz);
-	return map(&dv, pv);
+	cdecision ret = map(&dv, pv);
+	return ret;
 }

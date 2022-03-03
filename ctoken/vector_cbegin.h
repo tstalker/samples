@@ -1,9 +1,10 @@
-#ifndef VECTOR_H
+#pragma once
+
 #include "vector.h"
-#endif
 
 #define VECTOR_CBEGIN(TYPE) \
 vector_cpt ## _ ## TYPE vector_cbegin ## _ ## TYPE (cpvector ## _ ## TYPE this) \
 { \
-	return this->_cpt; \
+	vector_cpt ## _ ## TYPE ret = this->_cpt; \
+	return ret; \
 }

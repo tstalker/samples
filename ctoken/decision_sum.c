@@ -4,24 +4,31 @@ int decision_sum(cdecision d, cpvector_int pv)
 {
 	vector_int v = { .cinitv = vector_cinitv_int };
 	v.cinitv(&v, pv);
+	int ret = 0;
 
 	switch(d)
 	{
-	default:
-		error_print(ERROR_DECISION);
 	case END:
-		return 0;
+		break;
 	case LEFT:
-		return pv->front(pv);
+		ret = pv->front(pv);
+		break;
 	case RIGHT:
-		return pv->back(pv);
+		ret = pv->back(pv);
+		break;
 	case LEFT_RIGHT:
-		return decision_sum(LEFT, pv) + decision_sum(RIGHT, pv);
+		ret = decision_sum(LEFT, pv) + decision_sum(RIGHT, pv);
+		break;
 	case LEFT_LEFT:
 		v.pop_front(&v);
-		return decision_sum(LEFT, pv) + decision_sum(LEFT, &v);
+		ret = decision_sum(LEFT, pv) + decision_sum(LEFT, &v);
+		break;
 	case RIGHT_RIGHT:
 		v.pop_back(&v);
-		return decision_sum(RIGHT, pv) + decision_sum(RIGHT, &v);
+		ret = decision_sum(RIGHT, pv) + decision_sum(RIGHT, &v);
+		break;
+	default:
+		error_print(ERROR_DECISION);
 	}
+	return ret;
 }

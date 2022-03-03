@@ -1,8 +1,5 @@
-#ifdef PRINT_H
-#error Redefined header print.h
-#endif
+#pragma once
 
-#define PRINT_H
 #define NL '\n'
 
 void print(const char*, ...);

@@ -1,9 +1,11 @@
 #include "pair.h"
 #include "token.h"
 
+#include <stdlib.h>
+
 PAIR(int, int)
 
-#define MAX 20u
+static csizet MAX = 20u;
 
 int main(void)
 {
@@ -18,15 +20,24 @@ int main(void)
 		v.print(&v);
 		cdecision d = decision_get(&v);
 		decision_print(d);
-		cint s = decision_sum(d, &v);
-		stoken_print(first ? "first" : "second", s);
-		if(first) sum.first += s;
-		else sum.second += s;
+		cint x = decision_sum(d, &v);
+		cpchar title = first ? "first" : "second";
+		stoken_print(title, x);
+		if(first)
+		{
+			sum.first += x;
+		}
+		else
+		{
+			sum.second += x;
+		}
 		stoken_print("first sum", sum.first);
 		stoken_print("second sum", sum.second);
 		decision_step(d, &v);
 	}
 
 	cint win_sum = max2(sum.first, sum.second);
-	stoken_print(win_sum == sum.first ? "first win" : "second win", win_sum);
+	cpchar wtitle = win_sum == sum.first ? "first win" : "second win";
+	stoken_print(wtitle, win_sum);
+	return EXIT_SUCCESS;
 }

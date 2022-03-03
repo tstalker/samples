@@ -1,6 +1,6 @@
-#ifndef VECTOR_H
+#pragma once
+
 #include "vector.h"
-#endif
 
 #define VECTOR_CINITV(TYPE) \
 void vector_cinitv ## _ ## TYPE (pvector ## _ ## TYPE this, cpvector ## _ ## TYPE pv) \

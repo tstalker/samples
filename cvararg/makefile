@@ -1,22 +1,24 @@
 TARGET = work
-OBJS = main.o
-DEPENDS = makefile
+OBJLIST = main.o print.o
+DEPENDS = print.h makefile
+CC = cc
 CFLAGS = -march=native -std=c2x -O3 -pipe -Wall -Werror -Winline
 STRIP = strip
 
 all: $(TARGET)
 
-$(TARGET): $(OBJS)
+$(TARGET): $(OBJLIST)
 	$(CC) $(CFLAGS) -o $@ $^
 	$(STRIP) $@
 
 .c.o:
-	$(CC) -c $(CFLAGS) $<
+	$(CC) $(CFLAGS) -c $<
 
 allclean: clean
 	$(RM) $(TARGET)
 
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(OBJLIST)
 
-$(OBJS): main.c $(DEPENDS)
+main.o: main.c $(DEPENDS)
+print.o: print.c $(DEPENDS)

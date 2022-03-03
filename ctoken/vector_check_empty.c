@@ -1,5 +1,4 @@
 #include "pair.h"
-#include "decision.h"
 #include "vector_check_empty.h"
 
 VECTOR_CHECK_EMPTY(int)

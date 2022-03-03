@@ -1,3 +1,7 @@
+#pragma once
+
+#include "vector.h"
+
 #define VECTOR_INITV(TYPE) \
 void vector_initv ## _ ## TYPE (pvector ## _ ## TYPE this, pvector ## _ ## TYPE pv) \
 { \

@@ -1,6 +1,8 @@
 #include "vector_int.h"
 
-int vector_cmp_int(cpvoid px, cpvoid py)
+int vector_cmp_int(cpvoid pvx, cpvoid pvy)
 {
-	return *(cpint)px - *(cpint)py;
+	cpint pix = pvx, piy = pvy;
+	cint ret = *pix - *piy;
+	return ret;
 }

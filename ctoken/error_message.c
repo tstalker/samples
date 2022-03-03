@@ -2,17 +2,24 @@
 
 cpchar error_message(error_clist e)
 {
+	cpchar ret = NULL;
+
 	switch(e)
 	{
-	default:
-		return "Unknown error";
 	case ERROR_DECISION:
-		return "Invalid decision";
+		ret = "Invalid decision";
+		break;
 	case ERROR_VECTOR_EMPTY:
-		return "Vector is empty";
+		ret = "Vector is empty";
+		break;
 	case ERROR_VECTOR_READ_ONLY:
-		return "Vector read only";
+		ret = "Vector read only";
+		break;
 	case ERROR_VECTOR_OUT_RANGE:
-		return "Vector out of range";
+		ret = "Vector out of range";
+		break;
+	default:
+		ret = "Unknown error";
 	}
+	return ret;
 }

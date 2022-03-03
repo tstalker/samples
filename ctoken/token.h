@@ -1,20 +1,8 @@
-#ifdef TOKEN_H
-#error Redefined header token.h
-#endif
+#pragma once
 
-#define TOKEN_H
-
-#ifndef DECISION_H
 #include "decision.h"
-#endif
-
-#ifndef ERROR_LIST_H
 #include "error_list.h"
-#endif
-
-#ifndef VECTOR_INT_H
 #include "vector_int.h"
-#endif
 
 VECTOR(decision)
 

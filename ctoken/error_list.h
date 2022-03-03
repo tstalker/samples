@@ -1,8 +1,4 @@
-#ifdef ERROR_LIST_H
-#error Redefined header error_list.h
-#endif
-
-#define ERROR_LIST_H
+#pragma once
 
 typedef enum
 {
