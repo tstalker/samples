@@ -2,7 +2,7 @@ TARGET = work
 OBJ = main.o
 DEPENDS = fact.hpp makefile
 CC = c++
-CFLAGS = -march=native -std=c++23 -O3 -pipe -Wall -Winline
+CFLAGS = -march=native -O3 -pipe -std=c++23 -Wall -Werror -Winline
 STRIP = strip
 
 all: $(TARGET)
