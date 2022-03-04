@@ -1,25 +1,21 @@
-#ifdef PRINT_HPP
-#error Redefined header print.hpp
-#endif
-
-#define PRINT_HPP
+#pragma once
 
 #include <vector>
 #include <iostream>
 #include <iterator>
-#include <algorithm>
 
 namespace prn
 {
 	using namespace std;
 
 template <typename T>
-	void print(const vector <T> &);
+	void print(const vector<T>&);
 }
 
 template <typename T>
-void prn::print(const vector <T> &v)
+void prn::print(const vector<T> &v)
 {
-	copy(v.cbegin(), v.cend(), ostream_iterator <T> (cout, " "));
+	auto it(ostream_iterator<T>(cout, " "));
+	copy(v.cbegin(), v.cend(), it);
 	cout << endl;
 }

@@ -1,7 +1,5 @@
 #include "print.hpp"
 
-#include <cstdlib>
-
 int main(void)
 {
 	prn::print<bool>();

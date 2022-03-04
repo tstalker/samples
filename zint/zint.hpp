@@ -1,8 +1,4 @@
-#ifdef ZINT_HPP
-#error Redefined header zint.hpp
-#endif
-
-#define ZINT_HPP
+#pragma once
 
 #include <vector>
 #include <iostream>
@@ -35,8 +31,8 @@ private:
 	zint& increment(void);
 	zint& decrement(void);
 
-	bool sign { true };
-	vector <ztype> v;
+	bool sign{true};
+	vector<ztype> v;
 
 	friend ostream& operator << (ostream&, const zint&);
 };

@@ -1,12 +1,6 @@
-#ifdef PRINT_HPP
-#error Redefined header print.hpp
-#endif
+#pragma once
 
-#define PRINT_HPP
-
-#ifndef GENERIC_HPP
 #include "generic.hpp"
-#endif
 
 #include <iostream>
 #include <iterator>
@@ -14,6 +8,8 @@
 
 namespace prn
 {
+	using namespace gen;
+
 template <typename T>
 	void Print(const T&);
 template <typename T>
@@ -24,7 +20,7 @@ template <typename T>
 	void PrintCopy(const T&);
 
 template <typename T>
-	const std::vector<std::pair<std::string_view, std::function<void(const T&)>>> lst
+	const vector<pair<string_view, function<void(const T&)>>> lst
 	{
 		{ "for ", PrintFor<T> },
 		{ "each", PrintEach<T> },
@@ -37,10 +33,10 @@ void prn::Print(const T& v)
 {
 	for(auto& f: lst<T>)
 	{
-		std::cout << f.first << ": ";
+		cout << f.first << ": ";
 		f.second(v);
-		gen::TW<T>::FlagSpace.reset();
-		std::cout << std::endl;
+		TW<T>::FlagSpace.reset();
+		cout << endl;
 	}
 }
 
@@ -49,18 +45,20 @@ void prn::PrintFor(const T& v)
 {
 	for(auto& x: v)
 	{
-		std::invoke(&gen::TW<T>::Print, x);
+		invoke(&TW<T>::Print, x);
 	}
 }
 
 template <typename T>
 void prn::PrintEach(const T& v)
 {
-	std::for_each(v.cbegin(), v.cend(), std::mem_fn(&gen::TW<T>::Print));
+	auto fn(mem_fn(&TW<T>::Print));
+	for_each(v.cbegin(), v.cend(), fn);
 }
 
 template <typename T>
 void prn::PrintCopy(const T& v)
 {
-	std::copy(v.cbegin(), v.cend(), std::ostream_iterator<gen::TV<T>>(std::cout, " "));
+	auto it(ostream_iterator<TV<T>>(cout, " "));
+	copy(v.cbegin(), v.cend(), it);
 }

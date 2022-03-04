@@ -1,8 +1,4 @@
-#ifdef PRINT_HPP
-#error Redefined header print.hpp
-#endif
-
-#define PRINT_HPP
+#pragma once
 
 #include <iostream>
 
@@ -20,16 +16,19 @@ namespace prn
 		cout << t << endl;
 	}
 
-	template <typename T, typename...U> void print(const T&, const U&...);
+template <typename T, typename...U>
+	void print(const T&, const U&...);
 }
 
-template <typename...T> void print(const T&...t)
-{
-	prn::print(t...);
-}
-
-template <typename T, typename...U> void prn::print(const T& t, const U&...u)
+template <typename T, typename...U>
+void prn::print(const T& t, const U&...u)
 {
 	cout << t << ", ";
 	print(u...);
+}
+
+template <typename...T>
+void print(const T&...t)
+{
+	prn::print(t...);
 }

@@ -1,16 +1,24 @@
-#ifdef PRINT_HPP
-#error Redefined header print.hpp
-#endif
-
-#define PRINT_HPP
+#pragma once
 
 #include <iostream>
 #include <iterator>
-#include <algorithm>
+
+namespace prn
+{
+	using namespace std;
 
 template <typename T, size_t N>
-decltype(auto) operator << (std::ostream& o, const T(&v)[N])
+	decltype(auto)
+	operator << (ostream&, const T(&)[N]);
+}
+
+template <typename T, size_t N>
+decltype(auto)
+prn::operator << (ostream& o, const T(&v)[N])
 {
-	std::copy(std::cbegin(v), std::cend(v), std::ostream_iterator <T> (o, " "));
+	auto it(ostream_iterator<T>(o, " "));
+	copy(cbegin(v), cend(v), it);
 	return o;
 }
+
+using prn::operator <<;

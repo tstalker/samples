@@ -1,6 +1,9 @@
 #include "print.hpp"
 
+#include <cstdlib>
+
 int main(void)
 {
-	print("ifdcs", 42, 1.23f, 3.14, 'a', "abcde");
+	prn::print("ifdcs", 42, 1.23f, 3.14, 'a', "abcde");
+	return EXIT_SUCCESS;
 }

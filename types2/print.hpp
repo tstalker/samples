@@ -1,7 +1,6 @@
 #pragma once
 
 #include <limits>
-#include <cstddef>
 #include <iostream>
 #include <string_view>
 
@@ -142,14 +141,16 @@ constexpr auto prn::gettype(void)
 }
 
 template <typename T, typename U>
-constexpr auto prn::getlim(void)
+constexpr auto
+prn::getlim(void)
 -> pair<U, U>
 {
 	return {numeric_limits<T>::min(), numeric_limits<T>::max()};
 }
 
 template <>
-constexpr auto prn::getlim<std::byte, unsigned short>(void)
+constexpr auto
+prn::getlim<std::byte, unsigned short>(void)
 -> pair<unsigned short, unsigned short>
 {
 	return getlim<unsigned char, unsigned short>();

@@ -46,7 +46,7 @@ void prn::printy(ostream& o, const T& x)
 template <typename T, size_t N0, size_t N1, size_t N2>
 void prn::print(const T(&v)[N0][N1][N2])
 {
-	auto it{ ostream_iterator<char>(cout) };
+	auto it{ostream_iterator<char>(cout)};
 
 	for(size_t i{}; i < N0; i++)
 	{
@@ -61,7 +61,7 @@ void prn::print(const T(&v)[N0][N1][N2])
 template <typename T, size_t N1, size_t N2>
 void prn::print(const T(&v)[N1][N2], const size_t n0)
 {
-	auto it{ ostream_iterator<char>(cout) };
+	auto it{ostream_iterator<char>(cout)};
 
 	for(size_t i{}; i < n0; i++)
 	{
@@ -83,7 +83,7 @@ void prn::print(const T(&v)[N])
 template <typename T>
 void prn::print(const T v[], const size_t n0, const size_t n1, const size_t n2)
 {
-	auto it { ostream_iterator <char> (cout) };
+	auto it{ostream_iterator<char>(cout)};
 
 	for(size_t i{}; i < n0; i++)
 	{

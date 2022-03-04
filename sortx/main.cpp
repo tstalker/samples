@@ -1,6 +1,5 @@
 #include "print.hpp"
 
-#include <cstdlib>
 #include <numeric>
 
 int main(void)

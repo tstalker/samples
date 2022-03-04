@@ -1,11 +1,10 @@
 #include "print.hpp"
 
-#include <cstdlib>
 #include <numeric>
 
 int main(void)
 {
-	std::vector <unsigned> v(10);
+	std::vector<unsigned> v(10);
 	std::iota(v.begin(), v.end(), 0);
 	prn::print(v);
 	std::reverse(v.begin(), v.end());

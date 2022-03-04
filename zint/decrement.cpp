@@ -35,7 +35,7 @@ auto big::zint::decrement(void) -> zint&
 	{
 		if(auto& x(*it); x == 0)
 		{
-			x = numeric_limits <decltype(v)::value_type> ::max();
+			x = numeric_limits<decltype(v)::value_type>::max();
 		}
 		else
 		{

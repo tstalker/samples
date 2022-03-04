@@ -26,7 +26,7 @@ auto big::zint::increment(void) -> zint&
 	auto action(false);
 	for(auto it(v.begin()); it != v.end() && !action; it++)
 	{
-		if(auto& x(*it); x == numeric_limits <decltype(v)::value_type> ::max())
+		if(auto& x(*it); x == numeric_limits<decltype(v)::value_type>::max())
 		{
 			x = 0;
 		}

@@ -1,22 +1,16 @@
-#ifdef INIT_HPP
-#error Redefined header init.hpp
-#endif
+#pragma once
 
-#define INIT_HPP
-
-#ifndef DERIVED_HPP
 #include "derived.hpp"
-#endif
-
-#ifndef GENERIC_HPP
 #include "generic.hpp"
-#endif
 
 #include <algorithm>
 #include <functional>
 
 namespace ini
 {
+	using namespace gen;
+	using namespace ier;
+
 template <typename T>
 	inline auto make_unique_v(const T&);
 template <typename T>
@@ -24,55 +18,54 @@ template <typename T>
 template <typename T>
 	inline auto InitDerived(unsigned&);
 template <typename T>
-	inline gen::TI<T> InitBase(unsigned&);
+	inline TI<T> InitBase(unsigned&);
 template <typename T>
-	inline gen::TN<T> InitBase(unsigned&);
+	inline TN<T> InitBase(unsigned&);
 }
 
 template <typename T>
 void ini::Init(T& v, const unsigned& n)
 {
-	std::generate_n(std::back_inserter(v), n,
+	generate_n(back_inserter(v), n,
 	[i{0u}](void) mutable
 	{
-		return InitBase<gen::TV<T>>(i);
+		return InitBase<TV<T>>(i);
 	});
 }
 
 template <typename T>
 auto ini::InitBase(unsigned& i)
--> gen::TI<T>
+-> TI<T>
 {
 	return InitDerived<T>(i);
 }
 
 template <typename T>
 auto ini::InitBase(unsigned& i)
--> gen::TN<T>
+-> TN<T>
 {
-	return make_unique_v(InitDerived<gen::TE<T>>(i));
+	return make_unique_v(InitDerived<TE<T>>(i));
 }
 
 template <typename T>
 auto ini::make_unique_v(const T& x)
 {
-	return std::make_unique<T>(x);
+	return make_unique<T>(x);
 }
 
 template <typename T>
 auto ini::InitDerived(unsigned& i)
 {
-	return [f(1.1f), i(i++)]
-	{
-		const auto x(f * i);
+	const auto f(1.1f);
+	const auto j(i++);
+	const auto x(f * j);
 
-		if constexpr(std::is_floating_point_v<TypeDerived>)
-		{
-			return ier::Derived<gen::TE<T>, TypeDerived>(i, x);
-		}
-		else
-		{
-			return ier::Derived<gen::TE<T>, TypeDerived>(x, i);
-		}
-	}();
+	if constexpr(is_floating_point_v<TypeDerived>)
+	{
+		return Derived<TE<T>, TypeDerived>(j, x);
+	}
+	else
+	{
+		return Derived<TE<T>, TypeDerived>(x, j);
+	}
 }

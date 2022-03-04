@@ -14,7 +14,7 @@ big::zint::zint(void)
 
 big::zint::zint(const int x): sign(x >= 0)
 {
-	const zzz z { sign ? x : -x };
+	const zzz z{sign ? x : -x};
 	for(auto it(crbegin(z.s)); it != crend(z.s); it++)
 	{
 		if(const auto s(*it); v.size() || s)

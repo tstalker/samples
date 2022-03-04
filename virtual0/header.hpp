@@ -1,13 +1,9 @@
-#ifdef HEADER_HPP
-#error Redefined header header.hpp
-#endif
-
-#define HEADER_HPP
+#pragma once
 
 class A
 {
 public:
-	A(void)
+	A(const int& i): i(i)
 	{}
 
 	virtual ~A(void)
@@ -16,13 +12,14 @@ public:
 	virtual void print(void) const = 0;
 
 protected:
-	int i{1};
+	int i{};
 };
 
 class B: public A
 {
 public:
-	B(void)
+	B(const int& i, const int& j):
+		A(i), i(j)
 	{}
 
 	~B(void)
@@ -31,5 +28,5 @@ public:
 	void print(void) const;
 
 private:
-	int i{2};
+	int i{};
 };
