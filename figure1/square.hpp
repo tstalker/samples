@@ -1,12 +1,6 @@
-#ifdef SQUARE_HPP
-#error Redefined header square.hpp
-#endif
+#pragma once
 
-#define SQUARE_HPP
-
-#ifndef FIGURE_HPP
 #include "figure.hpp"
-#endif
 
 #include <cmath>
 
@@ -15,13 +9,14 @@ namespace geom
 	class square;
 }
 
-class geom::square final: public figure
+class geom::square final:
+	public figure
 {
 public:
 	square(void)
 	{}
 
-	square(const vector <double> &v): figure(v)
+	square(const vector<double> &v): figure(v)
 	{}
 
 	~square(void) final
@@ -37,11 +32,11 @@ public:
 		return 4 * v.front();
 	}
 
-	string getname(void) const final
+	string_view getname(void) const final
 	{
 		return name;
 	}
 
 private:
-	const string name{"Square"};
+	const string_view name{"Square"};
 };

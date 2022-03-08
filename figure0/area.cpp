@@ -2,7 +2,7 @@
 
 #include <cmath>
 
-double geom::figure::area(void) const
+double geo::figure::area(void) const
 {
 	double ret{};
 	switch(t)

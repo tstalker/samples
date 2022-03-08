@@ -1,18 +1,14 @@
-#ifdef GENERIC_HPP
-#error Redefined header Generic.hpp
-#endif
-
-#define GENERIC_HPP
+#pragma once
 
 #include <chrono>
 #include <string>
 
-namespace Generic
+namespace gen
 {
 	using namespace std;
 
-	const size_t MAXSIZE(5u);
+	const size_t MAXSIZE(4u);
 
-	string GetWord(const unsigned);
-	string GetTime(const chrono::time_point <chrono::system_clock> &);
+	string GetWord(const unsigned&);
+	string GetTime(const chrono::time_point<chrono::system_clock>&);
 }

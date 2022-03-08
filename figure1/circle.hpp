@@ -1,12 +1,6 @@
-#ifdef CIRCLE_HPP
-#error Redefined header circle.hpp
-#endif
+#pragma once
 
-#define CIRCLE_HPP
-
-#ifndef FIGURE_HPP
 #include "figure.hpp"
-#endif
 
 #include <cmath>
 
@@ -15,13 +9,14 @@ namespace geom
 	class circle;
 }
 
-class geom::circle final: public figure
+class geom::circle final:
+	public figure
 {
 public:
 	circle(void)
 	{}
 
-	circle(const vector <double> &v): figure(v)
+	circle(const vector<double> &v): figure(v)
 	{}
 
 	~circle(void) final
@@ -37,11 +32,11 @@ public:
 		return 2 * PI * v.front();
 	}
 
-	string getname(void) const final
+	string_view getname(void) const final
 	{
 		return name;
 	}
 
 private:
-	const string name{"Circle"};
+	const string_view name{"Circle"};
 };

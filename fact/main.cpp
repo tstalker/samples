@@ -1,6 +1,5 @@
 #include "fact.hpp"
 
-#include <cstdlib>
 #include <iomanip>
 #include <iostream>
 

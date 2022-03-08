@@ -2,16 +2,15 @@
 #include "derived.hpp"
 
 #include <cmath>
-#include <algorithm>
 
-gen::work::work(const std::size_t n)
+gen::work::work(const size_t n)
 {
-	std::generate_n(std::back_inserter(v), n,
+	generate_n(back_inserter(v), n,
 		[i(0)] (void) mutable
 		-> decltype(v)::value_type
 	{
-		const auto f(std::fma(i, 1.e-1, i));
-		const auto p(std::div(i, 2).rem ? new derived(f, i) : new base(f));
+		const auto f(fma(i, 1.e-1, i));
+		const auto p(div(i, 2).rem ? new derived(f, i) : new base(f));
 		i++;
 		return p;
 	});
@@ -19,21 +18,18 @@ gen::work::work(const std::size_t n)
 
 gen::work::~work(void)
 {
-	std::for_each(v.begin(), v.end(),
-		[] (auto& p)
+	for(auto p: v)
 	{
 		delete p;
-		p = nullptr;
-	});
+	}
 }
 
 void
-gen::work::print(std::ostream& os)
-const
+gen::work::print(ostream& os) const
 {
 	op = true;
 
-	std::for_each(v.cbegin(), v.cend(),
+	for_each(v.cbegin(), v.cend(),
 		[this, &os] (const auto p)
 	{
 		if(op)
@@ -44,14 +40,13 @@ const
 		{
 			os << ' ';
 		}
-
 		p->print(os);
 	});
 }
 
 auto
-operator << (std::ostream& os, const gen::work& w)
--> std::ostream&
+gen::operator << (ostream& os, const work& w)
+-> ostream&
 {
 	w.print(os);
 	return os;

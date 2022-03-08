@@ -1,6 +1,6 @@
 TARGET = work
 OBJ = main.o
-DEPENDS = makefile
+DEPEND = abc.hpp makefile
 CC = c++
 CFLAGS = -march=native -O3 -pipe -std=c++23 -Wall -Werror -Winline
 STRIP = strip
@@ -20,4 +20,4 @@ allclean: clean
 clean:
 	$(RM) $(OBJ)
 
-$(OBJ): $(OBJ:.o=.cpp) $(DEPENDS)
+$(OBJ): $(OBJ:.o=.cpp) $(DEPEND)

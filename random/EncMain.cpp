@@ -2,5 +2,6 @@
 
 int main(void)
 {
-	Encode::Parse("in.txt", "encode.txt");
+	enc::Parse("in.txt", "encode.txt");
+	return EXIT_SUCCESS;
 }

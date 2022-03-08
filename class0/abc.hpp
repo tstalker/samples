@@ -1,8 +1,4 @@
-#ifdef ABC_HPP
-#error Redefined header abc.hpp
-#endif
-
-#define ABC_HPP
+#pragma once
 
 class abc
 {

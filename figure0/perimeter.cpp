@@ -1,6 +1,6 @@
 #include "figure.hpp"
 
-double geom::figure::perimeter(void) const
+double geo::figure::perimeter(void) const
 {
 	double ret{};
 	switch(t)

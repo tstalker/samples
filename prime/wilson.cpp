@@ -1,6 +1,6 @@
-#include "math.hpp"
+#include "fib.hpp"
 
-bool math::wilson(culong x)
+bool fib::wilson(culong x)
 {
-	return x <= 1 ? x : !((fact(x - 1) + 1) % x);
+	return x <= 1 ? x : !((bine(x - 1) + 1) % x);
 }

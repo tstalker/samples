@@ -1,25 +1,20 @@
-#ifdef TRIANGLE_HPP
-#error Redefined header triangle.hpp
-#endif
+#pragma once
 
-#define TRIANGLE_HPP
-
-#ifndef FIGURE_HPP
 #include "figure.hpp"
-#endif
 
 namespace geom
 {
 	class triangle;
 }
 
-class geom::triangle final: public figure
+class geom::triangle final:
+	public figure
 {
 public:
 	triangle(void)
 	{}
 
-	triangle(const vector <double> &v): figure(v)
+	triangle(const vector<double> &v): figure(v)
 	{}
 
 	~triangle(void) final
@@ -32,11 +27,11 @@ public:
 		return sum();
 	}
 
-	string getname(void) const final
+	string_view getname(void) const final
 	{
 		return name;
 	}
 
 private:
-	const string name{"Triangle"};
+	const string_view name{"Triangle"};
 };

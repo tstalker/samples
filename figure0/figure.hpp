@@ -1,22 +1,18 @@
-#ifdef FIGURE_HPP
-#error Redefined header figure.hpp
-#endif
-
-#define FIGURE_HPP
+#pragma once
 
 #include <iostream>
 
-namespace geom
+namespace geo
 {
 	using namespace std;
-	using type_figure = char;
-	enum class figure_type: type_figure;
+	enum class figure_type: char;
 	class figure;
+	ostream& operator << (ostream&, const figure&);
 }
 
-std::ostream& operator << (std::ostream&, const geom::figure&);
+using geo::operator <<;
 
-enum class geom::figure_type: geom::type_figure
+enum class geo::figure_type: char
 {
 	NOT_FIGURE,
 	CIRCLE,
@@ -25,13 +21,13 @@ enum class geom::figure_type: geom::type_figure
 	RECTANGLE
 };
 
-class geom::figure
+class geo::figure
 {
 public:
 	figure(void)
 	{}
 
-	figure(const figure_type t, double x, double y = 0, double z = 0): t(t), x(x), y(y), z(z)
+	figure(const figure_type t, double x, double y = double(), double z = double()): t(t), x(x), y(y), z(z)
 	{}
 
 	double area(void) const;
@@ -40,7 +36,8 @@ public:
 private:
 	figure_type t{figure_type::NOT_FIGURE};
 	double x{}, y{}, z{};
+
 	static const double PI;
 
-	friend std::ostream& ::operator << (std::ostream&, const figure&);
+	friend ostream& operator << (ostream&, const figure&);
 };

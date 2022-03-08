@@ -2,7 +2,7 @@
 
 int main(void)
 {
-	math::bignumber <types::uchr> x;
+	fib::bignumber<fib::uchar> x;
 	x.print();
 	for(unsigned i{}; i < 1000000; i++)
 	{
@@ -10,5 +10,5 @@ int main(void)
 		(++x).print();
 	}
 	std::cout << std::endl;
+	return EXIT_SUCCESS;
 }
-

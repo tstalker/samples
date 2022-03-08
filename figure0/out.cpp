@@ -1,22 +1,23 @@
 #include "figure.hpp"
 
-std::ostream& operator << (std::ostream& o, const geom::figure& f)
+auto geo::operator << (ostream& o, const figure& f) ->
+ostream&
 {
 	switch(f.t)
 	{
 	default:
 		o << "Error: invalid figure type";
 		break;
-	case geom::figure_type::CIRCLE:
+	case figure_type::CIRCLE:
 		o << "CIRCLE { " << f.x << " }";
 		break;
-	case geom::figure_type::TRIANGLE:
+	case figure_type::TRIANGLE:
 		o << "TRIANGLE { " << f.x << ", " << f.y << ", " << f.z << " }";
 		break;
-	case geom::figure_type::SQUARE:
+	case figure_type::SQUARE:
 		o << "SQUARE { " << f.x << " }";
 		break;
-	case geom::figure_type::RECTANGLE:
+	case figure_type::RECTANGLE:
 		o << "RECTANGLE { " << f.x << ", " << f.y << " }";
 	}
 	return o;

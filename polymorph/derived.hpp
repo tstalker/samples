@@ -5,11 +5,11 @@
 namespace gen
 {
 	class derived;
+	ostream& operator << (ostream&, const derived&);
 }
 
-std::ostream& operator << (std::ostream&, const gen::derived&);
-
-class gen::derived final: public base
+class gen::derived final:
+	public base
 {
 public:
 	derived(const double f, const int i): base(f), i(i)
@@ -19,10 +19,12 @@ public:
 	{}
 
 private:
-	int i {};
+	int i{};
 
-	friend std::ostream& ::operator << (std::ostream&, const derived&);
+	friend ostream& operator << (ostream&, const derived&);
 
 public:
-	void print(std::ostream&) const override;
+	void print(ostream&) const override;
 };
+
+using gen::operator <<;

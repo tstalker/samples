@@ -1,18 +1,12 @@
-#ifdef ENCODE_HPP
-#error Redefined header Encode.hpp
-#endif
+#pragma once
 
-#define ENCODE_HPP
-
-#ifndef GENERIC_HPP
 #include "Generic.hpp"
-#endif
 
 #include <string_view>
 
-namespace Encode
+namespace enc
 {
-	using namespace Generic;
+	using namespace gen;
 
 	void Parse(string_view, string_view);
 }

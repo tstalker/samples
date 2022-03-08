@@ -5,9 +5,8 @@
 #include <fstream>
 #include <iomanip>
 #include <iostream>
-#include <algorithm>
 
-void Encode::Parse(string_view ifname, string_view ofname)
+void enc::Parse(string_view ifname, string_view ofname)
 {
 	const auto start(chrono::system_clock::now());
 	ifstream ifs(ifname.data());
@@ -25,17 +24,23 @@ void Encode::Parse(string_view ifname, string_view ofname)
 	}
 
 	auto first(true);
-	map <string, unsigned> dict;
-	const auto MAX(numeric_limits <decltype(dict)::mapped_type> ::max());
+	map<string, unsigned> dict;
+	const auto MAX(numeric_limits<decltype(dict)::mapped_type>::max());
 	for(string w; ifs >> w;)
 	{
 		if(w.size() > MAXSIZE)
+		{
 			cout << w << " [" << hex << w.size() << "]: ";
+		}
 		if(first)
+		{
 			first = false;
+		}
 		else ofs << ' ';
 		if(w.size())
+		{
 			ofs << hex << w.size() << ' ';
+		}
 
 		auto first(true);
 		while(!w.empty())
@@ -43,9 +48,10 @@ void Encode::Parse(string_view ifname, string_view ofname)
 			const auto start(chrono::system_clock::now());
 			const auto n(min(w.size(), MAXSIZE));
 			const auto s(w.substr(0, n));
-
 			if(first)
+			{
 				first = false;
+			}
 			else
 			{
 				cout << ' ';
@@ -57,8 +63,9 @@ void Encode::Parse(string_view ifname, string_view ofname)
 			{
 				unsigned i{};
 				while(i < MAX && s != GetWord(i))
+				{
 					i++;
-
+				}
 				if(i == MAX)
 				{
 					cerr << "Error: can't find index for word \"" << s << '\"' << endl;
@@ -68,8 +75,9 @@ void Encode::Parse(string_view ifname, string_view ofname)
 				cout << GetTime(start);
 			}
 			else
+			{
 				cout << "found";
-
+			}
 			cout << ']';
 			ofs << hex << dict[s];
 			w.erase(0, n);

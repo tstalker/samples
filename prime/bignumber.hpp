@@ -1,24 +1,17 @@
-#ifdef BIGNUMBER_HPP
-#error Redefined header bignumber.hpp
-#endif
+#pragma once
 
-#define BIGNUMBER_HPP
-
-#ifndef MATH_HPP
-#include "math.hpp"
-#endif
+#include "fib.hpp"
 
 #include <limits>
 #include <vector>
 #include <iostream>
 
-namespace math
+namespace fib
 {
-	using namespace std;
 	template <typename T> class bignumber;
 }
 
-template <typename T> class math::bignumber
+template <typename T> class fib::bignumber
 {
 public:
 	explicit bignumber(void): data{0}
@@ -27,20 +20,20 @@ public:
 	explicit bignumber(const T data): data{data}
 	{}
 
-	explicit bignumber(const vector <T> &data): data{data}
+	explicit bignumber(const vector<T> &data): data{data}
 	{}
 
-	explicit bignumber(const bignumber <T> &data): data{data.data}
+	explicit bignumber(const bignumber<T> &data): data{data.data}
 	{}
 
 	const bignumber <T> &operator = (const T);
-	const bignumber <T> &operator = (const vector <T> &);
-	const bignumber <T> &operator = (const bignumber <T> &);
+	const bignumber <T> &operator = (const vector<T>&);
+	const bignumber <T> &operator = (const bignumber<T>&);
 	const bignumber <T> &operator ++ (void);
 
 	constexpr T max(void) const
 	{
-		return numeric_limits <T> ::max();
+		return numeric_limits<T>::max();
 	}
 
 	bool empty(void) const
@@ -68,17 +61,18 @@ public:
 		data.pop_back();
 	}
 
-	template <typename U> U getelem(const U x) const
+	template <typename U>
+	U getelem(const U x) const
 	{
 		return x;
 	}
 
-	short getelem(cchr x) const
+	short getelem(const char x) const
 	{
 		return x;
 	}
 
-	ushort getelem(cuchr x) const
+	ushort getelem(const uchar x) const
 	{
 		return x;
 	}
@@ -89,7 +83,8 @@ private:
 	vector <T> data;
 };
 
-template <typename T> void math::bignumber <T> ::print(void) const
+template <typename T>
+void fib::bignumber<T>::print(void) const
 {
 	cout << '[';
 	auto first(true);
@@ -102,26 +97,34 @@ template <typename T> void math::bignumber <T> ::print(void) const
 	cout << ']';
 }
 
-template <typename T> auto math::bignumber <T> ::operator = (const T x) -> const bignumber <T> &
+template <typename T>
+auto fib::bignumber<T>::operator = (const T x)
+-> const bignumber<T>&
 {
 	clear();
 	push(x);
 	return *this;
 }
 
-template <typename T> auto math::bignumber <T> ::operator = (const vector <T> &x) -> const bignumber <T> &
+template <typename T>
+auto fib::bignumber<T>::operator = (const vector<T> &x)
+-> const bignumber<T>&
 {
 	data = x;
 	return *this;
 }
 
-template <typename T> auto math::bignumber <T> ::operator = (const bignumber <T> &x) -> const bignumber <T> &
+template <typename T>
+auto fib::bignumber<T>::operator = (const bignumber<T>&x)
+-> const bignumber<T>&
 {
 	data = x.data;
 	return *this;
 }
 
-template <typename T> auto math::bignumber <T> ::operator ++ (void) -> const bignumber <T> &
+template <typename T>
+auto fib::bignumber<T>::operator ++ (void)
+-> const bignumber<T>&
 {
 	if(empty())
 	{

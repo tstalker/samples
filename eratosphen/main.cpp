@@ -1,13 +1,14 @@
 #include <vector>
 #include <iostream>
 #include <iterator>
-#include <algorithm>
 #include <functional>
+
+using type = unsigned;
 
 int main(void)
 {
 	const size_t MAX(10000);
-	std::vector<unsigned> v;
+	std::vector<type> v;
 	std::generate_n(std::back_inserter(v), MAX,
 	[i(0)](void) mutable
 	{
@@ -26,7 +27,7 @@ int main(void)
 		}
 	}
 
-	std::vector<unsigned> w;
+	std::vector<type> w;
 	auto fn(std::bind(std::not_equal_to<decltype(v)::value_type>(), std::placeholders::_1, 0));
 	std::copy_if(v.cbegin(), v.cend(), std::back_inserter(w), fn);
 	auto it(std::ostream_iterator<decltype(w)::value_type>(std::cout, " "));

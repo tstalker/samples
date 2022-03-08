@@ -3,9 +3,8 @@
 #include <fstream>
 #include <iomanip>
 #include <iostream>
-#include <algorithm>
 
-void Decode::Parse(string_view ifname, string_view ofname)
+void dec::Parse(string_view ifname, string_view ofname)
 {
 	ifstream ifs(ifname.data());
 	if(!ifs)
@@ -21,10 +20,12 @@ void Decode::Parse(string_view ifname, string_view ofname)
 		return;
 	}
 
-	for(size_t n; ifs >> hex >> n;)
+	for(size_t n{}; ifs >> hex >> n;)
 	{
 		if(static auto first(true); first)
+		{
 			first = false;
+		}
 		else
 		{
 			cout << ' ';
@@ -33,7 +34,7 @@ void Decode::Parse(string_view ifname, string_view ofname)
 
 		for(; n; n -= min(n, MAXSIZE))
 		{
-			unsigned m;
+			unsigned m{};
 			if(!(ifs >> hex >> m))
 			{
 				cerr << "Error: wrong format file \"" << ifname << '\"' << endl;

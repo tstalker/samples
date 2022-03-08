@@ -2,5 +2,6 @@
 
 int main(void)
 {
-	Decode::Parse("encode.txt", "decode.txt");
+	dec::Parse("encode.txt", "decode.txt");
+	return EXIT_SUCCESS;
 }

@@ -4,34 +4,34 @@
 
 namespace gen
 {
+	using namespace std;
 	class base;
+	ostream& operator << (ostream&, const base&);
 }
-
-std::ostream& operator << (std::ostream&, const gen::base&);
 
 class gen::base
 {
 public:
-	explicit
-	base(const double f):
-	f(f)
+	explicit base(const double f):
+		f(f)
 	{}
 
 	virtual ~base(void)
 	{}
 
 private:
-	double f {};
+	double f{};
 
-	friend std::ostream& ::operator << (std::ostream&, const base&);
+	friend ostream& operator << (ostream&, const base&);
 
 public:
 	decltype(auto)
-	get(void)
-	const
+	get(void) const
 	{
 		return *this;
 	}
 
-	virtual void print(std::ostream&) const;
+	virtual void print(ostream&) const;
 };
+
+using gen::operator <<;

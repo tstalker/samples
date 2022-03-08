@@ -1,15 +1,15 @@
 #include "derived.hpp"
 
 void
-gen::derived::print(std::ostream& os)
+gen::derived::print(ostream& os)
 const
 {
 	os << *this;
 }
 
 auto
-operator << (std::ostream& os, const gen::derived& x)
--> std::ostream&
+gen::operator << (ostream& os, const derived& x)
+-> ostream&
 {
 	os << '{' << x.get() << ' ' << x.i << '}';
 	return os;
