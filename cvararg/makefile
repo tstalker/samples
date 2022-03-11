@@ -1,8 +1,7 @@
 TARGET = work
 OBJLIST = main.o print.o
 DEPENDS = print.h makefile
-CC = cc
-CFLAGS = -march=native -std=c2x -O3 -pipe -Wall -Werror -Winline
+CFLAGS = -march=native -O3 -pipe -std=c2x -Wall -Werror -Winline
 STRIP = strip
 
 all: $(TARGET)

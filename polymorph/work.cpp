@@ -28,9 +28,8 @@ void
 gen::work::print(ostream& os) const
 {
 	op = true;
-
 	for_each(v.cbegin(), v.cend(),
-		[this, &os] (const auto p)
+		[this, &os](const auto p)
 	{
 		if(op)
 		{

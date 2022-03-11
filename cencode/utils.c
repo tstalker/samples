@@ -43,4 +43,4 @@ size_t min(const size_t a, const size_t b)
 	return a < b ? a : b;
 }
 
-const size_t TOKENSIZE = 5u;
+const size_t TOKENSIZE = 4u;

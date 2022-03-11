@@ -1,7 +1,7 @@
 TARGET = work
 OBJLIST = fact.o main.o
 DEPENDS = fact.h makefile
-CFLAGS = -march=native -O3 -pipe -std=c2x -Wall -Winline
+CFLAGS = -march=native -O3 -pipe -std=c2x -Wall -Werror -Winline
 STRIP = strip
 
 all: $(TARGET)

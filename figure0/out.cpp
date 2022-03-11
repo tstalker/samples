@@ -9,16 +9,16 @@ ostream&
 		o << "Error: invalid figure type";
 		break;
 	case figure_type::CIRCLE:
-		o << "CIRCLE { " << f.x << " }";
+		o << "CIRCLE {" << f.x << '}';
 		break;
 	case figure_type::TRIANGLE:
-		o << "TRIANGLE { " << f.x << ", " << f.y << ", " << f.z << " }";
+		o << "TRIANGLE {" << f.x << ", " << f.y << ", " << f.z << '}';
 		break;
 	case figure_type::SQUARE:
-		o << "SQUARE { " << f.x << " }";
+		o << "SQUARE {" << f.x << '}';
 		break;
 	case figure_type::RECTANGLE:
-		o << "RECTANGLE { " << f.x << ", " << f.y << " }";
+		o << "RECTANGLE {" << f.x << ", " << f.y << '}';
 	}
 	return o;
 }

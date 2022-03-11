@@ -3,7 +3,8 @@
 class A
 {
 public:
-	A(const int& i): i(i)
+	A(const int& i):
+		i(i)
 	{}
 
 	virtual ~A(void)
@@ -19,7 +20,8 @@ class B: public A
 {
 public:
 	B(const int& i, const int& j):
-		A(i), i(j)
+		A(i),
+		i(j)
 	{}
 
 	~B(void)

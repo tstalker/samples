@@ -1,11 +1,15 @@
 #include "myexcept.hpp"
 #include "mystring.hpp"
 
-const mystring& mystring::operator = (mystring&& s)
+auto
+mystring::operator = (mystring&& s)
+-> const mystring&
 {
 	std::cout << "mystring::operator = (mystring&& " << s << "): " << *this << " -> ";
-    if(this == &s)
-        throw myself();
+	if(this == &s)
+	{
+		throw myself();
+	}
 	clear();
 	size = s.size;
 	ptr = s.ptr;

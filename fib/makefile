@@ -2,7 +2,7 @@ TARGET = work
 OBJLIST = bine.o cycle.o main.o print.o recur.o
 DEPENDS = fib.hpp makefile
 CC = c++
-CFLAGS = -march=native -O3 -pipe -std=c++23 -Wall -Winline
+CFLAGS = -march=native -O3 -pipe -std=c++23 -Wall -Werror -Winline
 STRIP = strip
 
 all: $(TARGET)

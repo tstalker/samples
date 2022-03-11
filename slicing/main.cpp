@@ -18,7 +18,7 @@ int main(void)
 {
 	const auto MAX(10u);
 	job::Work(v<ier::Base<ini::TypeBase>>, MAX, "Base");
-	job::Work(v<std::unique_ptr<ier::Base<ini::TypeBase>>>, MAX, "unique_ptr <Base>");
+	job::Work(v<std::unique_ptr<ier::Base<ini::TypeBase>>>, MAX, "unique_ptr<Base>");
 	return EXIT_SUCCESS;
 }
 

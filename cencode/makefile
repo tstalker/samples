@@ -1,18 +1,18 @@
 TARGET = decode encode
-OBJLIST0 = decode.o utils.o
-OBJLIST1 = encode.o utils.o
+OBJDEC = decode.o utils.o
+OBJENC = encode.o utils.o
+OBJLIST = decode.o encode.o utils.o
 DEPENDS = utils.h makefile
-CC = cc
-CFLAGS = -march=native -O3 -pipe -std=c2x -Wall -Winline
+CFLAGS = -march=native -O3 -pipe -std=c2x -Wall -Werror -Winline
 STRIP = strip
 
 all: $(TARGET)
 
-decode: $(OBJLIST0)
+decode: $(OBJDEC)
 	$(CC) $(CFLAGS) -o $@ $^
 	$(STRIP) $@
 
-encode: $(OBJLIST1)
+encode: $(OBJENC)
 	$(CC) $(CFLAGS) -o $@ $^
 	$(STRIP) $@
 
@@ -23,7 +23,7 @@ allclean: clean
 	$(RM) $(TARGET)
 
 clean:
-	$(RM) $(OBJLIST0) $(OBJLIST1)
+	$(RM) $(OBJLIST)
 
 decode.o: decode.c $(DEPENDS)
 encode.o: encode.c $(DEPENDS)

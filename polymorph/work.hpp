@@ -18,7 +18,7 @@ public:
 	~work(void);
 
 private:
-	vector <base*> v;
+	vector<base*> v;
 
 	friend ostream& operator << (ostream&, const work&);
 
@@ -26,7 +26,7 @@ public:
 	void print(ostream&) const;
 
 private:
-	mutable optional <bool> op;
+	mutable optional<bool> op;
 };
 
 using gen::operator <<;

@@ -22,9 +22,9 @@ template <typename T>
 template <typename T>
 	const vector<pair<string_view, function<void(const T&)>>> lst
 	{
-		{ "for ", PrintFor<T> },
-		{ "each", PrintEach<T> },
-		{ "copy", PrintCopy<T> }
+		{"for ", PrintFor<T>},
+		{"each", PrintEach<T>},
+		{"copy", PrintCopy<T>}
 	};
 }
 

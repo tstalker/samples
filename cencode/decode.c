@@ -1,6 +1,7 @@
 #include "utils.h"
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <stdbool.h>
 
 int main(void)
@@ -46,7 +47,7 @@ int main(void)
 
 			char w[MAXSIZE];
 			getword(m, w, MAXSIZE);
-			printf(w);
+			printf("%s", w);
 			fputs(w, ofs);
 		}
 	}
@@ -59,4 +60,5 @@ int main(void)
 
 	fclose(ifs);
 	fclose(ofs);
+	return EXIT_SUCCESS;
 }

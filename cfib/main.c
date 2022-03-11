@@ -9,9 +9,9 @@ int main(void)
 	culong MAX = 30ul;
 	cdeffn v[] =
 	{
-		{ "bine ", bine },
-		{ "cycle", cycle },
-		{ "recur", recur }
+		{"bine ", bine},
+		{"cycle", cycle},
+		{"recur", recur}
 	};
 	const size_t n = sizeof v / sizeof *v;
 

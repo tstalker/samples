@@ -1,5 +1,7 @@
-#include "a2.h"
-#include "utils.h"
+#include "a2.hpp"
+#include "utils.hpp"
+
+#include <cstdlib>
 
 int main(void)
 {
@@ -8,4 +10,5 @@ int main(void)
 	set(p, 'b', 67890, 1.23f);
 	print(p);
 	delete p;
+	return EXIT_SUCCESS;
 }

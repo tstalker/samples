@@ -77,7 +77,7 @@ void prn::print<char32_t>(void)
 template <>
 void prn::print<wchar_t>(void)
 {
-	print<wchar_t, unsigned long>();
+	print<wchar_t, int>();
 }
 
 template <typename T, typename U>

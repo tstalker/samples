@@ -11,27 +11,36 @@ int main(void)
 		std::cout << s << std::endl;
 
 		for(size_t i{}; i < s.getsize(); i++)
+		{
 			std::cout << s(i);
+		}
 		std::cout << std::endl;
 
 		for(const auto& c: s)
+		{
 			std::cout << c;
+		}
 		std::cout << std::endl;
+		return EXIT_SUCCESS;
 	}
 	catch(const myself &e)
 	{
 		std::cerr << std::endl << "Error: assignment to itself" << std::endl;
+		return EXIT_FAILURE;
 	}
 	catch(const myoutrange &e)
 	{
 		std::cerr << std::endl << "Error: " << e.what() << ": invalid index: " << e.get() << std::endl;
+		return EXIT_FAILURE;
 	}
 	catch(const std::bad_alloc &e)
 	{
 		std::cerr << std::endl << "Error: " << e.what() << std::endl;
+		return EXIT_FAILURE;
 	}
 	catch(...)
 	{
 		std::cerr << std::endl << "Error: unknown exception" << std::endl;
+		return EXIT_FAILURE;
 	}
 }

@@ -17,7 +17,7 @@ int main(void)
 	std::printf("char8_t: %zu min: %u max: %u\n", sizeof(char8_t), 0u, UCHAR_MAX);
 	std::printf("char16_t: %zu min: %u max: %u\n", sizeof(char16_t), 0u, USHRT_MAX);
 	std::printf("char32_t: %zu min: %u max: %u\n", sizeof(char32_t), 0u, UINT_MAX);
-	std::printf("wchar_t: %zu min: %u max: %u\n", sizeof(wchar_t), WCHAR_MIN, WCHAR_MAX);
+	std::printf("wchar_t: %zu min: %d max: %d\n", sizeof(wchar_t), WCHAR_MIN, WCHAR_MAX);
 
 	std::printf("short: %zu min: %d max: %d\n", sizeof(short), SHRT_MIN, SHRT_MAX);
 	std::printf("unsigned short: %zu min: %u max: %u\n", sizeof(unsigned short), 0u, USHRT_MAX);

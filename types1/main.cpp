@@ -30,8 +30,8 @@ int main(void)
 		<< " min: " << static_cast<std::size_t>(std::numeric_limits<char32_t>::min())
 		<< " max: " << static_cast<std::size_t>(std::numeric_limits<char32_t>::max()) << std::endl;
 	std::cout << "wchar_t: " << sizeof(wchar_t)
-		<< " min: " << static_cast<std::size_t>(std::numeric_limits<wchar_t>::min())
-		<< " max: " << static_cast<std::size_t>(std::numeric_limits<wchar_t>::max()) << std::endl;
+		<< " min: " << static_cast<int>(std::numeric_limits<wchar_t>::min())
+		<< " max: " << static_cast<int>(std::numeric_limits<wchar_t>::max()) << std::endl;
 
 	std::cout << "short: " << sizeof(short)
 		<< " min: " << std::numeric_limits<short>::min()

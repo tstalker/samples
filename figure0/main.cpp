@@ -7,10 +7,10 @@ int main(void)
 {
 	const std::vector <geo::figure> v
 	{
-		{ geo::figure_type::CIRCLE, 3 },
-		{ geo::figure_type::TRIANGLE, 3, 4, 5 },
-		{ geo::figure_type::SQUARE, 3 },
-		{ geo::figure_type::RECTANGLE, 3, 4 }
+		{geo::figure_type::CIRCLE, 3},
+		{geo::figure_type::TRIANGLE, 3, 4, 5},
+		{geo::figure_type::SQUARE, 3},
+		{geo::figure_type::RECTANGLE, 3, 4}
 	};
 
 	for(const auto& x: v)

@@ -1,24 +1,32 @@
 #include "mystring.hpp"
 
-char& mystring::operator [] (const size_t i)
+auto
+mystring::operator [] (const size_t i)
+-> char&
 {
 	checkrange(i);
 	return ptr[i];
 }
 
-const char& mystring::operator [] (const size_t i) const
+auto
+mystring::operator [] (const size_t i) const
+-> const char&
 {
 	checkrange(i);
 	return ptr[i];
 }
 
-char& mystring::operator () (const size_t i)
+auto
+mystring::operator () (const size_t i)
+-> char&
 {
 	checkrange(i);
 	return ptr[i];
 }
 
-const char& mystring::operator () (const size_t i) const
+auto
+mystring::operator () (const size_t i) const
+-> const char&
 {
 	checkrange(i);
 	return ptr[i];

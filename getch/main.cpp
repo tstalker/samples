@@ -1,6 +1,5 @@
 #include "tgetch.hpp"
 
-#include <cstdlib>
 #include <iostream>
 
 int main(void)

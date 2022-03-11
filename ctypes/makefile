@@ -1,22 +1,22 @@
 TARGET = work
-OBJS = main.o
+OBJ = main.o
 DEPENDS = makefile
-CFLAGS = -march=native -std=c2x -O3 -pipe -Wall -Werror -Winline
+CFLAGS = -march=native -O3 -pipe -std=c2x -Wall -Werror -Winline
 STRIP = strip
 
 all: $(TARGET)
 
-$(TARGET): $(OBJS)
+$(TARGET): $(OBJ)
 	$(CC) $(CFLAGS) -o $@ $^
 	$(STRIP) $@
 
 .c.o:
-	$(CC) -c $(CFLAGS) $<
+	$(CC) $(CFLAGS) -c $<
 
 allclean: clean
 	$(RM) $(TARGET)
 
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(OBJ)
 
-$(OBJS): main.c $(DEPENDS)
+$(OBJ): $(OBJ:.o=.c) $(DEPENDS)

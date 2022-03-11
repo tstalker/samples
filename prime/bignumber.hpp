@@ -26,10 +26,10 @@ public:
 	explicit bignumber(const bignumber<T> &data): data{data.data}
 	{}
 
-	const bignumber <T> &operator = (const T);
-	const bignumber <T> &operator = (const vector<T>&);
-	const bignumber <T> &operator = (const bignumber<T>&);
-	const bignumber <T> &operator ++ (void);
+	const bignumber<T> &operator = (const T);
+	const bignumber<T> &operator = (const vector<T>&);
+	const bignumber<T> &operator = (const bignumber<T>&);
+	const bignumber<T> &operator ++ (void);
 
 	constexpr T max(void) const
 	{
@@ -80,7 +80,7 @@ public:
 	void print(void) const;
 
 private:
-	vector <T> data;
+	vector<T> data;
 };
 
 template <typename T>
@@ -90,8 +90,14 @@ void fib::bignumber<T>::print(void) const
 	auto first(true);
 	for(auto p(data.crbegin()); p != data.crend(); p++)
 	{
-		if(first) first = false;
-		else cout << ", ";
+		if(first)
+		{
+			first = false;
+		}
+		else
+		{
+			cout << ", ";
+		}
 		cout << getelem(*p);
 	}
 	cout << ']';

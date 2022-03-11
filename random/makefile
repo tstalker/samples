@@ -3,6 +3,7 @@ TGTENC = encode
 TARGET = $(TGTDEC) $(TGTENC)
 OBJDEC = DecMain.o DecParse.o GetWord.o
 OBJENC = EncMain.o EncParse.o GetTime.o GetWord.o
+OBJLIST = DecMain.o DecParse.o EncMain.o EncParse.o GetTime.o GetWord.o
 DEPGEN = Generic.hpp makefile
 DEPDEC = Decode.hpp $(DEPGEN)
 DEPENC = Encode.hpp $(DEPGEN)
@@ -27,7 +28,7 @@ allclean: clean
 	$(RM) $(TARGET)
 
 clean:
-	$(RM) $(OBJDEC) $(OBJENC)
+	$(RM) $(OBJLIST)
 
 DecMain.o: DecMain.cpp $(DEPDEC)
 DecParse.o: DecParse.cpp $(DEPDEC)

@@ -17,7 +17,9 @@ void token::decision_step(cdecision d, rivector v)
 		break;
 	case decision::LEFT_LEFT:
 		for(size_t i{}; i < MAX; i++)
+		{
 			decision_step(decision::LEFT, v);
+		}
 		break;
 	case decision::LEFT_RIGHT:
 		decision_step(decision::LEFT, v);
@@ -25,6 +27,8 @@ void token::decision_step(cdecision d, rivector v)
 		break;
 	case decision::RIGHT_RIGHT:
 		for(size_t i{}; i < MAX; i++)
+		{
 			decision_step(decision::RIGHT, v);
+		}
 	}
 }

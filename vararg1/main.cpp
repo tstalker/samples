@@ -4,7 +4,6 @@
 
 int main(void)
 {
-	print();
 	print(true);
 	print(true, 123);
 	print(true, 123, 1234567890ul);

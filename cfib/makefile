@@ -7,7 +7,7 @@ STRIP = strip
 all: $(TARGET)
 
 $(TARGET): $(OBJLIST)
-	$(CC) $(CFLAGS) -o $@ $^
+	$(CC) $(CFLAGS) -o $@ $^ -lm
 	$(STRIP) $@
 
 .c.o:

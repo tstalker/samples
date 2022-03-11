@@ -7,9 +7,9 @@ int main(void)
 {
 	const std::vector<fib::deffn> v
 	{
-		{ "bine ", fib::bine },
-		{ "cycle", fib::cycle },
-		{ "recur", fib::recur }
+		{"bine ", fib::bine},
+		{"cycle", fib::cycle},
+		{"recur", fib::recur}
 	};
 	const auto MAX(30ul);
 	auto fn(std::bind(fib::print, std::placeholders::_1, MAX));

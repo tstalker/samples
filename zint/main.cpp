@@ -1,6 +1,5 @@
 #include "zint.hpp"
 
-#include <cstdlib>
 #include <stdexcept>
 
 int main(void)

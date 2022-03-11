@@ -27,7 +27,11 @@ public:
 	figure(void)
 	{}
 
-	figure(const figure_type t, double x, double y = double(), double z = double()): t(t), x(x), y(y), z(z)
+	figure(const figure_type t, double x, double y = double(), double z = double()):
+		t(t),
+		x(x),
+		y(y),
+		z(z)
 	{}
 
 	double area(void) const;

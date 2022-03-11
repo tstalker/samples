@@ -1,8 +1,4 @@
-#ifdef DECISION_HPP
-#error Redefined header decision.hpp
-#endif
-
-#define DECISION_HPP
+#pragma once
 
 namespace token
 {

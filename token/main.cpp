@@ -4,11 +4,11 @@
 
 int main(void)
 {
-	using pers = std::pair <std::string, int>;
-	std::pair <pers, pers> sum
+	using pers = std::pair<std::string, int>;
+	std::pair<pers, pers> sum
 	{
-		{ "first", 0 },
-		{ "second", 0 }
+		{"first", 0},
+		{"second", 0}
 	};
 	token::csizet MAX(20);
 	auto v(token::initialize(MAX));
@@ -37,4 +37,5 @@ int main(void)
 
 	const auto win(std::max(sum.first.second, sum.second.second));
 	std::cout << (win == sum.first.second ? sum.first.first : sum.second.first) << " win: " << win << std::endl;
+	return EXIT_SUCCESS;
 }

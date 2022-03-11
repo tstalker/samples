@@ -20,4 +20,4 @@ allclean: clean
 clean:
 	$(RM) $(OBJ)
 
-main.o: main.cpp $(DEPENDS)
+$(OBJ): $(OBJ:.o=.cpp) $(DEPENDS)

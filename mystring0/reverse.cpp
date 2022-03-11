@@ -1,6 +1,8 @@
 #include "mystring.hpp"
 
-mystring mystring::operator ~ (void) const
+auto
+mystring::operator ~ (void) const
+-> mystring
 {
 	mystring s(*this);
 	std::reverse(s.ptr, s.ptr + s.size);

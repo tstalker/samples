@@ -1,14 +1,11 @@
-#ifdef MYSTRING_HPP
-#error Redefined header mystring.hpp
-#endif
-
-#define MYSTRING_HPP
+#pragma once
 
 #include <cstring>
 #include <iostream>
 #include <algorithm>
 
-inline const char* cstr(const char* s)
+inline const char*
+cstr(const char* s)
 {
 	return s ? s : "<nullptr>";
 }
@@ -20,17 +17,21 @@ public:
 	mystring(const size_t, const char*);
 	~mystring(void);
 
-	mystring(void): size{}, ptr(nullptr)
+	mystring(void):
+		size{},
+		ptr(nullptr)
 	{
 		std::cout << "mystring::mystring() -> " << *this << std::endl;
 	}
 
-	mystring(const char* s): mystring(estimsize(s), s)
+	mystring(const char* s):
+		mystring(estimsize(s), s)
 	{
 		std::cout << "mystring::mystring(const char* \"" << cstr(s) << "\") -> " << *this << std::endl;
 	}
 
-	mystring(const mystring& s): mystring(s.size, s.ptr)
+	mystring(const mystring& s):
+		mystring(s.size, s.ptr)
 	{
 		std::cout << "mystring::mystring(const mystring& " << s << ") -> " << *this << std::endl;
 	}
