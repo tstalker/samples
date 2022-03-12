@@ -1,13 +1,15 @@
 TARGET = work
+OBJLIST = init.o main.o print.o sort.o
+DEPENDS = header.hpp makefile
 CC = c++
-CFLAGS = -march=native -std=c++17 -O3 -pipe -Wall -Winline
+CFLAGS = -march=native -O3 -pipe -std=c++23 -Wall -Werror -Winline
 STRIP = strip
 
 all: $(TARGET)
 
-$(TARGET): init.o main.o print.o sort.o
+$(TARGET): $(OBJLIST)
 	$(CC) $(CFLAGS) -o $@ $^
-	$(STRIP) $@.exe
+	$(STRIP) $@
 
 .cpp.o:
 	$(CC) $(CFLAGS) -c $<
@@ -16,9 +18,9 @@ allclean: clean
 	$(RM) $(TARGET)
 
 clean:
-	$(RM) {init,main,print,sort}.o
+	$(RM) $(OBJLIST)
 
-init.o: init.cpp header.hpp Makefile
-main.o: main.cpp header.hpp Makefile
-print.o: print.cpp header.hpp Makefile
-sort.o: sort.cpp header.hpp Makefile
+init.o: init.cpp $(DEPENDS)
+main.o: main.cpp $(DEPENDS)
+print.o: print.cpp $(DEPENDS)
+sort.o: sort.cpp $(DEPENDS)

@@ -2,11 +2,11 @@
 
 #include <algorithm>
 
-void sort(type* x, const size_t n)
+void sort(type* x, const std::size_t n)
 {
-	for(size_t i{}; i < n; i++)
+	for(std::size_t i{}; i < n; i++)
 	{
-		for(size_t j{}; j < n; j++)
+		for(std::size_t j{}; j < n; j++)
 		{
 			if(x[i] < x[j])
 			{

@@ -2,10 +2,11 @@
 
 #include <cstdlib>
 
-void init(type* p, const size_t n)
+void init(type* p, const std::size_t n)
 {
-	for(size_t i{}; i < n; i++)
+	const std::size_t LIM(100);
+	for(std::size_t i{}; i < n; i++)
 	{
-		p[i] = rand() % 100;
+		p[i] = rand() % LIM;
 	}
 }

@@ -2,11 +2,13 @@ TARGET = work
 OBJLIST = alloc.o assign.o checkrange.o clear.o index.o main.o move.o mystring.o origin.o out.o print.o reverse.o
 CC = c++
 CFLAGS = -march=native -O3 -pipe -std=c++23 -Wall -Werror -Winline
+STRIP = strip
 
 all: $(TARGET)
 
 $(TARGET): $(OBJLIST)
 	$(CC) $(CFLAGS) -o $@ $^
+	$(STRIP) $@
 
 .cpp.o:
 	$(CC) $(CFLAGS) -c -o $@ $<

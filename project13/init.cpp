@@ -2,7 +2,7 @@
 
 #include <cstdlib>
 
-void init(std::array <type, MAX> &v)
+void init(std::array<type, MAX> &v)
 {
 	for(auto& x: v)
 	{

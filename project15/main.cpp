@@ -4,13 +4,12 @@
 #include <array>
 #include <cstdlib>
 #include <iterator>
-#include <algorithm>
 
 int main(void)
 {
 	try
 	{
-		std::array <abc, 5> v
+		std::array<abc, 5> v
 		{
 			"abcde",
 			"fghij",
@@ -18,8 +17,9 @@ int main(void)
 			"pqrst",
 			"uvwxy"
 		};
-		
-		std::copy(v.cbegin(), v.cend(), std::ostream_iterator <decltype(v)::value_type> (std::cout, "\n"));
+
+		auto it(std::ostream_iterator<decltype(v)::value_type>(std::cout, "\n"));
+		std::copy(v.cbegin(), v.cend(), it);
 		std::cout << std::endl;
 		return EXIT_SUCCESS;
 	}

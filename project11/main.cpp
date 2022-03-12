@@ -5,7 +5,7 @@
 
 int main(void)
 {
-	const size_t MAX(10);
+	const std::size_t MAX(10);
 	type z[MAX];
 	srand(time(nullptr));
 	init(z, MAX);

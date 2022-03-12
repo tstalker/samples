@@ -1,5 +1,4 @@
-#ifndef ABC_HPP
-#define ABC_HPP
+#pragma once
 
 #include "ghi.hpp"
 
@@ -25,5 +24,3 @@ private:
 
 	friend std::ostream& operator << (std::ostream&, const abc&);
 };
-
-#endif

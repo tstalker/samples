@@ -2,7 +2,7 @@
 
 #include <cstdlib>
 
-void init(std::vector <type> &v)
+void init(std::vector<type> &v)
 {
 	for(auto& x: v)
 	{

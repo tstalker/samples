@@ -1,5 +1,4 @@
-#ifndef GHI_HPP
-#define GHI_HPP
+#pragma once
 
 #include <iostream>
 
@@ -14,5 +13,3 @@ public:
 
 	virtual void print(void) const = 0;
 };
-
-#endif

@@ -1,13 +1,14 @@
 TARGET = work
 CC = c++
-CFLAGS = -march=native -std=c++17 -O3 -pipe -Wall -Winline
+OBJLIST = abc.o def.o ghi.o main.o
+CFLAGS = -march=native -O3 -pipe -std=c++23 -Wall -Werror -Winline
 STRIP = strip
 
 all: $(TARGET)
 
-$(TARGET): abc.o def.o ghi.o main.o
+$(TARGET): $(OBJLIST)
 	$(CC) $(CFLAGS) -o $@ $^
-	$(STRIP) $@.exe
+	$(STRIP) $@
 
 .cpp.o:
 	$(CC) $(CFLAGS) -c $<
@@ -16,9 +17,9 @@ allclean: clean
 	$(RM) $(TARGET)
 
 clean:
-	$(RM) {abc,def,ghi,main}.o
+	$(RM) $(OBJLIST)
 
-abc.o: abc.cpp abc.hpp ghi.hpp Makefile
-def.o: def.cpp def.hpp ghi.hpp Makefile
-ghi.o: ghi.cpp ghi.hpp Makefile
-main.o: main.cpp abc.hpp def.hpp ghi.hpp Makefile
+abc.o: abc.cpp abc.hpp ghi.hpp makefile
+def.o: def.cpp def.hpp ghi.hpp makefile
+ghi.o: ghi.cpp ghi.hpp makefile
+main.o: main.cpp abc.hpp def.hpp ghi.hpp makefile

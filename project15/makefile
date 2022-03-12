@@ -1,13 +1,15 @@
 TARGET = work
+OBJLIST = abc.o main.o
+DEPENDS = abc.hpp myexcept.hpp makefile
 CC = c++
-CFLAGS = -march=native -std=c++17 -O3 -pipe -Wall -Winline
+CFLAGS = -march=native -O3 -pipe -std=c++23 -Wall -Werror -Winline
 STRIP = strip
 
 all: $(TARGET)
 
-$(TARGET): abc.o main.o
+$(TARGET): $(OBJLIST)
 	$(CC) $(CFLAGS) -o $@ $^
-	$(STRIP) $@.exe
+	$(STRIP) $@
 
 .cpp.o:
 	$(CC) $(CFLAGS) -c $<
@@ -16,7 +18,7 @@ allclean: clean
 	$(RM) $(TARGET)
 
 clean:
-	$(RM) {abc,main}.o
+	$(RM) $(OBJLIST)
 
-abc.o: abc.cpp abc.hpp myexcept.hpp Makefile
-main.o: main.cpp abc.hpp myexcept.hpp Makefile
+abc.o: abc.cpp $(DEPENDS)
+main.o: main.cpp $(DEPENDS)

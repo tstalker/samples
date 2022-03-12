@@ -1,5 +1,4 @@
-#ifndef DEF_HPP
-#define DEF_HPP
+#pragma once
 
 #include "ghi.hpp"
 
@@ -25,5 +24,3 @@ private:
 
 	friend std::ostream& operator << (std::ostream&, const def&);
 };
-
-#endif

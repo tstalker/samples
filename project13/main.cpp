@@ -5,7 +5,7 @@
 
 int main(void)
 {
-	std::array <type, MAX> v;
+	std::array<type, MAX> v;
 	srand(time(nullptr));
 	init(v);
 	print(v);

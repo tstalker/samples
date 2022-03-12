@@ -2,7 +2,7 @@
 
 #include <algorithm>
 
-void sort(std::vector <type> &v)
+void sort(std::vector<type> &v)
 {
 	for(auto& x: v)
 	{

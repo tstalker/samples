@@ -6,7 +6,7 @@
 int main(void)
 {
 	const size_t MAX(10);
-	std::vector <type> v(MAX);
+	std::vector<type> v(MAX);
 	srand(time(nullptr));
 	init(v);
 	print(v);

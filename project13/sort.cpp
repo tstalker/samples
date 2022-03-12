@@ -2,7 +2,7 @@
 
 #include <algorithm>
 
-void sort(std::array <type, MAX> &v)
+void sort(std::array<type, MAX> &v)
 {
 	for(auto& x: v)
 	{
