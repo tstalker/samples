@@ -1,6 +1,5 @@
 TARGET = work
 OBJLIST = base.o derived.o main.o work.o
-
 CC = c++
 CFLAGS = -march=native -O3 -pipe -std=c++23 -Wall -Werror -Winline
 STRIP = strip

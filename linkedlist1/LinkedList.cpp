@@ -6,7 +6,9 @@ LinkedList::LinkedList(const LinkedList& x)
 {
 	std::cout << "LinkedList::LinkedList(const LinkedList&)" << std::endl;
 	for(auto p(x.First); p; p = p->Next)
+	{
 		AddLast(p->Data);
+	}
 }
 
 LinkedList::~LinkedList(void)
@@ -20,10 +22,14 @@ void LinkedList::AddFirst(const int Data)
 	std::cout << "LinkedList::AddFirst(const int " << Data << ')' << std::endl;
 	auto p(new Element(Data, First));
 	if(First)
+	{
 		First->Prev = p;
+	}
 	First = p;
 	if(!Last)
+	{
 		Last = p;
+	}
 }
 
 void LinkedList::AddLast(const int Data)
@@ -31,10 +37,14 @@ void LinkedList::AddLast(const int Data)
 	std::cout << "LinkedList::AddLast(const int " << Data << ')' << std::endl;
 	auto p(new Element(Data, nullptr, Last));
 	if(Last)
+	{
 		Last->Next = p;
+	}
 	Last = p;
 	if(!First)
+	{
 		First = p;
+	}
 }
 
 void LinkedList::Print(void) const
@@ -48,7 +58,9 @@ size_t LinkedList::Count(void) const
 {
 	size_t n{};
 	for(auto p(First); p; p = p->Next)
+	{
 		n++;
+	}
 	return n;
 }
 
@@ -56,7 +68,9 @@ void LinkedList::Clear(void)
 {
 	std::cout << "LinkedList::Clear()" << std::endl;
 	while(First)
+	{
 		RemoveFirst();
+	}
 }
 
 void LinkedList::Remove(const size_t n)
@@ -75,7 +89,9 @@ void LinkedList::Remove(const size_t n)
 		exit(EXIT_FAILURE);
 	}
 	if(p == First)
+	{
 		RemoveFirst();
+	}
 	else if(p == Last)
 	{
 		auto q(p->Prev);
@@ -95,7 +111,9 @@ void LinkedList::RemoveFirst(void)
 	}
 	auto p(First->Next);
 	if(p)
+	{
 		p->Prev = nullptr;
+	}
 	delete First;
 	First = p;
 }
@@ -110,7 +128,9 @@ void LinkedList::RemoveLast(void)
 	}
 	auto p(First->Next);
 	if(p)
+	{
 		p->Prev = nullptr;
+	}
 	delete First;
 	First = p;
 }

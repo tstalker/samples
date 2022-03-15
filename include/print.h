@@ -1,12 +1,6 @@
-#ifdef PRINT_H
-#error Redefined header print.h
-#endif
+#pragma once
 
-#define PRINT_H
-
-#ifndef TYPES_H
 #include "types.h"
-#endif
 
 #define DIM1 4
 #define DIM2 5

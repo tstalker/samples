@@ -10,7 +10,7 @@ int main(void)
 		const mystring s("abcde");
 		std::cout << s << std::endl;
 
-		for(size_t i{}; i < s.getsize(); i++)
+		for(std::size_t i{}; i < s.getsize(); i++)
 		{
 			std::cout << s(i);
 		}

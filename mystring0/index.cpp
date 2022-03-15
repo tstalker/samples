@@ -1,7 +1,7 @@
 #include "mystring.hpp"
 
 auto
-mystring::operator [] (const size_t i)
+mystring::operator [] (const std::size_t i)
 -> char&
 {
 	checkrange(i);
@@ -9,7 +9,7 @@ mystring::operator [] (const size_t i)
 }
 
 auto
-mystring::operator [] (const size_t i) const
+mystring::operator [] (const std::size_t i) const
 -> const char&
 {
 	checkrange(i);
@@ -17,7 +17,7 @@ mystring::operator [] (const size_t i) const
 }
 
 auto
-mystring::operator () (const size_t i)
+mystring::operator () (const std::size_t i)
 -> char&
 {
 	checkrange(i);
@@ -25,7 +25,7 @@ mystring::operator () (const size_t i)
 }
 
 auto
-mystring::operator () (const size_t i) const
+mystring::operator () (const std::size_t i) const
 -> const char&
 {
 	checkrange(i);

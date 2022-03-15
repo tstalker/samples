@@ -1,14 +1,16 @@
 #include "mystring.hpp"
 
 mystring::mystring(mystring&& s):
-	size(s.size), ptr(s.ptr)
+	size(s.size),
+	ptr(s.ptr)
 {
 	std::cout << "mystring::mystring(mystring&& " << s << ") -> " << *this << std::endl;
 	s.origin();
 }
 
-mystring::mystring(const size_t sz, const char* s):
-	size(sz), ptr(alloc(sz))
+mystring::mystring(const std::size_t sz, const char* s):
+	size(sz),
+	ptr(alloc(sz))
 {
 	copy(s);
 /*

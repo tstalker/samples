@@ -14,7 +14,7 @@ class mystring
 {
 public:
 	mystring(mystring&&);
-	mystring(const size_t, const char*);
+	mystring(const std::size_t, const char*);
 	~mystring(void);
 
 	mystring(void):
@@ -39,15 +39,15 @@ public:
 private:
 	void alloc(const mystring&);
 	void origin(void);
-	void checkrange(const size_t) const;
+	void checkrange(const std::size_t) const;
 	void out(std::ostream& = std::cout) const;
 
-	static char* alloc(const size_t sz)
+	static char* alloc(const std::size_t sz)
 	{
 		return sz ? new char[sz]{} : nullptr;
 	}
 
-	size_t estimsize(const char* s)
+	std::size_t estimsize(const char* s)
 	{
 		return s ? strlen(s) : 0;
 	}
@@ -66,13 +66,13 @@ public:
 	void clear(void);
 	const mystring& operator = (mystring&&);
 	const mystring& operator = (const mystring&);
-	char& operator [] (const size_t);
-	const char& operator [] (const size_t) const;
-	char& operator () (const size_t);
-	const char& operator () (const size_t) const;
+	char& operator [] (const std::size_t);
+	const char& operator [] (const std::size_t) const;
+	char& operator () (const std::size_t);
+	const char& operator () (const std::size_t) const;
 	mystring operator ~ (void) const;
 
-	size_t getsize(void) const
+	std::size_t getsize(void) const
 	{
 		return size;
 	}
@@ -108,8 +108,8 @@ public:
 	}
 
 private:
-	size_t size;
-	char* ptr;
+	std::size_t size{std::size_t()};
+	char* ptr{nullptr};
 
 	friend std::ostream& operator << (std::ostream&, const mystring&);
 };

@@ -9,7 +9,7 @@ class myoutrange:
 	public std::out_of_range
 {
 public:
-	myoutrange(const size_t i, const char* s):
+	myoutrange(const std::size_t i, const char* s):
 		std::out_of_range(s),
 		i(i)
 	{}
@@ -20,5 +20,5 @@ public:
 	}
 
 private:
-	const size_t i;
+	const std::size_t i;
 };

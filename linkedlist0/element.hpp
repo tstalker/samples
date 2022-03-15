@@ -1,8 +1,4 @@
-#ifdef ELEMENT_HPP
-#error Redefined header element.hpp
-#endif
-
-#define ELEMENT_HPP
+#pragma once
 
 #include <iostream>
 

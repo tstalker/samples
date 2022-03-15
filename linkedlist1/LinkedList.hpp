@@ -1,12 +1,6 @@
-#ifdef LINKEDLIST_HPP
-#error Redefined header LinkedList.hpp
-#endif
+#pragma once
 
-#define LINKEDLIST_HPP
-
-#ifndef ELEMENT_HPP
 #include "Element.hpp"
-#endif
 
 class LinkedList
 {
@@ -25,6 +19,7 @@ public:
 	void Clear(void);
 	void Remove(const size_t);
 	void RemoveFirst(void);
+	void RemoveLast(void);
 
 private:
 	Element *First{nullptr}, *Last{nullptr};

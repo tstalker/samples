@@ -22,7 +22,7 @@ $(TGTENC): $(OBJENC)
 	$(STRIP) $@
 
 .cpp.o:
-	$(CC) $(CFLAGS) -c -o $@ $<
+	$(CC) $(CFLAGS) -c $<
 
 allclean: clean
 	$(RM) $(TARGET)

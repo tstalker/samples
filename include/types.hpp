@@ -1,8 +1,4 @@
-#ifdef TYPES_HPP
-#error Redefined header types.hpp
-#endif
-
-#define TYPES_HPP
+#pragma once
 
 #include <cstddef>
 

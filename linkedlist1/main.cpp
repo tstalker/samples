@@ -4,7 +4,10 @@ int main(void)
 {
 	LinkedList x;
 	for(int i{}; i < 2; i++)
+	{
 		x.AddLast(i);
+	}
+
 	std::cout << "Count x: " << x.Count() << std::endl;
 	x.Print();
 
@@ -15,4 +18,5 @@ int main(void)
 	x.Remove(0);
 	std::cout << "Count x: " << x.Count() << std::endl;
 	x.Print();
+	return EXIT_SUCCESS;
 }

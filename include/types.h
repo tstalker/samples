@@ -1,8 +1,4 @@
-#ifdef TYPES_H
-#error Redefined header types.h
-#endif
-
-#define TYPES_H
+#pragma once
 
 #include <stddef.h>
 
