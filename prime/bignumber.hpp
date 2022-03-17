@@ -11,19 +11,24 @@ namespace fib
 	template <typename T> class bignumber;
 }
 
-template <typename T> class fib::bignumber
+template <typename T>
+class fib::bignumber
 {
 public:
-	explicit bignumber(void): data{0}
+	explicit bignumber(void):
+		data{0}
 	{}
 
-	explicit bignumber(const T data): data{data}
+	explicit bignumber(const T data):
+		data{data}
 	{}
 
-	explicit bignumber(const vector<T> &data): data{data}
+	explicit bignumber(const vector<T> &data):
+		data{data}
 	{}
 
-	explicit bignumber(const bignumber<T> &data): data{data.data}
+	explicit bignumber(const bignumber<T> &data):
+		data{data.data}
 	{}
 
 	const bignumber<T> &operator = (const T);
@@ -104,8 +109,8 @@ void fib::bignumber<T>::print(void) const
 }
 
 template <typename T>
-auto fib::bignumber<T>::operator = (const T x)
--> const bignumber<T>&
+auto fib::bignumber<T>::operator = (const T x) ->
+	const bignumber<T>&
 {
 	clear();
 	push(x);
@@ -113,24 +118,24 @@ auto fib::bignumber<T>::operator = (const T x)
 }
 
 template <typename T>
-auto fib::bignumber<T>::operator = (const vector<T> &x)
--> const bignumber<T>&
+auto fib::bignumber<T>::operator = (const vector<T> &x) ->
+	const bignumber<T>&
 {
 	data = x;
 	return *this;
 }
 
 template <typename T>
-auto fib::bignumber<T>::operator = (const bignumber<T>&x)
--> const bignumber<T>&
+auto fib::bignumber<T>::operator = (const bignumber<T> &x) ->
+	const bignumber<T>&
 {
 	data = x.data;
 	return *this;
 }
 
 template <typename T>
-auto fib::bignumber<T>::operator ++ (void)
--> const bignumber<T>&
+auto fib::bignumber<T>::operator ++ (void) ->
+	const bignumber<T>&
 {
 	if(empty())
 	{

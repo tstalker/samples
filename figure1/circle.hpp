@@ -16,7 +16,8 @@ public:
 	circle(void)
 	{}
 
-	circle(const vector<double> &v): figure(v)
+	circle(const vector<double> &v):
+		figure(v)
 	{}
 
 	~circle(void) final

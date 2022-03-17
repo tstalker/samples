@@ -7,7 +7,7 @@ using type = unsigned;
 
 int main(void)
 {
-	const size_t MAX(10000);
+	const std::size_t MAX(10000);
 	std::vector<type> v;
 	std::generate_n(std::back_inserter(v), MAX,
 	[i(0)](void) mutable
@@ -21,7 +21,7 @@ int main(void)
 		{
 			continue;
 		}
-		for(size_t i(2 * x); i < v.size(); i += x)
+		for(std::size_t i(2 * x); i < v.size(); i += x)
 		{
 			v[i] = 0;
 		}

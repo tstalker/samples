@@ -14,7 +14,7 @@ $(TARGET): $(OBJLIST)
 	$(STRIP) $@
 
 .c.o:
-	$(CC) $(CFLAGS) -c $<
+	$(CC) $(CFLAGS) -c -o $@ $<
 
 allclean: clean
 	$(RM) $(TARGET)

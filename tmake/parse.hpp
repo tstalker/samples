@@ -1,8 +1,4 @@
-#ifdef PARSE_HPP
-#error Redefined header parse.hpp
-#endif
-
-#define PARSE_HPP
+#pragma once
 
 #include <string>
 #include <fstream>

@@ -4,13 +4,13 @@
 #include <stdarg.h>
 #include <stdbool.h>
 
-void print(const char* s, ...)
+void print(const char* fmt, ...)
 {
 	va_list va;
-	va_start(va, s);
+	va_start(va, fmt);
 	for(bool again = true; again;)
 	{
-		const char c = *s++;
+		const char c = *fmt++;
 		switch(c)
 		{
 		case '\0':
@@ -18,18 +18,30 @@ void print(const char* s, ...)
 			again = false;
 			continue;
 		case 'c':
-			printf("%c", va_arg(va, int));
+		{
+			const int c = va_arg(va, int);
+			printf("%c", c);
 			break;
+		}
 		case 'i':
-			printf("%d", va_arg(va, int));
+		{
+			const int i = va_arg(va, int);
+			printf("%d", i);
 			break;
+		}
 		case 'd':
 		case 'f':
-			printf("%.2lf", va_arg(va, double));
+		{
+			const double f = va_arg(va, double);
+			printf("%.2lf", f);
 			break;
+		}
 		case 's':
-			printf("%s", va_arg(va, const char*));
+		{
+			const char* s = va_arg(va, const char*);
+			printf("%s", s);
 			break;
+		}
 		default:
 			fprintf(stderr, "\nError format symbol \'%c\'\n", c);
 		}

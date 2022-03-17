@@ -1,4 +1,6 @@
-TARGET = decode encode
+TGTDEC = decode
+TGTENC = encode
+TARGET = $(TGTDEC) $(TGTENC)
 OBJDEC = decode.o utils.o
 OBJENC = encode.o utils.o
 OBJLIST = decode.o encode.o utils.o
@@ -8,11 +10,11 @@ STRIP = strip
 
 all: $(TARGET)
 
-decode: $(OBJDEC)
+$(TGTDEC): $(OBJDEC)
 	$(CC) $(CFLAGS) -o $@ $^
 	$(STRIP) $@
 
-encode: $(OBJENC)
+$(TGTENC): $(OBJENC)
 	$(CC) $(CFLAGS) -o $@ $^
 	$(STRIP) $@
 

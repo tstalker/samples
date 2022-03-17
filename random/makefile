@@ -4,9 +4,9 @@ TARGET = $(TGTDEC) $(TGTENC)
 OBJDEC = DecMain.o DecParse.o GetWord.o
 OBJENC = EncMain.o EncParse.o GetTime.o GetWord.o
 OBJLIST = DecMain.o DecParse.o EncMain.o EncParse.o GetTime.o GetWord.o
-DEPGEN = Generic.hpp makefile
-DEPDEC = Decode.hpp $(DEPGEN)
-DEPENC = Encode.hpp $(DEPGEN)
+DEPENDS = Generic.hpp makefile
+DEPDEC = Decode.hpp $(DEPENDS)
+DEPENC = Encode.hpp $(DEPENDS)
 CC = c++
 CFLAGS = -march=native -O3 -pipe -std=c++23 -Wall -Werror -Winline
 STRIP = strip
@@ -22,7 +22,7 @@ $(TGTENC): $(OBJENC)
 	$(STRIP) $@
 
 .cpp.o:
-	$(CC) $(CFLAGS) -c $<
+	$(CC) $(CFLAGS) -c -o $@ $<
 
 allclean: clean
 	$(RM) $(TARGET)
@@ -34,5 +34,5 @@ DecMain.o: DecMain.cpp $(DEPDEC)
 DecParse.o: DecParse.cpp $(DEPDEC)
 EncMain.o: EncMain.cpp $(DEPENC)
 EncParse.o: EncParse.cpp $(DEPENC)
-GetTime.o: GetTime.cpp $(DEPGEN)
-GetWord.o: GetWord.cpp $(DEPGEN)
+GetTime.o: GetTime.cpp $(DEPENDS)
+GetWord.o: GetWord.cpp $(DEPENDS)

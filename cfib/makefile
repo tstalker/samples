@@ -1,7 +1,7 @@
 TARGET = work
 OBJLIST = bine.o cycle.o init.o main.o print.o recur.o
 DEPENDS = fib.h makefile
-CFLAGS = -march=native -O3 -pipe -std=c2x -Wall -Winline
+CFLAGS = -march=native -O3 -pipe -std=c2x -Wall -Werror -Winline
 STRIP = strip
 
 all: $(TARGET)
@@ -11,7 +11,7 @@ $(TARGET): $(OBJLIST)
 	$(STRIP) $@
 
 .c.o:
-	$(CC) $(CFLAGS) -c $<
+	$(CC) $(CFLAGS) -c -o $@ $<
 
 allclean: clean
 	$(RM) $(TARGET)

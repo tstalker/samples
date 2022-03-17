@@ -12,7 +12,7 @@ $(TARGET): $(OBJLIST)
 	$(STRIP) $@
 
 .cpp.o:
-	$(CC) $(CFLAGS) -c $<
+	$(CC) $(CFLAGS) -c -o $@ $<
 
 allclean: clean
 	$(RM) $(TARGET)

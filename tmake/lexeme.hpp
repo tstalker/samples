@@ -1,8 +1,4 @@
-#ifdef LEXEME_HPP
-#error Redefined header lexeme.hpp
-#endif
-
-#define LEXEME_HPP
+#pragma once
 
 #include "lextype.hpp"
 

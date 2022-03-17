@@ -1,8 +1,4 @@
-#ifdef LEXTYPE_HPP
-#error Redefined header lextype.hpp
-#endif
-
-#define LEXTYPE_HPP
+#pragma once
 
 namespace tmk
 {

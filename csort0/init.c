@@ -10,7 +10,7 @@ void init(int* p, const size_t n)
 
 	for(size_t i = 0u; i < n; i++)
 	{
-		int x = 0;
+		int x;
 		do
 		{
 			x = rand() % RANK;

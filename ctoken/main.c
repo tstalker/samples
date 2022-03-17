@@ -11,9 +11,9 @@ int main(void)
 {
 	vector_t_int data[MAX];
 	data_initialize(data, MAX);
-	vector_int v = { .cinit = vector_cinit_int };
+	vector_int v = {.cinit = vector_cinit_int};
 	v.cinit(&v, data, MAX);
-	pair_int_int sum = { 0, 0 };
+	pair_int_int sum = {0, 0};
 
 	for(bool first = true; !v.empty(&v); first = !first)
 	{
