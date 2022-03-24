@@ -1,13 +1,12 @@
 #pragma once
 
-typedef const char* cpchar;
 typedef unsigned long ulong;
 typedef const ulong culong;
 typedef ulong(*PF)(culong);
 
 typedef struct
 {
-	cpchar name;
+	const char* name;
 	PF pf;
 }
 deffn;

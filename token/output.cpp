@@ -2,9 +2,10 @@
 
 #include <iterator>
 
-token::rostream operator << (token::rostream s, token::crivector v)
+auto token::operator << (ostream& os, const ivector& v)
+-> ostream&
 {
-	auto it(std::ostream_iterator<int>(s, " "));
-	std::copy(v.cbegin(), v.cend(), it);
-	return s;
+	auto it(ostream_iterator<remove_reference_t<decltype(v)>::value_type>(os, " "));
+	copy(v.cbegin(), v.cend(), it);
+	return os;
 }

@@ -1,6 +1,6 @@
 #include "token.hpp"
 
-auto token::decision_get(crivector v)
+auto token::decision_get(const ivector& v)
 -> decision
 {
 	switch(v.size())

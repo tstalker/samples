@@ -10,30 +10,26 @@ namespace token
 {
 	using namespace std;
 
-	using csizet = const size_t;
-	using cpchar = const char* const;
-	using rostream = ostream&;
 	using ivector = vector<int>;
-	using civector = const ivector;
-	using rivector = ivector&;
-	using crivector = civector&;
 	using dvector = vector<decision>;
-	using cdvector = const dvector;
-	using rdvector = dvector&;
-	using crdvector = cdvector&;
 
-	void outerror(cpchar);
-	ivector initialize(csizet);
-	string decision_str(cdecision);
-	decision decision_get(crivector);
-	decision decision_get(crdvector, crivector);
-	void decision_step(cdecision, rivector);
-	int decision_sum(cdecision, crivector);
+	void outerror(const char*);
+	ivector initialize(const size_t);
+	string decision_str(const decision);
+	decision decision_get(const ivector&);
+	decision decision_get(const dvector&, const ivector&);
+	void decision_step(const decision, ivector&);
+	int decision_sum(const decision, const ivector&);
+	ostream& operator << (ostream&, const decision);
+	ostream& operator << (ostream&, const ivector&);
 }
 
-inline token::rostream operator << (token::rostream s, token::cdecision d)
+inline auto
+token::operator << (ostream& os, const decision d)
+-> ostream&
 {
-	return s << token::decision_str(d);
+	return os << decision_str(d);
 }
 
-token::rostream operator << (token::rostream, token::crivector);
+using token::operator <<;
+

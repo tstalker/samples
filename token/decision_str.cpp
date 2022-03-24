@@ -1,6 +1,6 @@
 #include "token.hpp"
 
-auto token::decision_str(cdecision d)
+auto token::decision_str(const decision d)
 -> string
 {
 	switch(d)

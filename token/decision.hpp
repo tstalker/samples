@@ -3,10 +3,10 @@
 namespace token
 {
 	enum class decision: char;
-	using cdecision = const decision;
 }
 
-enum class token::decision: char
+enum class token::decision:
+	char
 {
 	END = 1,
 	LEFT,

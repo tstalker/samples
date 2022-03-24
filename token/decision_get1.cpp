@@ -2,7 +2,7 @@
 
 #include <map>
 
-auto token::decision_get(crdvector dv, crivector iv)
+auto token::decision_get(const dvector& dv, const ivector& iv)
 -> decision
 {
 	map<int, decision> m;

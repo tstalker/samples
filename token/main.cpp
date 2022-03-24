@@ -10,7 +10,7 @@ int main(void)
 		{"first", 0},
 		{"second", 0}
 	};
-	token::csizet MAX(20);
+	const std::size_t MAX(20);
 	auto v(token::initialize(MAX));
 
 	for(auto first(true); !v.empty(); first = !first)
@@ -36,6 +36,7 @@ int main(void)
 	}
 
 	const auto win(std::max(sum.first.second, sum.second.second));
-	std::cout << (win == sum.first.second ? sum.first.first : sum.second.first) << " win: " << win << std::endl;
+	const auto title(win == sum.first.second ? sum.first.first : sum.second.first);
+	std::cout << title << " win: " << win << std::endl;
 	return EXIT_SUCCESS;
 }

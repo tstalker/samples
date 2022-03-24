@@ -16,7 +16,8 @@ protected:
 	int i{};
 };
 
-class B: public A
+class B final:
+	public A
 {
 public:
 	B(const int& i, const int& j):

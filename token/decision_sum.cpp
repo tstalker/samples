@@ -1,13 +1,13 @@
 #include "token.hpp"
 
-int token::decision_sum(cdecision d, crivector v)
+int token::decision_sum(const decision d, const ivector& v)
 {
 	switch(d)
 	{
 	default:
 		outerror("Invalid decision");
 	case decision::END:
-		return 0;
+		return int();
 	case decision::LEFT:
 		return v.front();
 	case decision::RIGHT:

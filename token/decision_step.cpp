@@ -1,8 +1,8 @@
 #include "token.hpp"
 
-void token::decision_step(cdecision d, rivector v)
+void token::decision_step(const decision d, ivector& v)
 {
-	csizet MAX(2);
+	const size_t MAX(2);
 	switch(d)
 	{
 	default:

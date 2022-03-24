@@ -3,7 +3,7 @@
 #include <random>
 #include <functional>
 
-auto token::initialize(csizet MAX)
+auto token::initialize(const size_t MAX)
 -> ivector
 {
 	static const auto RANGE(100);
