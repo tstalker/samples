@@ -34,15 +34,15 @@ void ini::Init(T& v, const unsigned& n)
 }
 
 template <typename T>
-auto ini::InitBase(unsigned& i) ->
-	TI<T>
+auto ini::InitBase(unsigned& i)
+-> TI<T>
 {
 	return InitDerived<T>(i);
 }
 
 template <typename T>
-auto ini::InitBase(unsigned& i) ->
-	TN<T>
+auto ini::InitBase(unsigned& i)
+-> TN<T>
 {
 	return make_unique_v(InitDerived<TE<T>>(i));
 }

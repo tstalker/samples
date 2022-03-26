@@ -5,18 +5,17 @@
 
 int main(void)
 {
-	const std::vector<const geom::figure*> v
+	std::vector<const geom::figure*> v
 	{
-		new geom::circle({3}),
-		new geom::square({3}),
-		new geom::triangle({3, 4, 5}),
-		new geom::rectangle({3, 4})
+		new geom::circle{3},
+		new geom::square{3},
+		new geom::rectangle{3, 4},
+		new geom::triangle{3, 4, 5}
 	};
 	print(v);
-
-	for(const auto& p: v)
+	for(auto x: v)
 	{
-		delete p;
+		delete x;
 	}
 	return EXIT_SUCCESS;
 }

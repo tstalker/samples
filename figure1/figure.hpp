@@ -20,7 +20,8 @@ public:
 	figure(void)
 	{}
 
-	figure(const vector<double> &v): v(v)
+	figure(const initializer_list<double> &z):
+		v(z)
 	{}
 
 	virtual ~figure(void)
@@ -30,14 +31,14 @@ public:
 	virtual double area(void) const = 0;
 	virtual double perimeter(void) const = 0;
 
-	double sum(void) const
+	auto sum(void) const
 	{
-		return accumulate(v.cbegin(), v.cend(), 0);
+		return accumulate(v.cbegin(), v.cend(), double());
 	}
 
-	double multiply(void) const
+	auto multiply(void) const
 	{
-		return accumulate(v.cbegin(), v.cend(), 1, multiplies<double>());
+		return accumulate(v.cbegin(), v.cend(), 1., multiplies<double>());
 	}
 
 protected:

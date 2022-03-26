@@ -4,11 +4,12 @@
 
 double geom::triangle::area(void) const
 {
-	const auto p2(perimeter() / 2);
-	auto y(p2);
+	const auto pp(perimeter() / 2);
+	auto y(pp);
 	for(const auto& x: v)
 	{
-		y *= p2 - x;
+		y *= pp - x;
 	}
-	return sqrt(y);
+	const auto ret(sqrt(y));
+	return ret;
 }

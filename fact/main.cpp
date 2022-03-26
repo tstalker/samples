@@ -6,7 +6,6 @@
 int main(void)
 {
 	const auto n(2);
-
 	for(prn::ull i{}; i < 21; i++)
 	{
 		std::cout << std::setw(n) << i << ": " << prn::fact(i) << std::endl;

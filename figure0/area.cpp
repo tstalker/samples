@@ -7,9 +7,6 @@ double geo::figure::area(void) const
 	double ret{};
 	switch(t)
 	{
-	default:
-		cerr << "Error: invalid figure type" << endl;
-		break;
 	case figure_type::CIRCLE:
 		ret = PI * pow(x, 2);
 		break;
@@ -24,6 +21,9 @@ double geo::figure::area(void) const
 		break;
 	case figure_type::RECTANGLE:
 		ret = x * y;
+		break;
+	default:
+		cerr << "Error: invalid figure type" << endl;
 	}
 	return ret;
 }

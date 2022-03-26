@@ -14,7 +14,8 @@ public:
 	triangle(void)
 	{}
 
-	triangle(const vector<double> &v): figure(v)
+	triangle(const initializer_list<double> &z):
+		figure(z)
 	{}
 
 	~triangle(void) final

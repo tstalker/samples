@@ -22,3 +22,9 @@ clean:
 area.o: area.cpp figure.hpp triangle.hpp makefile
 main.o: main.cpp circle.hpp figure.hpp square.hpp rectangle.hpp triangle.hpp makefile
 print.o: print.cpp figure.hpp makefile
+
+circle.hpp: figure.hpp makefile
+figure.hpp: makefile
+rectangle.hpp: figure.hpp makefile
+square.hpp: figure.hpp makefile
+triangle.hpp: figure.hpp makefile

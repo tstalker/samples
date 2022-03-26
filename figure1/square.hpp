@@ -16,7 +16,8 @@ public:
 	square(void)
 	{}
 
-	square(const vector<double> &v): figure(v)
+	square(const initializer_list<double> &z):
+		figure(z)
 	{}
 
 	~square(void) final

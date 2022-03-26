@@ -7,6 +7,7 @@ namespace geo
 	using namespace std;
 	enum class figure_type: char;
 	class figure;
+
 	ostream& operator << (ostream&, const figure&);
 }
 

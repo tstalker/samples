@@ -1,26 +1,19 @@
+#include <numeric>
 #include <iostream>
 #include <iterator>
-#include <algorithm>
 
 int main(void)
 {
-	using namespace std;
-	size_t v[10]{};
-
-	generate(begin(v), end(v), []
-	{
-		static size_t n{};
-		return n++;
-	});
-
-	copy(begin(v), end(v), ostream_iterator<size_t>(cout, " "));
-	cout << endl;
-
-	reverse(begin(v), end(v));
-	copy(begin(v), end(v), ostream_iterator<size_t>(cout, " "));
-	cout << endl;
-
-	sort(begin(v), end(v));
-	copy(begin(v), end(v), ostream_iterator<size_t>(cout, " "));
-	cout << endl;
+	int v[10]{};
+	using TV = std::remove_extent_t<decltype(v)>;
+	std::iota(std::begin(v), std::end(v), TV());
+	auto it(std::ostream_iterator<TV>(cout, " "));
+	std::copy(std::cbegin(v), std::cend(v), it);
+	std::cout << std::endl;
+	std::reverse(std::begin(v), std::end(v));
+	std::copy(std::cbegin(v), std::cend(v), it);
+	std::cout << std::endl;
+	std::sort(std::begin(v), std::end(v));
+	std::copy(std::cbegin(v), std::cend(v), it);
+	std::cout << std::endl;
 }

@@ -14,7 +14,8 @@ public:
 	rectangle(void)
 	{}
 
-	rectangle(const vector<double> &v): figure(v)
+	rectangle(const initializer_list<double> &z):
+		figure(z)
 	{}
 
 	~rectangle(void) final
