@@ -4,15 +4,15 @@
 
 int main(void)
 {
-	const size_t SIZE = 50;
-	int v[SIZE];
-	init(v, SIZE);
-	print(v, SIZE);
-	qsort(v, SIZE, sizeof *v, cmpfwd);
-	print(v, SIZE);
-	qsort(v, SIZE, sizeof *v, cmprev);
-	print(v, SIZE);
-	qsort(v, SIZE, sizeof *v, cmpfwd);
-	print(v, SIZE);
+	const size_t size = 50;
+	int v[size];
+	init(v, size);
+	print(v, size);
+	qsort(v, size, sizeof *v, cmpfwd);
+	print(v, size);
+	qsort(v, size, sizeof *v, cmprev);
+	print(v, size);
+	qsort(v, size, sizeof *v, cmpfwd);
+	print(v, size);
 	return EXIT_SUCCESS;
 }

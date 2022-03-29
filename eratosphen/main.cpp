@@ -5,12 +5,13 @@
 
 using type = unsigned;
 
+const std::size_t MAX(10000);
+
 int main(void)
 {
-	const std::size_t MAX(10000);
 	std::vector<type> v;
 	std::generate_n(std::back_inserter(v), MAX,
-	[i(0)](void) mutable
+	[i{type()}](void) mutable
 	{
 		return i++;
 	});
@@ -23,12 +24,12 @@ int main(void)
 		}
 		for(std::size_t i(2 * x); i < v.size(); i += x)
 		{
-			v[i] = 0;
+			v[i] = type();
 		}
 	}
 
 	std::vector<type> w;
-	auto fn(std::bind(std::not_equal_to<decltype(v)::value_type>(), std::placeholders::_1, 0));
+	auto fn(std::bind(std::not_equal_to<decltype(v)::value_type>(), std::placeholders::_1, type()));
 	std::copy_if(v.cbegin(), v.cend(), std::back_inserter(w), fn);
 	auto it(std::ostream_iterator<decltype(w)::value_type>(std::cout, " "));
 	std::copy(w.cbegin(), w.cend(), it);

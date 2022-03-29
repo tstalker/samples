@@ -8,9 +8,9 @@ int main(void)
 	std::vector<const geom::figure*> v
 	{
 		new geom::circle{3},
+		new geom::triangle{3, 4, 5},
 		new geom::square{3},
-		new geom::rectangle{3, 4},
-		new geom::triangle{3, 4, 5}
+		new geom::rectangle{3, 4}
 	};
 	print(v);
 	for(auto x: v)

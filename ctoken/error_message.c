@@ -3,7 +3,6 @@
 cpchar error_message(error_clist e)
 {
 	cpchar ret = NULL;
-
 	switch(e)
 	{
 	case ERROR_DECISION:
