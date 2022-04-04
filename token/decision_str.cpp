@@ -1,13 +1,13 @@
 #include "token.hpp"
 
 auto token::decision_str(const decision d)
--> string
+-> string_view
 {
 	switch(d)
 	{
 	default:
 		outerror("Invalid decision");
-		return nullptr;
+		return "ERROR";
 	case decision::END:
 		return "END";
 	case decision::LEFT:

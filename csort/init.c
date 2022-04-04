@@ -3,19 +3,19 @@
 #include <time.h>
 #include <stdlib.h>
 
-void init(int* p, const size_t n)
+void init(vector* v)
 {
 	const size_t RANK = 100;
 	srand(time(NULL));
 
-	for(size_t i = 0u; i < n; i++)
+	for(size_t i = 0u; i < v->size; i++)
 	{
 		int x;
 		do
 		{
 			x = rand() % RANK;
 		}
-		while(find(x, p, i));
-		i[p] = x;
+		while(find(&(vector){v->data, i}, x));
+		v->data[i] = x;
 	}
 }

@@ -1,11 +1,13 @@
-#include "header.hpp"
+#include "init.hpp"
+#include "print.hpp"
+#include "shell.hpp"
 
 int main(void)
 {
-	std::vector<int> data;
+	std::vector<double> data;
 	gen::init(data, 10);
-	gen::print("Source", data);
+	std::cout << "Source: " << data << std::endl;
 	gen::shell(data);
-	gen::print("Sorted", data);
+	std::cout << "Sorted: " << data << std::endl;
 	return EXIT_SUCCESS;
 }

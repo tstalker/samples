@@ -1,18 +1,24 @@
 #include "header.h"
 
+#include <stdio.h>
 #include <stdlib.h>
 
 int main(void)
 {
-	const size_t size = 50;
-	int v[size];
-	init(v, size);
-	print(v, size);
-	qsort(v, size, sizeof *v, cmpfwd);
-	print(v, size);
-	qsort(v, size, sizeof *v, cmprev);
-	print(v, size);
-	qsort(v, size, sizeof *v, cmpfwd);
-	print(v, size);
+	int data[50];
+	const size_t size = sizeof data / sizeof *data;
+	vector* pv = &(vector){data, size};
+	init(pv);
+	printf("Source: ");
+	print(pv);
+	qsort(data, size, sizeof *data, cmpfwd);
+	printf("Sorted: ");
+	print(pv);
+	printf("Revers: ");
+	qsort(data, size, sizeof *data, cmprev);
+	print(pv);
+	printf("Sorted: ");
+	qsort(data, size, sizeof *data, cmpfwd);
+	print(pv);
 	return EXIT_SUCCESS;
 }

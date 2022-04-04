@@ -10,5 +10,6 @@ vector_t_int max3(vector_ct_int x, vector_ct_int y, vector_ct_int z)
 
 vector_t_int max2(vector_ct_int x, vector_ct_int y)
 {
-	return x > y ? x : y;
+	vector_ct_int ret = x > y ? x : y;
+	return ret;
 }

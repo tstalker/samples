@@ -2,11 +2,11 @@
 
 #include <stdio.h>
 
-void print(const int* p, const size_t n)
+void print(const vector* v)
 {
-	for(size_t i = 0u; i < n; i++)
+	for(size_t i = 0u; i < v->size; i++)
 	{
-		printf("%02d ", i[p]);
+		printf("%02d ", v->data[i]);
 	}
 	putchar('\n');
 }

@@ -1,11 +1,12 @@
 #include "header.h"
 
-bool find(const int x, const int* p, const size_t n)
+bool find(const vector* v, const int x)
 {
 	bool ret = false;
-	for(size_t i = 0u; i < n && !ret; i++)
+
+	for(size_t i = 0u; i < v->size && !ret; i++)
 	{
-		ret = i[p] == x;
+		ret = v->data[i] == x;
 	}
 	return ret;
 }

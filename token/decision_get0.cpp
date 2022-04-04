@@ -6,7 +6,6 @@ auto token::decision_get(const ivector& v)
 	switch(v.size())
 	{
 	default:
-	{
 		return decision_get(dvector
 		{
 			decision::LEFT,
@@ -15,19 +14,16 @@ auto token::decision_get(const ivector& v)
 			decision::LEFT_RIGHT,
 			decision::RIGHT_RIGHT
 		}, v);
-	}
 	case 0:
 		return decision::END;
 	case 1:
 		return decision::LEFT;
 	case 2:
-	{
 		return decision_get(dvector
 		{
 			decision::LEFT,
 			decision::RIGHT,
 			decision::LEFT_RIGHT
 		}, v);
-	}
 	}
 }

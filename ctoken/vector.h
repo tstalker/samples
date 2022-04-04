@@ -6,13 +6,13 @@
 struct svector ## _ ## TYPE; \
 typedef struct svector ## _ ## TYPE vector ## _ ## TYPE; \
 typedef const vector ## _ ## TYPE cvector ## _ ## TYPE; \
-typedef vector ## _ ## TYPE *pvector ## _ ## TYPE; \
-typedef cvector ## _ ## TYPE *cpvector ## _ ## TYPE; \
+typedef vector ## _ ## TYPE* pvector ## _ ## TYPE; \
+typedef cvector ## _ ## TYPE* cpvector ## _ ## TYPE; \
 \
 typedef TYPE vector_t ## _ ## TYPE; \
 typedef const vector_t ## _ ## TYPE vector_ct ## _ ## TYPE; \
-typedef vector_t ## _ ## TYPE *vector_pt ## _ ## TYPE; \
-typedef vector_ct ## _ ## TYPE *vector_cpt ## _ ## TYPE; \
+typedef vector_t ## _ ## TYPE* vector_pt ## _ ## TYPE; \
+typedef vector_ct ## _ ## TYPE* vector_cpt ## _ ## TYPE; \
 \
 typedef void(*vector_vd_pf_pv ## _ ## TYPE)(pvector ## _ ## TYPE); \
 typedef void(*vector_vd_pf_cpv ## _ ## TYPE)(cpvector ## _ ## TYPE); \

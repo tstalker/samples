@@ -12,5 +12,5 @@ vector;
 
 bool find(const vector*, const int);
 void init(vector*);
-void print(const char*, const vector*);
+void print(const vector*);
 void shell(vector*);

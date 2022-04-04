@@ -1,5 +1,6 @@
 #include "header.h"
 
+#include <stdio.h>
 #include <stdlib.h>
 
 int main(void)
@@ -8,8 +9,10 @@ int main(void)
 	const size_t size = sizeof data / sizeof *data;
 	vector* pv = &(vector){data, size};
 	init(pv);
-	print("Source", pv);
+	printf("Source: ");
+	print(pv);
 	shell(pv);
-	print("Sorted", pv);
+	printf("Sorted: ");
+	print(pv);
 	return EXIT_SUCCESS;
 }

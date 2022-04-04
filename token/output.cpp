@@ -2,6 +2,13 @@
 
 #include <iterator>
 
+auto
+token::operator << (ostream& os, const decision d)
+-> ostream&
+{
+	return os << decision_str(d);
+}
+
 auto token::operator << (ostream& os, const ivector& v)
 -> ostream&
 {
