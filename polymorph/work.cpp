@@ -6,7 +6,7 @@
 gen::work::work(const size_t n)
 {
 	generate_n(back_inserter(v), n,
-		[i(0)] (void) mutable
+		[i{int()}](void) mutable
 		-> decltype(v)::value_type
 	{
 		const auto f(fma(i, 1.e-1, i));

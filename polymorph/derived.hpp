@@ -5,6 +5,7 @@
 namespace gen
 {
 	class derived;
+
 	ostream& operator << (ostream&, const derived&);
 }
 

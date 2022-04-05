@@ -1,99 +1,61 @@
-#pragma once
-
 #include <limits>
 #include <iostream>
 #include <string_view>
 
-namespace prn
+namespace gen
 {
 	using namespace std;
 
-template <typename T>
-	void print(void);
 template <typename T, typename U>
-	void print(void);
-template <typename T, typename U>
-	void print(const pair<U, U>&);
+	pair<U, U>
+	limits{numeric_limits<T>::min(), numeric_limits<T>::max()};
+template <>
+	pair<string_view, string_view>
+	limits<bool, bool>{"false", "true"};
+template <>
+	pair<short, short>
+	limits<char, char>(limits<char, short>);
+template <>
+	pair<short, short>
+	limits<signed char, signed char>(limits<signed char, short>);
+template <>
+	pair<unsigned short, unsigned short>
+	limits<unsigned char, unsigned char>(limits<unsigned char, unsigned short>);
+template <>
+	pair<unsigned short, unsigned short>
+	limits<byte, byte>(limits<unsigned char, unsigned char>);
+template <>
+	pair<unsigned short, unsigned short>
+	limits<char8_t, char8_t>(limits<char8_t, unsigned short>);
+template <>
+	pair<unsigned short, unsigned short>
+	limits<char16_t, char16_t>(limits<char16_t, unsigned short>);
+template <>
+	pair<unsigned, unsigned>
+	limits<char32_t, char32_t>(limits<char32_t, unsigned>);
+template <>
+	pair<int, int>
+	limits<wchar_t, wchar_t>(limits<wchar_t, int>);
+
 template <typename T>
 	constexpr string_view gettype(void);
-template <typename T, typename U>
-	constexpr pair<U, U> getlim(void);
+template <typename T>
+	void print(void);
 }
 
 template <typename T>
-void prn::print(void)
+void
+gen::print(void)
 {
-	print<T, T>();
-}
-
-template <>
-void prn::print<std::byte>(void)
-{
-	print<byte, unsigned short>();
-}
-
-template <>
-void prn::print<bool>(void)
-{
-	print<bool, string_view>({"false", "true"});
-}
-
-template <>
-void prn::print<char>(void)
-{
-	print<char, short>();
-}
-
-template <>
-void prn::print<signed char>(void)
-{
-	print<signed char, short>();
-}
-
-template <>
-void prn::print<unsigned char>(void)
-{
-	print<unsigned char, unsigned short>();
-}
-
-template <>
-void prn::print<char8_t>(void)
-{
-	print<char8_t, unsigned short>();
-}
-
-template <>
-void prn::print<char16_t>(void)
-{
-	print<char16_t, unsigned short>();
-}
-
-template <>
-void prn::print<char32_t>(void)
-{
-	print<char32_t, unsigned long>();
-}
-
-template <>
-void prn::print<wchar_t>(void)
-{
-	print<wchar_t, int>();
-}
-
-template <typename T, typename U>
-void prn::print(void)
-{
-	print<T, U>(getlim<T, U>());
-}
-
-template <typename T, typename U>
-void prn::print(const pair<U, U> &p)
-{
-	cout << gettype<T>() << ": " << sizeof(T) << " min: " << p.first << " max: " << p.second << endl;
+	const auto lim(limits<T, T>);
+	cout << gettype<T>() << ": " << sizeof(T)
+		<< " min: " << lim.first
+		<< " max: " << lim.second << endl;
 }
 
 template <typename T>
-constexpr auto prn::gettype(void)
+constexpr auto
+gen::gettype(void)
 -> string_view
 {
 	if constexpr(is_same_v<T, bool>)
@@ -138,20 +100,4 @@ constexpr auto prn::gettype(void)
 		return "long double";
 	else
 		return "Error: wrong type";
-}
-
-template <typename T, typename U>
-constexpr auto
-prn::getlim(void)
--> pair<U, U>
-{
-	return {numeric_limits<T>::min(), numeric_limits<T>::max()};
-}
-
-template <>
-constexpr auto
-prn::getlim<std::byte, unsigned short>(void)
--> pair<unsigned short, unsigned short>
-{
-	return getlim<unsigned char, unsigned short>();
 }

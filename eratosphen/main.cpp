@@ -1,20 +1,15 @@
 #include <vector>
+#include <numeric>
 #include <iostream>
 #include <iterator>
 #include <functional>
-
-using type = unsigned;
 
 const std::size_t MAX(10000);
 
 int main(void)
 {
-	std::vector<type> v;
-	std::generate_n(std::back_inserter(v), MAX,
-	[i{type()}](void) mutable
-	{
-		return i++;
-	});
+	std::vector<unsigned> v(MAX);
+	std::iota(v.begin(), v.end(), unsigned());
 
 	for(const auto& x: v)
 	{
@@ -24,14 +19,14 @@ int main(void)
 		}
 		for(std::size_t i(2 * x); i < v.size(); i += x)
 		{
-			v[i] = type();
+			v[i] = unsigned();
 		}
 	}
 
-	std::vector<type> w;
-	auto fn(std::bind(std::not_equal_to<decltype(v)::value_type>(), std::placeholders::_1, type()));
+	std::vector<unsigned> w;
+	auto fn(std::bind(std::not_equal_to<unsigned>(), std::placeholders::_1, unsigned()));
 	std::copy_if(v.cbegin(), v.cend(), std::back_inserter(w), fn);
-	auto it(std::ostream_iterator<decltype(w)::value_type>(std::cout, " "));
+	auto it(std::ostream_iterator<unsigned>(std::cout, " "));
 	std::copy(w.cbegin(), w.cend(), it);
 	std::cout << std::endl;
 	return EXIT_SUCCESS;

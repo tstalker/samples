@@ -6,6 +6,7 @@ namespace gen
 {
 	using namespace std;
 	class base;
+
 	ostream& operator << (ostream&, const base&);
 }
 

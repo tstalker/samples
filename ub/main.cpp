@@ -7,6 +7,7 @@ static Function Do;
 int main(void)
 {
 	Do();
+	return EXIT_SUCCESS;
 }
 
 void Print(void);

@@ -1,13 +1,13 @@
 #include "init.hpp"
 #include "print.hpp"
-#include "shell.hpp"
+#include "bubble.hpp"
 
 int main(void)
 {
 	std::vector<int> data;
 	gen::init(data, 10);
 	std::cout << "Source: " << data << std::endl;
-	gen::shell(data);
+	gen::bubble(data);
 	std::cout << "Sorted: " << data << std::endl;
 	return EXIT_SUCCESS;
 }

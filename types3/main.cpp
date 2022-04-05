@@ -8,7 +8,6 @@ int main(void)
 	gen::print<char>();
 	gen::print<signed char>();
 	gen::print<unsigned char>();
-
 	gen::print<char8_t>();
 	gen::print<char16_t>();
 	gen::print<char32_t>();
@@ -16,13 +15,10 @@ int main(void)
 
 	gen::print<short>();
 	gen::print<unsigned short>();
-
 	gen::print<int>();
 	gen::print<unsigned>();
-
 	gen::print<long>();
 	gen::print<unsigned long>();
-
 	gen::print<long long>();
 	gen::print<unsigned long long>();
 
