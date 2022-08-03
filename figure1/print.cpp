@@ -3,7 +3,8 @@
 #include <iomanip>
 #include <iterator>
 
-void geom::print(const vector<const figure*> &v)
+void
+geom::print(const vector<const figure*> &v)
 {
 	for(const auto& p: v)
 	{
@@ -11,7 +12,8 @@ void geom::print(const vector<const figure*> &v)
 	}
 }
 
-void geom::print(const figure* p)
+void
+geom::print(const figure* p)
 {
 	cout << p->getname() << " {";
 	auto first(true);

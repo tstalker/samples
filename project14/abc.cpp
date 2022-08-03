@@ -42,7 +42,7 @@ std::ostream& operator << (std::ostream& os, const abc& x)
 {
 	if(x.n)
 	{
-		std::copy_n(x.s, x.n, std::ostream_iterator <std::remove_pointer_t<decltype(abc::s)>> (os));
+		std::copy_n(x.s, x.n, std::ostream_iterator<std::remove_pointer_t<decltype(abc::s)>>(os));
 	}
 	return os;
 }

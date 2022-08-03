@@ -7,9 +7,8 @@ namespace fib
 {
 	using namespace std;
 	using ulong = unsigned long;
-	using culong = const ulong;
-	using deffn = pair<string_view, function<ulong(culong)>>;
+	using deffn = pair<string_view, function<ulong(const ulong)>>;
 
-	void print(const deffn&, culong);
-	ulong bine(culong), cycle(culong), recur(culong);
+	void print(const deffn&, const ulong);
+	ulong bine(const ulong), cycle(const ulong), recur(const ulong);
 }

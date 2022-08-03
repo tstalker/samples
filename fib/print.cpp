@@ -2,7 +2,8 @@
 
 #include <iostream>
 
-void fib::print(const deffn& f, culong n)
+void
+fib::print(const deffn& f, const ulong n)
 {
 	cout << f.first << ':';
 	for(ulong i{}; i < n; i++)

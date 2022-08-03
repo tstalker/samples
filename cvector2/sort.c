@@ -2,7 +2,8 @@
 
 #include <string.h>
 
-void sort(entry* pe, const size_t size)
+void
+sort(entry* pe, const size_t size)
 {
 	for(size_t i = 0; i < size; i++)
 	{

@@ -1,6 +1,7 @@
 #include "generic.h"
 
-void swap(entry* pe0, entry* pe1)
+void
+swap(entry* pe0, entry* pe1)
 {
 	const char* pc = pe0->name;
 	pe0->name = pe1->name;

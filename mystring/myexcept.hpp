@@ -2,15 +2,22 @@
 
 #include <stdexcept>
 
-class myself
+namespace gen
+{
+	using namespace std;
+	class myself;
+	class myoutrange;
+}
+
+class gen::myself
 {};
 
-class myoutrange:
-	public std::out_of_range
+class gen::myoutrange:
+	public out_of_range
 {
 public:
-	myoutrange(const std::size_t i, const char* s):
-		std::out_of_range(s),
+	myoutrange(const size_t i, const char* s):
+		out_of_range(s),
 		i(i)
 	{}
 
@@ -20,5 +27,5 @@ public:
 	}
 
 private:
-	const std::size_t i;
+	const size_t i{};
 };

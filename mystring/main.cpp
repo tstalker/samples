@@ -7,7 +7,7 @@ int main(void)
 {
 	try
 	{
-		const mystring s("abcde");
+		const gen::mystring s("abcde");
 		std::cout << s << std::endl;
 
 		for(std::size_t i{}; i < s.getsize(); i++)
@@ -23,17 +23,17 @@ int main(void)
 		std::cout << std::endl;
 		return EXIT_SUCCESS;
 	}
-	catch(const myself &e)
+	catch(const gen::myself& e)
 	{
 		std::cerr << std::endl << "Error: assignment to itself" << std::endl;
 		return EXIT_FAILURE;
 	}
-	catch(const myoutrange &e)
+	catch(const gen::myoutrange& e)
 	{
 		std::cerr << std::endl << "Error: " << e.what() << ": invalid index: " << e.get() << std::endl;
 		return EXIT_FAILURE;
 	}
-	catch(const std::bad_alloc &e)
+	catch(const std::bad_alloc& e)
 	{
 		std::cerr << std::endl << "Error: " << e.what() << std::endl;
 		return EXIT_FAILURE;

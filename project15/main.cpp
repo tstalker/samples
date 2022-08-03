@@ -2,14 +2,13 @@
 #include "myexcept.hpp"
 
 #include <array>
-#include <cstdlib>
 #include <iterator>
 
 int main(void)
 {
 	try
 	{
-		std::array<abc, 5> v
+		std::array<gen::abc, 5> v
 		{
 			"abcde",
 			"fghij",
@@ -18,12 +17,12 @@ int main(void)
 			"uvwxy"
 		};
 
-		auto it(std::ostream_iterator<decltype(v)::value_type>(std::cout, "\n"));
+		auto it(std::ostream_iterator<decltype(v)::value_type>(std::cout, " "));
 		std::copy(v.cbegin(), v.cend(), it);
 		std::cout << std::endl;
 		return EXIT_SUCCESS;
 	}
-	catch(const length_exceeded& e)
+	catch(const gen::length_exceeded& e)
 	{
 		std::cerr << std::endl << "Error length_exceeded: " << e.what() << std::endl;
 		return EXIT_FAILURE;

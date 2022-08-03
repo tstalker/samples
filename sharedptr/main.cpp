@@ -1,141 +1,20 @@
-#include <memory>
-#include <iomanip>
-#include <iostream>
-#include <algorithm>
+#include "generic.hpp"
 
-class Base
-{
-protected:
-	class BaseData
-	{
-	public:
-		virtual ~BaseData(void)
-		{}
-
-		virtual void Print(void) const = 0;
-	};
-
-private:
-	std::shared_ptr<BaseData> Data;
-
-public:
-	Base(const std::shared_ptr<BaseData> &p):
-		Data(p)
-	{}
-
-	Base(const Base &s):
-		Base(s.Data)
-	{}
-
-	~Base(void)
-	{}
-
-	const std::shared_ptr<BaseData>
-	Get(void) const
-	{
-		return Data;
-	}
-
-	void Print(void) const
-	{
-		Data->Print();
-	}
-};
-
-template <typename T>
-class Inherit:
-	public Base
-{
-	class InheritData:
-		public BaseData
-	{
-		T Value;
-
-	public:
-		InheritData(const T &s):
-			Value(s)
-		{}
-
-		InheritData(const InheritData &s):
-			InheritData(s.Value)
-		{}
-
-		~InheritData(void)
-		{}
-
-		void Print(void) const;
-	};
-
-public:
-	Inherit(const T &s):
-		Base(std::make_shared<InheritData>(s))
-	{}
-
-	~Inherit(void)
-	{}
-};
-
-template <typename T>
-void
-Inherit<T>::InheritData::Print(void) const
-{
-	std::cout << Value << ' ';
-}
-
-template <>
-class Inherit <double>:
-	public Base
-{
-	class InheritData:
-		public BaseData
-	{
-		double Value;
-
-	public:
-		InheritData(const double &d): Value(d)
-		{}
-
-		InheritData(const InheritData &s):
-			InheritData(s.Value)
-		{}
-
-		~InheritData(void)
-		{}
-
-		void Print(void) const;
-	};
-
-public:
-	Inherit(const double &d):
-		Base(std::make_shared<InheritData>(d))
-	{}
-
-	~Inherit(void)
-	{}
-};
-
-inline void
-Inherit<double>::InheritData::Print(void) const
-{
-	std::cout << std::setprecision(8) << Value << ' ';
-}
-
-inline void
-Print(const Base& v)
-{
-	v.Print();
-}
+#include <string>
+#include <vector>
+#include <numbers>
+#include <functional>
 
 int
 main(void)
 {
-	const std::vector<Base> v
+	const std::vector<gen::Base> v
 	{
-		Inherit<char>('a'),
-		Inherit<std::string>("abcde"),
-		Inherit<int>(12345),
-		Inherit<float>(1.23f),
-		Inherit<double>(3.1415926)
+		gen::Inherit<char>('a'),
+		gen::Inherit<std::string>("abcde"),
+		gen::Inherit<int>(12345),
+		gen::Inherit<float>(1.23f),
+		gen::Inherit<double>(std::numbers::pi)
 	};
 
 	for(std::size_t i{}; i < v.size(); i++)
@@ -156,14 +35,14 @@ main(void)
 	}
 
 	std::cout << std::endl;
-	std::for_each(v.cbegin(), v.cend(), Print);
+	std::for_each(v.cbegin(), v.cend(), gen::Print);
 
 	std::cout << std::endl;
-	std::for_each(v.cbegin(), v.cend(), std::mem_fn(&Base::Print));
+	std::for_each(v.cbegin(), v.cend(), std::mem_fn(&gen::Base::Print));
 
 	struct zzz
 	{
-		void operator () (const Base& v) const
+		void operator () (const gen::Base& v) const
 		{
 			v.Print();
 		}
@@ -173,11 +52,10 @@ main(void)
 	std::for_each(v.cbegin(), v.cend(), zzz());
 
 	std::cout << std::endl;
-	std::for_each(v.cbegin(), v.cend(), [](const Base& v)
+	std::for_each(v.cbegin(), v.cend(), [](const gen::Base& v)
 	{
 		v.Print();
 	});
-
 	std::cout << std::endl;
 	return EXIT_SUCCESS;
 }

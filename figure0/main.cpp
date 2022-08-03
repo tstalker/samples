@@ -3,7 +3,8 @@
 #include <vector>
 #include <iomanip>
 
-int main(void)
+int
+main(void)
 {
 	const std::vector<geo::figure> v
 	{

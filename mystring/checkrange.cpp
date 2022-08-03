@@ -1,7 +1,9 @@
 #include "myexcept.hpp"
 #include "mystring.hpp"
 
-void mystring::checkrange(const std::size_t i) const
+void
+gen::mystring::checkrange(const size_t i)
+const
 {
 	if(i >= size)
 	{

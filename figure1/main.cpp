@@ -3,7 +3,8 @@
 #include "triangle.hpp"
 #include "rectangle.hpp"
 
-int main(void)
+int
+main(void)
 {
 	std::vector<const geom::figure*> v
 	{

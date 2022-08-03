@@ -2,10 +2,10 @@
 #include "mystring.hpp"
 
 auto
-mystring::operator = (mystring&& s)
+gen::mystring::operator = (mystring&& s)
 -> const mystring&
 {
-	std::cout << "mystring::operator = (mystring&& " << s << "): " << *this << " -> ";
+	cout << "mystring::operator = (mystring&& " << s << "): " << *this << " -> ";
 	if(this == &s)
 	{
 		throw myself();
@@ -14,6 +14,6 @@ mystring::operator = (mystring&& s)
 	size = s.size;
 	ptr = s.ptr;
 	s.origin();
-	std::cout << *this << std::endl;
+	cout << *this << endl;
 	return *this;
 }

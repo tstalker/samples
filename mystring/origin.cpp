@@ -1,6 +1,7 @@
 #include "mystring.hpp"
 
-void mystring::origin(void)
+void
+gen::mystring::origin(void)
 {
 	size = 0;
 	ptr = nullptr;

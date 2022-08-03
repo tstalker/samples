@@ -3,7 +3,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(void)
+int
+main(void)
 {
 	entry book[] =
 	{

@@ -142,7 +142,8 @@ ier::Base<T>::operator = (Base&& x)
 }
 
 template <typename T>
-void ier::Base<T>::Print(void) const
+void
+ier::Base<T>::Print(void) const
 {
 	PrintSpace(cout) << *this;
 }
@@ -164,7 +165,9 @@ ier::Base<T>::PrintSpace(ostream& s)
 }
 
 template <typename T>
-auto ier::Base<T>::PrintBraces(ostream& s) const
+auto
+ier::Base<T>::PrintBraces(ostream& s)
+const
 -> ostream&
 {
 	s << '{';
@@ -178,7 +181,9 @@ auto ier::Base<T>::PrintBraces(ostream& s) const
 }
 
 template <typename T>
-auto ier::Base<T>::Value(void) const
+auto
+ier::Base<T>::Value(void)
+const
 {
 	return p ? *p : element_type();
 }

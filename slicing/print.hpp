@@ -9,6 +9,8 @@
 namespace prn
 {
 	using namespace gen;
+template <typename T>
+	using list_type = pair<string_view, function<void(const T&)>>;
 
 template <typename T>
 	void Print(const T&);
@@ -20,7 +22,7 @@ template <typename T>
 	void PrintCopy(const T&);
 
 template <typename T>
-	const vector<pair<string_view, function<void(const T&)>>> lst
+	const vector<list_type<T>> lst
 	{
 		{"for ", PrintFor<T>},
 		{"each", PrintEach<T>},
@@ -29,7 +31,8 @@ template <typename T>
 }
 
 template <typename T>
-void prn::Print(const T& v)
+void
+prn::Print(const T& v)
 {
 	for(auto& f: lst<T>)
 	{
@@ -41,7 +44,8 @@ void prn::Print(const T& v)
 }
 
 template <typename T>
-void prn::PrintFor(const T& v)
+void
+prn::PrintFor(const T& v)
 {
 	for(auto& x: v)
 	{
@@ -50,14 +54,16 @@ void prn::PrintFor(const T& v)
 }
 
 template <typename T>
-void prn::PrintEach(const T& v)
+void
+prn::PrintEach(const T& v)
 {
 	auto fn(mem_fn(&TW<T>::Print));
 	for_each(v.cbegin(), v.cend(), fn);
 }
 
 template <typename T>
-void prn::PrintCopy(const T& v)
+void
+prn::PrintCopy(const T& v)
 {
 	auto it(ostream_iterator<TV<T>>(cout, " "));
 	copy(v.cbegin(), v.cend(), it);

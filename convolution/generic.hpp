@@ -21,7 +21,8 @@ template <typename... T>
 }
 
 template <typename T>
-T gen::sum0(const T& a, const T& b)
+T
+gen::sum0(const T& a, const T& b)
 {
 	const auto r(a + b);
 	cout << a << " + " << b << " -> " << r << endl;
@@ -29,7 +30,8 @@ T gen::sum0(const T& a, const T& b)
 }
 
 template <typename... T>
-auto gen::sum1(const T&... x)
+auto
+gen::sum1(const T&... x)
 {
 	([](const auto& x)
 	{

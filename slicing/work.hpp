@@ -12,7 +12,8 @@ template <typename T>
 }
 
 template <typename T>
-void job::Work(T& v, const unsigned& n, string_view s)
+void
+job::Work(T& v, const unsigned& n, string_view s)
 {
 	cout << s << ':' << endl;
 	ini::Init(v, n);

@@ -2,7 +2,6 @@
 #include "def.hpp"
 
 #include <vector>
-#include <cstdlib>
 
 int main(void)
 {

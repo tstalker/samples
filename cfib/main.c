@@ -7,7 +7,7 @@ int main(void)
 	init();
 
 	culong MAX = 30ul;
-	cdeffn v[] =
+	const deffn v[] =
 	{
 		{"bine ", bine},
 		{"cycle", cycle},

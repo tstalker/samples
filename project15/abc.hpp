@@ -2,7 +2,17 @@
 
 #include <iostream>
 
-class abc
+namespace gen
+{
+	using namespace std;
+	class abc;
+
+	ostream& operator << (ostream&, const abc&);
+}
+
+using gen::operator <<;
+
+class gen::abc
 {
 public:
 	abc(void)
@@ -30,5 +40,5 @@ private:
 	size_t n{};
 	char* s{nullptr};
 
-	friend std::ostream& operator << (std::ostream&, const abc&);
+	friend ostream& operator << (ostream&, const abc&);
 };

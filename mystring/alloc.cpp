@@ -1,8 +1,10 @@
 #include "mystring.hpp"
 
-void mystring::alloc(const mystring& s)
+void
+gen::mystring::alloc(const mystring& s)
 {
 	clear();
-	ptr = alloc(size = s.size);
+	size = s.size;
+	ptr = alloc(size);
 	copy(s);
 }

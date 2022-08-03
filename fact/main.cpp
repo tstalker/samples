@@ -6,7 +6,8 @@
 int main(void)
 {
 	const auto n(2);
-	for(prn::ull i{}; i < 21; i++)
+	const auto MAX(21ull);
+	for(prn::ull i{}; i < MAX; i++)
 	{
 		std::cout << std::setw(n) << i << ": " << prn::fact(i) << std::endl;
 	}

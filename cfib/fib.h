@@ -10,10 +10,12 @@ typedef struct
 	PF pf;
 }
 deffn;
-typedef const deffn cdeffn;
-typedef cdeffn* cpdeffn;
+typedef const deffn* cpdeffn;
 
 extern double phi, sqrt5;
 
-void init(void), print(cpdeffn, culong);
-ulong bine(culong), cycle(culong), recur(culong);
+void init(void);
+void print(cpdeffn, culong);
+ulong bine(culong);
+ulong cycle(culong);
+ulong recur(culong);

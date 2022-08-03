@@ -2,7 +2,9 @@
 
 #include <cmath>
 
-double geom::triangle::area(void) const
+double
+geom::triangle::area(void)
+const
 {
 	const auto pp(perimeter() / 2);
 	auto y(pp);

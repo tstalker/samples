@@ -3,7 +3,8 @@
 #include <vector>
 #include <algorithm>
 
-int main(void)
+int
+main(void)
 {
 	const std::vector<fib::deffn> v
 	{

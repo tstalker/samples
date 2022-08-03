@@ -3,12 +3,19 @@
 #include <string>
 #include <exception>
 
-class length_exceeded: public std::exception
+namespace gen
+{
+	using namespace std;
+	class length_exceeded;
+}
+
+class gen::length_exceeded:
+	public exception
 {
 public:
 	length_exceeded(const size_t n)
 	{
-		s += std::to_string(n);
+		s += to_string(n);
 	}
 
 	const char* what(void) const noexcept
@@ -17,5 +24,5 @@ public:
 	}
 
 private:
-	std::string s{"length exceeded "};
+	string s{"length exceeded "};
 };

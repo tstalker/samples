@@ -2,15 +2,15 @@
 #include "mystring.hpp"
 
 auto
-mystring::operator = (const mystring& s)
+gen::mystring::operator = (const mystring& s)
 -> const mystring&
 {
-	std::cout << "mystring::operator = (const mystring& " << s << "): " << *this << " -> ";
+	cout << "mystring::operator = (const mystring& " << s << "): " << *this << " -> ";
 	if(this == &s)
 	{
 		throw myself();
 	}
 	alloc(s);
-	std::cout << *this << std::endl;
+	cout << *this << endl;
 	return *this;
 }

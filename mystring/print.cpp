@@ -1,8 +1,8 @@
 #include "mystring.hpp"
 
 auto
-operator << (std::ostream& o, const mystring& s)
--> std::ostream&
+gen::operator << (ostream& o, const mystring& s)
+-> ostream&
 {
 	o << '[' << s.size << ' ';
 	s.out(o);
