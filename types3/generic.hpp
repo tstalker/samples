@@ -1,3 +1,5 @@
+#pragma once
+
 #include <limits>
 #include <iostream>
 #include <string_view>
@@ -6,51 +8,42 @@ namespace gen
 {
 	using namespace std;
 
-template <typename T, typename U>
-	pair<U, U>
-	limits{numeric_limits<T>::min(), numeric_limits<T>::max()};
+template <typename T>
+	using tchar =
+	conditional_t<is_signed_v<T>, long, unsigned long>;
+
+template <typename T>
+	pair<tchar<T>, tchar<T>>
+	limits
+	{
+		numeric_limits<T>::min(),
+		numeric_limits<T>::max()
+	};
+
 template <>
 	pair<string_view, string_view>
-	limits<bool, bool>{"false", "true"};
-template <>
-	pair<short, short>
-	limits<char, char>(limits<char, short>);
-template <>
-	pair<short, short>
-	limits<signed char, signed char>(limits<signed char, short>);
-template <>
-	pair<unsigned short, unsigned short>
-	limits<unsigned char, unsigned char>(limits<unsigned char, unsigned short>);
-template <>
-	pair<unsigned short, unsigned short>
-	limits<byte, byte>(limits<unsigned char, unsigned char>);
-template <>
-	pair<unsigned short, unsigned short>
-	limits<char8_t, char8_t>(limits<char8_t, unsigned short>);
-template <>
-	pair<unsigned short, unsigned short>
-	limits<char16_t, char16_t>(limits<char16_t, unsigned short>);
-template <>
-	pair<unsigned, unsigned>
-	limits<char32_t, char32_t>(limits<char32_t, unsigned>);
-template <>
-	pair<int, int>
-	limits<wchar_t, wchar_t>(limits<wchar_t, int>);
+	limits<bool>
+	{
+		"false",
+		"true"
+	};
+
+template <typename T>
+	void print(void);
 
 template <typename T>
 	constexpr string_view gettype(void);
-template <typename T>
-	void print(void);
 }
 
 template <typename T>
 void
 gen::print(void)
 {
-	const auto lim(limits<T, T>);
+	const auto lim(limits<T>);
 	cout << gettype<T>() << ": " << sizeof(T)
 		<< " min: " << lim.first
-		<< " max: " << lim.second << endl;
+		<< " max: " << lim.second
+		<< endl;
 }
 
 template <typename T>
@@ -66,8 +59,6 @@ gen::gettype(void)
 		return "signed char";
 	else if constexpr(is_same_v<T, unsigned char>)
 		return "unsigned char";
-	else if constexpr(is_same_v<T, byte>)
-		return "byte";
 	else if constexpr(is_same_v<T, char8_t>)
 		return "char8_t";
 	else if constexpr(is_same_v<T, char16_t>)

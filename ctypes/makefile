@@ -1,6 +1,6 @@
 TARGET = work
 OBJ = main.o
-DEPENDS = makefile
+DEPENDS = generic.h makefile
 CFLAGS = -march=native -O3 -pipe -std=c2x -Wall -Werror -Winline
 STRIP = strip
 
@@ -11,7 +11,7 @@ $(TARGET): $(OBJ)
 	$(STRIP) $@
 
 .c.o:
-	$(CC) $(CFLAGS) -c -o $@ $<
+	$(CC) $(CFLAGS) -o $@ -c $<
 
 allclean: clean
 	$(RM) $(TARGET)

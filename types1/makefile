@@ -1,6 +1,6 @@
 TARGET = work
 OBJ = main.o
-DEPENDS = makefile
+DEPENDS = generic.hpp makefile
 CC = c++
 CFLAGS = -march=native -O3 -pipe -std=c++23 -Wall -Werror -Winline
 STRIP = strip
@@ -12,7 +12,7 @@ $(TARGET): $(OBJ)
 	$(STRIP) $@
 
 .cpp.o:
-	$(CC) $(CFLAGS) -c -o $@ $<
+	$(CC) $(CFLAGS) -o $@ -c $<
 
 allclean: clean
 	$(RM) $(TARGET)

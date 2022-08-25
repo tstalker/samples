@@ -3,7 +3,6 @@
 int main(void)
 {
 	gen::print<bool>();
-	gen::print<std::byte>();
 
 	gen::print<char>();
 	gen::print<signed char>();

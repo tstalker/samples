@@ -9,91 +9,66 @@ namespace gen
 	using namespace std;
 
 template <typename T>
-	void print(void);
+	using tchar =
+	conditional_t<is_signed_v<T>, long, unsigned long>;
+
 template <typename T, typename U>
-	void print(void);
-template <typename T, typename U>
-	void print(const pair<U, U>&);
+	pair<U, U>
+	getlim
+	{
+		numeric_limits<T>::min(),
+		numeric_limits<T>::max()
+	};
+
 template <typename T>
-	constexpr string_view gettype(void);
+	void
+	print(void);
 template <typename T, typename U>
-	constexpr pair<U, U> getlim(void);
+	void
+	print(void);
+template <typename T, typename U>
+	void
+	print(const pair<U, U>&);
+
+template <typename T>
+	constexpr string_view
+	gettype(void);
 }
 
 template <typename T>
-void gen::print(void)
+void
+gen::print(void)
 {
-	print<T, T>();
+	print<T, tchar<T>>();
+}
+
+template <typename T, typename U>
+void
+gen::print(void)
+{
+	print<T, U>(getlim<T, U>);
+}
+
+template <typename T, typename U>
+void
+gen::print(const pair<U, U> &p)
+{
+	cout << gettype<T>() << ": " << sizeof(T)
+		<< " min: " << p.first
+		<< " max: " << p.second
+		<< endl;
 }
 
 template <>
-void gen::print<std::byte>(void)
-{
-	print<byte, unsigned short>();
-}
-
-template <>
-void gen::print<bool>(void)
+void
+gen::print<bool>(void)
 {
 	print<bool, string_view>({"false", "true"});
 }
 
-template <>
-void gen::print<char>(void)
-{
-	print<char, short>();
-}
-
-template <>
-void gen::print<signed char>(void)
-{
-	print<signed char, short>();
-}
-
-template <>
-void gen::print<unsigned char>(void)
-{
-	print<unsigned char, unsigned short>();
-}
-
-template <>
-void gen::print<char8_t>(void)
-{
-	print<char8_t, short>();
-}
-
-template <>
-void gen::print<char16_t>(void)
-{
-	print<char16_t, unsigned short>();
-}
-
-template <>
-void gen::print<char32_t>(void)
-{
-	print<char32_t, unsigned>();
-}
-
-template <>
-void gen::print<wchar_t>(void)
-{
-	print<wchar_t, int>();
-}
-
-template <typename T, typename U>
-void gen::print(void)
-{
-	print<T, U>(getlim<T, U>());
-}
-
-template <typename T, typename U>
-void gen::print(const pair<U, U> &p)
-{
-	cout << gettype<T>() << ": " << sizeof(T) << " min: " << p.first << " max: " << p.second << endl;
-}
-
 template <typename T>
-constexpr auto gen::gettype(void)
+constexpr auto
+gen::gettype(void)
 -> string_view
 {
 	if constexpr(is_same_v<T, bool>)
@@ -104,8 +79,6 @@ constexpr auto gen::gettype(void)
 		return "signed char";
 	else if constexpr(is_same_v<T, unsigned char>)
 		return "unsigned char";
-	else if constexpr(is_same_v<T, byte>)
-		return "byte";
 	else if constexpr(is_same_v<T, char8_t>)
 		return "char8_t";
 	else if constexpr(is_same_v<T, char16_t>)
@@ -138,20 +111,4 @@ constexpr auto gen::gettype(void)
 		return "long double";
 	else
 		return "Error: wrong type";
-}
-
-template <typename T, typename U>
-constexpr auto
-gen::getlim(void)
--> pair<U, U>
-{
-	return {numeric_limits<T>::min(), numeric_limits<T>::max()};
-}
-
-template <>
-constexpr auto
-gen::getlim<std::byte, unsigned short>(void)
--> pair<unsigned short, unsigned short>
-{
-	return getlim<unsigned char, unsigned short>();
 }
