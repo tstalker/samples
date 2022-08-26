@@ -20,14 +20,6 @@ template <typename T>
 		numeric_limits<T>::max()
 	};
 
-template <>
-	pair<string_view, string_view>
-	limits<bool>
-	{
-		"false",
-		"true"
-	};
-
 template <typename T>
 	void print(void);
 

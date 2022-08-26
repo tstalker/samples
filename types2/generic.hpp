@@ -12,8 +12,8 @@ template <typename T>
 	using tchar =
 	conditional_t<is_signed_v<T>, long, unsigned long>;
 
-template <typename T, typename U>
-	pair<U, U>
+template <typename T>
+	pair<T, T>
 	getlim
 	{
 		numeric_limits<T>::min(),
@@ -23,12 +23,9 @@ template <typename T, typename U>
 template <typename T>
 	void
 	print(void);
-template <typename T, typename U>
+template <typename T>
 	void
-	print(void);
-template <typename T, typename U>
-	void
-	print(const pair<U, U>&);
+	print(const pair<tchar<T>, tchar<T>>&);
 
 template <typename T>
 	constexpr string_view
@@ -39,31 +36,17 @@ template <typename T>
 void
 gen::print(void)
 {
-	print<T, tchar<T>>();
+	print<T>(getlim<T>);
 }
 
-template <typename T, typename U>
+template <typename T>
 void
-gen::print(void)
-{
-	print<T, U>(getlim<T, U>);
-}
-
-template <typename T, typename U>
-void
-gen::print(const pair<U, U> &p)
+gen::print(const pair<tchar<T>, tchar<T>> &p)
 {
 	cout << gettype<T>() << ": " << sizeof(T)
 		<< " min: " << p.first
 		<< " max: " << p.second
 		<< endl;
-}
-
-template <>
-void
-gen::print<bool>(void)
-{
-	print<bool, string_view>({"false", "true"});
 }
 
 template <typename T>
