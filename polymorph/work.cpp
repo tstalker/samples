@@ -3,7 +3,8 @@
 
 #include <cmath>
 
-gen::work::work(const size_t n)
+gen::work::work(
+	const size_t n)
 {
 	generate_n(back_inserter(v), n,
 		[i{int()}](void) mutable
@@ -25,7 +26,9 @@ gen::work::~work(void)
 }
 
 void
-gen::work::print(ostream& os) const
+gen::work::print(
+	ostream& os)
+const
 {
 	op = true;
 	for_each(v.cbegin(), v.cend(),
@@ -44,7 +47,9 @@ gen::work::print(ostream& os) const
 }
 
 auto
-gen::operator << (ostream& os, const work& w)
+gen::operator << (
+	ostream& os,
+	const work& w)
 -> ostream&
 {
 	w.print(os);

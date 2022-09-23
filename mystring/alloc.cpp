@@ -1,7 +1,8 @@
 #include "mystring.hpp"
 
 void
-gen::mystring::alloc(const mystring& s)
+gen::mystring::alloc(
+	const mystring& s)
 {
 	clear();
 	size = s.size;

@@ -2,7 +2,12 @@
 
 #include <iostream>
 
-class Element
+namespace gen
+{
+	class Element;
+}
+
+class gen::Element
 {
 public:
 	Element(const Element&) = delete;
@@ -19,8 +24,9 @@ public:
 	}
 
 private:
-	int Data;
-	Element *Next{nullptr}, *Prev{nullptr};
+	int Data{};
+	Element* Next{nullptr};
+	Element* Prev{nullptr};
 
 	friend class LinkedList;
 };

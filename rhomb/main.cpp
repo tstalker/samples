@@ -1,6 +1,7 @@
 #include "header.hpp"
 
-int main(void)
+int
+main(void)
 {
 	const A* pa(new D(12345));
 	pa->print();

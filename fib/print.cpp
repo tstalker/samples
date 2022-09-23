@@ -3,7 +3,9 @@
 #include <iostream>
 
 void
-fib::print(const deffn& f, const ulong n)
+fib::print(
+	const deffn& f,
+	const ulong n)
 {
 	cout << f.first << ':';
 	for(ulong i{}; i < n; i++)

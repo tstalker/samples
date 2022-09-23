@@ -3,7 +3,8 @@
 #include <iterator>
 
 void
-gen::mystring::out(ostream& o)
+gen::mystring::out(
+	ostream& o)
 const
 {
 	if(size)

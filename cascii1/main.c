@@ -4,9 +4,11 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-int main(void)
+int
+main(void)
 {
 	bool first = true;
+
 	for(unsigned short c = 0; c <= UCHAR_MAX; c++)
 	{
 		const char d = iscntrl(c) ? ' ' : c;
@@ -20,6 +22,7 @@ int main(void)
 			putchar(' ');
 		}
 	}
+
 	putchar('\n');
 	return EXIT_SUCCESS;
 }

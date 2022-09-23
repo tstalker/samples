@@ -25,10 +25,13 @@ template <typename T>
 
 template <typename T>
 void
-ini::Init(T& v, const unsigned& n)
+ini::Init(
+	T& v,
+	const unsigned& n)
 {
-	generate_n(back_inserter(v), n,
-	[i{0u}](void) mutable
+	std::generate_n(std::back_inserter(v), n,
+	[i{0u}](void)
+	mutable
 	{
 		return InitBase<TV<T>>(i);
 	});
@@ -54,7 +57,7 @@ template <typename T>
 auto
 ini::make_unique_v(const T& x)
 {
-	return make_unique<T>(x);
+	return std::make_unique<T>(x);
 }
 
 template <typename T>
@@ -65,7 +68,7 @@ ini::InitDerived(unsigned& i)
 	const auto j(i++);
 	const auto x(f * j);
 
-	if constexpr(is_floating_point_v<TypeDerived>)
+	if constexpr(std::is_floating_point_v<TypeDerived>)
 	{
 		return Derived<TE<T>, TypeDerived>(j, x);
 	}

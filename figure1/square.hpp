@@ -4,12 +4,12 @@
 
 #include <cmath>
 
-namespace geom
+namespace gen
 {
 	class square;
 }
 
-class geom::square final:
+class gen::square final:
 	public figure
 {
 public:

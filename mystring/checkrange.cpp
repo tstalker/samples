@@ -2,7 +2,8 @@
 #include "mystring.hpp"
 
 void
-gen::mystring::checkrange(const size_t i)
+gen::mystring::checkrange(
+	const size_t i)
 const
 {
 	if(i >= size)

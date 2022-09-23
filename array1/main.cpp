@@ -1,6 +1,7 @@
 #include "print.hpp"
 
-int main(void)
+int
+main(void)
 {
 	const std::size_t N1(4);
 	const int z[][N1]

@@ -6,9 +6,10 @@
 
 const std::size_t MAX(5);
 
-gen::abc::abc(const char* s):
-	n(s ? strlen(s) : size_t()),
-	s(n ? new char[n]{} : nullptr)
+gen::abc::abc(
+	const char* s):
+n(s ? strlen(s) : size_t()),
+s(n ? new char[n]{} : nullptr)
 {
 	if(n <= MAX)
 	{
@@ -23,9 +24,10 @@ gen::abc::abc(const char* s):
 	}
 }
 
-gen::abc::abc(const abc& x):
-	n(this != &x ? x.n : size_t()),
-	s(n ? new char[n]{} : nullptr)
+gen::abc::abc(
+	const abc& x):
+n(this != &x ? x.n : size_t()),
+s(n ? new char[n]{} : nullptr)
 {
 	if(n)
 	{
@@ -34,13 +36,15 @@ gen::abc::abc(const abc& x):
 }
 
 void
-gen::abc::print(void) const
+gen::abc::print(void)
+const
 {
 	cout << *this << endl;
 }
 
 char&
-gen::abc::operator[] (const size_t& i)
+gen::abc::operator[] (
+	const size_t& i)
 {
 	if(i >= n)
 	{
@@ -50,7 +54,9 @@ gen::abc::operator[] (const size_t& i)
 }
 
 const char&
-gen::abc::operator[] (const size_t& i) const
+gen::abc::operator[] (
+	const size_t& i)
+const
 {
 	if(i >= n)
 	{

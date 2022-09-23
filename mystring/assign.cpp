@@ -2,7 +2,8 @@
 #include "mystring.hpp"
 
 auto
-gen::mystring::operator = (const mystring& s)
+gen::mystring::operator = (
+	const mystring& s)
 -> const mystring&
 {
 	cout << "mystring::operator = (const mystring& " << s << "): " << *this << " -> ";

@@ -4,7 +4,8 @@
 #include <fstream>
 #include <iostream>
 
-int main(int argc, char* argv[])
+int
+main(int argc, char* argv[])
 {
 	std::locale::global(std::locale("en_US.UTF-8"));
 	if(argc != 3)

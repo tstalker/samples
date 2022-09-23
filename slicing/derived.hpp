@@ -7,7 +7,7 @@ namespace ier
 template <typename T, typename U>
 	class Derived;
 template <typename T, typename U>
-	decltype(auto) operator << (ostream&, const Derived<T, U>&);
+	decltype(auto) operator << (std::ostream&, const Derived<T, U>&);
 }
 
 template <typename T, typename U>
@@ -30,7 +30,7 @@ public:
 	void Print(void) const;
 	auto Value(void) const;
 
-	ostream& PrintBraces(ostream&) const override final;
+	std::ostream& PrintBraces(std::ostream&) const override final;
 
 private:
 	U* p{nullptr};
@@ -40,7 +40,7 @@ template <typename T, typename U>
 ier::Derived<T, U>::Derived(void)
 {
 #ifdef DEBUG
-	cout << "Derived::Derived() -> " << *this << endl;
+	std::cout << "Derived::Derived() -> " << *this << std::endl;
 #endif
 }
 
@@ -49,17 +49,19 @@ ier::Derived<T, U>::Derived(const U& x):
 	p(x.p ? new U(*x.p) : nullptr)
 {
 #ifdef DEBUG
-	cout << "Derived::Derived(" << x << ") -> " << *this << endl;
+	std::cout << "Derived::Derived(" << x << ") -> " << *this << std::endl;
 #endif
 }
 
 template <typename T, typename U>
-ier::Derived<T, U>::Derived(const T& x, const U& y):
+ier::Derived<T, U>::Derived(
+	const T& x,
+	const U& y):
 	Base<T>(x),
 	p(new U(y))
 {
 #ifdef DEBUG
-	cout << "Derived::Derived(" << x << ", " << y << ") -> " << *this << endl;
+	std::cout << "Derived::Derived(" << x << ", " << y << ") -> " << *this << std::endl;
 #endif
 }
 
@@ -69,7 +71,7 @@ ier::Derived<T, U>::Derived(const Derived& x):
 	p(x.p ? new U(*x.p) : nullptr)
 {
 #ifdef DEBUG
-	cout << "Derived::Derived(" << x << ") -> " << *this << endl;
+	std::cout << "Derived::Derived(" << x << ") -> " << *this << std::endl;
 #endif
 }
 
@@ -79,7 +81,7 @@ ier::Derived<T, U>::Derived(Derived&& x):
 	p(x.p)
 {
 #ifdef DEBUG
-	cout << "Derived::Derived(&&" << x << ") -> " << *this << endl;
+	std::cout << "Derived::Derived(&&" << x << ") -> " << *this << std::endl;
 #endif
 
 	x.p = nullptr;
@@ -89,7 +91,7 @@ template <typename T, typename U>
 ier::Derived<T, U>::~Derived(void)
 {
 #ifdef DEBUG
-	cout << "Derived::~Derived() -> " << *this << endl;
+	std::cout << "Derived::~Derived() -> " << *this << std::endl;
 #endif
 
 	delete p;
@@ -100,7 +102,7 @@ decltype(auto)
 ier::Derived<T, U>::operator = (const Derived& x)
 {
 #ifdef DEBUG
-	cout << "Derived::operator = (" << x << "): " << *this << " -> ";
+	std::cout << "Derived::operator = (" << x << "): " << *this << " -> ";
 #endif
 
 	get() = x;
@@ -108,7 +110,7 @@ ier::Derived<T, U>::operator = (const Derived& x)
 	p = x.p ? new U(*x.p) : nullptr;
 
 #ifdef DEBUG
-	cout << *this << endl;
+	std::cout << *this << std::endl;
 #endif
 
 	return *this;
@@ -119,7 +121,7 @@ decltype(auto)
 ier::Derived<T, U>::operator = (Derived&& x)
 {
 #ifdef DEBUG
-	cout << "Derived::operator = (&&" << x << "): " << *this << " -> ";
+	std::cout << "Derived::operator = (&&" << x << "): " << *this << " -> ";
 #endif
 
 	get() = x;
@@ -128,7 +130,7 @@ ier::Derived<T, U>::operator = (Derived&& x)
 	x.p = nullptr;
 
 #ifdef DEBUG
-	cout << *this << endl;
+	std::cout << *this << std::endl;
 #endif
 
 	return *this;
@@ -139,20 +141,20 @@ void
 ier::Derived<T, U>::Print(void)
 const
 {
-	Derived::PrintSpace(cout) << *this;
+	Derived::PrintSpace(std::cout) << *this;
 }
 
 template <typename T, typename U>
 auto
-ier::Derived<T, U>::PrintBraces(ostream& s)
+ier::Derived<T, U>::PrintBraces(std::ostream& s)
 const
--> ostream&
+-> std::ostream&
 {
 	Base<T>::PrintBraces(s << '{') << ' ';
 
-	if constexpr(is_floating_point_v<U>)
+	if constexpr(std::is_floating_point_v<U>)
 	{
-		s << showpoint << setprecision(PRECISION);
+		s << std::showpoint << std::setprecision(PRECISION);
 	}
 
 	s << Value() << '}';
@@ -169,7 +171,9 @@ const
 
 template <typename T, typename U>
 decltype(auto)
-ier::operator << (ostream& s, const Derived<T, U> &x)
+ier::operator << (
+	std::ostream& s,
+	const Derived<T, U> &x)
 {
 	return x.PrintBraces(s);
 }

@@ -56,6 +56,7 @@ main(void)
 	{
 		v.Print();
 	});
+
 	std::cout << std::endl;
 	return EXIT_SUCCESS;
 }

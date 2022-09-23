@@ -6,10 +6,12 @@
 #include <string.h>
 #include <stdbool.h>
 
-int main(void)
+int
+main(void)
 {
 	const char* ifname = "in.txt";
 	FILE* ifs = fopen(ifname, "rt");
+
 	if(!ifs)
 	{
 		fprintf(stderr, "Error: can't open file \"%s\"\n", ifname);
@@ -18,6 +20,7 @@ int main(void)
 
 	const char* ofname = "encode.txt";
 	FILE* ofs = fopen(ofname, "wt");
+
 	if(!ofs)
 	{
 		fprintf(stderr, "Error: can't create file \"%s\"\n", ofname);
@@ -28,10 +31,12 @@ int main(void)
 	memset(w, '\0', MAXSIZE);
 	bool first = true;
 	const unsigned SECONDS = 60;
+
 	while(fscanf(ifs, "%s", w) != EOF)
 	{
 		const char* p = w;
 		size_t l = strlen(p);
+
 		if(l > TOKENSIZE)
 		{
 			printf("%s [%zx]: ", p, l);
@@ -52,6 +57,7 @@ int main(void)
 		}
 
 		bool first = true;
+
 		while(l)
 		{
 			time_t start;
@@ -86,6 +92,7 @@ int main(void)
 			const unsigned minutes = duration % SECONDS ;
 			duration /= SECONDS ;
 			const unsigned hours = duration;
+
 			if(hours)
 			{
 				printf("%u hours ", hours);
@@ -94,8 +101,10 @@ int main(void)
 			{
 				printf("%u min ", minutes);
 			}
+
 			printf("%u sec]", seconds);
 		}
+
 		putchar('\n');
 	}
 

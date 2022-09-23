@@ -3,7 +3,7 @@
 #include <cmath>
 
 double
-geom::triangle::area(void)
+gen::triangle::area(void)
 const
 {
 	const auto pp(perimeter() / 2);

@@ -4,10 +4,12 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-int main(void)
+int
+main(void)
 {
 	const char* ifname = "encode.txt";
 	FILE* ifs = fopen(ifname, "rt");
+
 	if(!ifs)
 	{
 		fprintf(stderr, "Error: can't open file \"%s\"\n", ifname);
@@ -16,6 +18,7 @@ int main(void)
 
 	const char* ofname = "decode.txt";
 	FILE* ofs = fopen(ofname, "wt");
+
 	if(!ofs)
 	{
 		fprintf(stderr, "Error: can't create file \"%s\"\n", ofname);
@@ -24,6 +27,7 @@ int main(void)
 
 	bool first = true;
 	unsigned n = 0;
+
 	while(fscanf(ifs, "%x", &n) != EOF)
 	{
 		if(first)

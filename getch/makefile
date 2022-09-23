@@ -9,7 +9,7 @@ $(TARGET): $(OBJLIST)
 	$(CC) $(CFLAGS) -o $@ $^
 
 .cpp.o:
-	$(CC) $(CFLAGS) -c -o $@ $<
+	$(CC) $(CFLAGS) -o $@ -c $<
 
 allclean: clean
 	$(RM) $(TARGET)

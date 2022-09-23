@@ -6,12 +6,12 @@
 int
 main(void)
 {
-	std::vector<const geom::figure*> v
+	std::vector<const gen::figure*> v
 	{
-		new geom::circle{3},
-		new geom::triangle{3, 4, 5},
-		new geom::square{3},
-		new geom::rectangle{3, 4}
+		new gen::circle{3},
+		new gen::triangle{3, 4, 5},
+		new gen::square{3},
+		new gen::rectangle{3, 4}
 	};
 	print(v);
 	for(auto x: v)
@@ -21,4 +21,4 @@ main(void)
 	return EXIT_SUCCESS;
 }
 
-const double geom::figure::PI(3.1415926);
+const double gen::figure::PI(3.1415926);

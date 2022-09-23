@@ -1,10 +1,12 @@
 #include "rainbow.hpp"
 
 auto
-rain::get(const rainbow& r)
+rain::get(
+	const rainbow& r)
 -> string_view
 {
 	string_view ret;
+
 	switch(r)
 	{
 	case rain::RED:
@@ -31,5 +33,6 @@ rain::get(const rainbow& r)
 	default:
 		ret = "Error";
 	}
+
 	return ret;
 }

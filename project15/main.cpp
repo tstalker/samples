@@ -4,7 +4,8 @@
 #include <array>
 #include <iterator>
 
-int main(void)
+int
+main(void)
 {
 	try
 	{

@@ -4,12 +4,12 @@
 
 #include <cmath>
 
-namespace geom
+namespace gen
 {
 	class circle;
 }
 
-class geom::circle final:
+class gen::circle final:
 	public figure
 {
 public:

@@ -3,7 +3,8 @@
 
 #include <vector>
 
-int main(void)
+int
+main(void)
 {
 	std::vector <ghi*> v;
 	v.push_back(new abc("abcde"));

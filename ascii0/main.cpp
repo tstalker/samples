@@ -1,7 +1,8 @@
 #include <limits>
 #include <iostream>
 
-int main(void)
+int
+main(void)
 {
 	auto first(true);
 	for(short c(std::numeric_limits<char>::min()); c <= std::numeric_limits<char>::max(); c++)

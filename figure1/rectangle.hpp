@@ -2,12 +2,12 @@
 
 #include "figure.hpp"
 
-namespace geom
+namespace gen
 {
 	class rectangle;
 }
 
-class geom::rectangle final:
+class gen::rectangle final:
 	public figure
 {
 public:

@@ -5,7 +5,7 @@
 #include <functional>
 #include <string_view>
 
-namespace geom
+namespace gen
 {
 	using namespace std;
 	class figure;
@@ -14,7 +14,7 @@ namespace geom
 	void print(const vector<const figure*>&);
 }
 
-class geom::figure
+class gen::figure
 {
 public:
 	figure(void)

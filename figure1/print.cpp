@@ -4,7 +4,7 @@
 #include <iterator>
 
 void
-geom::print(const vector<const figure*> &v)
+gen::print(const vector<const figure*> &v)
 {
 	for(const auto& p: v)
 	{
@@ -13,7 +13,7 @@ geom::print(const vector<const figure*> &v)
 }
 
 void
-geom::print(const figure* p)
+gen::print(const figure* p)
 {
 	cout << p->getname() << " {";
 	auto first(true);

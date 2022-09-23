@@ -1,6 +1,7 @@
 #include <iostream>
 
-int main(void)
+int
+main(void)
 {
 	const unsigned short x(1); // 0x0001
 	auto p(reinterpret_cast<const unsigned char*>(&x));

@@ -10,7 +10,7 @@ namespace prn
 {
 	using namespace gen;
 template <typename T>
-	using list_type = pair<string_view, function<void(const T&)>>;
+	using list_type = std::pair<std::string_view, std::function<void(const T&)>>;
 
 template <typename T>
 	void Print(const T&);
@@ -22,7 +22,7 @@ template <typename T>
 	void PrintCopy(const T&);
 
 template <typename T>
-	const vector<list_type<T>> lst
+	const std::vector<list_type<T>> lst
 	{
 		{"for ", PrintFor<T>},
 		{"each", PrintEach<T>},
@@ -36,10 +36,10 @@ prn::Print(const T& v)
 {
 	for(auto& f: lst<T>)
 	{
-		cout << f.first << ": ";
+		std::cout << f.first << ": ";
 		f.second(v);
 		TW<T>::FlagSpace.reset();
-		cout << endl;
+		std::cout << std::endl;
 	}
 }
 
@@ -49,7 +49,7 @@ prn::PrintFor(const T& v)
 {
 	for(auto& x: v)
 	{
-		invoke(&TW<T>::Print, x);
+		std::invoke(&TW<T>::Print, x);
 	}
 }
 
@@ -57,14 +57,14 @@ template <typename T>
 void
 prn::PrintEach(const T& v)
 {
-	auto fn(mem_fn(&TW<T>::Print));
-	for_each(v.cbegin(), v.cend(), fn);
+	auto fn(std::mem_fn(&TW<T>::Print));
+	std::for_each(v.cbegin(), v.cend(), fn);
 }
 
 template <typename T>
 void
 prn::PrintCopy(const T& v)
 {
-	auto it(ostream_iterator<TV<T>>(cout, " "));
-	copy(v.cbegin(), v.cend(), it);
+	auto it(std::ostream_iterator<TV<T>>(std::cout, " "));
+	std::copy(v.cbegin(), v.cend(), it);
 }

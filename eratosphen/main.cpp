@@ -1,15 +1,18 @@
+#include "generic.hpp"
+
 #include <vector>
 #include <numeric>
 #include <iostream>
 #include <iterator>
 #include <functional>
 
-const std::size_t MAX(10000);
+const gen::type MAX(10000);
 
-int main(void)
+int
+main(void)
 {
-	std::vector<unsigned> v(MAX);
-	std::iota(v.begin(), v.end(), unsigned());
+	std::vector<gen::type> v(MAX);
+	std::iota(v.begin(), v.end(), gen::type());
 
 	for(const auto& x: v)
 	{
@@ -19,14 +22,14 @@ int main(void)
 		}
 		for(std::size_t i(2 * x); i < v.size(); i += x)
 		{
-			v[i] = unsigned();
+			v[i] = gen::type();
 		}
 	}
 
-	std::vector<unsigned> w;
-	auto fn(std::bind(std::not_equal_to<unsigned>(), std::placeholders::_1, unsigned()));
+	std::vector<gen::type> w;
+	auto fn(std::bind(std::not_equal_to<gen::type>(), std::placeholders::_1, gen::type()));
 	std::copy_if(v.cbegin(), v.cend(), std::back_inserter(w), fn);
-	auto it(std::ostream_iterator<unsigned>(std::cout, " "));
+	auto it(std::ostream_iterator<gen::type>(std::cout, " "));
 	std::copy(w.cbegin(), w.cend(), it);
 	std::cout << std::endl;
 	return EXIT_SUCCESS;

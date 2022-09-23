@@ -1,7 +1,9 @@
 #include "figure.hpp"
 
 auto
-geo::operator << (ostream& o, const figure& f)
+geo::operator << (
+	ostream& o,
+	const figure& f)
 -> ostream&
 {
 	switch(f.t)

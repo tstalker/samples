@@ -1,14 +1,13 @@
-#ifdef LINKEDLIST_HPP
-#error Redefined header linkedlist.hpp
-#endif
+#pragma once
 
-#define LINKEDLIST_HPP
-
-#ifndef ELEMENT_HPP
 #include "element.hpp"
-#endif
 
-class LinkedList
+namespace gen
+{
+	class LinkedList;
+}
+
+class gen::LinkedList
 {
 public:
 	LinkedList(void)
@@ -28,5 +27,5 @@ public:
 	void RemoveFirst(void);
 
 private:
-	Element* Base {nullptr};
+	Element* Base{nullptr};
 };

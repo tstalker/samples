@@ -5,17 +5,18 @@
 
 namespace job
 {
-	using namespace std;
-
 template <typename T>
-	void Work(T&, const unsigned&, string_view);
+	void Work(T&, const unsigned&, std::string_view);
 }
 
 template <typename T>
 void
-job::Work(T& v, const unsigned& n, string_view s)
+job::Work(
+	T& v,
+	const unsigned& n,
+	std::string_view s)
 {
-	cout << s << ':' << endl;
+	std::cout << s << ':' << std::endl;
 	ini::Init(v, n);
 	prn::Print(v);
 }

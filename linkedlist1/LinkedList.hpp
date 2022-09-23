@@ -2,7 +2,12 @@
 
 #include "Element.hpp"
 
-class LinkedList
+namespace gen
+{
+	class LinkedList;
+}
+
+class gen::LinkedList
 {
 public:
 	LinkedList(void)
@@ -22,5 +27,6 @@ public:
 	void RemoveLast(void);
 
 private:
-	Element *First{nullptr}, *Last{nullptr};
+	Element* First{nullptr};
+	Element* Last{nullptr};
 };

@@ -1,8 +1,10 @@
 #include "linkedlist.hpp"
 
-int main(void)
+int
+main(void)
 {
-	LinkedList x;
+	gen::LinkedList x;
+
 	for(int i{}; i < 2; i++)
 	{
 		x.AddLast(i);

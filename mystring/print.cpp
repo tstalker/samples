@@ -1,7 +1,9 @@
 #include "mystring.hpp"
 
 auto
-gen::operator << (ostream& o, const mystring& s)
+gen::operator << (
+	ostream& o,
+	const mystring& s)
 -> ostream&
 {
 	o << '[' << s.size << ' ';

@@ -3,7 +3,8 @@
 
 #include <new>
 
-int main(void)
+int
+main(void)
 {
 	try
 	{
@@ -14,12 +15,14 @@ int main(void)
 		{
 			std::cout << s(i);
 		}
+
 		std::cout << std::endl;
 
 		for(const auto& c: s)
 		{
 			std::cout << c;
 		}
+
 		std::cout << std::endl;
 		return EXIT_SUCCESS;
 	}

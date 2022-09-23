@@ -2,7 +2,9 @@
 
 #include <cmath>
 
-auto fib::bine(culong n)
+auto
+fib::bine(
+	culong n)
 -> ulong
 {
 	static constexpr auto sqrt5(sqrt(5));

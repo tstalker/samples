@@ -27,7 +27,8 @@ private:
 
 public:
 	decltype(auto)
-	get(void) const
+	get(void)
+	const
 	{
 		return *this;
 	}
