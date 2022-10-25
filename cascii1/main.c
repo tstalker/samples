@@ -4,8 +4,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-int
-main(void)
+int main(void)
 {
 	bool first = true;
 
@@ -22,7 +21,6 @@ main(void)
 			putchar(' ');
 		}
 	}
-
 	putchar('\n');
 	return EXIT_SUCCESS;
 }

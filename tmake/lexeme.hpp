@@ -7,17 +7,16 @@
 
 namespace tmk
 {
-	using namespace std;
 	class lexeme;
 }
 
 class tmk::lexeme
 {
 public:
-	lexeme(const lextype& type, const string& word): type(type), word(word)
+	lexeme(const lextype& type, const std::string& word): type(type), word(word)
 	{}
 
-	lexeme(ifstream&);
+	lexeme(std::ifstream&);
 	lexeme(const lexeme&) = delete;
 	lexeme(lexeme&&) = delete;
 	lexeme& operator = (const lexeme&) = delete;
@@ -32,5 +31,5 @@ public:
 
 private:
 	lextype type;
-	string word;
+	std::string word;
 };

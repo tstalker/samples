@@ -1,8 +1,9 @@
 #include "header.h"
 
-int cmpfwd(const void* pv0, const void* pv1)
+int cmpfwd(cpvoid pv0, cpvoid pv1)
 {
-	const int *pi0 = pv0, *pi1 = pv1;
-	const int ret = *pi0 - *pi1;
+	cpint pi0 = pv0;
+	cpint pi1 = pv1;
+	cint ret = *pi0 - *pi1;
 	return ret;
 }

@@ -5,7 +5,6 @@
 int main(void)
 {
 	init();
-
 	culong MAX = 30ul;
 	const deffn v[] =
 	{
@@ -22,4 +21,5 @@ int main(void)
 	return EXIT_SUCCESS;
 }
 
-double phi, sqrt5;
+double phi;
+double sqrt5;

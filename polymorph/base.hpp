@@ -13,11 +13,14 @@ namespace gen
 class gen::base
 {
 public:
-	explicit base(const double f):
+	explicit
+	base(
+		const double f):
 		f(f)
 	{}
 
-	virtual ~base(void)
+	virtual
+	~base(void)
 	{}
 
 private:

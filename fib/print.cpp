@@ -8,9 +8,11 @@ fib::print(
 	const ulong n)
 {
 	cout << f.first << ':';
+
 	for(ulong i{}; i < n; i++)
 	{
 		cout << ' ' << f.second(i);
 	}
+
 	cout << endl;
 }

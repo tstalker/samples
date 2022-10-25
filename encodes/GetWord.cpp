@@ -2,8 +2,7 @@
 
 #include <random>
 
-auto gen::GetWord(const unsigned& n)
--> string
+auto gen::GetWord(const unsigned& n) -> string
 {
 	mt19937 mt(n);
 	static uniform_int_distribution<char> ud('a', 'z' + 1);

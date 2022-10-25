@@ -1,18 +1,15 @@
 #pragma once
 
-#include "generic.hpp"
-
 #include <vector>
 
 namespace gen
 {
 template <typename T>
-	void bubble(vector<T>&);
+	void bubble(std::vector<T>&);
 }
 
 template <typename T>
-void
-gen::bubble(vector<T> &v)
+void gen::bubble(std::vector<T> &v)
 {
 	for(auto& x: v)
 	{
@@ -20,7 +17,7 @@ gen::bubble(vector<T> &v)
 		{
 			if(x < y)
 			{
-				swap(x, y);
+				std::swap(x, y);
 			}
 		}
 	}

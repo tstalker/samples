@@ -1,7 +1,5 @@
 #pragma once
 
-#include "generic.hpp"
-
 #include <cmath>
 #include <vector>
 #include <iostream>
@@ -10,27 +8,25 @@
 namespace gen
 {
 template <typename T>
-	decltype(auto)
-	operator << (ostream&, const vector<T>&);
+	decltype(auto) operator << (std::ostream&, const std::vector<T>&);
 }
 
 template <typename T>
-decltype(auto)
-gen::operator << (ostream& o, const vector<T> &v)
+decltype(auto) gen::operator << (std::ostream& o, const std::vector<T> &v)
 {
-	auto it(ostream_iterator<T>(o, " "));
-	if constexpr(is_integral_v<T>)
+	auto it(std::ostream_iterator<T>(o, " "));
+	if constexpr(std::is_integral_v<T>)
 	{
-		copy(v.cbegin(), v.cend(), it);
+		std::copy(v.cbegin(), v.cend(), it);
 	}
 	else
 	{
-		transform(v.cbegin(), v.cend(), it,
+		std::transform(v.cbegin(), v.cend(), it,
 		[](const T& x)
 		-> T
 		{
 			const auto order(1.e2);
-			const auto y(round(x * order));
+			const auto y(std::round(x * order));
 			const auto z(y / order);
 			return z;
 		});

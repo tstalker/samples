@@ -9,11 +9,16 @@ namespace gen
 	ostream& operator << (ostream&, const derived&);
 }
 
-class gen::derived final:
+class gen::derived
+	final:
 	public base
 {
 public:
-	derived(const double f, const int i): base(f), i(i)
+	derived(
+		const double f,
+		const int i):
+		base(f),
+		i(i)
 	{}
 
 	~derived(void)

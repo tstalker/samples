@@ -34,13 +34,15 @@ public:
 		cout << "mystring::mystring() -> " << *this << endl;
 	}
 
-	mystring(const char* s):
+	mystring(
+		const char* s):
 		mystring(estimsize(s), s)
 	{
 		cout << "mystring::mystring(const char* \"" << cstr(s) << "\") -> " << *this << endl;
 	}
 
-	mystring(const mystring& s):
+	mystring(
+		const mystring& s):
 		mystring(s.size, s.ptr)
 	{
 		cout << "mystring::mystring(const mystring& " << s << ") -> " << *this << endl;
@@ -53,25 +55,29 @@ private:
 	void out(ostream& = cout) const;
 
 	static char*
-	alloc(const std::size_t sz)
+	alloc(
+		const std::size_t sz)
 	{
 		return sz ? new char[sz]{} : nullptr;
 	}
 
 	size_t
-	estimsize(const char* s)
+	estimsize(
+		const char* s)
 	{
 		return s ? strlen(s) : size_t();
 	}
 
 	void
-	copy(const mystring& s)
+	copy(
+		const mystring& s)
 	{
 		copy(s.ptr);
 	}
 
 	void
-	copy(const char* s)
+	copy(
+		const char* s)
 	{
 		copy_n(s, size, ptr);
 	}

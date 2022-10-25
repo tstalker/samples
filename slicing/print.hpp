@@ -31,8 +31,7 @@ template <typename T>
 }
 
 template <typename T>
-void
-prn::Print(const T& v)
+void prn::Print(const T& v)
 {
 	for(auto& f: lst<T>)
 	{
@@ -44,8 +43,7 @@ prn::Print(const T& v)
 }
 
 template <typename T>
-void
-prn::PrintFor(const T& v)
+void prn::PrintFor(const T& v)
 {
 	for(auto& x: v)
 	{
@@ -54,16 +52,14 @@ prn::PrintFor(const T& v)
 }
 
 template <typename T>
-void
-prn::PrintEach(const T& v)
+void prn::PrintEach(const T& v)
 {
 	auto fn(std::mem_fn(&TW<T>::Print));
 	std::for_each(v.cbegin(), v.cend(), fn);
 }
 
 template <typename T>
-void
-prn::PrintCopy(const T& v)
+void prn::PrintCopy(const T& v)
 {
 	auto it(std::ostream_iterator<TV<T>>(std::cout, " "));
 	std::copy(v.cbegin(), v.cend(), it);

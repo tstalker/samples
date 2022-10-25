@@ -1,18 +1,15 @@
 #pragma once
 
-#include "generic.hpp"
-
 #include <vector>
 
 namespace gen
 {
 template <typename T>
-	void shell(vector<T>&);
+	void shell(std::vector<T>&);
 }
 
 template <typename T>
-void
-gen::shell(vector<T> &v)
+void gen::shell(std::vector<T> &v)
 {
 	for(auto gap(v.size() - 1); gap; gap = gap > 2 ? (gap + 2) / 2 : gap / 2)
 	{

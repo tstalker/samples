@@ -18,7 +18,6 @@ decision decision_get(cpvector_int pv)
 	{
 		sz -= 2;
 	}
-
 	dv.cinit(&dv, dd, sz);
 	cdecision ret = map(&dv, pv);
 	return ret;

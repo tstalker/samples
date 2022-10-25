@@ -5,8 +5,7 @@ namespace token
 	enum class decision: char;
 }
 
-enum class token::decision:
-	char
+enum class token::decision: char
 {
 	END = 1,
 	LEFT,

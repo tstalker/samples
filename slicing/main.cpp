@@ -14,8 +14,7 @@ template <typename T>
 	std::vector<T> v;
 }
 
-int
-main(void)
+int main(void)
 {
 	const auto MAX(10u);
 	job::Work(job::v<ier::Base<ini::TypeBase>>, MAX, "Base");
@@ -23,6 +22,4 @@ main(void)
 	return EXIT_SUCCESS;
 }
 
-template <typename T>
-std::optional<bool>
-ier::Base<T>::FlagSpace;
+template <typename T> std::optional<bool> ier::Base<T>::FlagSpace;

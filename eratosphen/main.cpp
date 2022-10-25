@@ -8,8 +8,7 @@
 
 const gen::type MAX(10000);
 
-int
-main(void)
+int main(void)
 {
 	std::vector<gen::type> v(MAX);
 	std::iota(v.begin(), v.end(), gen::type());

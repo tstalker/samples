@@ -1,7 +1,6 @@
 #include "Generic.hpp"
 
-auto gen::GetTime(const chrono::time_point<chrono::system_clock> &Start)
--> string
+auto gen::GetTime(const chrono::time_point<chrono::system_clock> &Start) -> string
 {
 	const auto Finish(chrono::system_clock::now());
 	auto Duration(Finish - Start);

@@ -2,7 +2,6 @@
 
 namespace gen
 {
-	using namespace std;
 	class A;
 	class B;
 	class C;
@@ -45,7 +44,7 @@ public:
 
 	void Print(void) const
 	{
-		cout << "B::Print(): " << x << endl;
+		std::cout << "B::Print(): " << x << std::endl;
 	}
 
 	friend void fn(const B*);
@@ -68,7 +67,7 @@ public:
 
 	void Print(void) const
 	{
-		cout << "C::Print(): " << x << endl;
+		std::cout << "C::Print(): " << x << std::endl;
 	}
 
 	friend void fn(const C*);
@@ -89,7 +88,7 @@ public:
 
 	void Print(void) const
 	{
-		cout << "D::Print(): " << x << endl;
+		std::cout << "D::Print(): " << x << std::endl;
 	}
 
 	friend void fn(const D*);

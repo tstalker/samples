@@ -3,26 +3,23 @@
 
 namespace prn
 {
-	using namespace std;
-
-	string operator "" _s(const char*, const size_t);
+	std::string operator "" _s(const char*, const std::size_t);
 	void print(void);
 	template <typename T> void print(const T&);
 	template <typename T, typename...U> void print(const T&, const U&...);
 }
 
-auto
-prn::operator "" _s(const char* s, const size_t N)
--> string
+std::string
+prn::operator "" _s(const char* s, const std::size_t N)
 {
-	return string(s, N);
+	return std::string(s, N);
 }
 
 using prn::operator "" _s;
 
 void prn::print(void)
 {
-	cout << endl;
+	std::cout << std::endl;
 }
 
 template <typename...T>
@@ -35,14 +32,14 @@ void print(const T&...t)
 template <typename T>
 void prn::print(const T &t)
 {
-	cout << t;
+	std::cout << t;
 }
 
 template <typename T, typename...U>
 void prn::print(const T &t, const U&...u)
 {
 	print(t);
-	cout << ", ";
+	std::cout << ", ";
 	print(u...);
 }
 

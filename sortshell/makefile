@@ -1,6 +1,6 @@
 TARGET = work
 OBJ = main.o
-DEPENDS = generic.hpp init.hpp print.hpp shell.hpp makefile
+DEPENDS = init.hpp print.hpp shell.hpp makefile
 CC = c++
 CFLAGS = -march=native -O3 -pipe -std=c++23 -Wall -Werror -Winline
 STRIP = strip

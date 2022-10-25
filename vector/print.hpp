@@ -6,16 +6,14 @@
 
 namespace prn
 {
-	using namespace std;
-
 template <typename T>
-	void print(const vector<T>&);
+	void print(const std::vector<T>&);
 }
 
 template <typename T>
-void prn::print(const vector<T> &v)
+void prn::print(const std::vector<T> &v)
 {
-	auto it(ostream_iterator<T>(cout, " "));
-	copy(v.cbegin(), v.cend(), it);
-	cout << endl;
+	auto it(std::ostream_iterator<T>(std::cout, " "));
+	std::copy(v.cbegin(), v.cend(), it);
+	std::cout << std::endl;
 }

@@ -6,20 +6,18 @@
 
 namespace prn
 {
-	using namespace std;
-
-template <typename T, size_t N>
+template <typename T, std::size_t N>
 	using type = const T(&)[N];
 
-template <typename T, size_t N>
+template <typename T, std::size_t N>
 	void print(type<T, N>);
 }
 
-template <typename T, size_t N>
+template <typename T, std::size_t N>
 void prn::print(type<T, N> x)
 {
-	cout << showpoint << setprecision(2);
-	auto it(ostream_iterator<T>(cout, " "));
-	copy(cbegin(x), cend(x), it);
-	cout << endl;
+	std::cout << std::showpoint << std::setprecision(2);
+	auto it(std::ostream_iterator<T>(std::cout, " "));
+	std::copy(std::cbegin(x), std::cend(x), it);
+	std::cout << std::endl;
 }

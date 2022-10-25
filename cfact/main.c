@@ -3,8 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int
-main(void)
+int main(void)
 {
 	const unsigned MAX = 21;
 
@@ -13,6 +12,5 @@ main(void)
 		const ull x = fact(i);
 		printf("%2u: %llu\n", i, x);
 	}
-
 	return EXIT_SUCCESS;
 }

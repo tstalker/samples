@@ -2,7 +2,7 @@
 
 void token::decision_step(const decision d, ivector& v)
 {
-	const size_t MAX(2);
+	const std::size_t MAX(2);
 	switch(d)
 	{
 	default:
@@ -16,7 +16,7 @@ void token::decision_step(const decision d, ivector& v)
 		v.pop_back();
 		break;
 	case decision::LEFT_LEFT:
-		for(size_t i{}; i < MAX; i++)
+		for(std::size_t i{}; i < MAX; i++)
 		{
 			decision_step(decision::LEFT, v);
 		}
@@ -26,7 +26,7 @@ void token::decision_step(const decision d, ivector& v)
 		decision_step(decision::RIGHT, v);
 		break;
 	case decision::RIGHT_RIGHT:
-		for(size_t i{}; i < MAX; i++)
+		for(std::size_t i{}; i < MAX; i++)
 		{
 			decision_step(decision::RIGHT, v);
 		}

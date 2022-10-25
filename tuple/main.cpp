@@ -4,7 +4,7 @@
 #include <iostream>
 
 inline auto
-operator "" _s(const char *s, const size_t n)
+operator "" _s(const char *s, const std::size_t n)
 {
 	return std::string(s, n);
 }

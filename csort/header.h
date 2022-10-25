@@ -3,15 +3,21 @@
 #include <stddef.h>
 #include <stdbool.h>
 
+typedef int* pint;
+typedef const int cint;
+typedef cint* cpint;
+typedef const void* cpvoid;
+typedef const size_t csizet;
+
 typedef struct
 {
-	int* data;
+	pint data;
 	size_t size;
 }
 vector;
 
-int cmpfwd(const void*, const void*);
-int cmprev(const void*, const void*);
-bool find(const vector*, const int);
+int cmpfwd(cpvoid, cpvoid);
+int cmprev(cpvoid, cpvoid);
+bool find(const vector*, cint);
 void init(vector*);
 void print(const vector*);

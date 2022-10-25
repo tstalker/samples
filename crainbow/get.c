@@ -1,9 +1,10 @@
 #include "rainbow.h"
 
-const char*
-get(const rainbow r)
+#include <stddef.h>
+
+const char* get(const rainbow r)
 {
-	const char* ret;
+	const char* ret = NULL;
 	switch(r)
 	{
 	case RED:

@@ -2,8 +2,7 @@
 
 #include <iostream>
 
-double
-gen::primary(void) // read and evaluate a Primary
+double gen::primary(void) // read and evaluate a Primary
 {
 	auto t(gettoken());
 

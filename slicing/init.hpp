@@ -24,45 +24,35 @@ template <typename T>
 }
 
 template <typename T>
-void
-ini::Init(
-	T& v,
-	const unsigned& n)
+void ini::Init(T& v, const unsigned& n)
 {
 	std::generate_n(std::back_inserter(v), n,
-	[i{0u}](void)
-	mutable
+	[i{0u}](void) mutable
 	{
 		return InitBase<TV<T>>(i);
 	});
 }
 
 template <typename T>
-auto
-ini::InitBase(unsigned& i)
--> TI<T>
+auto ini::InitBase(unsigned& i) -> TI<T>
 {
 	return InitDerived<T>(i);
 }
 
 template <typename T>
-auto
-ini::InitBase(unsigned& i)
--> TN<T>
+auto ini::InitBase(unsigned& i) -> TN<T>
 {
 	return make_unique_v(InitDerived<TE<T>>(i));
 }
 
 template <typename T>
-auto
-ini::make_unique_v(const T& x)
+auto ini::make_unique_v(const T& x)
 {
 	return std::make_unique<T>(x);
 }
 
 template <typename T>
-auto
-ini::InitDerived(unsigned& i)
+auto ini::InitDerived(unsigned& i)
 {
 	const auto f(1.1f);
 	const auto j(i++);

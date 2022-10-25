@@ -5,10 +5,9 @@
 
 namespace big
 {
-	using namespace std;
 	using ztype = unsigned char;
 	class zint;
-	ostream& operator << (ostream&, const zint&);
+	std::ostream& operator << (std::ostream&, const zint&);
 }
 
 class big::zint
@@ -32,9 +31,9 @@ private:
 	zint& decrement(void);
 
 	bool sign{true};
-	vector<ztype> v;
+	std::vector<ztype> v;
 
-	friend ostream& operator << (ostream&, const zint&);
+	friend std::ostream& operator << (std::ostream&, const zint&);
 };
 
 using big::operator <<;

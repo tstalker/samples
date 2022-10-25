@@ -2,7 +2,7 @@ TARGET = work
 OBJ = main.o
 DEPENDS = makefile
 CC = clang++
-CFLAGS = -march=native -O3 -pipe -std=c++2b -Wall -Werror -Winline
+CFLAGS = -O3 -pipe -std=c++2b -Wall -Werror -Winline
 STRIP = strip
 
 all: $(TARGET)
@@ -12,7 +12,7 @@ $(TARGET): $(OBJ)
 	$(STRIP) $@
 
 .cpp.o:
-	$(CC) $(CFLAGS) -c -o $@ $<
+	$(CC) $(CFLAGS) -o $@ -c $<
 
 allclean: clean
 	$(RM) $(TARGET)

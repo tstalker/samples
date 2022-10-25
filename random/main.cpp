@@ -4,8 +4,7 @@
 #include <iostream>
 #include <iterator>
 
-int
-main(void)
+int main(void)
 {
 	std::array <short, 10> z;
 	std::iota(z.begin(), z.end(), decltype(z)::value_type());

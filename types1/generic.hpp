@@ -4,9 +4,7 @@
 
 namespace gen
 {
-	using namespace std;
-
 template <typename T>
 	using tchar =
-	conditional_t<is_signed_v<T>, int, unsigned>;
+	std::conditional_t<std::is_signed_v<T>, int, unsigned>;
 }

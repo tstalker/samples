@@ -4,7 +4,5 @@
 
 namespace prn
 {
-	using namespace std;
-
-	void print(string_view, ...);
+	void print(std::string_view, ...);
 }

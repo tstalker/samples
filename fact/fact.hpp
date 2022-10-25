@@ -32,7 +32,8 @@ public:
 };
 
 constexpr auto
-prn::fact(const ull x)
+prn::fact(
+	const ull x)
 -> ull
 {
 	return x ? x * fact(x - 1) : 1;

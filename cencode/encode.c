@@ -6,8 +6,7 @@
 #include <string.h>
 #include <stdbool.h>
 
-int
-main(void)
+int main(void)
 {
 	const char* ifname = "in.txt";
 	FILE* ifs = fopen(ifname, "rt");
@@ -101,13 +100,10 @@ main(void)
 			{
 				printf("%u min ", minutes);
 			}
-
 			printf("%u sec]", seconds);
 		}
-
 		putchar('\n');
 	}
-
 	fclose(ifs);
 	fclose(ofs);
 	return EXIT_SUCCESS;

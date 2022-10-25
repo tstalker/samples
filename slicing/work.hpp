@@ -10,11 +10,7 @@ template <typename T>
 }
 
 template <typename T>
-void
-job::Work(
-	T& v,
-	const unsigned& n,
-	std::string_view s)
+void job::Work(T& v, const unsigned& n, std::string_view s)
 {
 	std::cout << s << ':' << std::endl;
 	ini::Init(v, n);

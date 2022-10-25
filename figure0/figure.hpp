@@ -13,7 +13,8 @@ namespace geo
 
 using geo::operator <<;
 
-enum class geo::figure_type: char
+enum class geo::figure_type:
+	char
 {
 	NOT_FIGURE,
 	CIRCLE,

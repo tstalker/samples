@@ -5,22 +5,19 @@ typedef struct
 {
 	long l;
 	char c[10];
-}
-t1;
+} t1;
 
 typedef struct
 {
 	char c1[10];
 	char c2[10];
-}
-t2;
+} t2;
 
 typedef struct
 {
 	char c;
 	short s;
-}
-t3;
+} t3;
 
 void print1(const t1* p)
 {
@@ -45,7 +42,6 @@ int main(void)
 
 	const t1 z1 = {1234567890123456789l, "abcdefghi"};
 	const t2 z2 = {"abcdefghij", "klmnopqrst"};
-
 	putchar('\n');
 	print1(&z1);
 	putchar('\n');

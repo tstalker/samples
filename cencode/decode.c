@@ -4,8 +4,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-int
-main(void)
+int main(void)
 {
 	const char* ifname = "encode.txt";
 	FILE* ifs = fopen(ifname, "rt");
@@ -61,7 +60,6 @@ main(void)
 		putchar('\n');
 		fputc('\n', ofs);
 	}
-
 	fclose(ifs);
 	fclose(ofs);
 	return EXIT_SUCCESS;

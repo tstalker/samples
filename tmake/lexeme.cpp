@@ -2,12 +2,12 @@
 
 #include <cctype>
 
-tmk::lexeme(ifstream& f)
+tmk::lexeme(std::ifstream& f)
 {
 	while(!f.eof())
 	{
 		const auto c(f.get());
-		if(isalnum(c))
+		if(std::isalnum(c))
 			word += c;
 		else break;
 	}

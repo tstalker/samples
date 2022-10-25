@@ -5,9 +5,12 @@
 #include <iostream>
 
 int
-main(int argc, char* argv[])
+main(
+	int argc,
+	char* argv[])
 {
 	std::locale::global(std::locale("en_US.UTF-8"));
+
 	if(argc != 3)
 	{
 		std::wcout << "Usage: " << argv[0] << " <infile> <outfile>" << std::endl;
@@ -52,4 +55,6 @@ main(int argc, char* argv[])
 		std::wcout << x.first << '\t' << x.second << std::endl;
 		outf << x.first << '\t' << x.second << std::endl;
 	}
+
+	return EXIT_SUCCESS;
 }

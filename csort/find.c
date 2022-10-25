@@ -1,6 +1,6 @@
 #include "header.h"
 
-bool find(const vector* v, const int x)
+bool find(const vector* v, cint x)
 {
 	bool ret = false;
 

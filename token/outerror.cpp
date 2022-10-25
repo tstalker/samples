@@ -2,6 +2,6 @@
 
 void token::outerror(const char* s)
 {
-	cerr << "Error: " << s << endl;
-	exit(EXIT_FAILURE);
+	std::cerr << "Error: " << s << std::endl;
+	std::exit(EXIT_FAILURE);
 }

@@ -7,7 +7,7 @@ VECTOR(pair_decision_int)
 decision map(cpvector_decision pd, cpvector_int pv)
 {
 	pair_decision_int ss[pd->size(pd)];
-	vector_pair_decision_int sv = { .init = vector_init_pair_decision_int };
+	vector_pair_decision_int sv = {.init = vector_init_pair_decision_int};
 	sv.init(&sv, ss, sizeof ss / sizeof *ss);
 
 	for(size_t i = 0; i < sv.size(&sv); i++)

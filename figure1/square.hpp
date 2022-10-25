@@ -16,24 +16,32 @@ public:
 	square(void)
 	{}
 
-	square(const initializer_list<double> &z):
+	square(
+		const initializer_list<double> &z):
 		figure(z)
 	{}
 
-	~square(void) final
+	~square(void)
+	final
 	{}
 
-	double area(void) const final
+	double
+	area(void)
+	const final
 	{
 		return pow(v.front(), 2);
 	}
 
-	double perimeter(void) const final
+	double
+	perimeter(void)
+	const final
 	{
 		return 4 * v.front();
 	}
 
-	string_view getname(void) const final
+	string_view
+	getname(void)
+	const final
 	{
 		return name;
 	}

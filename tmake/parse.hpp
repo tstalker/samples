@@ -5,6 +5,6 @@
 
 namespace tmk
 {
-	void parse(ifstream&);
-	lexeme getlex(ifstream&);
+	void parse(std::ifstream&);
+	lexeme getlex(std::ifstream&);
 }

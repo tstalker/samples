@@ -1,7 +1,7 @@
 #include "token.hpp"
 
 auto token::decision_str(const decision d)
--> string_view
+-> std::string_view
 {
 	switch(d)
 	{

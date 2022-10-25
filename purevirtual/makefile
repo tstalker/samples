@@ -1,8 +1,8 @@
 TARGET = work
 OBJ = main.o
-DEPENDS = print.hpp makefile
+DEPENDS = makefile
 CC = c++
-CFLAGS = -march=native -O3 -pipe -std=c++23 -Wall -Werror -Winline
+CFLAGS = -O3 -pipe -std=c++23 -Wall -Werror -Winline
 STRIP = strip
 
 all: $(TARGET)

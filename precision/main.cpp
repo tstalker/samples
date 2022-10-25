@@ -4,8 +4,7 @@
 #include <iomanip>
 #include <iostream>
 
-int
-main(void)
+int main(void)
 {
 	const std::array src
 	{

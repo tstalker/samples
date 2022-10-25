@@ -16,24 +16,32 @@ public:
 	circle(void)
 	{}
 
-	circle(const initializer_list<double> &z):
+	circle(
+		const initializer_list<double> &z):
 		figure(z)
 	{}
 
-	~circle(void) final
+	~circle(void)
+	final
 	{}
 
-	double area(void) const final
+	double
+	area(void)
+	const final
 	{
 		return PI * pow(v.front(), 2);
 	}
 
-	double perimeter(void) const final
+	double
+	perimeter(void)
+	const final
 	{
 		return 2 * PI * v.front();
 	}
 
-	string_view getname(void) const final
+	string_view
+	getname(void)
+	const final
 	{
 		return name;
 	}

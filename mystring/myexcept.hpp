@@ -16,12 +16,16 @@ class gen::myoutrange:
 	public out_of_range
 {
 public:
-	myoutrange(const size_t i, const char* s):
+	myoutrange(
+		const size_t i,
+		const char* s):
 		out_of_range(s),
 		i(i)
 	{}
 
-	auto get(void) const
+	auto
+	get(void)
+	const
 	{
 		return i;
 	}

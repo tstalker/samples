@@ -18,22 +18,15 @@ template <typename T>
 }
 
 template <typename T>
-void
-prn::print(
-	const T v[],
-	const std::size_t n)
+void prn::print(const T v[], const std::size_t n)
 {
 	auto it(std::ostream_iterator<T>(std::cout, " "));
 	std::copy_n(v, n, it);
 	std::cout << std::endl;
 }
 
-template <
-	typename T,
-	std::size_t N>
-void
-prn::print(
-	const T(&v)[N])
+template <typename T, std::size_t N>
+void prn::print(const T(&v)[N])
 {
 	auto it(std::ostream_iterator<T>(std::cout, " "));
 	std::copy(std::cbegin(v), std::cend(v), it);
@@ -41,22 +34,15 @@ prn::print(
 }
 
 template <typename T>
-void
-prn::print(
-	const std::initializer_list<T> &v)
+void prn::print(const std::initializer_list<T> &v)
 {
 	auto it(std::ostream_iterator<T>(std::cout, " "));
 	std::copy(v.begin(), v.end(), it);
 	std::cout << std::endl;
 }
 
-template <
-	typename T,
-	std::size_t N>
-decltype(auto)
-prn::operator << (
-	std::ostream& o,
-	const T(&v)[N])
+template <typename T, std::size_t N>
+decltype(auto) prn::operator << (std::ostream& o, const T(&v)[N])
 {
 	auto it(std::ostream_iterator<T>(o, " "));
 	std::copy(std::cbegin(v), std::cend(v), it);
@@ -65,10 +51,7 @@ prn::operator << (
 }
 
 template <typename T>
-decltype(auto)
-prn::operator << (
-	std::ostream& o,
-	const std::initializer_list<T> &v)
+decltype(auto) prn::operator << (std::ostream& o, const std::initializer_list<T> &v)
 {
 	auto it(std::ostream_iterator<T>(o, " "));
 	std::copy(v.begin(), v.end(), it);

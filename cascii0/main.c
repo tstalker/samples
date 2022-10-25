@@ -4,8 +4,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-int
-main(void)
+int main(void)
 {
 	bool first = true;
 
@@ -14,6 +13,7 @@ main(void)
 		const char d = iscntrl(c) ? ' ' : c;
 		const unsigned char e = c;
 		printf("%c:%u", d, e);
+
 		if(first)
 		{
 			first = false;
@@ -23,7 +23,6 @@ main(void)
 			putchar(' ');
 		}
 	}
-
 	putchar('\n');
 	return EXIT_SUCCESS;
 }

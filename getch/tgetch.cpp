@@ -5,7 +5,8 @@
 #include <unistd.h>
 #include <ncurses/term.h>
 
-int tgetch(void)
+int
+tgetch(void)
 {
 	termios oldt;
 	GET_TTY(STDIN_FILENO, &oldt);

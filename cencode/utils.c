@@ -5,11 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-const char*
-getword(
-	const unsigned n,
-	char* s,
-	const size_t m)
+const char* getword(const unsigned n, char* s, const size_t m)
 {
 	srand(n);
 	memset(s, '\0', m);
@@ -25,13 +21,10 @@ getword(
 
 		s[i] = c;
 	}
-
 	return s;
 }
 
-unsigned
-find(
-	const char* p)
+unsigned find(const char* p)
 {
 	char s[MAXSIZE];
 	unsigned i = 0;
@@ -46,14 +39,10 @@ find(
 		fprintf(stderr, "Error: can't find index for word \"%s\"\n", s);
 		return -3;
 	}
-
 	return i;
 }
 
-size_t
-min(
-	const size_t a,
-	const size_t b)
+size_t min(const size_t a, const size_t b)
 {
 	return a < b ? a : b;
 }

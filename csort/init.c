@@ -5,7 +5,7 @@
 
 void init(vector* v)
 {
-	const size_t RANK = 100;
+	csizet RANK = 100;
 	srand(time(NULL));
 
 	for(size_t i = 0u; i < v->size; i++)

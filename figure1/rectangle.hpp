@@ -14,24 +14,32 @@ public:
 	rectangle(void)
 	{}
 
-	rectangle(const initializer_list<double> &z):
+	rectangle(
+		const initializer_list<double> &z):
 		figure(z)
 	{}
 
-	~rectangle(void) final
+	~rectangle(void)
+	final
 	{}
 
-	double area(void) const final
+	double
+	area(void)
+	const final
 	{
 		return multiply();
 	}
 
-	double perimeter(void) const final
+	double
+	perimeter(void)
+	const final
 	{
 		return 2 * sum();
 	}
 
-	string_view getname(void) const final
+	string_view
+	getname(void)
+	const final
 	{
 		return name;
 	}

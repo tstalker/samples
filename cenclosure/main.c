@@ -3,8 +3,7 @@
 
 extern const int x;
 
-int
-main(void)
+int main(void)
 {
 	printf("%d", x);
 	const int x = 1;

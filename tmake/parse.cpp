@@ -1,5 +1,5 @@
 #include "lexeme.hpp"
 
-void tmk::parse(ifstream& f)
+void tmk::parse(std::ifstream& f)
 {
 }

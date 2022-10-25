@@ -11,8 +11,7 @@ template <typename T, typename U>
 }
 
 template <typename T, typename U>
-class ier::Derived final:
-	public Base<T>
+class ier::Derived final: public Base<T>
 {
 	using Base<T>::get;
 
@@ -54,9 +53,7 @@ ier::Derived<T, U>::Derived(const U& x):
 }
 
 template <typename T, typename U>
-ier::Derived<T, U>::Derived(
-	const T& x,
-	const U& y):
+ier::Derived<T, U>::Derived(const T& x, const U& y):
 	Base<T>(x),
 	p(new U(y))
 {
@@ -98,8 +95,7 @@ ier::Derived<T, U>::~Derived(void)
 }
 
 template <typename T, typename U>
-decltype(auto)
-ier::Derived<T, U>::operator = (const Derived& x)
+decltype(auto) ier::Derived<T, U>::operator = (const Derived& x)
 {
 #ifdef DEBUG
 	std::cout << "Derived::operator = (" << x << "): " << *this << " -> ";
@@ -117,8 +113,7 @@ ier::Derived<T, U>::operator = (const Derived& x)
 }
 
 template <typename T, typename U>
-decltype(auto)
-ier::Derived<T, U>::operator = (Derived&& x)
+decltype(auto) ier::Derived<T, U>::operator = (Derived&& x)
 {
 #ifdef DEBUG
 	std::cout << "Derived::operator = (&&" << x << "): " << *this << " -> ";
@@ -137,18 +132,13 @@ ier::Derived<T, U>::operator = (Derived&& x)
 }
 
 template <typename T, typename U>
-void
-ier::Derived<T, U>::Print(void)
-const
+void ier::Derived<T, U>::Print(void) const
 {
 	Derived::PrintSpace(std::cout) << *this;
 }
 
 template <typename T, typename U>
-auto
-ier::Derived<T, U>::PrintBraces(std::ostream& s)
-const
--> std::ostream&
+std::ostream& ier::Derived<T, U>::PrintBraces(std::ostream& s) const
 {
 	Base<T>::PrintBraces(s << '{') << ' ';
 
@@ -162,18 +152,13 @@ const
 }
 
 template <typename T, typename U>
-auto
-ier::Derived<T, U>::Value(void)
-const
+auto ier::Derived<T, U>::Value(void) const
 {
 	return p ? *p : U();
 }
 
 template <typename T, typename U>
-decltype(auto)
-ier::operator << (
-	std::ostream& s,
-	const Derived<T, U> &x)
+decltype(auto) ier::operator << (std::ostream& s, const Derived<T, U> &x)
 {
 	return x.PrintBraces(s);
 }

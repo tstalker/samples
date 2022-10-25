@@ -3,16 +3,16 @@
 #include <random>
 #include <functional>
 
-auto token::initialize(const size_t size)
+auto token::initialize(const std::size_t size)
 -> ivector
 {
 	static const auto RANGE(100);
-	static uniform_int_distribution<> ud(-RANGE, RANGE);
-	static random_device rd;
-	static mt19937 re(rd());
-	static auto dice(bind(ud, re));
+	static std::uniform_int_distribution<> ud(-RANGE, RANGE);
+	static std::random_device rd;
+	static std::mt19937 re(rd());
+	static auto dice(std::bind(ud, re));
 
 	ivector v;
-	generate_n(back_inserter(v), size, dice);
+	std::generate_n(std::back_inserter(v), size, dice);
 	return v;
 }

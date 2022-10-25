@@ -2,8 +2,7 @@
 
 #include <iostream>
 
-double
-gen::expression(void)
+double gen::expression(void)
 {
 	auto left(term());  // read and evaluate a Term
 	auto t(gettoken()); // get the next token

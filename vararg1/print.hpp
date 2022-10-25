@@ -4,16 +4,14 @@
 
 namespace prn
 {
-	using namespace std;
-
 	inline void print(void)
 	{
-		cout << endl;
+		std::cout << std::endl;
 	}
 
 	inline void print(const auto& t)
 	{
-		cout << t << endl;
+		std::cout << t << std::endl;
 	}
 
 template <typename T, typename...U>
@@ -23,7 +21,7 @@ template <typename T, typename...U>
 template <typename T, typename...U>
 void prn::print(const T& t, const U&...u)
 {
-	cout << t << ", ";
+	std::cout << t << ", ";
 	print(u...);
 }
 

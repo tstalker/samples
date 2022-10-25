@@ -2,8 +2,7 @@
 
 #include <iostream>
 
-double
-gen::term(void)
+double gen::term(void)
 {
 	auto left(primary());
 	auto t(gettoken()); // get the next token

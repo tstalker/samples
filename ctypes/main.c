@@ -14,7 +14,6 @@ int main(void)
 	printf("char: %zu min: " FORMAT " max: " FORMAT "\n", sizeof(char), CHAR_MIN, CHAR_MAX);
 	printf("signed char: %zu min: %d max: %d\n", sizeof(signed char), SCHAR_MIN, SCHAR_MAX);
 	printf("unsigned char: %zu min: %u max: %u\n", sizeof(unsigned char), 0u, UCHAR_MAX);
-
 	printf("wchar_t: %zu min: " FORMAT " max: " FORMAT "\n", sizeof(wchar_t), WCHAR_MIN, WCHAR_MAX);
 
 	printf("short: %zu min: %d max: %d\n", sizeof(short), SHRT_MIN, SHRT_MAX);
@@ -32,6 +31,5 @@ int main(void)
 	printf("float: %zu min: %g max: %g\n", sizeof(float), FLT_MIN, FLT_MAX);
 	printf("double: %zu min: %lg max: %lg\n", sizeof(double), DBL_MIN, DBL_MAX);
 	printf("long double: %zu min: %Lg max: %Lg\n", sizeof(long double), LDBL_MIN, LDBL_MAX);
-
 	return EXIT_SUCCESS;
 }

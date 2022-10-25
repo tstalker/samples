@@ -1,7 +1,6 @@
 #include "print.hpp"
 
-int
-main(void)
+int main(void)
 {
 	const std::size_t N1(4);
 	const int z[][N1]
@@ -12,7 +11,6 @@ main(void)
 		{12, 13, 14, 15},
 		{16, 17, 18, 19}
 	};
-
 	std::cout << z << std::endl;
 	prn::print(z);
 	std::cout << std::endl;

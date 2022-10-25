@@ -3,8 +3,7 @@
 #include "triangle.hpp"
 #include "rectangle.hpp"
 
-int
-main(void)
+int main(void)
 {
 	std::vector<const gen::figure*> v
 	{
@@ -13,11 +12,14 @@ main(void)
 		new gen::square{3},
 		new gen::rectangle{3, 4}
 	};
+
 	print(v);
+
 	for(auto x: v)
 	{
 		delete x;
 	}
+
 	return EXIT_SUCCESS;
 }
 

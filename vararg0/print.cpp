@@ -3,9 +3,9 @@
 #include <cstdarg>
 #include <iostream>
 
-void prn::print(string_view s, ...)
+void prn::print(std::string_view s, ...)
 {
-	va_list va;
+	std::va_list va;
 	va_start(va, s);
 
 	for(const auto& c: s)
@@ -13,23 +13,23 @@ void prn::print(string_view s, ...)
 		switch(c)
 		{
 		default:
-			cerr << endl << "Error: format symbol \'" << c << '\'' << endl;
+			std::cerr << std::endl << "Error: format symbol \'" << c << '\'' << std::endl;
 			break;
 		case 'c':
-			cout << static_cast<char>(va_arg(va, int));
+			std::cout << static_cast<char>(va_arg(va, int));
 			break;
 		case 'i':
-			cout << va_arg(va, int);
+			std::cout << va_arg(va, int);
 			break;
 		case 'd':
 		case 'f':
-			cout << va_arg(va, double);
+			std::cout << va_arg(va, double);
 			break;
 		case 's':
-			cout << va_arg(va, const char*);
+			std::cout << va_arg(va, const char*);
 		}
-		cout << ' ';
+		std::cout << ' ';
 	}
 	va_end(va);
-	cout << endl;
+	std::cout << std::endl;
 }

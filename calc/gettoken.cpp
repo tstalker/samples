@@ -2,9 +2,7 @@
 
 #include <iostream>
 
-auto
-gen::gettoken(void) // read a token from cin
--> Token
+auto gen::gettoken(void) -> Token // read a token from cin
 {
 	char ch;
 	cin >> ch; // note that >> skips whitespace (space, newline, tab, etc.)

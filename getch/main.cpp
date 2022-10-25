@@ -9,6 +9,7 @@ int main(void)
 		std::cout << c;
 		tgetch();
 	}
+
 	std::cout << std::endl;
 	return EXIT_SUCCESS;
 }

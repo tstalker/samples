@@ -49,8 +49,7 @@ public:
 };
 
 template <typename T>
-decltype(auto)
-ier::Base<T>::get(void)
+decltype(auto) ier::Base<T>::get(void)
 {
 	return *this;
 }
@@ -103,8 +102,7 @@ ier::Base<T>::~Base(void)
 }
 
 template <typename T>
-decltype(auto)
-ier::Base<T>::operator = (const Base& x)
+decltype(auto) ier::Base<T>::operator = (const Base& x)
 {
 #ifdef DEBUG
 	std::cout << "Base::operator = (" << x << "): " << *this << " -> ";
@@ -121,8 +119,7 @@ ier::Base<T>::operator = (const Base& x)
 }
 
 template <typename T>
-decltype(auto)
-ier::Base<T>::operator = (Base&& x)
+decltype(auto) ier::Base<T>::operator = (Base&& x)
 {
 #ifdef DEBUG
 	std::cout << "Base::operator = (&&" << x << "): " << *this << " -> ";
@@ -140,16 +137,13 @@ ier::Base<T>::operator = (Base&& x)
 }
 
 template <typename T>
-void
-ier::Base<T>::Print(void)
-const
+void ier::Base<T>::Print(void) const
 {
 	PrintSpace(std::cout) << *this;
 }
 
 template <typename T>
-decltype(auto)
-ier::Base<T>::PrintSpace(std::ostream& s)
+decltype(auto) ier::Base<T>::PrintSpace(std::ostream& s)
 {
 	if(FlagSpace)
 	{
@@ -159,15 +153,11 @@ ier::Base<T>::PrintSpace(std::ostream& s)
 	{
 		FlagSpace.emplace(true);
 	}
-
 	return s;
 }
 
 template <typename T>
-auto
-ier::Base<T>::PrintBraces(std::ostream& s)
-const
--> std::ostream&
+std::ostream& ier::Base<T>::PrintBraces(std::ostream& s) const
 {
 	s << '{';
 
@@ -175,32 +165,24 @@ const
 	{
 		s << std::showpoint << std::setprecision(PRECISION);
 	}
-
-	return s << Value() << '}';
+	s << Value() << '}';
+	return s;
 }
 
 template <typename T>
-auto
-ier::Base<T>::Value(void)
-const
+auto ier::Base<T>::Value(void) const
 {
 	return p ? *p : element_type();
 }
 
 template <typename T>
-decltype(auto)
-ier::operator << (
-	std::ostream& s,
-	const Base<T> &x)
+decltype(auto) ier::operator << (std::ostream& s, const Base<T> &x)
 {
 	return x.PrintBraces(s);
 }
 
 template <typename T>
-decltype(auto)
-ier::operator << (
-	std::ostream& s,
-	const std::unique_ptr<T> &p)
+decltype(auto) ier::operator << (std::ostream& s, const std::unique_ptr<T> &p)
 {
 	return s << *p;
 }

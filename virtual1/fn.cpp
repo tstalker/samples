@@ -2,15 +2,15 @@
 
 void gen::fn(const B* p)
 {
-	cout << p->x << endl;
+	std::cout << p->x << std::endl;
 }
 
 void gen::fn(const C* p)
 {
-	cout << p->x << endl;
+	std::cout << p->x << std::endl;
 }
 
 void gen::fn(const D* p)
 {
-	cout << p->x << endl;
+	std::cout << p->x << std::endl;
 }

@@ -14,21 +14,29 @@ public:
 	triangle(void)
 	{}
 
-	triangle(const initializer_list<double> &z):
+	triangle(
+		const initializer_list<double> &z):
 		figure(z)
 	{}
 
-	~triangle(void) final
+	~triangle(void)
+	final
 	{}
 
-	double area(void) const final;
+	double
+	area(void)
+	const final;
 
-	double perimeter(void) const final
+	double
+	perimeter(void)
+	const final
 	{
 		return sum();
 	}
 
-	string_view getname(void) const final
+	string_view
+	getname(void)
+	const final
 	{
 		return name;
 	}

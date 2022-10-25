@@ -7,7 +7,8 @@ VECTOR(pair_decision_int)
 
 int vector_cmp_pair_decision_int(cpvoid pvx, cpvoid pvy)
 {
-	cppair_decision_int ppx = (cppair_decision_int)pvx, ppy = (cppair_decision_int)pvy;
+	cppair_decision_int ppx = (cppair_decision_int)pvx;
+	cppair_decision_int ppy = (cppair_decision_int)pvy;
 	cint ret = ppx->second - ppy->second;
 	return ret;
 }

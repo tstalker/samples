@@ -1,6 +1,6 @@
 TARGET = work
 OBJ = main.o
-DEPENDS = bubble.hpp generic.hpp init.hpp print.hpp makefile
+DEPENDS = bubble.hpp init.hpp print.hpp makefile
 CC = c++
 CFLAGS = -march=native -O3 -pipe -std=c++23 -Wall -Werror -Winline
 STRIP = strip

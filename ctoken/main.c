@@ -23,6 +23,7 @@ int main(void)
 		cint x = decision_sum(d, &v);
 		cpchar title = first ? "first" : "second";
 		stoken_print(title, x);
+
 		if(first)
 		{
 			sum.first += x;
@@ -35,7 +36,6 @@ int main(void)
 		stoken_print("second sum", sum.second);
 		decision_step(d, &v);
 	}
-
 	cint win_sum = max2(sum.first, sum.second);
 	cpchar wtitle = win_sum == sum.first ? "first win" : "second win";
 	stoken_print(wtitle, win_sum);
