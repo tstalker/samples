@@ -1,8 +1,5 @@
-#include <cstring>
 #include <iostream>
 #include <new>
-
-#pragma pack(1)
 
 class BaseClass
 {
@@ -34,13 +31,11 @@ class ChildClass: public BaseClass
 public:
 	ChildClass(void):
 		m_buffer(new unsigned char[buf_size]{})
-	{
-		std::memset(m_buffer, 'x', buf_size - 1);
-	}
+	{}
 
 	~ChildClass(void)
 	{
-		std::cout << "ChildClass::~ChildClass() -> " << m_id << ' ' << m_buffer << std::endl;
+		std::cout << "ChildClass::~ChildClass() -> " << m_id << ' ' << std::endl;
 		delete[] m_buffer;
 	}
 
