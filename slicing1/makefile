@@ -1,9 +1,9 @@
 TARGET = work
 OBJ = derived.o main.o print.o process.o
-CC = c++
-CFLAGS = -march=native -O3 -pipe -std=c++23 -Wall -Werror -Winline
-#CC = clang++
-#CFLAGS = -march=native -O3 -pipe -std=c++20 -Wall -Werror -Winline
+#CC = c++
+#CFLAGS = -march=native -O3 -pipe -std=c++23 -Wall -Werror -Winline
+CC = clang++
+CFLAGS = -march=native -O3 -pipe -std=c++2b -Wall -Werror -Winline
 STRIP = strip
 
 all: $(TARGET)

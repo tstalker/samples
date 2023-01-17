@@ -7,11 +7,6 @@ int main(void)
 {
 	try
 	{
-		base* bptr0(new derived);
-		bptr0->set(123456789);
-		delete bptr0;
-		std::cout << std::endl;
-
 		const std::size_t count(10);
 		base* bptr(new derived[count]);
 		process(bptr, count);
