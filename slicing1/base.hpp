@@ -7,29 +7,29 @@ class base
 public:
 	base(void)
 	{
-		std::cout << "base::base(): " << id << std::endl;
+		std::cout << "base::base(): " << x << std::endl;
 	}
 
 	virtual ~base(void)
 	{
-		std::cout << "base::~base(): " << id << std::endl;
+		std::cout << "base::~base(): " << x << std::endl;
 	}
 
 	auto get(void) const
 	{
-		return id;
+		return x;
 	}
 
-	void set(const std::size_t& id)
+	void set(const std::size_t& x)
 	{
-		base::id = id;
+		base::x = x;
 	}
 
 	void print(void) const
 	{
-		std::cout << id << std::endl;
+		std::cout << x << std::endl;
 	}
 
 protected:
-	std::size_t id{};
+	std::size_t x{};
 };

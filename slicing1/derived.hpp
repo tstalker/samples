@@ -5,13 +5,26 @@
 class derived: public base
 {
 public:
-	derived(void);
+	derived(void)
+	{
+		std::cout << "derived::derived(): " << x << ' ' << s << std::endl;
+	}
 
 	~derived(void)
 	{
-		std::cout << "derived::~derived(): " << id << ' ' << ptr << std::endl;
+		std::cout << "derived::~derived(): " << x << ' ' << s << std::endl;
+	}
+
+	auto get(void) const
+	{
+		return s;
+	}
+
+	void print(void) const
+	{
+		std::cout << x << ' ' << s << std::endl;
 	}
 
 private:
-	char ptr[27]{};
+	const char* s{"abcdefghijklmnopqrstuvwxyz"};
 };
