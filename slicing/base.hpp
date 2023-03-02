@@ -2,6 +2,7 @@
 
 #include <iomanip>
 #include <iostream>
+#include <memory>
 #include <optional>
 
 namespace ier
