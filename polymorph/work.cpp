@@ -1,6 +1,7 @@
 #include "work.hpp"
 #include "derived.hpp"
 
+#include <algorithm>
 #include <cmath>
 
 gen::work::work(
