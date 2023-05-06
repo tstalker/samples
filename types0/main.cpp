@@ -1,15 +1,14 @@
 #include "generic.hpp"
 
 #include <cfloat>
-#include <cstdio>
-#include <cwchar>
 #include <climits>
-#include <cstddef>
+#include <cstdio>
 #include <cstdlib>
+#include <cwchar>
 
 int main(void)
 {
-	std::printf("bool: %zu min: %d max: %d\n", sizeof(bool), false, true);
+	std::printf("bool: %zu min: %s max: %s\n", sizeof(bool), "false", "true");
 
 	std::printf("char: %zu min: " FORMAT " max: " FORMAT "\n", sizeof(char), CHAR_MIN, CHAR_MAX);
 	std::printf("signed char: %zu min: %d max: %d\n", sizeof(signed char), SCHAR_MIN, SCHAR_MAX);
@@ -18,7 +17,7 @@ int main(void)
 	std::printf("char8_t: %zu min: %u max: %u\n", sizeof(char8_t), 0u, UCHAR_MAX);
 	std::printf("char16_t: %zu min: %u max: %u\n", sizeof(char16_t), 0u, USHRT_MAX);
 	std::printf("char32_t: %zu min: %u max: %u\n", sizeof(char32_t), 0u, UINT_MAX);
-	std::printf("wchar_t: %zu min: " FORMAT " max: " FORMAT "\n", sizeof(wchar_t), WCHAR_MIN, WCHAR_MAX);
+	std::printf("wchar_t: %zu min: %u max: %u\n", sizeof(wchar_t), WCHAR_MIN, WCHAR_MAX);
 
 	std::printf("short: %zu min: %d max: %d\n", sizeof(short), SHRT_MIN, SHRT_MAX);
 	std::printf("unsigned short: %zu min: %u max: %u\n", sizeof(unsigned short), 0u, USHRT_MAX);

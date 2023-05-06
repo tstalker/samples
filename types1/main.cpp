@@ -5,39 +5,39 @@
 
 int main(void)
 {
-	std::cout << "bool: " << sizeof(bool)
+	std::cout << "bool: " << sizeof(bool) << std::boolalpha
 		<< " min: " << std::numeric_limits<bool>::min()
 		<< " max: " << std::numeric_limits<bool>::max()
 		<< std::endl;
 
 	std::cout << "char: " << sizeof(char)
-		<< " min: " << static_cast<gen::tchar<char>>(std::numeric_limits<char>::min())
-		<< " max: " << static_cast<gen::tchar<char>>(std::numeric_limits<char>::max())
+		<< " min: " << static_cast<gen::what_char<char>>(std::numeric_limits<char>::min())
+		<< " max: " << static_cast<gen::what_char<char>>(std::numeric_limits<char>::max())
 		<< std::endl;
 	std::cout << "signed char: " << sizeof(signed char)
-		<< " min: " << static_cast<gen::tchar<signed char>>(std::numeric_limits<signed char>::min())
-		<< " max: " << static_cast<gen::tchar<signed char>>(std::numeric_limits<signed char>::max())
+		<< " min: " << static_cast<gen::what_char<signed char>>(std::numeric_limits<signed char>::min())
+		<< " max: " << static_cast<gen::what_char<signed char>>(std::numeric_limits<signed char>::max())
 		<< std::endl;
 	std::cout << "unsigned char: " << sizeof(unsigned char)
-		<< " min: " << static_cast<gen::tchar<unsigned char>>(std::numeric_limits<unsigned char>::min())
-		<< " max: " << static_cast<gen::tchar<unsigned char>>(std::numeric_limits<unsigned char>::max())
+		<< " min: " << static_cast<gen::what_char<unsigned char>>(std::numeric_limits<unsigned char>::min())
+		<< " max: " << static_cast<gen::what_char<unsigned char>>(std::numeric_limits<unsigned char>::max())
 		<< std::endl;
 
 	std::cout << "char8_t: " << sizeof(char8_t)
-		<< " min: " << static_cast<gen::tchar<char8_t>>(std::numeric_limits<char8_t>::min())
-		<< " max: " << static_cast<gen::tchar<char8_t>>(std::numeric_limits<char8_t>::max())
+		<< " min: " << static_cast<gen::what_char<char8_t>>(std::numeric_limits<char8_t>::min())
+		<< " max: " << static_cast<gen::what_char<char8_t>>(std::numeric_limits<char8_t>::max())
 		<< std::endl;
 	std::cout << "char16_t: " << sizeof(char16_t)
-		<< " min: " << static_cast<gen::tchar<char16_t>>(std::numeric_limits<char16_t>::min())
-		<< " max: " << static_cast<gen::tchar<char16_t>>(std::numeric_limits<char16_t>::max())
+		<< " min: " << static_cast<gen::what_char<char16_t>>(std::numeric_limits<char16_t>::min())
+		<< " max: " << static_cast<gen::what_char<char16_t>>(std::numeric_limits<char16_t>::max())
 		<< std::endl;
 	std::cout << "char32_t: " << sizeof(char32_t)
-		<< " min: " << static_cast<gen::tchar<char32_t>>(std::numeric_limits<char32_t>::min())
-		<< " max: " << static_cast<gen::tchar<char32_t>>(std::numeric_limits<char32_t>::max())
+		<< " min: " << static_cast<gen::what_char<char32_t>>(std::numeric_limits<char32_t>::min())
+		<< " max: " << static_cast<gen::what_char<char32_t>>(std::numeric_limits<char32_t>::max())
 		<< std::endl;
 	std::cout << "wchar_t: " << sizeof(wchar_t)
-		<< " min: " << static_cast<gen::tchar<wchar_t>>(std::numeric_limits<wchar_t>::min())
-		<< " max: " << static_cast<gen::tchar<wchar_t>>(std::numeric_limits<wchar_t>::max())
+		<< " min: " << static_cast<gen::what_char<wchar_t>>(std::numeric_limits<wchar_t>::min())
+		<< " max: " << static_cast<gen::what_char<wchar_t>>(std::numeric_limits<wchar_t>::max())
 		<< std::endl;
 
 	std::cout << "short: " << sizeof(short)

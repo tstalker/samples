@@ -1,13 +1,18 @@
 #pragma once
 
 #include <limits>
+#include <iomanip>
 #include <iostream>
 #include <string_view>
 
 namespace gen
 {
 template <typename T>
-	using tchar = std::conditional_t<std::is_signed_v<T>, long, unsigned long>;
+	using what_char_short = std::conditional_t<std::is_signed_v<T>, short, unsigned short>;
+template <typename T>
+	using what_char_int = std::conditional_t<std::is_signed_v<T>, int, unsigned>;
+template <typename T>
+	using what_char = std::conditional_t<sizeof(T) == sizeof(int), what_char_int<T>, what_char_short<T>>;
 
 template <typename T>
 	std::pair<T, T>
@@ -17,10 +22,92 @@ template <typename T>
 		std::numeric_limits<T>::max()
 	};
 
+template <>
+	std::pair
+	<
+		what_char<char>,
+		what_char<char>
+	>
+	getlim<char>
+	{
+		std::numeric_limits<char>::min(),
+		std::numeric_limits<char>::max()
+	};
+
+template <>
+	std::pair
+	<
+		what_char<signed char>,
+		what_char<signed char>
+	>
+		getlim<signed char>
+	{
+		std::numeric_limits<signed char>::min(),
+		std::numeric_limits<signed char>::max()
+	};
+
+template <>
+	std::pair
+	<
+		what_char<unsigned char>,
+		what_char<unsigned char>
+	>
+		getlim<unsigned char>
+	{
+		std::numeric_limits<unsigned char>::min(),
+		std::numeric_limits<unsigned char>::max()
+	};
+
+template <>
+	std::pair
+	<
+		what_char<char8_t>,
+		what_char<char8_t>
+	>
+		getlim<char8_t>
+	{
+		std::numeric_limits<char8_t>::min(),
+		std::numeric_limits<char8_t>::max()
+	};
+
+template <>
+	std::pair
+	<
+		what_char<char16_t>,
+		what_char<char16_t>
+	>
+		getlim<char16_t>
+	{
+		std::numeric_limits<char16_t>::min(),
+		std::numeric_limits<char16_t>::max()
+	};
+
+template <>
+	std::pair
+	<
+		what_char<char32_t>,
+		what_char<char32_t>
+	>
+		getlim<char32_t>
+	{
+		std::numeric_limits<char32_t>::min(),
+		std::numeric_limits<char32_t>::max()
+	};
+
+template <>
+	std::pair
+	<
+		what_char<wchar_t>,
+		what_char<wchar_t>
+	>
+		getlim<wchar_t>
+	{
+		std::numeric_limits<wchar_t>::min(),
+		std::numeric_limits<wchar_t>::max()
+	};
+
 template <typename T>
 	void print(void);
-template <typename T>
-	void print(const std::pair<tchar<T>, tchar<T>>&);
 
 template <typename T>
 	constexpr std::string_view gettype(void);
@@ -29,20 +116,27 @@ template <typename T>
 template <typename T>
 void gen::print(void)
 {
-	print<T>(getlim<T>);
+	const auto m(getlim<T>);
+
+	std::cout << gettype<T>() << ": " << sizeof(T) << std::hex
+		<< " min: " << m.first
+		<< " max: " << m.second
+		<< std::endl;
 }
 
-template <typename T>
-void gen::print(const std::pair<tchar<T>, tchar<T>> &p)
+template <>
+void gen::print<bool>(void)
 {
-	std::cout << gettype<T>() << ": " << sizeof(T)
-		<< " min: " << p.first
-		<< " max: " << p.second
+	const auto m(getlim<bool>);
+
+	std::cout << gettype<bool>() << ": " << sizeof(bool) << std::boolalpha
+		<< " min: " << m.first
+		<< " max: " << m.second
 		<< std::endl;
 }
 
 template <typename T>
-constexpr std::string_view gen::gettype(void)
+constexpr auto gen::gettype(void) -> std::string_view
 {
 	if constexpr(std::is_same_v<T, bool>)
 		return "bool";
