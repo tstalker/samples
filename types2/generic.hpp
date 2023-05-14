@@ -118,7 +118,7 @@ void gen::print(void)
 {
 	const auto m(getlim<T>);
 
-	std::cout << gettype<T>() << ": " << sizeof(T) << std::hex
+	std::cout << gettype<T>() << ": " << std::dec << sizeof(T) << std::hex
 		<< " min: " << m.first
 		<< " max: " << m.second
 		<< std::endl;
