@@ -8,13 +8,11 @@ int main(void)
 	//std::cout << LIST;
 	operator << (std::cout, LIST);
 	std::cout << std::initializer_list<int> LIST;
-	const auto lst = LIST;
-	prn::print(lst);
-	std::cout << lst;
-	const int z[] LIST;
-	prn::print(z);
-	const auto N(sizeof z / sizeof *z);
-	prn::print(z, N);
-	std::cout << z;
+	const auto w = LIST;
+	prn::print(w);
+	std::cout << w;
+	const int v[] LIST;
+	prn::print(v);
+	std::cout << v;
 	return EXIT_SUCCESS;
 }

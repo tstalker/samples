@@ -1,7 +1,6 @@
 #pragma once
 
 #include <limits>
-#include <iomanip>
 #include <iostream>
 #include <string_view>
 
@@ -13,130 +12,78 @@ template <typename T>
 	using what_char_int = std::conditional_t<std::is_signed_v<T>, int, unsigned>;
 template <typename T>
 	using what_char = std::conditional_t<sizeof(T) == sizeof(int), what_char_int<T>, what_char_short<T>>;
+template <typename T>
+	using what_char_pair = std::pair<what_char<T>, what_char<T>>;
 
 template <typename T>
-	std::pair<T, T>
-	getlim
+	std::pair<T, T> limit
 	{
 		std::numeric_limits<T>::min(),
 		std::numeric_limits<T>::max()
 	};
 
-template <>
-	std::pair
-	<
-		what_char<char>,
-		what_char<char>
-	>
-	getlim<char>
+template <typename T>
+	what_char_pair<T> limit_char
 	{
-		std::numeric_limits<char>::min(),
-		std::numeric_limits<char>::max()
-	};
-
-template <>
-	std::pair
-	<
-		what_char<signed char>,
-		what_char<signed char>
-	>
-		getlim<signed char>
-	{
-		std::numeric_limits<signed char>::min(),
-		std::numeric_limits<signed char>::max()
-	};
-
-template <>
-	std::pair
-	<
-		what_char<unsigned char>,
-		what_char<unsigned char>
-	>
-		getlim<unsigned char>
-	{
-		std::numeric_limits<unsigned char>::min(),
-		std::numeric_limits<unsigned char>::max()
-	};
-
-template <>
-	std::pair
-	<
-		what_char<char8_t>,
-		what_char<char8_t>
-	>
-		getlim<char8_t>
-	{
-		std::numeric_limits<char8_t>::min(),
-		std::numeric_limits<char8_t>::max()
-	};
-
-template <>
-	std::pair
-	<
-		what_char<char16_t>,
-		what_char<char16_t>
-	>
-		getlim<char16_t>
-	{
-		std::numeric_limits<char16_t>::min(),
-		std::numeric_limits<char16_t>::max()
-	};
-
-template <>
-	std::pair
-	<
-		what_char<char32_t>,
-		what_char<char32_t>
-	>
-		getlim<char32_t>
-	{
-		std::numeric_limits<char32_t>::min(),
-		std::numeric_limits<char32_t>::max()
-	};
-
-template <>
-	std::pair
-	<
-		what_char<wchar_t>,
-		what_char<wchar_t>
-	>
-		getlim<wchar_t>
-	{
-		std::numeric_limits<wchar_t>::min(),
-		std::numeric_limits<wchar_t>::max()
+		std::numeric_limits<T>::min(),
+		std::numeric_limits<T>::max()
 	};
 
 template <typename T>
 	void print(void);
 
 template <typename T>
-	constexpr std::string_view gettype(void);
+	constexpr std::string_view get_type(void);
 }
+
+template <>
+gen::what_char_pair<char>
+gen::limit<char> {limit_char<char>};
+
+template <>
+gen::what_char_pair<signed char>
+gen::limit<signed char> {limit_char<signed char>};
+
+template <>
+gen::what_char_pair<unsigned char>
+gen::limit<unsigned char> {limit_char<unsigned char>};
+
+template <>
+gen::what_char_pair<char8_t>
+gen::limit<char8_t> {limit_char<char8_t>};
+
+template <>
+gen::what_char_pair<char16_t>
+gen::limit<char16_t> {limit_char<char16_t>};
+
+template <>
+gen::what_char_pair<char32_t>
+gen::limit<char32_t> {limit_char<char32_t>};
+
+template <>
+gen::what_char_pair<wchar_t>
+gen::limit<wchar_t> {limit_char<wchar_t>};
 
 template <typename T>
 void gen::print(void)
 {
-	const auto m(getlim<T>);
-
-	std::cout << gettype<T>() << ": " << std::dec << sizeof(T) << std::hex
-		<< " min: " << m.first
-		<< " max: " << m.second
+	std::cout << get_type<T>() << ": " << sizeof(T)
+		<< " min: " << limit<T>.first
+		<< " max: " << limit<T>.second
 		<< std::endl;
 }
 
 template <>
 void gen::print<bool>(void)
 {
-	const auto m(getlim<bool>);
-
-	std::cout << gettype<bool>() << ": " << sizeof(bool) << std::boolalpha
-		<< " min: " << m.first
-		<< " max: " << m.second
+	std::cout << get_type<bool>() << ": " << sizeof(bool) << std::boolalpha
+		<< " min: " << limit<bool>.first
+		<< " max: " << limit<bool>.second
 		<< std::endl;
 }
 
 template <typename T>
-constexpr auto gen::gettype(void) -> std::string_view
+constexpr auto gen::get_type(void) -> std::string_view
 {
 	if constexpr(std::is_same_v<T, bool>)
 		return "bool";
