@@ -1,15 +1,15 @@
 #pragma once
 
+#include <algorithm>
 #include <cstring>
 #include <iostream>
 
 namespace gen
 {
-	using namespace std;
 	class mystring;
 
 	inline const char* cstr(const char*);
-	ostream& operator << (ostream&, const mystring&);
+	std::ostream& operator << (std::ostream&, const mystring&);
 }
 
 using gen::operator <<;
@@ -24,35 +24,35 @@ class gen::mystring
 {
 public:
 	mystring(mystring&&);
-	mystring(const size_t, const char*);
+	mystring(const std::size_t, const char*);
 	~mystring(void);
 
 	mystring(void):
 		size{},
 		ptr(nullptr)
 	{
-		cout << "mystring::mystring() -> " << *this << endl;
+		std::cout << "mystring::mystring() -> " << *this << std::endl;
 	}
 
 	mystring(
 		const char* s):
 		mystring(estimsize(s), s)
 	{
-		cout << "mystring::mystring(const char* \"" << cstr(s) << "\") -> " << *this << endl;
+		std::cout << "mystring::mystring(const char* \"" << cstr(s) << "\") -> " << *this << std::endl;
 	}
 
 	mystring(
 		const mystring& s):
 		mystring(s.size, s.ptr)
 	{
-		cout << "mystring::mystring(const mystring& " << s << ") -> " << *this << endl;
+		std::cout << "mystring::mystring(const mystring& " << s << ") -> " << *this << std::endl;
 	}
 
 private:
 	void alloc(const mystring&);
 	void origin(void);
-	void checkrange(const size_t) const;
-	void out(ostream& = cout) const;
+	void checkrange(const std::size_t) const;
+	void out(std::ostream& = std::cout) const;
 
 	static char*
 	alloc(
@@ -61,11 +61,11 @@ private:
 		return sz ? new char[sz]{} : nullptr;
 	}
 
-	size_t
+	std::size_t
 	estimsize(
 		const char* s)
 	{
-		return s ? strlen(s) : size_t();
+		return s ? std::strlen(s) : std::size_t();
 	}
 
 	void
@@ -79,17 +79,17 @@ private:
 	copy(
 		const char* s)
 	{
-		copy_n(s, size, ptr);
+		std::copy_n(s, size, ptr);
 	}
 
 public:
 	void clear(void);
 	const mystring& operator = (mystring&&);
 	const mystring& operator = (const mystring&);
-	char& operator [] (const size_t);
-	const char& operator [] (const size_t) const;
-	char& operator () (const size_t);
-	const char& operator () (const size_t) const;
+	char& operator [] (const std::size_t);
+	const char& operator [] (const std::size_t) const;
+	char& operator () (const std::size_t);
+	const char& operator () (const std::size_t) const;
 	mystring operator ~ (void) const;
 
 	auto
@@ -140,8 +140,8 @@ public:
 	}
 
 private:
-	size_t size{size_t()};
+	std::size_t size{std::size_t()};
 	char* ptr{nullptr};
 
-	friend ostream& operator << (ostream&, const mystring&);
+	friend std::ostream& operator << (std::ostream&, const mystring&);
 };

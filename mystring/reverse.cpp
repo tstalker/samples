@@ -6,7 +6,7 @@ const
 -> mystring
 {
 	mystring s(*this);
-	reverse(s.ptr, s.ptr + s.size);
-	cout << "mystring::operator ~ (): " << *this << " -> " << s << endl;
+	std::reverse(s.ptr, s.ptr + s.size);
+	std::cout << "mystring::operator ~ (): " << *this << " -> " << s << std::endl;
 	return s;
 }

@@ -5,18 +5,18 @@ gen::mystring::mystring(
 	size(s.size),
 	ptr(s.ptr)
 {
-	cout << "mystring::mystring(mystring&& " << s << ") -> " << *this << endl;
+	std::cout << "mystring::mystring(mystring&& " << s << ") -> " << *this << std::endl;
 	s.origin();
 }
 
 gen::mystring::mystring(
-	const size_t sz,
+	const std::size_t sz,
 	const char* s):
 	size(sz),
 	ptr(alloc(sz))
 {
 	copy(s);
-	cout << "mystring::mystring(const size_t " << size << ", const char* ";
+	std::cout << "mystring::mystring(const size_t " << size << ", const char* ";
 	out();
-	cout << ") -> " << *this << endl;
+	std::cout << ") -> " << *this << std::endl;
 }

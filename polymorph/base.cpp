@@ -4,7 +4,7 @@
 
 void
 gen::base::print(
-	ostream& os)
+	std::ostream& os)
 const
 {
 	os << *this;
@@ -12,10 +12,10 @@ const
 
 auto
 gen::operator << (
-	ostream& os,
+	std::ostream& os,
 	const base& x)
--> ostream&
+-> std::ostream&
 {
-	os << '[' << showpoint << setprecision(2) << x.f << ']';
+	os << '[' << std::showpoint << std::setprecision(2) << x.f << ']';
 	return os;
 }

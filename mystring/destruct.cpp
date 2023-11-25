@@ -2,6 +2,6 @@
 
 gen::mystring::~mystring(void)
 {
-	cout << "mystring::~mystring(): " << *this << endl;
+	std::cout << "mystring::~mystring(): " << *this << std::endl;
 	clear();
 }

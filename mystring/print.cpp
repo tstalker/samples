@@ -2,9 +2,9 @@
 
 auto
 gen::operator << (
-	ostream& o,
+	std::ostream& o,
 	const mystring& s)
--> ostream&
+-> std::ostream&
 {
 	o << '[' << s.size << ' ';
 	s.out(o);

@@ -4,14 +4,14 @@
 
 void
 gen::mystring::out(
-	ostream& o)
+	std::ostream& o)
 const
 {
 	if(size)
 	{
 		o << '\"';
-		auto it{ostream_iterator<char>(o)};
-		copy_n(ptr, size, it);
+		auto it{std::ostream_iterator<char>(o)};
+		std::copy_n(ptr, size, it);
 		o << '\"';
 	}
 	else

@@ -5,15 +5,15 @@
 #include <cmath>
 
 gen::work::work(
-	const size_t n)
+	const std::size_t n)
 {
-	generate_n(back_inserter(v), n,
+	std::generate_n(std::back_inserter(v), n,
 		[i{int()}](void)
 		mutable
 		-> decltype(v)::value_type
 	{
-		const auto f(fma(i, 1.e-1, i));
-		const auto p(div(i, 2).rem ? new derived(f, i) : new base(f));
+		const auto f(std::fma(i, 1.e-1, i));
+		const auto p(std::div(i, 2).rem ? new derived(f, i) : new base(f));
 		i++;
 		return p;
 	});
@@ -29,11 +29,11 @@ gen::work::~work(void)
 
 void
 gen::work::print(
-	ostream& os)
+	std::ostream& os)
 const
 {
 	op = true;
-	for_each(v.cbegin(), v.cend(),
+	std::for_each(v.cbegin(), v.cend(),
 		[this, &os](const auto p)
 	{
 		if(op)
@@ -51,9 +51,9 @@ const
 
 auto
 gen::operator << (
-	ostream& os,
+	std::ostream& os,
 	const work& w)
--> ostream&
+-> std::ostream&
 {
 	w.print(os);
 	return os;

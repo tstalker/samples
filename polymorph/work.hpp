@@ -8,25 +8,25 @@
 namespace gen
 {
 	class work;
-	ostream& operator << (ostream&, const work&);
+	std::ostream& operator << (std::ostream&, const work&);
 }
 
 class gen::work
 {
 public:
-	work(const size_t);
+	work(const std::size_t);
 	~work(void);
 
 private:
-	vector<base*> v;
+	std::vector<base*> v;
 
-	friend ostream& operator << (ostream&, const work&);
+	friend std::ostream& operator << (std::ostream&, const work&);
 
 public:
-	void print(ostream&) const;
+	void print(std::ostream&) const;
 
 private:
-	mutable optional<bool> op;
+	mutable std::optional<bool> op;
 };
 
 using gen::operator <<;

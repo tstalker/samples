@@ -2,7 +2,7 @@
 
 void
 gen::derived::print(
-	ostream& os)
+	std::ostream& os)
 const
 {
 	os << *this;
@@ -10,9 +10,9 @@ const
 
 auto
 gen::operator << (
-	ostream& os,
+	std::ostream& os,
 	const derived& x)
--> ostream&
+-> std::ostream&
 {
 	os << '{' << x.get() << ' ' << x.i << '}';
 	return os;

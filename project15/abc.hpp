@@ -4,10 +4,9 @@
 
 namespace gen
 {
-	using namespace std;
 	class abc;
 
-	ostream& operator << (ostream&, const abc&);
+	std::ostream& operator << (std::ostream&, const abc&);
 }
 
 using gen::operator <<;
@@ -26,10 +25,10 @@ public:
 		delete[] s;
 	}
 
-	char& operator[] (const size_t&);
-	const char& operator[] (const size_t&) const;
+	char& operator[] (const std::size_t&);
+	const char& operator[] (const std::size_t&) const;
 
-	size_t size(void) const
+	std::size_t size(void) const
 	{
 		return n;
 	}
@@ -37,8 +36,8 @@ public:
 	void print(void) const;
 
 private:
-	size_t n{};
+	std::size_t n{};
 	char* s{nullptr};
 
-	friend ostream& operator << (ostream&, const abc&);
+	friend std::ostream& operator << (std::ostream&, const abc&);
 };

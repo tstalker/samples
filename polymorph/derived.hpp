@@ -6,7 +6,7 @@ namespace gen
 {
 	class derived;
 
-	ostream& operator << (ostream&, const derived&);
+	std::ostream& operator << (std::ostream&, const derived&);
 }
 
 class gen::derived
@@ -27,10 +27,10 @@ public:
 private:
 	int i{};
 
-	friend ostream& operator << (ostream&, const derived&);
+	friend std::ostream& operator << (std::ostream&, const derived&);
 
 public:
-	void print(ostream&) const override;
+	void print(std::ostream&) const override;
 };
 
 using gen::operator <<;

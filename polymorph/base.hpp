@@ -4,10 +4,9 @@
 
 namespace gen
 {
-	using namespace std;
 	class base;
 
-	ostream& operator << (ostream&, const base&);
+	std::ostream& operator << (std::ostream&, const base&);
 }
 
 class gen::base
@@ -26,7 +25,7 @@ public:
 private:
 	double f{};
 
-	friend ostream& operator << (ostream&, const base&);
+	friend std::ostream& operator << (std::ostream&, const base&);
 
 public:
 	decltype(auto)
@@ -36,7 +35,7 @@ public:
 		return *this;
 	}
 
-	virtual void print(ostream&) const;
+	virtual void print(std::ostream&) const;
 };
 
 using gen::operator <<;
