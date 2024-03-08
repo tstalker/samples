@@ -37,5 +37,3 @@ public:
 
 	virtual void print(std::ostream&) const;
 };
-
-using gen::operator <<;

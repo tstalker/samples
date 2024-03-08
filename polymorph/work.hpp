@@ -28,5 +28,3 @@ public:
 private:
 	mutable std::optional<bool> op;
 };
-
-using gen::operator <<;

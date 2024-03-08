@@ -32,5 +32,3 @@ private:
 public:
 	void print(std::ostream&) const override;
 };
-
-using gen::operator <<;
