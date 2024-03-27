@@ -8,7 +8,11 @@ all: $(TARGET)
 
 $(TARGET): $(OBJ)
 	$(CC) $(CFLAGS) -o $@ $^
-	$(STRIP) $@
+ifeq ("$(MSYSTEM)", "MINGW64")
+	$(STRIP) $(SFLAGS) `ls --append-exe $@`
+else
+	$(STRIP) $(SFLAGS) $@
+endif
 
 .c.o:
 	$(CC) $(CFLAGS) -o $@ -c $<

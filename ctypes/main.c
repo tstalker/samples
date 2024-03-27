@@ -1,11 +1,11 @@
 #include "generic.h"
 
 #include <float.h>
+#include <limits.h>
+#include <stdbool.h>
+#include <stdlib.h>
 #include <stdio.h>
 #include <wchar.h>
-#include <limits.h>
-#include <stdlib.h>
-#include <stdbool.h>
 
 int main(void)
 {
