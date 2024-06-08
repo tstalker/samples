@@ -1,7 +1,7 @@
 #include "generic.hpp"
 
-#include <limits>
 #include <iostream>
+#include <limits>
 
 int main(void)
 {
