@@ -7,12 +7,12 @@ fib::print(
 	const deffn& f,
 	const ulong n)
 {
-	cout << f.first << ':';
+	std::cout << f.first << ':';
 
 	for(ulong i{}; i < n; i++)
 	{
-		cout << ' ' << f.second(i);
+		std::cout << ' ' << f.second(i);
 	}
 
-	cout << endl;
+	std::cout << std::endl;
 }
