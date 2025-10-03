@@ -2,7 +2,7 @@
 
 #include <stdio.h>
 
-void print0(const int v[][N1], const size_t n0)
+void print0(const int v[][N1], size_t n0)
 {
 	for(size_t i = 0; i < n0; i++)
 	{
@@ -10,7 +10,7 @@ void print0(const int v[][N1], const size_t n0)
 	}
 }
 
-void print1(const int v[], const size_t n0, const size_t n1)
+void print1(const int* v, size_t n0, size_t n1)
 {
 	for(size_t i = 0; i < n0; i++)
 	{
@@ -18,11 +18,12 @@ void print1(const int v[], const size_t n0, const size_t n1)
 	}
 }
 
-void print2(const int v[], const size_t n)
+void print2(const int* v, size_t n)
 {
 	for(size_t i = 0; i < n; i++)
 	{
 		printf("%3d", v[i]);
 	}
+
 	putchar(NL);
 }

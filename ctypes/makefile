@@ -1,8 +1,9 @@
 TARGET = work
 OBJ = main.o
 DEPENDS = generic.h makefile
-CFLAGS = -march=native -O3 -pipe -std=c2x -Wall -Werror -Winline
+CFLAGS = -march=native -O3 -pipe -std=c23 -Wall -Werror -Winline
 STRIP = strip
+SFLAGS = -s
 
 all: $(TARGET)
 

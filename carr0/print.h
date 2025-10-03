@@ -4,4 +4,4 @@
 
 #define NL '\n'
 
-void print(const int[], const size_t);
+void print(const int*, size_t);

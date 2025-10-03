@@ -26,6 +26,7 @@ int main(void)
 			{55, 56, 57, 58, 59}
 		}
 	};
+
 	const size_t N0 = sizeof v / sizeof *v;
 	print0(v, N0);
 	putchar(NL);

@@ -13,6 +13,7 @@ int main(void)
 		{12, 13, 14, 15},
 		{16, 17, 18, 19}
 	};
+
 	const size_t N0 = sizeof v / sizeof *v;
 	print0(v, N0);
 	putchar(NL);
