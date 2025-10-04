@@ -13,4 +13,4 @@ typedef enum
 }
 rainbow;
 
-const char* get(const rainbow);
+const char* get(rainbow);

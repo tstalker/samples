@@ -1,11 +1,11 @@
 #include "utils.h"
 
-#include <stdio.h>
 #include <limits.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-const char* getword(const unsigned n, char* s, const size_t m)
+const char* getword(unsigned n, char* s, size_t m)
 {
 	srand(n);
 	memset(s, '\0', m);
@@ -26,7 +26,7 @@ const char* getword(const unsigned n, char* s, const size_t m)
 
 unsigned find(const char* p)
 {
-	char s[MAXSIZE];
+	char s[MAXSIZE] = {'\0'};
 	unsigned i = 0;
 
 	while(i < UINT_MAX && strcmp(p, getword(i, s, MAXSIZE)))
@@ -42,7 +42,7 @@ unsigned find(const char* p)
 	return i;
 }
 
-size_t min(const size_t a, const size_t b)
+size_t min(size_t a, size_t b)
 {
 	return a < b ? a : b;
 }

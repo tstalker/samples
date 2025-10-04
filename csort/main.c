@@ -5,8 +5,8 @@
 
 int main(void)
 {
-	int data[50];
-	csizet size = sizeof data / sizeof *data;
+	int data[50] = {0};
+	const size_t size = sizeof data / sizeof *data;
 	vector* pv = &(vector){data, size};
 	init(pv);
 	printf("Source: ");

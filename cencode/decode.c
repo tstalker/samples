@@ -1,8 +1,8 @@
 #include "utils.h"
 
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 
 int main(void)
 {
@@ -60,6 +60,7 @@ int main(void)
 		putchar('\n');
 		fputc('\n', ofs);
 	}
+
 	fclose(ifs);
 	fclose(ofs);
 	return EXIT_SUCCESS;

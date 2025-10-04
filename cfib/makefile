@@ -1,14 +1,15 @@
 TARGET = work
 OBJLIST = bine.o cycle.o init.o main.o print.o recur.o
 DEPENDS = fib.h makefile
-CFLAGS = -march=native -O3 -pipe -std=c2x -Wall -Werror -Winline
+CFLAGS = -march=native -O3 -pipe -std=c23 -Wall -Werror -Winline
 STRIP = strip
+SFLAGS = -s
 
 all: $(TARGET)
 
 $(TARGET): $(OBJLIST)
 	$(CC) $(CFLAGS) -o $@ $^ -lm
-	$(STRIP) $@
+	$(STRIP) $(SFLAGS) $@
 
 .c.o:
 	$(CC) $(CFLAGS) -o $@ -c $<

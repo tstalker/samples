@@ -18,6 +18,7 @@ void shell(vector* v)
 			{
 				v->data[k] = v->data[k - gap];
 			}
+
 			v->data[k] = x;
 		}
 	}

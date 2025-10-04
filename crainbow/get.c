@@ -2,9 +2,10 @@
 
 #include <stddef.h>
 
-const char* get(const rainbow r)
+const char* get(rainbow r)
 {
 	const char* ret = NULL;
+
 	switch(r)
 	{
 	case RED:
@@ -31,5 +32,6 @@ const char* get(const rainbow r)
 	default:
 		ret = "Error";
 	}
+
 	return ret;
 }

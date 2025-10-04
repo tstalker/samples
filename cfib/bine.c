@@ -2,8 +2,7 @@
 
 #include <math.h>
 
-ulong bine(culong n)
+ulong bine(ulong n)
 {
-	culong ret = lround(pow(phi, n) / sqrt5);
-	return ret;
+	return lround(pow(phi, n) / sqrt5);
 }

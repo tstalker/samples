@@ -9,5 +9,6 @@ int main(void)
 	{
 		puts(get(x));
 	}
+
 	return EXIT_SUCCESS;
 }

@@ -5,18 +5,19 @@ OBJDEC = decode.o utils.o
 OBJENC = encode.o utils.o
 OBJLIST = decode.o encode.o utils.o
 DEPENDS = utils.h makefile
-CFLAGS = -march=native -O3 -pipe -std=c2x -Wall -Werror -Winline
+CFLAGS = -march=native -O3 -pipe -std=c23 -Wall -Werror -Winline
 STRIP = strip
+SFLAGS = -s
 
 all: $(TARGET)
 
 $(TGTDEC): $(OBJDEC)
 	$(CC) $(CFLAGS) -o $@ $^
-	$(STRIP) $@
+	$(STRIP) $(SFLAGS) $@
 
 $(TGTENC): $(OBJENC)
 	$(CC) $(CFLAGS) -o $@ $^
-	$(STRIP) $@
+	$(STRIP) $(SFLAGS) $@
 
 .c.o:
 	$(CC) $(CFLAGS) -o $@ -c $<

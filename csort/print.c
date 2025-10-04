@@ -8,5 +8,6 @@ void print(const vector* v)
 	{
 		printf("%02d ", v->data[i]);
 	}
+
 	putchar('\n');
 }

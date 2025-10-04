@@ -11,6 +11,7 @@ __label__ err;
 			putchar('\n');
 			goto err;
 		}
+
 		printf("%d ", x);
 	}
 
@@ -18,6 +19,7 @@ __label__ err;
 	{
 		nested(i);
 	}
+
 	puts("Success");
 	return EXIT_SUCCESS;
 

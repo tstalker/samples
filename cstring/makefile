@@ -1,14 +1,15 @@
 TARGET = work
 OBJ = main.o
 DEPENDS = makefile
-CFLAGS = -march=native -O3 -pipe -std=c2x -Wall -Werror -Winline
+CFLAGS = -march=native -O3 -pipe -std=c23 -Wall -Werror -Winline
 STRIP = strip
+SFLAGS = -s
 
 all: $(TARGET)
 
 $(TARGET): $(OBJ)
 	$(CC) $(CFLAGS) -o $@ $^
-	$(STRIP) $@
+	$(STRIP) $(SFLAGS) $@
 
 .c.o:
 	$(CC) $(CFLAGS) -o $@ -c $<

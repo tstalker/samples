@@ -12,5 +12,6 @@ int main(void)
 		const ull x = fact(i);
 		printf("%2u: %llu\n", i, x);
 	}
+
 	return EXIT_SUCCESS;
 }

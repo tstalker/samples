@@ -1,7 +1,7 @@
 #pragma once
 
-#include <stddef.h>
 #include <stdbool.h>
+#include <stddef.h>
 
 typedef struct
 {
@@ -10,7 +10,7 @@ typedef struct
 }
 vector;
 
-bool find(const vector*, const int);
+bool find(const vector*, int);
 void init(vector*);
 void print(const vector*);
 void shell(vector*);

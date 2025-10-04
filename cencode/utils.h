@@ -6,6 +6,6 @@
 
 extern const size_t TOKENSIZE;
 
-size_t min(const size_t, const size_t);
+size_t min(size_t, size_t);
 unsigned find(const char*);
-const char* getword(const unsigned, char*, const size_t);
+const char* getword(unsigned, char*, size_t);

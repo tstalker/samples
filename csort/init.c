@@ -5,17 +5,19 @@
 
 void init(vector* v)
 {
-	csizet RANK = 100;
+	const size_t RANK = 100;
 	srand(time(NULL));
 
 	for(size_t i = 0u; i < v->size; i++)
 	{
-		int x;
+		int x = 0;
+
 		do
 		{
 			x = rand() % RANK;
 		}
 		while(find(&(vector){v->data, i}, x));
+
 		v->data[i] = x;
 	}
 }

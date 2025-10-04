@@ -1,8 +1,8 @@
 #include <ctype.h>
-#include <stdio.h>
 #include <limits.h>
-#include <stdlib.h>
 #include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 int main(void)
 {
@@ -23,6 +23,7 @@ int main(void)
 			putchar(' ');
 		}
 	}
+
 	putchar('\n');
 	return EXIT_SUCCESS;
 }

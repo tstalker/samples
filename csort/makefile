@@ -1,14 +1,15 @@
 TARGET = work
 OBJLIST = cmpfwd.o cmprev.o find.o init.o main.o print.o
 DEPENDS = header.h makefile
-CFLAGS = -march=native -pipe -O3 -std=c2x -Wall -Werror -Winline
+CFLAGS = -march=native -pipe -O3 -std=c23 -Wall -Werror -Winline
 STRIP = strip
+SFLAGS = -s
 
 all: $(TARGET)
 
 $(TARGET): $(OBJLIST)
 	$(CC) $(CFLAGS) -o $@ $^
-	$(STRIP) $@
+	$(STRIP) $(SFLAGS) $@
 
 .c.o:
 	$(CC) $(CFLAGS) -o $@ -c $<

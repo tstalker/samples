@@ -1,6 +1,6 @@
 #include "header.h"
 
-bool find(const vector* v, const int x)
+bool find(const vector* v, int x)
 {
 	bool ret = false;
 
@@ -8,5 +8,6 @@ bool find(const vector* v, const int x)
 	{
 		ret = v->data[i] == x;
 	}
+
 	return ret;
 }

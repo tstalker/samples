@@ -1,8 +1,9 @@
 #pragma once
 
+#include <stddef.h>
+
 typedef unsigned long ulong;
-typedef const ulong culong;
-typedef ulong(*PF)(culong);
+typedef ulong(*PF)(ulong);
 
 typedef struct
 {
@@ -10,12 +11,14 @@ typedef struct
 	PF pf;
 }
 deffn;
+
 typedef const deffn* cpdeffn;
 
-extern double phi, sqrt5;
+extern double phi;
+extern double sqrt5;
 
 void init(void);
-void print(cpdeffn, culong);
-ulong bine(culong);
-ulong cycle(culong);
-ulong recur(culong);
+void print(cpdeffn, size_t);
+ulong bine(ulong);
+ulong cycle(ulong);
+ulong recur(ulong);

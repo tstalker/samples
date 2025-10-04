@@ -1,10 +1,10 @@
 #include "utils.h"
 
 #include <time.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdbool.h>
 
 int main(void)
 {
@@ -26,7 +26,7 @@ int main(void)
 		return -2;
 	}
 
-	char w[MAXSIZE];
+	char w[MAXSIZE] = {'\0'};
 	memset(w, '\0', MAXSIZE);
 	bool first = true;
 	const unsigned SECONDS = 60;
@@ -73,8 +73,7 @@ int main(void)
 			}
 
 			const size_t n = min(l, TOKENSIZE);
-			char s[MAXSIZE];
-			memset(s, '\0', MAXSIZE);
+			char s[MAXSIZE] = {'\0'};
 			memcpy(s, p, n);
 			s[n] = '\0';
 			const unsigned i = find(s);
@@ -86,24 +85,28 @@ int main(void)
 			time_t finish;
 			time(&finish);
 			unsigned duration = difftime(finish, start);
-			const unsigned seconds = duration % SECONDS ;
-			duration /= SECONDS ;
-			const unsigned minutes = duration % SECONDS ;
-			duration /= SECONDS ;
+			const unsigned seconds = duration % SECONDS;
+			duration /= SECONDS;
+			const unsigned minutes = duration % SECONDS;
+			duration /= SECONDS;
 			const unsigned hours = duration;
 
 			if(hours)
 			{
 				printf("%u hours ", hours);
 			}
+
 			if(minutes)
 			{
 				printf("%u min ", minutes);
 			}
+
 			printf("%u sec]", seconds);
 		}
+
 		putchar('\n');
 	}
+
 	fclose(ifs);
 	fclose(ofs);
 	return EXIT_SUCCESS;
