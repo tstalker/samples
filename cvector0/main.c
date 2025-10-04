@@ -12,6 +12,7 @@ int main(void)
 		{"Dmitry", 44444},
 		{"Alexey", 55555}
 	};
+
 	const size_t size = sizeof book / sizeof *book;
 	print(book, size);
 	return EXIT_SUCCESS;

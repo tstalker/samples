@@ -3,6 +3,7 @@
 int main(void)
 {
 	const std::size_t N1(4);
+
 	const int z[][N1]
 	{
 		{0, 1, 2, 3},
@@ -11,6 +12,7 @@ int main(void)
 		{12, 13, 14, 15},
 		{16, 17, 18, 19}
 	};
+
 	std::cout << z << std::endl;
 	prn::print(z);
 	std::cout << std::endl;

@@ -4,7 +4,7 @@
 int main(void)
 {
 __label__ err;
-	void nested(const int x)
+	void nested(int x)
 	{
 		if(!x)
 		{

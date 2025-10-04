@@ -2,7 +2,9 @@
 
 int main(void)
 {
-	const std::size_t N1(4), N2(5);
+	constexpr std::size_t N1(4);
+	constexpr std::size_t N2(5);
+
 	const int z[][N1][N2]
 	{
 		{
@@ -24,6 +26,7 @@ int main(void)
 			{55, 56, 57, 58, 59}
 		}
 	};
+
 	prn::print(z);
 	std::cout << std::endl;
 	const auto N0(sizeof z / sizeof *z);

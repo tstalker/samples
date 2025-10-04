@@ -1,6 +1,6 @@
 #include "token.h"
 
-static csizet MAX = 2u;
+static const size_t MAX = 2u;
 
 void decision_step(cdecision d, pvector_int pv)
 {

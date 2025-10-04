@@ -9,5 +9,5 @@ typedef struct
 }
 entry;
 
-void print(const entry*, const size_t);
+void print(const entry*, size_t);
 void printelem(const entry*);

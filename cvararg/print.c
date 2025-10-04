@@ -1,16 +1,18 @@
 #include "print.h"
 
-#include <stdio.h>
 #include <stdarg.h>
 #include <stdbool.h>
+#include <stdio.h>
 
 void print(const char* fmt, ...)
 {
 	va_list va;
 	va_start(va, fmt);
+
 	for(bool again = true; again;)
 	{
 		const char c = *fmt++;
+
 		switch(c)
 		{
 		case '\0':
@@ -45,7 +47,9 @@ void print(const char* fmt, ...)
 		default:
 			fprintf(stderr, "\nError format symbol \'%c\'\n", c);
 		}
+
 		putchar(' ');
 	}
+
 	va_end(va);
 }

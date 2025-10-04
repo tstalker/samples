@@ -21,5 +21,6 @@ cpchar error_message(error_clist e)
 	default:
 		ret = "Unknown error";
 	}
+
 	return ret;
 }

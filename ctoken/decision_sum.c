@@ -30,5 +30,6 @@ int decision_sum(cdecision d, cpvector_int pv)
 	default:
 		error_print(ERROR_DECISION);
 	}
+
 	return ret;
 }

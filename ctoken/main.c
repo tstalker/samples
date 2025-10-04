@@ -32,10 +32,12 @@ int main(void)
 		{
 			sum.second += x;
 		}
+
 		stoken_print("first sum", sum.first);
 		stoken_print("second sum", sum.second);
 		decision_step(d, &v);
 	}
+
 	cint win_sum = max2(sum.first, sum.second);
 	cpchar wtitle = win_sum == sum.first ? "first win" : "second win";
 	stoken_print(wtitle, win_sum);

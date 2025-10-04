@@ -12,7 +12,7 @@ reduce
 
 int main(void)
 {
-	const std::size_t SZ(10);
+	constexpr std::size_t SZ(10);
 	int v[SZ]{};
 	using TV = std::remove_extent_t<decltype(v)>;
 	std::iota(std::begin(v), std::end(v), TV());

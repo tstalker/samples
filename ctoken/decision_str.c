@@ -27,5 +27,6 @@ cpchar decision_str(cdecision d)
 	default:
 		error_print(ERROR_DECISION);
 	}
+
 	return ret;
 }

@@ -14,6 +14,7 @@ decision map(cpvector_decision pd, cpvector_int pv)
 	{
 		sv.set(&sv, i, (pair_decision_int){pd->get(pd, i), decision_sum(pd->get(pd, i), pv)});
 	}
+
 	sv.sort(&sv);
 	cdecision ret = sv.back(&sv).first;
 	return ret;

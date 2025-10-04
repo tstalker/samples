@@ -1,7 +1,7 @@
 #include "token.h"
 
-#include <time.h>
 #include <stdlib.h>
+#include <time.h>
 
 static cint MAX = 100;
 

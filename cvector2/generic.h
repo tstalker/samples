@@ -12,7 +12,7 @@ struct sentry
 	pf print;
 };
 
-void print(const entry*, const size_t);
+void print(const entry*, size_t);
 void printelem(const entry*);
-void sort(entry*, const size_t);
+void sort(entry*, size_t);
 void swap(entry*, entry*);

@@ -1,8 +1,8 @@
 #pragma once
 
+#include <functional>
 #include <iomanip>
 #include <iostream>
-#include <functional>
 
 namespace prn
 {
@@ -11,15 +11,15 @@ template <typename T, std::size_t N0, std::size_t N1>
 template <typename T, std::size_t N>
 	void print(const T(&)[N]);
 template <typename T, std::size_t N1>
-	void print(const T(&)[N1], const std::size_t);
+	void print(const T(&)[N1], std::size_t);
 template <typename T>
-	void print(const T[], const std::size_t, const std::size_t);
+	void print(const T[], std::size_t, std::size_t);
 template <typename T>
 	void printx(const T&);
 template <typename T>
 	void printy(std::ostream&, const T&);
 template <typename T>
-	void printv(const T[], const std::size_t);
+	void printv(const T[], std::size_t);
 template <typename T, std::size_t N0, std::size_t N1>
 	decltype(auto) operator << (std::ostream&, const T(&)[N0][N1]);
 template <typename T, std::size_t N>
@@ -55,7 +55,7 @@ void prn::printy(std::ostream& o, const T& x)
 }
 
 template <typename T, std::size_t N1>
-void prn::print(const T(&v)[N1], const std::size_t n0)
+void prn::print(const T(&v)[N1], std::size_t n0)
 {
 	for(std::size_t i{}; i < n0; i++)
 	{
@@ -64,7 +64,7 @@ void prn::print(const T(&v)[N1], const std::size_t n0)
 }
 
 template <typename T>
-void prn::print(const T v[], const std::size_t n0, const std::size_t n1)
+void prn::print(const T v[], std::size_t n0, std::size_t n1)
 {
 	for(std::size_t i{}; i < n0; i++)
 	{
@@ -73,7 +73,7 @@ void prn::print(const T v[], const std::size_t n0, const std::size_t n1)
 }
 
 template <typename T>
-void prn::printv(const T v[], const std::size_t n)
+void prn::printv(const T v[], std::size_t n)
 {
 	std::for_each_n(v, n, printx<T>);
 	std::cout << std::endl;
@@ -86,6 +86,7 @@ decltype(auto) prn::operator << (std::ostream& o, const T(&v)[N0][N1])
 	{
 		o << w;
 	}
+
 	return o;
 }
 
