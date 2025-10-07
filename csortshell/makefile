@@ -1,6 +1,6 @@
 TARGET = work
-OBJLIST = find.o init.o main.o print.o shell.o
-DEPENDS = header.h makefile
+OBJLIST = init.o main.o print.o shuffle.o sortshell.o swap.o
+DEPENDS = generic.h makefile
 CFLAGS = -march=native -O3 -pipe -std=c23 -Wall -Werror -Winline
 STRIP = strip
 SFLAGS = -s
@@ -20,8 +20,9 @@ allclean: clean
 clean:
 	$(RM) $(OBJLIST)
 
-find.o: find.c $(DEPENDS)
 init.o: init.c $(DEPENDS)
 main.o: main.c $(DEPENDS)
 print.o: print.c $(DEPENDS)
-shell.o: shell.c $(DEPENDS)
+shuffle.o: shuffle.c $(DEPENDS)
+sortshell.o: sortshell.c $(DEPENDS)
+swap.o: swap.c $(DEPENDS)

@@ -1,18 +1,14 @@
-#include "header.h"
+#include "generic.h"
 
-#include <stdio.h>
 #include <stdlib.h>
 
 int main(void)
 {
-	int data[10] = {0};
-	const size_t size = sizeof data / sizeof *data;
-	vector* pv = &(vector){data, size};
-	init(pv);
-	printf("Source: ");
-	print(pv);
-	shell(pv);
-	printf("Sorted: ");
-	print(pv);
+	int data[100] = {0};
+	const size_t size = sizeof data / sizeof * data;
+	init(data, size);
+	print(data, size);
+	sortshell(data, size);
+	print(data, size);
 	return EXIT_SUCCESS;
 }

@@ -1,22 +1,16 @@
-#include "header.h"
+#include "generic.h"
 
 #include <stdlib.h>
 #include <time.h>
 
-void init(vector* v)
+void init(iptr_t ptr, size_t size)
 {
-	srand(time(NULL));
-
-	for(size_t i = 0; i < v->size; i++)
+	for(size_t i = 0; i < size; i++)
 	{
-		int x = 0;
-
-		do
-		{
-			x = rand() % v->size;
-		}
-		while(find(&(vector){v->data, i}, x));
-
-		v->data[i] = x;
+		ptr[i] = (int)i;
 	}
+
+	const time_t init_time = time(NULL);
+	srand((unsigned)init_time);
+	shuffle(ptr, size);
 }
