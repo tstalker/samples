@@ -4,7 +4,7 @@ OBJLIST = data_initialize.o decision_get.o decision_print.o decision_step.o deci
 	vector_cinit.o vector_cinitv.o vector_cmp_decision.o vector_cmp_int.o vector_cmp_pair.o vector_dec_size.o vector_empty.o vector_end.o vector_front.o \
 	vector_get.o vector_inc_ptr.o vector_init.o vector_initv.o vector_initialize.o vector_pop_back.o vector_pop_front.o vector_print.o vector_print_decision.o \
 	vector_print_int.o vector_print_pair.o vector_set.o vector_size.o vector_sort.o
-CFLAGS = -march=native -O3 -pipe -std=c23 -Wall -Werror -Winline
+CFLAGS = -march=native -O3 -pipe -std=c2x -Wall -Werror -Winline
 STRIP = strip
 SFLAGS = -s
 

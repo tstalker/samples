@@ -1,7 +1,7 @@
 TARGET = work
 OBJLIST = get.o main.o
 DEPENDS = rainbow.h makefile
-CFLAGS = -march=native -O3 -pipe -std=c23 -Wall -Werror -Winline
+CFLAGS = -march=native -O3 -pipe -std=c2x -Wall -Werror -Winline
 STRIP = strip
 SFLAGS = -s
 

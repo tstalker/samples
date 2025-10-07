@@ -1,6 +1,6 @@
 TARGET = work
 OBJLIST = main.o print.o set.o
-CFLAGS = -march=native -O3 -pipe -std=c23 -Wall -Werror -Winline
+CFLAGS = -march=native -O3 -pipe -std=c2x -Wall -Werror -Winline
 STRIP = strip
 SFLAGS = -s
 
