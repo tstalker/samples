@@ -9,5 +9,5 @@ void print(ciptr_t ptr, size_t size)
 		printf("%d ", ptr[i]);
 	}
 
-	printf("\n\n");
+	printf("\n");
 }
