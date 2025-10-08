@@ -1,10 +1,10 @@
 #include "generic.hpp"
 
-#include <vector>
-#include <numeric>
+#include <functional>
 #include <iostream>
 #include <iterator>
-#include <functional>
+#include <numeric>
+#include <vector>
 
 const gen::type MAX(10000);
 
@@ -19,6 +19,7 @@ int main(void)
 		{
 			continue;
 		}
+
 		for(std::size_t i(2 * x); i < v.size(); i += x)
 		{
 			v[i] = gen::type();
