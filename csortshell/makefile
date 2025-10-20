@@ -1,5 +1,5 @@
 TARGET = work
-OBJLIST = init.o main.o print.o shuffle.o sortshell.o swap.o
+OBJLIST = compare.o init.o main.o print.o shuffle.o sortshell.o swap.o
 DEPENDS = generic.h makefile
 CFLAGS = -march=native -O3 -pipe -std=c2x -Wall -Werror -Winline
 STRIP = strip
@@ -20,6 +20,7 @@ allclean: clean
 clean:
 	$(RM) $(OBJLIST)
 
+compare.o: compare.c $(DEPENDS)
 init.o: init.c $(DEPENDS)
 main.o: main.c $(DEPENDS)
 print.o: print.c $(DEPENDS)
