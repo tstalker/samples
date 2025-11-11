@@ -2,9 +2,6 @@
 #include <fstream>
 #include <iostream>
 
-const auto MAX(99u);
-const auto SIZE(10u);
-
 int main(void)
 {
 	std::vector<float> Data;

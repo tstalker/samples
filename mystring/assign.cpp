@@ -1,12 +1,10 @@
 #include "myexcept.hpp"
 #include "mystring.hpp"
 
-auto
-gen::mystring::operator = (
-	const mystring& s)
+auto gen::mystring::operator = (const mystring& s)
 -> const mystring&
 {
-	cout << "mystring::operator = (const mystring& " << s << "): " << *this << " -> ";
+	std::cout << "mystring::operator = (const mystring& " << s << "): " << *this << " -> ";
 
 	if(this == &s)
 	{
@@ -14,6 +12,6 @@ gen::mystring::operator = (
 	}
 
 	alloc(s);
-	cout << *this << endl;
+	std::cout << *this << std::endl;
 	return *this;
 }

@@ -1,7 +1,6 @@
 #include "bignumber.hpp"
 
-int
-main(void)
+int main(void)
 {
 	fib::bignumber<fib::uchar> x;
 	x.print();

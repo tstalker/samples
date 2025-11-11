@@ -2,10 +2,7 @@
 
 #include <iterator>
 
-void
-gen::mystring::out(
-	std::ostream& o)
-const
+void gen::mystring::out(std::ostream& o) const
 {
 	if(size)
 	{

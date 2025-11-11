@@ -1,5 +1,6 @@
 #pragma once
 
+#include <algorithm>
 #include <vector>
 
 namespace gen
@@ -9,7 +10,7 @@ template <typename T>
 }
 
 template <typename T>
-void gen::bubble(std::vector<T> &v)
+void gen::bubble(std::vector<T>& v)
 {
 	for(auto& x: v)
 	{

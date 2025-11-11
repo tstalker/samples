@@ -5,10 +5,8 @@
 
 namespace gen
 {
-	using namespace std;
+	const std::size_t MAXSIZE(4u);
 
-	const size_t MAXSIZE(4u);
-
-	string GetWord(const unsigned&);
-	string GetTime(const chrono::time_point<chrono::system_clock>&);
+	std::string GetWord(const unsigned&);
+	std::string GetTime(const std::chrono::time_point<std::chrono::system_clock>&);
 }

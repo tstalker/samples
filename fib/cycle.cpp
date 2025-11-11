@@ -1,8 +1,6 @@
 #include "fib.hpp"
 
-auto
-fib::cycle(
-	const ulong n)
+auto fib::cycle(const ulong n)
 -> ulong
 {
 	ulong r{};

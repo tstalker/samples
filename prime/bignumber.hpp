@@ -2,108 +2,82 @@
 
 #include "fib.hpp"
 
+#include <iostream>
 #include <limits>
 #include <vector>
-#include <iostream>
 
 namespace fib
 {
-	template <typename T> class bignumber;
+	template <typename T>
+	class bignumber;
 }
 
 template <typename T>
 class fib::bignumber
 {
 public:
-	explicit
-	bignumber(void):
-	data{0}
+	explicit bignumber(void)
 	{}
 
-	explicit
-	bignumber(
-		const T data):
-	data{data}
+	explicit bignumber(const T data):
+		data{data}
 	{}
 
-	explicit
-	bignumber(
-		const vector<T> &data):
-	data{data}
+	explicit bignumber(const std::vector<T>& data):
+		data{data}
 	{}
 
-	explicit
-	bignumber(
-		const bignumber<T> &data):
-	data{data.data}
+	explicit bignumber(const bignumber<T>& data):
+		data{data.data}
 	{}
 
-	const bignumber<T> &operator = (const T);
-	const bignumber<T> &operator = (const vector<T>&);
-	const bignumber<T> &operator = (const bignumber<T>&);
-	const bignumber<T> &operator ++ (void);
+	const bignumber<T>& operator = (const T);
+	const bignumber<T>& operator = (const std::vector<T>&);
+	const bignumber<T>& operator = (const bignumber<T>&);
+	const bignumber<T>& operator ++ (void);
 
-	constexpr T
-	max(void)
-	const
+	constexpr T max(void) const
 	{
-		return numeric_limits<T>::max();
+		return std::numeric_limits<T>::max();
 	}
 
-	auto
-	empty(void)
-	const
+	auto empty(void) const
 	{
 		return data.empty();
 	}
 
-	void
-	clear(void)
+	void clear(void)
 	{
 		data.clear();
 	}
 
-	size_t
-	size(void)
-	const
+	std::size_t size(void) const
 	{
 		return data.size();
 	}
 
-	void
-	push(
-		const T x)
+	void push(const T x)
 	{
 		data.push_back(x);
 	}
 
-	void
-	pop(void)
+	void pop(void)
 	{
 		data.pop_back();
 	}
 
 	template <typename U>
-	U
-	getelem(
-		const U x)
-	const
+	U getelem(const U x) const
 	{
 		return x;
 	}
 
-	short
-	getelem(
-		const char x)
-	const
+	short getelem(const char x) const
 	{
 		return x;
 	}
 
-	ushort
-	getelem(
-		const uchar x)
-	const
+	ushort getelem(const uchar x) const
 	{
 		return x;
 	}
@@ -111,15 +85,13 @@ public:
 	void print(void) const;
 
 private:
-	vector<T> data;
+	std::vector<T> data;
 };
 
 template <typename T>
-void
-fib::bignumber<T>::print(void)
-const
+void fib::bignumber<T>::print(void) const
 {
-	cout << '[';
+	std::cout << '[';
 	auto first(true);
 
 	for(auto p(data.crbegin()); p != data.crend(); p++)
@@ -130,19 +102,17 @@ const
 		}
 		else
 		{
-			cout << ", ";
+			std::cout << ", ";
 		}
 
-		cout << getelem(*p);
+		std::cout << getelem(*p);
 	}
 
-	cout << ']';
+	std::cout << ']';
 }
 
 template <typename T>
-auto
-fib::bignumber<T>::operator = (
-	const T x)
+auto fib::bignumber<T>::operator = (const T x)
 -> const bignumber<T>&
 {
 	clear();
@@ -151,9 +121,7 @@ fib::bignumber<T>::operator = (
 }
 
 template <typename T>
-auto
-fib::bignumber<T>::operator = (
-	const vector<T> &x)
+auto fib::bignumber<T>::operator = (const std::vector<T>& x)
 -> const bignumber<T>&
 {
 	data = x;
@@ -161,9 +129,7 @@ fib::bignumber<T>::operator = (
 }
 
 template <typename T>
-auto
-fib::bignumber<T>::operator = (
-	const bignumber<T> &x)
+auto fib::bignumber<T>::operator = (const bignumber<T>& x)
 -> const bignumber<T>&
 {
 	data = x.data;
@@ -171,29 +137,31 @@ fib::bignumber<T>::operator = (
 }
 
 template <typename T>
-auto
-fib::bignumber<T>::operator ++ (void)
+auto fib::bignumber<T>::operator ++ (void)
 -> const bignumber<T>&
 {
 	if(empty())
 	{
-		cerr << "error: data is empty" << endl;
-		exit(EXIT_FAILURE);
+		std::cerr << "error: data is empty" << std::endl;
+		std::exit(EXIT_FAILURE);
 	}
 
-	for(size_t i{}; i < size(); i++)
+	for(std::size_t i{}; i < size(); i++)
 	{
 		if(data[i] < max())
 		{
 			data[i]++;
 			break;
 		}
+
 		data[i] = 0;
+
 		if(i + 1 == size())
 		{
 			push(1);
 			break;
 		}
 	}
+
 	return *this;
 }

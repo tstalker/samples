@@ -1,8 +1,6 @@
 #include "mystring.hpp"
 
-auto
-gen::mystring::operator ~ (void)
-const
+auto gen::mystring::operator ~ (void) const
 -> mystring
 {
 	mystring s(*this);

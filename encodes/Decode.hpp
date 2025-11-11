@@ -8,5 +8,5 @@ namespace dec
 {
 	using namespace gen;
 
-	void Parse(string_view, string_view);
+	void Parse(std::string_view, std::string_view);
 }

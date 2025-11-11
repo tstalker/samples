@@ -1,9 +1,10 @@
 #pragma once
 
+#include <algorithm>
 #include <cmath>
-#include <vector>
 #include <iostream>
 #include <iterator>
+#include <vector>
 
 namespace gen
 {
@@ -12,9 +13,10 @@ template <typename T>
 }
 
 template <typename T>
-decltype(auto) gen::operator << (std::ostream& o, const std::vector<T> &v)
+decltype(auto) gen::operator << (std::ostream& o, const std::vector<T>& v)
 {
 	auto it(std::ostream_iterator<T>(o, " "));
+
 	if constexpr(std::is_integral_v<T>)
 	{
 		std::copy(v.cbegin(), v.cend(), it);
@@ -31,6 +33,7 @@ decltype(auto) gen::operator << (std::ostream& o, const std::vector<T> &v)
 			return z;
 		});
 	}
+
 	return o;
 }
 

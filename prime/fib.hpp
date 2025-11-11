@@ -2,7 +2,6 @@
 
 namespace fib
 {
-	using namespace std;
 	using uchar = unsigned char;
 	using ushort = unsigned short;
 	using ulong = unsigned long;

@@ -7,6 +7,7 @@ int main(void)
 		{1, 2, 3},
 		{4, 5, 6}
 	};
+
 	prn::print(v[0]);
 	prn::print(v[1]);
 	return EXIT_SUCCESS;

@@ -2,10 +2,7 @@
 
 #include <iostream>
 
-void
-fib::print(
-	const deffn& f,
-	const ulong n)
+void fib::print(const deffn& f, const ulong n)
 {
 	std::cout << f.first << ':';
 

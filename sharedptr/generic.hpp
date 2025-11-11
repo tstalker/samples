@@ -6,8 +6,8 @@
 
 namespace gen
 {
-	using namespace std;
 	class Base;
+
 template <typename T>
 	class Inherit;
 
@@ -27,10 +27,10 @@ protected:
 	};
 
 private:
-	shared_ptr<BaseData> Data;
+	std::shared_ptr<BaseData> Data;
 
 public:
-	Base(const shared_ptr<BaseData> &p):
+	Base(const std::shared_ptr<BaseData> &p):
 		Data(p)
 	{}
 
@@ -41,8 +41,7 @@ public:
 	~Base(void)
 	{}
 
-	const shared_ptr<BaseData>
-	Get(void) const
+	std::shared_ptr<BaseData> Get(void) const
 	{
 		return Data;
 	}
@@ -79,7 +78,7 @@ class gen::Inherit:
 
 public:
 	Inherit(const T &s):
-		Base(make_shared<InheritData>(s))
+		Base(std::make_shared<InheritData>(s))
 	{}
 
 	~Inherit(void)
@@ -87,11 +86,9 @@ public:
 };
 
 template <typename T>
-void
-gen::Inherit<T>::InheritData::Print(void)
-const
+void gen::Inherit<T>::InheritData::Print(void) const
 {
-	cout << Value << ' ';
+	std::cout << Value << ' ';
 }
 
 template <>
@@ -119,16 +116,14 @@ class gen::Inherit<double>:
 
 public:
 	Inherit(const double& d):
-		Base(make_shared<InheritData>(d))
+		Base(std::make_shared<InheritData>(d))
 	{}
 
 	~Inherit(void)
 	{}
 };
 
-inline void
-gen::Inherit<double>::InheritData::Print(void)
-const
+inline void gen::Inherit<double>::InheritData::Print(void) const
 {
-	cout << setprecision(8) << Value << ' ';
+	std::cout << std::setprecision(8) << Value << ' ';
 }

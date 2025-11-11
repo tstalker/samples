@@ -3,14 +3,12 @@
 
 namespace gen
 {
-	using namespace std;
-
 template<typename C, typename T, typename F>
-	enable_if<C::value, T&&>::type
+	std::enable_if<C::value, T&&>::type
 	select(T&&, F&&);
 
 template<typename C, typename T, typename F>
-	enable_if<!C::value, F&&>::type
+	std::enable_if<!C::value, F&&>::type
 	select(T&&, F&&);
 }
 
@@ -18,14 +16,14 @@ template<typename C, typename T, typename F>
 std::enable_if<C::value, T&&>::type
 gen::select(T&& t, F&&)
 {
-	return forward<T>(t);
+	return std::forward<T>(t);
 }
 
 template<typename C, typename T, typename F>
 std::enable_if<!C::value, F&&>::type
 gen::select(T&&, F&& f)
 {
-	return forward<F>(f);
+	return std::forward<F>(f);
 }
 
 int main(void)

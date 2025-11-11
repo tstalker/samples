@@ -1,7 +1,6 @@
 #include "mystring.hpp"
 
-void
-gen::mystring::clear(void)
+void gen::mystring::clear(void)
 {
 	delete[] ptr;
 	origin();

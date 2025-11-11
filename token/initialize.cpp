@@ -1,5 +1,6 @@
 #include "token.hpp"
 
+#include <algorithm>
 #include <random>
 #include <functional>
 

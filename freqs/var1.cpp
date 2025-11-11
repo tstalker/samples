@@ -4,8 +4,7 @@
 #include <functional>
 #include <unordered_map>
 
-using namespace std;
-using mymap = unordered_map <wstring, uint64_t>;
+using mymap = std::unordered_map<std::wstring, std::uint64_t>;
 
 bool cmp(const mymap::value_type& l, const mymap::value_type& r)
 {
@@ -14,14 +13,18 @@ bool cmp(const mymap::value_type& l, const mymap::value_type& r)
 
 int main(void)
 {
-	locale::global(locale("en_US.UTF-8"));
-	wifstream ifile("in.txt");
+	std::locale::global(locale("en_US.UTF-8"));
+	std::wifstream ifile("in.txt");
 	mymap words;
-	for(wstring s; ifile;)
+
+	for(std::wstring s; ifile;)
 	{
 		auto c(ifile.get());
-		if(iswalpha(c))
-			s += towlower(c);
+
+		if(std::iswalpha(c))
+		{
+			s += std::towlower(c);
+		}
 		else if(!s.empty())
 		{
 			++words[s];
@@ -29,11 +32,12 @@ int main(void)
 		}
 	}
 
-	set <mymap::value_type, function <decltype(cmp)>> sorted_words(words.cbegin(), words.cend(), cmp);
-	wofstream ofile("out.txt");
+	std::set<mymap::value_type, std::function<decltype(cmp)>> sorted_words(words.cbegin(), words.cend(), cmp);
+	std::wofstream ofile("out.txt");
+
 	for(const auto& w: sorted_words)
 	{
-		wcout << w.second << '\t' << w.first << endl;
-		ofile << w.second << '\t' << w.first << endl;
+		std::wcout << w.second << '\t' << w.first << std::endl;
+		ofile << w.second << '\t' << w.first << std::endl;
 	}
 }

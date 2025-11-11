@@ -1,12 +1,12 @@
 #include "generic.hpp"
 
+#include <algorithm>
 #include <string>
 #include <vector>
 #include <numbers>
 #include <functional>
 
-int
-main(void)
+int main(void)
 {
 	const std::vector<gen::Base> v
 	{
@@ -23,6 +23,7 @@ main(void)
 	}
 
 	std::cout << std::endl;
+
 	for(auto p(v.cbegin()); p != v.cend(); p++)
 	{
 		p->Print();

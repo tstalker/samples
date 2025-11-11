@@ -1,7 +1,6 @@
 #include "mystring.hpp"
 
-gen::mystring::mystring(
-	mystring&& s):
+gen::mystring::mystring(mystring&& s):
 	size(s.size),
 	ptr(s.ptr)
 {
@@ -9,9 +8,7 @@ gen::mystring::mystring(
 	s.origin();
 }
 
-gen::mystring::mystring(
-	const std::size_t sz,
-	const char* s):
+gen::mystring::mystring(const std::size_t sz, const char* s):
 	size(sz),
 	ptr(alloc(sz))
 {

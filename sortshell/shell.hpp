@@ -17,10 +17,12 @@ void gen::shell(std::vector<T> &v)
 		{
 			const auto x(v[i]);
 			auto j(i);
+
 			for(; j >= gap && x < v[j - gap]; j -= gap)
 			{
 				v[j] = v[j - gap];
 			}
+
 			v[j] = x;
 		}
 	}
