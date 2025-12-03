@@ -4,72 +4,72 @@
 #include <iostream>
 
 auto Calc::GetToken(void)
--> TokenValue
+-> Token
 {
 	char c{};
 
 	do
 	{
-		CurrentToken = std::cin.get(c) ? static_cast<TokenValue>(c) : TokenValue::END;
+		Global::CurrentToken = std::cin.get(c) ? static_cast<Token>(c) : Token::END;
 	}
-	while(CurrentToken != TokenValue::END && CurrentToken != TokenValue::NEW_LINE && std::isspace(c));
+	while(Global::CurrentToken != Token::END && Global::CurrentToken != Token::NEW_LINE && std::isspace(c));
 
-	switch(CurrentToken)
+	switch(Global::CurrentToken)
 	{
-	case TokenValue::EMPTY:
-		CurrentToken = TokenValue::END;
+	case Token::EMPTY:
+		Global::CurrentToken = Token::END;
 		break;
 
-	case TokenValue::NEW_LINE:
-		CurrentToken = TokenValue::PRINT;
+	case Token::NEW_LINE:
+		Global::CurrentToken = Token::PRINT;
 		break;
 
-	case TokenValue::ASSIGN:
-	case TokenValue::LEFT_PAREN:
-	case TokenValue::RIGHT_PAREN:
-	case TokenValue::PLUS:
-	case TokenValue::MINUS:
-	case TokenValue::STAR:
-	case TokenValue::SLASH:
-	case TokenValue::PRINT:
-	case TokenValue::END:
+	case Token::ASSIGN:
+	case Token::LEFT_PAREN:
+	case Token::RIGHT_PAREN:
+	case Token::PLUS:
+	case Token::MINUS:
+	case Token::STAR:
+	case Token::SLASH:
+	case Token::PRINT:
+	case Token::END:
 		break;
 
-	case TokenValue::POINT:
-	case TokenValue::DIGIT_0:
-	case TokenValue::DIGIT_1:
-	case TokenValue::DIGIT_2:
-	case TokenValue::DIGIT_3:
-	case TokenValue::DIGIT_4:
-	case TokenValue::DIGIT_5:
-	case TokenValue::DIGIT_6:
-	case TokenValue::DIGIT_7:
-	case TokenValue::DIGIT_8:
-	case TokenValue::DIGIT_9:
-		CurrentToken = TokenValue::NUMBER;
+	case Token::POINT:
+	case Token::DIGIT_0:
+	case Token::DIGIT_1:
+	case Token::DIGIT_2:
+	case Token::DIGIT_3:
+	case Token::DIGIT_4:
+	case Token::DIGIT_5:
+	case Token::DIGIT_6:
+	case Token::DIGIT_7:
+	case Token::DIGIT_8:
+	case Token::DIGIT_9:
+		Global::CurrentToken = Token::NUMBER;
 		std::cin.putback(c);
-		std::cin >> NumberValue;
+		std::cin >> Global::NumberValue;
 		break;
 
 	default:
 		if(std::isalpha(c))
 		{
-			CurrentToken = TokenValue::NAME;
-			StringValue = c;
+			Global::CurrentToken = Token::NAME;
+			Global::StringValue = c;
 
 			while(std::cin.get(c) && std::isalnum(c))
 			{
-				StringValue.push_back(c);
+				Global::StringValue.push_back(c);
 			}
 
 			std::cin.putback(c);
 		}
 		else
 		{
-			CurrentToken = TokenValue::PRINT;
+			Global::CurrentToken = Token::PRINT;
 			Error("Primary Expression expected");
 		}
 	}
 
-	return CurrentToken;
+	return Global::CurrentToken;
 }

@@ -9,13 +9,13 @@ double Calc::Term(bool get)
 
 	for(auto Again(true); Again;)
 	{
-		switch(CurrentToken)
+		switch(Global::CurrentToken)
 		{
-		case TokenValue::STAR:
+		case Token::STAR:
 			Left *= Primary(true);
 			break;
 
-		case TokenValue::SLASH:
+		case Token::SLASH:
 			if(const auto d(Primary(true));
 				std::abs(d) < e)
 			{

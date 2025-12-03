@@ -9,16 +9,16 @@ double Calc::Primary(bool get)
 		GetToken();
 	}
 
-	switch(CurrentToken)
+	switch(Global::CurrentToken)
 	{
-	case TokenValue::NUMBER:
-		Left = NumberValue;
+	case Token::NUMBER:
+		Left = Global::NumberValue;
 		GetToken();
 		break;
 
-	case TokenValue::NAME:
-		if(auto& Value(TableName[StringValue]);
-			GetToken() == TokenValue::ASSIGN)
+	case Token::NAME:
+		if(auto& Value(Global::TableName[Global::StringValue]);
+			GetToken() == Token::ASSIGN)
 		{
 			Left = Value = Expression(true);
 		}
@@ -29,14 +29,14 @@ double Calc::Primary(bool get)
 
 		break;
 
-	case TokenValue::MINUS:
+	case Token::MINUS:
 		Left = -Primary(true);
 		break;
 
-	case TokenValue::LEFT_PAREN:
+	case Token::LEFT_PAREN:
 		Left = Expression(true);
 
-		if(CurrentToken != TokenValue::RIGHT_PAREN)
+		if(Global::CurrentToken != Token::RIGHT_PAREN)
 		{
 			Left = Error("')' expected");
 		}

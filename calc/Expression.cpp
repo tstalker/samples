@@ -6,13 +6,13 @@ double Calc::Expression(bool get)
 
 	for(auto Again(true); Again;)
 	{
-		switch(CurrentToken)
+		switch(Global::CurrentToken)
 		{
-		case TokenValue::PLUS:
+		case Token::PLUS:
 			Left += Term(true);
 			break;
 
-		case TokenValue::MINUS:
+		case Token::MINUS:
 			Left -= Term(true);
 			break;
 

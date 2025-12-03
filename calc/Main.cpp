@@ -5,19 +5,19 @@
 
 int main(void)
 {
-	Calc::TableName["pi"] = std::numbers::pi;
-	Calc::TableName["e"] = std::numbers::e;
+	Global::TableName["pi"] = std::numbers::pi;
+	Global::TableName["e"] = std::numbers::e;
 
 	while(std::cin)
 	{
 		Calc::GetToken();
 
-		if(Calc::CurrentToken == Calc::TokenValue::END)
+		if(Global::CurrentToken == Calc::Token::END)
 		{
 			break;
 		}
 
-		if(Calc::CurrentToken == Calc::TokenValue::PRINT)
+		if(Global::CurrentToken == Calc::Token::PRINT)
 		{
 			continue;
 		}
@@ -28,7 +28,7 @@ int main(void)
 	return EXIT_SUCCESS;
 }
 
-double Calc::NumberValue{};
-std::string Calc::StringValue;
-Calc::TokenValue Calc::CurrentToken(Calc::TokenValue::PRINT);
-std::map<std::string, double> Calc::TableName;
+double Global::NumberValue{};
+std::string Global::StringValue;
+Calc::Token Global::CurrentToken(Calc::Token::PRINT);
+Type::Table Global::TableName;

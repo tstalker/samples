@@ -1,18 +1,26 @@
 #pragma once
 
-#include "TokenType.hpp"
+#include "Token.hpp"
 
 #include <map>
 #include <string>
 
-namespace Calc
+namespace Type
 {
-	extern TokenValue CurrentToken;
+	using Table = std::map<std::string, double>;
+}
+
+namespace Global
+{
+	extern Calc::Token CurrentToken;
 	extern double NumberValue;
 	extern std::string StringValue;
-	extern std::map<std::string, double> TableName;
+	extern Type::Table TableName;
+}
 
-	TokenValue GetToken(void);
+namespace Calc
+{
+	Token GetToken(void);
 	double Error(const std::string&);
 	double Expression(bool);
 	double Primary(bool);

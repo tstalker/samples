@@ -1,6 +1,6 @@
 TARGET = work
 OBJLIST = Error.o Expression.o GetToken.o Main.o Primary.o Term.o
-DEPENDS = Calc.hpp TokenType.hpp Makefile
+DEPENDS = Calc.hpp Token.hpp Makefile
 CC = c++
 CFLAGS = -march=native -O3 -pipe -std=c++23 -Wall -Werror -Winline
 STRIP = strip

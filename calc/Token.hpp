@@ -1,13 +1,17 @@
 #pragma once
 
-namespace Calc
+namespace Type
 {
-	using TokenType = char;
-	enum class TokenValue: TokenType;
+	using Token = char;
 }
 
-enum class Calc::TokenValue:
-	Calc::TokenType
+namespace Calc
+{ 
+	enum class Token: Type::Token;
+}
+
+enum class Calc::Token:
+	Type::Token
 {
 	EMPTY,
 	END,
