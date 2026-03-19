@@ -1,14 +1,16 @@
 TARGET = work
 OBJ = main.o
-DEPENDS = makefile
+DEPENDS = Makefile
 CC = c++
-CFLAGS = -march=native -O3 -pipe -std=c++23 -Wall -Werror -Winline
+OFLAGS = -O3
+CFLAGS = -march=native $(OFLAGS) -pipe -std=c++23 -Wall -Werror -Winline
+LFLAGS = -flto $(CFLAGS) -Wl,$(OFLAGS) -Wl,--as-needed
 STRIP = strip
 
 all: $(TARGET)
 
 $(TARGET): $(OBJ)
-	$(CC) $(CFLAGS) -o $@ $^
+	$(CC) $(LFLAGS) -o $@ $^
 	$(STRIP) $@
 
 .cpp.o:
