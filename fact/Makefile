@@ -1,15 +1,16 @@
 TARGET = work
-OBJLIST = get.o main.o
-DEPENDS = rainbow.hpp makefile
+OBJ = main.o
+DEPENDS = fact.hpp Makefile
 CC = c++
 CFLAGS = -march=native -O3 -pipe -std=c++23 -Wall -Werror -Winline
 STRIP = strip
+SFLAGS = -s
 
 all: $(TARGET)
 
-$(TARGET): $(OBJLIST)
+$(TARGET): $(OBJ)
 	$(CC) $(CFLAGS) -o $@ $^
-	$(STRIP) $@
+	$(STRIP) $(SFLAGS) $@
 
 .cpp.o:
 	$(CC) $(CFLAGS) -o $@ -c $<
@@ -18,7 +19,6 @@ allclean: clean
 	$(RM) $(TARGET)
 
 clean:
-	$(RM) $(OBJLIST)
+	$(RM) $(OBJ)
 
-get.o: get.cpp $(DEPENDS)
-main.o: main.cpp $(DEPENDS)
+$(OBJ): $(OBJ:.o=.cpp) $(DEPENDS)

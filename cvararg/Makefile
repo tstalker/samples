@@ -1,6 +1,6 @@
 TARGET = work
-OBJLIST = get.o main.o
-DEPENDS = rainbow.h makefile
+OBJLIST = main.o print.o
+DEPENDS = print.h Makefile
 CFLAGS = -march=native -O3 -pipe -std=c2x -Wall -Werror -Winline
 STRIP = strip
 SFLAGS = -s
@@ -20,5 +20,5 @@ allclean: clean
 clean:
 	$(RM) $(OBJLIST)
 
-get.o: get.c $(DEPENDS)
 main.o: main.c $(DEPENDS)
+print.o: print.c $(DEPENDS)

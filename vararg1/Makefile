@@ -1,17 +1,17 @@
 TARGET = work
 OBJ = main.o
-DEPENDS = makefile
-CFLAGS = -march=native -O3 -pipe -std=c2x -Wall -Werror -Winline
+DEPENDS = print.hpp Makefile
+CC = c++
+CFLAGS = -march=native -O3 -pipe -std=c++23 -Wall -Werror -Winline
 STRIP = strip
-SFLAGS = -s
 
 all: $(TARGET)
 
 $(TARGET): $(OBJ)
 	$(CC) $(CFLAGS) -o $@ $^
-	$(STRIP) $(SFLAGS) $@
+	$(STRIP) $@
 
-.c.o:
+.cpp.o:
 	$(CC) $(CFLAGS) -o $@ -c $<
 
 allclean: clean
@@ -20,4 +20,4 @@ allclean: clean
 clean:
 	$(RM) $(OBJ)
 
-$(OBJ): $(OBJ:.o=.c) $(DEPENDS)
+$(OBJ): $(OBJ:.o=.cpp) $(DEPENDS)

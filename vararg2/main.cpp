@@ -3,19 +3,19 @@
 
 namespace prn
 {
-	std::string operator "" _s(const char*, const std::size_t);
+	std::string operator ""_s(const char*, const std::size_t);
 	void print(void);
 	template <typename T> void print(const T&);
 	template <typename T, typename...U> void print(const T&, const U&...);
 }
 
 std::string
-prn::operator "" _s(const char* s, const std::size_t N)
+prn::operator ""_s(const char* s, const std::size_t N)
 {
 	return std::string(s, N);
 }
 
-using prn::operator "" _s;
+using prn::operator ""_s;
 
 void prn::print(void)
 {

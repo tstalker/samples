@@ -1,6 +1,6 @@
 TARGET = work
-OBJLIST = bine.o cycle.o init.o main.o print.o recur.o
-DEPENDS = fib.h makefile
+OBJLIST = fact.o main.o
+DEPENDS = fact.h Makefile
 CFLAGS = -march=native -O3 -pipe -std=c2x -Wall -Werror -Winline
 STRIP = strip
 SFLAGS = -s
@@ -8,7 +8,7 @@ SFLAGS = -s
 all: $(TARGET)
 
 $(TARGET): $(OBJLIST)
-	$(CC) $(CFLAGS) -o $@ $^ -lm
+	$(CC) $(CFLAGS) -o $@ $^
 	$(STRIP) $(SFLAGS) $@
 
 .c.o:
@@ -20,9 +20,5 @@ allclean: clean
 clean:
 	$(RM) $(OBJLIST)
 
-bine.o: bine.c $(DEPENDS)
-cycle.o: cycle.c $(DEPENDS)
-init.o: init.c $(DEPENDS)
+fact.o: fact.c $(DEPENDS)
 main.o: main.c $(DEPENDS)
-print.o: print.c $(DEPENDS)
-recur.o: recur.c $(DEPENDS)
