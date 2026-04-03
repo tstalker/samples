@@ -1,6 +1,6 @@
 TARGET = work
 OBJ = main.o
-DEPENDS = generic.h makefile
+DEPENDS = generic.h Makefile
 CFLAGS = -march=native -O3 -pipe -std=c2x -Wall -Werror -Winline
 STRIP = strip
 SFLAGS = -s
