@@ -1,6 +1,6 @@
 TARGET = work
 OBJLIST = main.o print.o
-DEPENDS = print.h makefile
+DEPENDS = print.h Makefile
 CFLAGS = -march=native -O3 -pipe -std=c2x -Wall -Werror -Winline
 STRIP = strip
 SFLAGS = -s
