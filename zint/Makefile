@@ -1,5 +1,6 @@
 TARGET = work
-OBJLIST = lexeme.o main.o parse.o
+OBJLIST = decrement.o increment.o main.o print.o zint.o
+DEPENDS = zint.hpp Makefile
 CC = c++
 CFLAGS = -march=native -O3 -pipe -std=c++23 -Wall -Werror -Winline
 STRIP = strip
@@ -19,6 +20,8 @@ allclean: clean
 clean:
 	$(RM) $(OBJLIST)
 
-lexeme.o: lexeme.cpp parse.hpp makefile
-main.o: main.cpp parse.hpp makefile
-parse.o: parse.cpp parse.hpp makefile
+decrement.o: decrement.cpp $(DEPENDS)
+increment.o: increment.cpp $(DEPENDS)
+main.o: main.cpp $(DEPENDS)
+print.o: print.cpp $(DEPENDS)
+zint.o: zint.cpp $(DEPENDS)

@@ -1,6 +1,6 @@
 TARGET = work
 OBJLIST = abc.o main.o
-DEPENDS = abc.hpp myexcept.hpp makefile
+DEPENDS = abc.hpp myexcept.hpp Makefile
 CC = c++
 CFLAGS = -march=native -O3 -pipe -std=c++23 -Wall -Werror -Winline
 STRIP = strip
