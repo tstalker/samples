@@ -5,7 +5,7 @@ CC = c++
 CFLAGS = -march=native -O3 -pipe -std=c++23
 WFLAGS = -Wall -Werror -Winline
 AFLAGS = $(CFLAGS) $(WFLAGS)
-LFLAGS = -flto $(CFLAGS) -Wl,--as-needed
+LFLAGS = $(CFLAGS) -flto -Wl,--as-needed
 STRIP = strip
 
 all: $(TARGET)
