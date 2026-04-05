@@ -1,7 +1,7 @@
 TARGET = work
 OBJLIST = main.o print.o printelem.o
 DEPENDS = generic.h Makefile
-CFLAGS = -march=native -O3 -pipe -std=c2x -Wall -Werror -Winline
+CFLAGS = -march=native -O3 -pipe -std=c23 -Wall -Werror -Winline
 STRIP = strip
 SFLAGS = -s
 
