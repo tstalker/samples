@@ -9,7 +9,7 @@ OBJLIST = alloc.o assign.o checkrange.o clear.o destruct.o index.o main.o move.o
 all: $(TARGET)
 
 $(TARGET): $(OBJLIST)
-	$(CC) $(CFLAGS) -o $@ $^
+	$(CC) $(LFLAGS) -o $@ $^
 	$(STRIP) $(SFLAGS) $@
 
 .cpp.o:

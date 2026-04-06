@@ -8,7 +8,7 @@ OBJLIST = bine.o main.o wilson.o
 all: $(TARGET)
 
 $(TARGET): $(OBJLIST)
-	$(CC) $(CFLAGS) -o $@ $^
+	$(CC) $(LFLAGS) -o $@ $^
 	$(STRIP) $(SFLAGS) $@
 
 .cpp.o:

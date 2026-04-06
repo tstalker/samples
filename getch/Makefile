@@ -8,7 +8,7 @@ OBJLIST = main.o tgetch.o
 all: $(TARGET)
 
 $(TARGET): $(OBJLIST)
-	$(CC) $(CFLAGS) -o $@ $^
+	$(CC) $(LFLAGS) -o $@ $^
 	$(STRIP) $@
 
 .cpp.o:
