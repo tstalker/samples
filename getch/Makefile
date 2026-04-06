@@ -9,7 +9,7 @@ all: $(TARGET)
 
 $(TARGET): $(OBJLIST)
 	$(CC) $(LFLAGS) -o $@ $^
-	$(STRIP) $@
+	$(STRIP) $(SFLAGS) $@
 
 .cpp.o:
 	$(CC) $(CFLAGS) -o $@ -c $<
