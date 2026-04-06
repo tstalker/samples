@@ -1,9 +1,7 @@
+include ../include/defs.mk
+
 TARGET = work
 OBJ = main.o
-DEPENDS = Makefile
-CFLAGS = -march=native -O3 -pipe -std=c23 -Wall -Werror -Winline
-STRIP = strip
-SFLAGS = -s
 
 all: $(TARGET)
 

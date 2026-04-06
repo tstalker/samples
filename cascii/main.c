@@ -7,13 +7,12 @@
 int main(void)
 {
 	bool first = true;
-
-	for(short c = CHAR_MIN; c <= CHAR_MAX; c++)
+	for(short i = CHAR_MIN; i <= CHAR_MAX; i++)
 	{
-		const char d = iscntrl(c) ? ' ' : c;
-		const unsigned char e = c;
-		printf("%c:%u", d, e);
-
+		if(!isprint(i))
+		{
+			continue;
+		}
 		if(first)
 		{
 			first = false;
@@ -22,8 +21,10 @@ int main(void)
 		{
 			putchar(' ');
 		}
-	}
+		const char c = (char)i;
+		printf("%x:%c", i, c);
 
+	}
 	putchar('\n');
 	return EXIT_SUCCESS;
 }
