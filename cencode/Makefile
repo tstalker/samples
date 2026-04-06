@@ -1,22 +1,22 @@
+include ../mkinclude/cdefs.mk
+include ../mkinclude/gendefs.mk
+
+DEPENDS += utils.h
 TGTDEC = decode
 TGTENC = encode
 TARGET = $(TGTDEC) $(TGTENC)
 OBJDEC = decode.o utils.o
 OBJENC = encode.o utils.o
 OBJLIST = decode.o encode.o utils.o
-DEPENDS = utils.h Makefile
-CFLAGS = -march=native -O3 -pipe -std=c23 -Wall -Werror -Winline
-STRIP = strip
-SFLAGS = -s
 
 all: $(TARGET)
 
 $(TGTDEC): $(OBJDEC)
-	$(CC) $(CFLAGS) -o $@ $^
+	$(CC) $(LFLAGS) -o $@ $^
 	$(STRIP) $(SFLAGS) $@
 
 $(TGTENC): $(OBJENC)
-	$(CC) $(CFLAGS) -o $@ $^
+	$(CC) $(LFLAGS) -o $@ $^
 	$(STRIP) $(SFLAGS) $@
 
 .c.o:

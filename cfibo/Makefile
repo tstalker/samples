@@ -1,14 +1,14 @@
+include ../mkinclude/cdefs.mk
+include ../mkinclude/gendefs.mk
+
+DEPENDS += fib.h
 TARGET = work
 OBJLIST = bine.o cycle.o init.o main.o print.o recur.o
-DEPENDS = fib.h Makefile
-CFLAGS = -march=native -O3 -pipe -std=c23 -Wall -Werror -Winline
-STRIP = strip
-SFLAGS = -s
 
 all: $(TARGET)
 
 $(TARGET): $(OBJLIST)
-	$(CC) $(CFLAGS) -o $@ $^ -lm
+	$(CC) $(LFLAGS) -o $@ $^ -lm
 	$(STRIP) $(SFLAGS) $@
 
 .c.o:

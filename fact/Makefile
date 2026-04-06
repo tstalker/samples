@@ -1,15 +1,15 @@
+include ../mkinclude/cppdefs.mk
+include ../mkinclude/gendefs.mk
+
+CC = c++
+DEPENDS += fact.hpp
 TARGET = work
 OBJ = main.o
-DEPENDS = fact.hpp Makefile
-CC = c++
-CFLAGS = -march=native -O3 -pipe -std=c++23 -Wall -Werror -Winline
-STRIP = strip
-SFLAGS = -s
 
 all: $(TARGET)
 
 $(TARGET): $(OBJ)
-	$(CC) $(CFLAGS) -o $@ $^
+	$(CC) $(LFLAGS) -o $@ $^
 	$(STRIP) $(SFLAGS) $@
 
 .cpp.o:

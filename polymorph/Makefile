@@ -1,15 +1,16 @@
+include ../mkinclude/cppdefs.mk
+include ../mkinclude/gendefs.mk
+
+CC = c++
+DEPENDS += base.hpp
 TARGET = work
 OBJLIST = base.o derived.o main.o work.o
-DEPENDS = Makefile
-CC = c++
-CFLAGS = -march=native -O3 -pipe -std=c++23 -Wall -Werror -Winline
-STRIP = strip
 
 all: $(TARGET)
 
 $(TARGET): $(OBJLIST)
-	$(CC) $(CFLAGS) -o $@ $^
-	$(STRIP) $@
+	$(CC) $(LFLAGS) -o $@ $^
+	$(STRIP) $(SFLAGS) $@
 
 .cpp.o:
 	$(CC) $(CFLAGS) -o $@ -c $<
@@ -20,11 +21,7 @@ allclean: clean
 clean:
 	$(RM) $(OBJLIST)
 
-base.o: base.cpp base.hpp $(DEPENDS)
-derived.o: derived.cpp base.hpp derived.hpp $(DEPENDS)
-main.o: main.cpp base.hpp work.hpp $(DEPENDS)
-work.o: work.cpp base.hpp derived.hpp work.hpp $(DEPENDS)
-
-# base.hpp
-# derived.hpp: base.hpp
-# work.hpp: base.hpp
+base.o: base.cpp $(DEPENDS)
+derived.o: derived.cpp derived.hpp $(DEPENDS)
+main.o: main.cpp work.hpp $(DEPENDS)
+work.o: work.cpp derived.hpp work.hpp $(DEPENDS)

@@ -1,14 +1,14 @@
+include ../mkinclude/cdefs.mk
+include ../mkinclude/gendefs.mk
+
+DEPENDS += generic.h
 TARGET = work
 OBJ = main.o
-DEPENDS = generic.h Makefile
-CFLAGS = -march=native -O3 -pipe -std=c23 -Wall -Werror -Winline
-STRIP = strip
-SFLAGS = -s
 
 all: $(TARGET)
 
 $(TARGET): $(OBJ)
-	$(CC) $(CFLAGS) -o $@ $^
+	$(CC) $(LFLAGS) -o $@ $^
 ifeq ("$(MSYSTEM)", "MINGW64")
 	$(STRIP) $(SFLAGS) `ls --append-exe $@`
 else

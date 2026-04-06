@@ -1,14 +1,14 @@
+include ../mkinclude/cdefs.mk
+include ../mkinclude/gendefs.mk
+
+DEPENDS += rainbow.h
 TARGET = work
 OBJLIST = get.o main.o
-DEPENDS = rainbow.h Makefile
-CFLAGS = -march=native -O3 -pipe -std=c23 -Wall -Werror -Winline
-STRIP = strip
-SFLAGS = -s
 
 all: $(TARGET)
 
 $(TARGET): $(OBJLIST)
-	$(CC) $(CFLAGS) -o $@ $^
+	$(CC) $(LFLAGS) -o $@ $^
 	$(STRIP) $(SFLAGS) $@
 
 .c.o:

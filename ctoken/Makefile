@@ -1,18 +1,17 @@
+include ../mkinclude/cdefs.mk
+include ../mkinclude/gendefs.mk
+
 TARGET = work
 OBJLIST = data_initialize.o decision_get.o decision_print.o decision_step.o decision_str.o decision_sum.o error_message.o error_print.o main.o map.o max.o \
 	token_print.o vector_back.o vector_begin.o vector_cbegin.o vector_cend.o vector_check_empty.o vector_check_out_range.o vector_check_read_only.o \
 	vector_cinit.o vector_cinitv.o vector_cmp_decision.o vector_cmp_int.o vector_cmp_pair.o vector_dec_size.o vector_empty.o vector_end.o vector_front.o \
 	vector_get.o vector_inc_ptr.o vector_init.o vector_initv.o vector_initialize.o vector_pop_back.o vector_pop_front.o vector_print.o vector_print_decision.o \
 	vector_print_int.o vector_print_pair.o vector_set.o vector_size.o vector_sort.o
-DEPENDS = Makefile
-CFLAGS = -march=native -O3 -pipe -std=c23 -Wall -Werror -Winline
-STRIP = strip
-SFLAGS = -s
 
 all: $(TARGET)
 
 $(TARGET): $(OBJLIST)
-	$(CC) $(CFLAGS) -o $@ $^
+	$(CC) $(LFLAGS) -o $@ $^
 	$(STRIP) $(SFLAGS) $@
 
 .c.o:
@@ -66,35 +65,3 @@ vector_print_pair.o: vector_print_pair.c decision.h error_list.h pair.h token.h 
 vector_set.o: vector_set.c decision.h pair.h types.h vector.h vector_int.h vector_set.h $(DEPENDS)
 vector_size.o: vector_size.c decision.h pair.h types.h vector.h vector_int.h vector_size.h $(DEPENDS)
 vector_sort.o: vector_sort.c decision.h pair.h types.h vector.h vector_int.h vector_sort.h $(DEPENDS)
-
-decision.h: $(DEPENDS)
-error_list.h: $(DEPENDS)
-pair.h: $(DEPENDS)
-token.h: decision.h error_list.h types.h vector.h vector_int.h $(DEPENDS)
-types.h: $(DEPENDS)
-vector.h: types.h $(DEPENDS)
-vector_back.h: vector.h types.h $(DEPENDS)
-vector_begin.h: vector.h types.h $(DEPENDS)
-vector_cbegin.h: vector.h types.h $(DEPENDS)
-vector_cend.h: vector.h types.h $(DEPENDS)
-vector_check_empty.h: decision.h error_list.h token.h types.h vector.h vector_int.h $(DEPENDS)
-vector_check_out_range.h: decision.h error_list.h token.h types.h vector.h vector_int.h $(DEPENDS)
-vector_check_read_only.h: decision.h error_list.h token.h types.h vector.h vector_int.h $(DEPENDS)
-vector_cinit.h: vector.h types.h $(DEPENDS)
-vector_cinitv.h: vector.h types.h $(DEPENDS)
-vector_dec_size.h: vector.h types.h $(DEPENDS)
-vector_empty.h: vector.h types.h $(DEPENDS)
-vector_end.h: vector.h types.h $(DEPENDS)
-vector_front.h: vector.h types.h $(DEPENDS)
-vector_get.h: vector.h types.h $(DEPENDS)
-vector_inc_ptr.h: vector.h types.h $(DEPENDS)
-vector_init.h: vector.h types.h $(DEPENDS)
-vector_initialize.h: vector.h types.h $(DEPENDS)
-vector_initv.h: $(DEPENDS)
-vector_int.h: vector.h types.h $(DEPENDS)
-vector_pop_back.h: vector.h types.h $(DEPENDS)
-vector_pop_front.h: vector.h types.h $(DEPENDS)
-vector_print.h: vector.h types.h $(DEPENDS)
-vector_set.h: vector.h types.h $(DEPENDS)
-vector_size.h: vector.h types.h $(DEPENDS)
-vector_sort.h: vector.h types.h $(DEPENDS)

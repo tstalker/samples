@@ -1,26 +1,23 @@
-TARGET = work
-OBJS = main.o
-DEPENDS = Makefile
+include ../mkinclude/cppdefs.mk
+include ../mkinclude/gendefs.mk
+
 CC = c++
-CFLAGS = -march=native -O3 -pipe -std=c++23
-WFLAGS = -Wall -Werror -Winline
-AFLAGS = $(CFLAGS) $(WFLAGS)
-LFLAGS = $(CFLAGS) -flto -Wl,--as-needed
-STRIP = strip
+TARGET = work
+OBJ = main.o
 
 all: $(TARGET)
 
-$(TARGET): $(OBJS)
+$(TARGET): $(OBJ)
 	$(CC) $(LFLAGS) -o $@ $^
-	$(STRIP) $@
+	$(STRIP) $(SFLAGS) $@
 
 .cpp.o:
-	$(CC) $(AFLAGS) -o $@ -c $<
+	$(CC) $(CFLAGS) -o $@ -c $<
 
 allclean: clean
 	$(RM) $(TARGET)
 
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(OBJ)
 
-$(OBJS): $(OBJS:.o=.cpp) $(DEPENDS)
+$(OBJ): $(OBJ:.o=.cpp) $(DEPENDS)

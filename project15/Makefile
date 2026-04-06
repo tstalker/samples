@@ -1,15 +1,16 @@
+include ../mkinclude/cppdefs.mk
+include ../mkinclude/gendefs.mk
+
+CC = c++
+DEPENDS += abc.hpp myexcept.hpp
 TARGET = work
 OBJLIST = abc.o main.o
-DEPENDS = abc.hpp myexcept.hpp Makefile
-CC = c++
-CFLAGS = -march=native -O3 -pipe -std=c++23 -Wall -Werror -Winline
-STRIP = strip
 
 all: $(TARGET)
 
 $(TARGET): $(OBJLIST)
-	$(CC) $(CFLAGS) -o $@ $^
-	$(STRIP) $@
+	$(CC) $(LFLAGS) -o $@ $^
+	$(STRIP) $(SFLAGS) $@
 
 .cpp.o:
 	$(CC) $(CFLAGS) -o $@ -c $<

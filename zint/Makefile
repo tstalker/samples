@@ -1,15 +1,16 @@
+include ../mkinclude/cppdefs.mk
+include ../mkinclude/gendefs.mk
+
+CC = c++
+DEPENDS += zint.hpp
 TARGET = work
 OBJLIST = decrement.o increment.o main.o print.o zint.o
-DEPENDS = zint.hpp Makefile
-CC = c++
-CFLAGS = -march=native -O3 -pipe -std=c++23 -Wall -Werror -Winline
-STRIP = strip
 
 all: $(TARGET)
 
 $(TARGET): $(OBJLIST)
-	$(CC) $(CFLAGS) -o $@ $^
-	$(STRIP) $@
+	$(CC) $(LFLAGS) -o $@ $^
+	$(STRIP) $(SFLAGS) $@
 
 .cpp.o:
 	$(CC) $(CFLAGS) -o $@ -c $<

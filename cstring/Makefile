@@ -1,14 +1,13 @@
+include ../mkinclude/cdefs.mk
+include ../mkinclude/gendefs.mk
+
 TARGET = work
 OBJ = main.o
-DEPENDS = Makefile
-CFLAGS = -march=native -O3 -pipe -std=c23 -Wall -Werror -Winline
-STRIP = strip
-SFLAGS = -s
 
 all: $(TARGET)
 
 $(TARGET): $(OBJ)
-	$(CC) $(CFLAGS) -o $@ $^
+	$(CC) $(LFLAGS) -o $@ $^
 	$(STRIP) $(SFLAGS) $@
 
 .c.o:

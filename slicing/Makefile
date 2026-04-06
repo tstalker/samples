@@ -1,16 +1,16 @@
+include ../mkinclude/cppdefs.mk
+include ../mkinclude/gendefs.mk
+
+CC = c++
+DEPEND += base.hpp derived.hpp generic.hpp init.hpp print.hpp work.hpp
 TARGET = work
 OBJ = main.o
-DEPEND = base.hpp derived.hpp generic.hpp init.hpp print.hpp work.hpp Makefile
-CC = c++
-CFLAGS = -march=native -O3 -pipe -std=c++23 -Wall -Werror -Winline
-# -D DEBUG
-STRIP = strip
 
 all: $(TARGET)
 
 $(TARGET): $(OBJ)
-	$(CC) $(CFLAGS) -o $@ $^
-	$(STRIP) $@
+	$(CC) $(LFLAGS) -o $@ $^
+	$(STRIP) $(SFLAGS) $@
 
 .cpp.o:
 	$(CC) $(CFLAGS) -o $@ -c $<

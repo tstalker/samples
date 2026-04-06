@@ -1,4 +1,5 @@
-include ../include/defs.mk
+include ../mkinclude/cdefs.mk
+include ../mkinclude/gendefs.mk
 
 TARGET = work
 OBJ = main.o
@@ -6,7 +7,7 @@ OBJ = main.o
 all: $(TARGET)
 
 $(TARGET): $(OBJ)
-	$(CC) $(CFLAGS) -o $@ $^
+	$(CC) $(LFLAGS) -o $@ $^
 	$(STRIP) $(SFLAGS) $@
 
 .c.o:

@@ -23,7 +23,6 @@ int main(void)
 		}
 		const char c = (char)i;
 		printf("%x:%c", i, c);
-
 	}
 	putchar('\n');
 	return EXIT_SUCCESS;

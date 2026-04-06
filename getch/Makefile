@@ -1,12 +1,15 @@
+include ../mkinclude/cppdefs.mk
+include ../mkinclude/gendefs.mk
+
+CC = c++
 TARGET = work
 OBJLIST = main.o tgetch.o
-CC = c++
-CFLAGS = -march=native -O3 -pipe -std=c++23 -Wall -Werror -Winline
 
 all: $(TARGET)
 
 $(TARGET): $(OBJLIST)
 	$(CC) $(CFLAGS) -o $@ $^
+	$(STRIP) $@
 
 .cpp.o:
 	$(CC) $(CFLAGS) -o $@ -c $<
