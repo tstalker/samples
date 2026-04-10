@@ -5,6 +5,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <uchar.h>
 #include <wchar.h>
 
 int main(void)
@@ -14,13 +15,16 @@ int main(void)
 	printf("char: %zu min: " FORMAT " max: " FORMAT "\n", sizeof(char), CHAR_MIN, CHAR_MAX);
 	printf("signed char: %zu min: %d max: %d\n", sizeof(signed char), SCHAR_MIN, SCHAR_MAX);
 	printf("unsigned char: %zu min: %u max: %u\n", sizeof(unsigned char), 0u, UCHAR_MAX);
+	printf("char8_t: %zu min: %u max: %u\n", sizeof(char8_t), 0u, UCHAR_MAX);
+	printf("char16_t: %zu min: %u max: %u\n", sizeof(char16_t), 0u, USHRT_MAX);
+	printf("char32_t: %zu min: %u max: %u\n", sizeof(char32_t), 0u, UINT_MAX);
 	printf("wchar_t: %zu min: " FORMAT " max: " FORMAT "\n", sizeof(wchar_t), WCHAR_MIN, WCHAR_MAX);
 
 	printf("short: %zu min: %d max: %d\n", sizeof(short), SHRT_MIN, SHRT_MAX);
 	printf("unsigned short: %zu min: %u max: %u\n", sizeof(unsigned short), 0u, USHRT_MAX);
 
 	printf("int: %zu min: %d max: %d\n", sizeof(int), INT_MIN, INT_MAX);
-	printf("unsigned int: %zu min: %u max: %u\n", sizeof(unsigned), 0u, UINT_MAX);
+	printf("unsigned: %zu min: %u max: %u\n", sizeof(unsigned), 0u, UINT_MAX);
 
 	printf("long: %zu min: %ld max: %ld\n", sizeof(long), LONG_MIN, LONG_MAX);
 	printf("unsigned long: %zu min: %lu max: %lu\n", sizeof(unsigned long), 0ul, ULONG_MAX);

@@ -8,7 +8,7 @@
 
 int main(void)
 {
-	std::printf("bool: %zu min: %s max: %s\n", sizeof(bool), "false", "true");
+	std::printf("bool: %zu min: %d max: %d\n", sizeof(bool), false, true);
 
 	std::printf("char: %zu min: " FORMAT " max: " FORMAT "\n", sizeof(char), CHAR_MIN, CHAR_MAX);
 	std::printf("signed char: %zu min: %d max: %d\n", sizeof(signed char), SCHAR_MIN, SCHAR_MAX);
@@ -23,7 +23,7 @@ int main(void)
 	std::printf("unsigned short: %zu min: %u max: %u\n", sizeof(unsigned short), 0u, USHRT_MAX);
 
 	std::printf("int: %zu min: %d max: %d\n", sizeof(int), INT_MIN, INT_MAX);
-	std::printf("unsigned int: %zu min: %u max: %u\n", sizeof(unsigned), 0u, UINT_MAX);
+	std::printf("unsigned: %zu min: %u max: %u\n", sizeof(unsigned), 0u, UINT_MAX);
 
 	std::printf("long: %zu min: %ld max: %ld\n", sizeof(long), LONG_MIN, LONG_MAX);
 	std::printf("unsigned long: %zu min: %lu max: %lu\n", sizeof(unsigned long), 0ul, ULONG_MAX);
