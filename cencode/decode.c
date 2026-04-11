@@ -48,7 +48,7 @@ int main(void)
 				return -3;
 			}
 
-			char w[MAXSIZE];
+			char w[MAXSIZE] = {'\0'};
 			getword(m, w, MAXSIZE);
 			printf("%s", w);
 			fputs(w, ofs);

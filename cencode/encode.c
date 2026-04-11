@@ -75,7 +75,6 @@ int main(void)
 			const size_t n = min(l, TOKENSIZE);
 			char s[MAXSIZE] = {'\0'};
 			memcpy(s, p, n);
-			s[n] = '\0';
 			const unsigned i = find(s);
 			printf("%s [%zx]: %x [", s, n, i);
 			fprintf(ofs, "%x", i);
