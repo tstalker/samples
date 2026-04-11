@@ -50,9 +50,9 @@ void prn::printx(const T& x)
 }
 
 template <typename T>
-void prn::printy(std::ostream& o, const T& x)
+void prn::printy(std::ostream& os, const T& x)
 {
-	o << std::setw(3) << x;
+	os << std::setw(3) << x;
 }
 
 template <typename T, std::size_t N1>
@@ -81,23 +81,22 @@ void prn::printv(const T v[], std::size_t n)
 }
 
 template <typename T, std::size_t N0, std::size_t N1>
-decltype(auto) prn::operator << (std::ostream& o, const T(&v)[N0][N1])
+decltype(auto) prn::operator << (std::ostream& os, const T(&v)[N0][N1])
 {
 	for(auto& w: v)
 	{
-		o << w;
+		os << w;
 	}
-
-	return o;
+	return os;
 }
 
 template <typename T, std::size_t N>
-decltype(auto) prn::operator << (std::ostream& o, const T(&v)[N])
+decltype(auto) prn::operator << (std::ostream& os, const T(&v)[N])
 {
-	auto f(std::bind(printy<T>, std::ref(o), std::placeholders::_1));
+	auto f(std::bind(printy<T>, std::ref(os), std::placeholders::_1));
 	std::for_each(std::cbegin(v), std::cend(v), f);
-	o << std::endl;
-	return o;
+	os << std::endl;
+	return os;
 }
 
 using prn::operator <<;

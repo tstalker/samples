@@ -8,6 +8,8 @@
 
 namespace prn
 {
+const auto TAB('\t');
+
 template <typename T, std::size_t N0, std::size_t N1, std::size_t N2>
 	void print(const T(&)[N0][N1][N2]);
 template <typename T, std::size_t N1, std::size_t N2>
@@ -37,21 +39,20 @@ void prn::printx(const T& x)
 }
 
 template <typename T>
-void prn::printy(std::ostream& o, const T& x)
+void prn::printy(std::ostream& os, const T& x)
 {
-	o << std::setw(3) << x;
+	os << std::setw(3) << x;
 }
 
 template <typename T, std::size_t N0, std::size_t N1, std::size_t N2>
 void prn::print(const T(&v)[N0][N1][N2])
 {
-	auto it{std::ostream_iterator<char>(std::cout)};
-
+	std::ostream_iterator<decltype(TAB)> it(std::cout);
 	for(std::size_t i{}; i < N0; i++)
 	{
 		for(std::size_t j{}; j < N1; j++)
 		{
-			std::fill_n(it, i, '\t');
+			std::fill_n(it, i, TAB);
 			print(v[i][j]);
 		}
 	}
@@ -60,13 +61,12 @@ void prn::print(const T(&v)[N0][N1][N2])
 template <typename T, std::size_t N1, std::size_t N2>
 void prn::print(const T(&v)[N1][N2], std::size_t n0)
 {
-	auto it{std::ostream_iterator<char>(std::cout)};
-
+	std::ostream_iterator<decltype(TAB)> it(std::cout);
 	for(std::size_t i{}; i < n0; i++)
 	{
 		for(std::size_t j{}; j < N1; j++)
 		{
-			std::fill_n(it, i, '\t');
+			std::fill_n(it, i, TAB);
 			printv(v[N1 * i + j], N2);
 		}
 	}
@@ -82,13 +82,12 @@ void prn::print(const T(&v)[N])
 template <typename T>
 void prn::print(const T* v, std::size_t n0, std::size_t n1, std::size_t n2)
 {
-	auto it{std::ostream_iterator<char>(std::cout)};
-
+	std::ostream_iterator<decltype(TAB)> it(std::cout);
 	for(std::size_t i{}; i < n0; i++)
 	{
 		for(std::size_t j{}; j < n1; j++)
 		{
-			std::fill_n(it, i, '\t');
+			std::fill_n(it, i, TAB);
 			printv(v + n2 * (n1 * i + j), n2);
 		}
 	}
@@ -102,34 +101,32 @@ void prn::printv(const T* v, std::size_t n)
 }
 
 template <typename T, std::size_t N0, std::size_t N1, std::size_t N2>
-decltype(auto) prn::operator << (std::ostream& o, const T(&v)[N0][N1][N2])
+decltype(auto) prn::operator << (std::ostream& os, const T(&v)[N0][N1][N2])
 {
 	for(auto& w: v)
 	{
-		o << std::endl << w;
+		os << std::endl << w;
 	}
-
-	return o;
+	return os;
 }
 
 template <typename T, std::size_t N0, std::size_t N1>
-decltype(auto) prn::operator << (std::ostream& o, const T(&v)[N0][N1])
+decltype(auto) prn::operator << (std::ostream& os, const T(&v)[N0][N1])
 {
 	for(auto& w: v)
 	{
-		o << w;
+		os << w;
 	}
-
-	return o;
+	return os;
 }
 
 template <typename T, std::size_t N>
-decltype(auto) prn::operator << (std::ostream& o, const T(&v)[N])
+decltype(auto) prn::operator << (std::ostream& os, const T(&v)[N])
 {
-	auto f(std::bind(printy<T>, std::ref(o), std::placeholders::_1));
+	auto f(std::bind(printy<T>, std::ref(os), std::placeholders::_1));
 	std::for_each(std::cbegin(v), std::cend(v), f);
-	o << std::endl;
-	return o;
+	os << std::endl;
+	return os;
 }
 
 using prn::operator <<;
