@@ -4,7 +4,6 @@ int main(void)
 {
 	constexpr std::size_t N1(4);
 	constexpr std::size_t N2(5);
-
 	const int z[][N1][N2]
 	{
 		{
@@ -26,10 +25,9 @@ int main(void)
 			{55, 56, 57, 58, 59}
 		}
 	};
-
 	prn::print(z);
 	std::cout << std::endl;
-	const auto N0(sizeof z / sizeof *z);
+	constexpr auto N0(std::extent_v<decltype(z)>);
 	prn::print(*z, N0);
 	std::cout << std::endl;
 	prn::print(**z, N0, N1, N2);
