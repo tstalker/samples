@@ -1,1 +1,1 @@
-STD = c2x
+STD = c23
