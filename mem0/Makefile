@@ -2,19 +2,15 @@ include ../mkinclude/cppdefs.mk
 include ../mkinclude/gendefs.mk
 
 CC = c++
-DEPENDS += A.hpp
+DEPENDS += sample.hpp
 TARGET = work
-OBJ = main.o
+OBJLIST = main.o sample.o
 
 all: $(TARGET)
 
-$(TARGET): $(OBJ)
+$(TARGET): $(OBJLIST)
 	$(CC) $(LFLAGS) -o $@ $^
-ifeq ("$(MSYSTEM)", "MINGW64")
-	$(STRIP) $(SFLAGS) `ls --append-exe $@`
-else
 	$(STRIP) $(SFLAGS) $@
-endif
 
 .cpp.o:
 	$(CC) $(CFLAGS) -o $@ -c $<
@@ -23,6 +19,7 @@ allclean: clean
 	$(RM) $(TARGET)
 
 clean:
-	$(RM) $(OBJ)
+	$(RM) $(OBJLIST)
 
-$(OBJ): $(OBJ:.o=.cpp) $(DEPENDS)
+main.o: main.cpp $(DEPENDS)
+sample.o: sample.cpp $(DEPENDS)
