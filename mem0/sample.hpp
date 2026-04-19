@@ -17,7 +17,7 @@ public:
 
 	~sample(void)
 	{
-		std::cout << name << "::" << __func__ << "()" << std::endl;
+		std::cout << name << "::" << __func__ << "() " << *this << std::endl;
 	}
 
 	sample(value_type);

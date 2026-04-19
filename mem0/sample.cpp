@@ -30,8 +30,15 @@ gen::sample::sample(sample&& src) noexcept:
 		name = __func__;
 	}
 
-	std::cout << name << "::" << __func__ << "(&&" << src << ") -> " << *this << std::endl;
-	src.clear();
+	if(this != &src)
+	{
+		std::cout << name << "::" << __func__ << "(&&" << src << ") -> " << *this << std::endl;
+		src.clear();
+	}
+	else
+	{
+		std::cerr << name << "::" << __func__ << '(' << src << "): Error: assignment to itself" << std::endl;
+	}
 }
 
 auto gen::sample::operator = (const sample& src)
