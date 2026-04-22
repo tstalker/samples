@@ -14,9 +14,18 @@ $(TARGET): $(OBJ)
 	$(CC) $(CFLAGS) -o $@ -c $<
 
 allclean: clean
-	$(RM) $(TARGET)
+	@if [[ -f $(TARGET) ]]; \
+	then \
+		$(RM) $(RMFLAGS) $(TARGET); \
+	fi
 
 clean:
-	$(RM) $(OBJ)
+	@for f in $(OBJ); \
+	do \
+		if [[ -f $${f} ]]; \
+		then \
+			$(RM) $(RMFLAGS) $${f}; \
+		fi \
+	done
 
 $(OBJ): $(OBJ:.o=.c) $(DEPENDS)
