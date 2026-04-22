@@ -2,6 +2,6 @@
 
 #include <stddef.h>
 
-#define NL '\n'
+typedef unsigned short data_t;
 
-void print(const int*, size_t);
+void print(const data_t*, size_t);

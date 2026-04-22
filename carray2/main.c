@@ -5,7 +5,7 @@
 
 int main(void)
 {
-	const int v[][N1][N2] =
+	const data_t data[][N1][N2] =
 	{
 		{
 			{0, 1, 2, 3, 4},
@@ -26,12 +26,11 @@ int main(void)
 			{55, 56, 57, 58, 59}
 		}
 	};
-
-	const size_t N0 = sizeof v / sizeof *v;
-	print0(v, N0);
+	const size_t N0 = sizeof data / sizeof *data;
+	print0(data, N0);
 	putchar(NL);
-	print1(*v, N0, N1);
+	print1(*data, N0, N1);
 	putchar(NL);
-	print2(**v, N0, N1, N2);
+	print2(**data, N0, N1, N2);
 	return EXIT_SUCCESS;
 }

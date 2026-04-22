@@ -3,7 +3,7 @@ include ../mkinclude/gendefs.mk
 
 DEPENDS += print.h
 TARGET = work
-OBJLIST = main.o print.o
+OBJLIST = main.o print_row.o print0.o print1.o
 
 all: $(TARGET)
 
@@ -21,4 +21,6 @@ clean:
 	$(RM) $(OBJLIST)
 
 main.o: main.c $(DEPENDS)
-print.o: print.c $(DEPENDS)
+print_row.o: print_row.c $(DEPENDS)
+print0.o: print0.c $(DEPENDS)
+print1.o: print1.c $(DEPENDS)
