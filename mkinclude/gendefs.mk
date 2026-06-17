@@ -7,7 +7,7 @@ CFLAGS = $(BFLAGS) $(WFLAGS)
 LFLAGS = $(BFLAGS) -Wl,--as-needed
 
 RM = rm
-RMFLAGS = -fv
+RFLAGS = -f
 
 STRIP = strip
 SFLAGS = -s
