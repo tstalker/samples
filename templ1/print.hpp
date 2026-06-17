@@ -1,22 +1,51 @@
 #pragma once
 
-#include <algorithm>
+#include <iomanip>
 #include <iostream>
-#include <iterator>
-#include <type_traits>
+#include <string>
+
+using namespace std::literals::string_literals;
+
+constexpr auto operator ""_h(const unsigned long long x)
+{
+	return static_cast<short>(x);
+}
+
+constexpr auto operator ""_s(const char* s, std::size_t n)
+{
+	return std::string(s, n);
+}
 
 namespace prn
 {
-template<class T>
-	std::enable_if_t<std::rank_v<T> == 1>
-	print(const T&);
+	template <typename T>
+	void print(const T&);
+	template <>
+	void print<bool>(const bool&);
+
+	template <typename T, typename... U>
+	void print(const T&, const U&...);
 }
 
-template<class T>
-std::enable_if_t<std::rank_v<T> == 1>
-prn::print(const T& v)
+template <typename T>
+void prn::print(const T& x)
 {
-	auto it(std::ostream_iterator<std::remove_extent_t<T>>(std::cout, " "));
-	std::copy_n(v, std::extent_v<T>, it);
-	std::cout << std::endl;
+	std::cout << x;
+}
+
+template <typename T, typename... U>
+void prn::print(const T& x, const U&... y)
+{
+	print(x);
+	print(", "s);
+	print(y...);
+}
+
+void print(void);
+
+template <typename... T>
+void print(const T&... x)
+{
+	prn::print(x...);
+	print();
 }

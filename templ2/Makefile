@@ -1,9 +1,8 @@
 include ../mkinclude/cppdefs.mk
 include ../mkinclude/gendefs.mk
 
-DEPENDS += print.hpp
 TARGET = work
-OBJLIST = main.o print.o
+OBJLIST = main.o
 
 all: $(TARGET)
 
@@ -21,4 +20,3 @@ cleanobj:
 	$(RM) $(RFLAGS) $(OBJLIST)
 
 main.o: main.cpp $(DEPENDS)
-print.o: print.cpp $(DEPENDS)
