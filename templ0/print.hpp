@@ -1,23 +1,42 @@
 #pragma once
 
-#include <iomanip>
 #include <iostream>
-#include <iterator>
+#include <string>
 
 namespace prn
 {
-template <typename T, std::size_t N>
-	using type = const T(&)[N];
+	using namespace std::literals::string_literals;
 
-template <typename T, std::size_t N>
-	void print(type<T, N>);
+	using type = int;
+
+	void print(const type&);
+
+	template <typename T>
+	void print(const T&);
+
+	template <typename... T>
+	void print(const type&, const T&...);
 }
 
-template <typename T, std::size_t N>
-void prn::print(type<T, N> x)
+void print(void);
+
+template <typename T>
+void prn::print(const T& x)
 {
-	std::cout << std::showpoint << std::setprecision(2);
-	auto it(std::ostream_iterator<T>(std::cout, " "));
-	std::copy(std::cbegin(x), std::cend(x), it);
-	std::cout << std::endl;
+	std::cout << x;
+}
+
+template <typename... T>
+void prn::print(const type& x, const T&... y)
+{
+	print(x);
+	print(", "s);
+	print(y...);
+}
+
+template <typename... T>
+void print(const T&... x)
+{
+	prn::print(x...);
+	print();
 }
