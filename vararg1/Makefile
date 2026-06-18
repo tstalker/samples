@@ -1,24 +1,23 @@
 include ../mkinclude/cppdefs.mk
 include ../mkinclude/gendefs.mk
 
-CC = c++
 DEPENDS += print.hpp
+OBJLIST = main.o
 TARGET = work
-OBJ = main.o
 
 all: $(TARGET)
 
-$(TARGET): $(OBJ)
+$(TARGET): $(OBJLIST)
 	$(CC) $(LFLAGS) -o $@ $^
 	$(STRIP) $(SFLAGS) $@
 
 .cpp.o:
 	$(CC) $(CFLAGS) -o $@ -c $<
 
-allclean: clean
-	$(RM) $(TARGET)
+clean: cleanobj
+	$(RM) $(RFLAGS) $(TARGET)
 
-clean:
-	$(RM) $(OBJ)
+cleanobj:
+	$(RM) $(RFLAGS) $(OBJLIST)
 
-$(OBJ): $(OBJ:.o=.cpp) $(DEPENDS)
+main.o: main.cpp $(DEPENDS)

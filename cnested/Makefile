@@ -1,22 +1,22 @@
 include ../mkinclude/cdefs.mk
 include ../mkinclude/gendefs.mk
 
+OBJLIST = main.o
 TARGET = work
-OBJ = main.o
 
 all: $(TARGET)
 
-$(TARGET): $(OBJ)
+$(TARGET): $(OBJLIST)
 	$(CC) $(LFLAGS) -o $@ $^
 	$(STRIP) $(SFLAGS) $@
 
 .c.o:
 	$(CC) $(CFLAGS) -o $@ -c $<
 
-allclean: clean
-	$(RM) $(TARGET)
+clean: cleanobj
+	$(RM) $(RFLAGS) $(TARGET)
 
-clean:
-	$(RM) $(OBJ)
+cleanobj:
+	$(RM) $(RFLAGS) $(OBJLIST)
 
-$(OBJ): $(OBJ:.o=.c) $(DEPENDS)
+main.o: main.c $(DEPENDS)

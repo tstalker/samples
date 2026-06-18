@@ -2,12 +2,12 @@ include ../mkinclude/cdefs.mk
 include ../mkinclude/gendefs.mk
 
 DEPENDS += utils.h
-TGTDEC = decode
-TGTENC = encode
-TARGET = $(TGTDEC) $(TGTENC)
 OBJDEC = decode.o utils.o
 OBJENC = encode.o utils.o
 OBJLIST = decode.o encode.o utils.o
+TGTDEC = decode
+TGTENC = encode
+TARGET = $(TGTDEC) $(TGTENC)
 
 all: $(TARGET)
 
@@ -22,11 +22,11 @@ $(TGTENC): $(OBJENC)
 .c.o:
 	$(CC) $(CFLAGS) -o $@ -c $<
 
-allclean: clean
-	$(RM) $(TARGET)
+clean: cleanobj
+	$(RM) $(RFLAGS) $(TARGET)
 
-clean:
-	$(RM) $(OBJLIST)
+cleanobj:
+	$(RM) $(RFLAGS) $(OBJLIST)
 
 decode.o: decode.c $(DEPENDS)
 encode.o: encode.c $(DEPENDS)

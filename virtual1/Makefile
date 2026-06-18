@@ -1,10 +1,9 @@
 include ../mkinclude/cppdefs.mk
 include ../mkinclude/gendefs.mk
 
-CC = c++
 DEPENDS += generic.hpp
-TARGET = work
 OBJLIST = fn.o main.o
+TARGET = work
 
 all: $(TARGET)
 
@@ -15,11 +14,11 @@ $(TARGET): $(OBJLIST)
 .cpp.o:
 	$(CC) $(CFLAGS) -o $@ -c $<
 
-allclean: clean
-	$(RM) $(TARGET)
+clean: cleanobj
+	$(RM) $(RFLAGS) $(TARGET)
 
-clean:
-	$(RM) $(OBJLIST)
+cleanobj:
+	$(RM) $(RFLAGS) $(OBJLIST)
 
 fn.o: fn.cpp $(DEPENDS)
 main.o: main.cpp $(DEPENDS)

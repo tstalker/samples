@@ -2,8 +2,8 @@ include ../mkinclude/cdefs.mk
 include ../mkinclude/gendefs.mk
 
 DEPENDS += fib.h
-TARGET = work
 OBJLIST = bine.o cycle.o init.o main.o print.o recur.o
+TARGET = work
 
 all: $(TARGET)
 
@@ -14,11 +14,11 @@ $(TARGET): $(OBJLIST)
 .c.o:
 	$(CC) $(CFLAGS) -o $@ -c $<
 
-allclean: clean
-	$(RM) $(TARGET)
+clean: cleanobj
+	$(RM) $(RFLAGS) $(TARGET)
 
-clean:
-	$(RM) $(OBJLIST)
+cleanobj:
+	$(RM) $(RFLAGS) $(OBJLIST)
 
 bine.o: bine.c $(DEPENDS)
 cycle.o: cycle.c $(DEPENDS)

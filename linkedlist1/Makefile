@@ -1,10 +1,9 @@
 include ../mkinclude/cppdefs.mk
 include ../mkinclude/gendefs.mk
 
-CC = c++
 DEPENDS += Element.hpp
-TARGET = work
 OBJLIST = Element.o LinkedList.o main.o
+TARGET = work
 
 all: $(TARGET)
 
@@ -15,11 +14,11 @@ $(TARGET): $(OBJLIST)
 .cpp.o:
 	$(CC) $(CFLAGS) -o $@ -c $<
 
-allclean: clean
-	$(RM) $(TARGET)
+clean: cleanobj
+	$(RM) $(RFLAGS) $(TARGET)
 
-clean:
-	$(RM) $(OBJLIST)
+cleanobj:
+	$(RM) $(RFLAGS) $(OBJLIST)
 
 Element.o: Element.cpp $(DEPENDS)
 LinkedList.o: LinkedList.cpp LinkedList.hpp $(DEPENDS)

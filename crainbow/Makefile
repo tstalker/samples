@@ -2,8 +2,8 @@ include ../mkinclude/cdefs.mk
 include ../mkinclude/gendefs.mk
 
 DEPENDS += rainbow.h
-TARGET = work
 OBJLIST = get.o main.o
+TARGET = work
 
 all: $(TARGET)
 
@@ -14,11 +14,11 @@ $(TARGET): $(OBJLIST)
 .c.o:
 	$(CC) $(CFLAGS) -o $@ -c $<
 
-allclean: clean
-	$(RM) $(TARGET)
+clean: cleanobj
+	$(RM) $(RFLAGS) $(TARGET)
 
-clean:
-	$(RM) $(OBJLIST)
+cleanobj:
+	$(RM) $(RFLAGS) $(OBJLIST)
 
 get.o: get.c $(DEPENDS)
 main.o: main.c $(DEPENDS)

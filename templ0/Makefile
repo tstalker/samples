@@ -2,8 +2,8 @@ include ../mkinclude/cppdefs.mk
 include ../mkinclude/gendefs.mk
 
 DEPENDS += print.hpp
-TARGET = work
 OBJLIST = main.o print.o
+TARGET = work
 
 all: $(TARGET)
 

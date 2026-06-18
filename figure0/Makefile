@@ -1,7 +1,6 @@
 include ../mkinclude/cppdefs.mk
 include ../mkinclude/gendefs.mk
 
-CC = c++
 DEPENDS += figure.hpp
 TARGET = work
 OBJLIST = area.o main.o out.o perimeter.o
@@ -15,11 +14,11 @@ $(TARGET): $(OBJLIST)
 .cpp.o:
 	$(CC) $(CFLAGS) -o $@ -c $<
 
-allclean: clean
-	$(RM) $(TARGET)
+clean: cleanobj
+	$(RM) $(RFLAGS) $(TARGET)
 
-clean:
-	$(RM) $(OBJLIST)
+cleanobj:
+	$(RM) $(RFLAGS) $(OBJLIST)
 
 area.o: area.cpp $(DEPENDS)
 main.o: main.cpp $(DEPENDS)

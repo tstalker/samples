@@ -2,8 +2,8 @@ include ../mkinclude/cdefs.mk
 include ../mkinclude/gendefs.mk
 
 DEPENDS += print.h
-TARGET = work
 OBJLIST = main.o print_row.o print0.o print1.o
+TARGET = work
 
 all: $(TARGET)
 
@@ -14,11 +14,11 @@ $(TARGET): $(OBJLIST)
 .c.o:
 	$(CC) $(CFLAGS) -o $@ -c $<
 
-allclean: clean
-	$(RM) $(TARGET)
+clean: cleanobj
+	$(RM) $(RFLAGS) $(TARGET)
 
-clean:
-	$(RM) $(OBJLIST)
+cleanobj:
+	$(RM) $(RFLAGS) $(OBJLIST)
 
 main.o: main.c $(DEPENDS)
 print_row.o: print_row.c $(DEPENDS)

@@ -2,8 +2,8 @@ include ../mkinclude/cdefs.mk
 include ../mkinclude/gendefs.mk
 
 DEPENDS += generic.h
-TARGET = work
 OBJLIST = compare.o init.o main.o print.o shuffle.o sortshell.o swap.o
+TARGET = work
 
 all: $(TARGET)
 
@@ -14,11 +14,11 @@ $(TARGET): $(OBJLIST)
 .c.o:
 	$(CC) $(CFLAGS) -o $@ -c $<
 
-allclean: clean
-	$(RM) $(TARGET)
+clean: cleanobj
+	$(RM) $(RFLAGS) $(TARGET)
 
-clean:
-	$(RM) $(OBJLIST)
+cleanobj:
+	$(RM) $(RFLAGS) $(OBJLIST)
 
 compare.o: compare.c $(DEPENDS)
 init.o: init.c $(DEPENDS)

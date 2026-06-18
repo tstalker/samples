@@ -1,10 +1,9 @@
 include ../mkinclude/cppdefs.mk
 include ../mkinclude/gendefs.mk
 
-CC = c++
 DEPENDS += mystring.hpp
-TARGET = work
 OBJLIST = alloc.o assign.o checkrange.o clear.o destruct.o index.o main.o move.o mystring.o origin.o out.o print.o reverse.o
+TARGET = work
 
 all: $(TARGET)
 
@@ -15,11 +14,11 @@ $(TARGET): $(OBJLIST)
 .cpp.o:
 	$(CC) $(CFLAGS) -o $@ -c $<
 
-allclean: clean
-	$(RM) $(TARGET)
+clean: cleanobj
+	$(RM) $(RFLAGS) $(TARGET)
 
-clean:
-	$(RM) $(OBJLIST)
+cleanobj:
+	$(RM) $(RFLAGS) $(OBJLIST)
 
 alloc.o: alloc.cpp $(DEPENDS)
 assign.o: assign.cpp myexcept.hpp $(DEPENDS)

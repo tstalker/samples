@@ -1,31 +1,22 @@
 include ../mkinclude/cdefs.mk
 include ../mkinclude/gendefs.mk
 
+OBJLIST = main.o
 TARGET = work
-OBJ = main.o
 
 all: $(TARGET)
 
-$(TARGET): $(OBJ)
+$(TARGET): $(OBJLIST)
 	$(CC) $(LFLAGS) -o $@ $^
 	$(STRIP) $(SFLAGS) $@
 
 .c.o:
 	$(CC) $(CFLAGS) -o $@ -c $<
 
-allclean: clean
-	@if [[ -f $(TARGET) ]]; \
-	then \
-		$(RM) $(RMFLAGS) $(TARGET); \
-	fi
+clean: cleanobj
+	$(RM) $(RFLAGS) $(TARGET)
 
-clean:
-	@for f in $(OBJ); \
-	do \
-		if [[ -f $${f} ]]; \
-		then \
-			$(RM) $(RMFLAGS) $${f}; \
-		fi \
-	done
+cleanobj:
+	$(RM) $(RFLAGS) $(OBJLIST)
 
-$(OBJ): $(OBJ:.o=.c) $(DEPENDS)
+main.o: main.c $(DEPENDS)

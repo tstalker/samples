@@ -1,9 +1,8 @@
 include ../mkinclude/cppdefs.mk
 include ../mkinclude/gendefs.mk
 
-CC = c++
-TARGET = work
 OBJLIST = bine.o main.o wilson.o
+TARGET = work
 
 all: $(TARGET)
 
@@ -14,11 +13,11 @@ $(TARGET): $(OBJLIST)
 .cpp.o:
 	$(CC) $(CFLAGS) -o $@ -c $<
 
-allclean: clean
-	$(RM) $(TARGET)
+clean: cleanobj
+	$(RM) $(RFLAGS) $(TARGET)
 
-clean:
-	$(RM) $(OBJLIST)
+cleanobj:
+	$(RM) $(RFLAGS) $(OBJLIST)
 
 bine.o: bine.cpp fib.hpp $(DEPENDS)
 main.o: main.cpp bignumber.hpp $(DEPENDS)

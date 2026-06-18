@@ -1,8 +1,8 @@
 include ../mkinclude/cppdefs.mk
 include ../mkinclude/gendefs.mk
 
-TARGET = work
 OBJLIST = main.o
+TARGET = work
 
 all: $(TARGET)
 

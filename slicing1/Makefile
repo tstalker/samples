@@ -1,25 +1,24 @@
 include ../mkinclude/cppdefs.mk
 include ../mkinclude/gendefs.mk
 
-CC = c++
 DEPENDS += base.hpp derived.hpp generic.hpp
+OBJLIST = main.o print.o process.o
 TARGET = work
-OBJ = main.o print.o process.o
 
 all: $(TARGET)
 
-$(TARGET): $(OBJ)
+$(TARGET): $(OBJLIST)
 	$(CC) $(LFLAGS) -o $@ $^
 	$(STRIP) $(SFLAGS) $@
 
 .cpp.o:
 	$(CC) $(CFLAGS) -o $@ -c $<
 
-allclean: clean
-	$(RM) $(TARGET)
+clean: cleanobj
+	$(RM) $(RFLAGS) $(TARGET)
 
-clean:
-	$(RM) $(OBJ)
+cleanobj:
+	$(RM) $(RFLAGS) $(OBJLIST)
 
 main.o: main.cpp $(DEPENDS)
 print.o: print.cpp $(DEPENDS)

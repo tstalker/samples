@@ -1,10 +1,9 @@
 include ../mkinclude/cppdefs.mk
 include ../mkinclude/gendefs.mk
 
-CC = c++
 DEPENDS += decision.hpp token.hpp
-TARGET = work
 OBJLIST = decision_get0.o decision_get1.o decision_step.o decision_str.o decision_sum.o initialize.o main.o outerror.o output.o
+TARGET = work
 
 all: $(TARGET)
 
@@ -15,11 +14,11 @@ $(TARGET): $(OBJLIST)
 .cpp.o:
 	$(CC) $(CFLAGS) -o $@ -c $<
 
-allclean: clean
-	$(RM) $(TARGET)
+clean: cleanobj
+	$(RM) $(RFLAGS) $(TARGET)
 
-clean:
-	$(RM) $(OBJLIST)
+cleanobj:
+	$(RM) $(RFLAGS) $(OBJLIST)
 
 decision_get0.o: decision_get0.cpp $(DEPENDS)
 decision_get1.o: decision_get1.cpp $(DEPENDS)
