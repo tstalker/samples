@@ -1,12 +1,17 @@
-#include "derived.hpp"
-#include "generic.hpp"
+#include "tools.hpp"
 
-void print(const base* src, const std::size_t& count)
+void tools::print(const work::base* src, std::size_t count)
 {
-	auto ptr(dynamic_cast<const derived*>(src));
+	std::ostringstream oss;
+	std::ostream_iterator<work::derived::value_type> it_out(oss);
+	oss << src << ", " << count;
+	std::cout << __func__ << tools::get_parentheses(oss) << std::endl;
+
+	auto dptr(dynamic_cast<const work::derived*>(src)); // Avoid slicing
 
 	for(std::size_t i{}; i < count; i++)
 	{
-		ptr[i].print();
+		const work::base* bptr(dptr + i);
+		bptr->print();
 	}
 }

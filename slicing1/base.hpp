@@ -1,35 +1,44 @@
 #pragma once
 
 #include <iostream>
+#include <string>
 
-class base
+namespace work
+{
+	class base;
+
+	std::ostream& operator <<(std::ostream&, const base&);
+}
+
+class work::base
 {
 public:
-	base(void)
-	{
-		std::cout << "base::base(): " << x << std::endl;
-	}
+	virtual ~base(void);
+	base(void);
+	base(std::size_t);
+	base(const base&);
+	base(base&&) noexcept;
+	base& operator =(const base&);
+	base& operator =(base&&) noexcept;
 
-	virtual ~base(void)
-	{
-		std::cout << "base::~base(): " << x << std::endl;
-	}
+private:
+	std::size_t value{};
 
+public:
 	auto get(void) const
 	{
-		return x;
+		return value;
 	}
 
-	void set(const std::size_t& x)
+	virtual void print(void) const
 	{
-		base::x = x;
+		std::cout << value << std::endl;
 	}
 
-	void print(void) const
-	{
-		std::cout << x << std::endl;
-	}
+private:
+	static void init_class(std::string_view);
 
-protected:
-	std::size_t x{};
+	static inline std::string class_name;
+
+	friend std::ostream& operator <<(std::ostream&, const base&);
 };
