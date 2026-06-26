@@ -6,30 +6,32 @@ namespace ier
 {
 template <typename T, typename U>
 	class Derived;
+
 template <typename T, typename U>
-	decltype(auto) operator << (std::ostream&, const Derived<T, U>&);
+	decltype(auto) operator <<(std::ostream&, const Derived<T, U>&);
 }
 
 template <typename T, typename U>
-class ier::Derived final: public Base<T>
+class ier::Derived final:
+	public Base<T>
 {
 	using Base<T>::get;
 
 public:
+	~Derived(void);
 	Derived(void);
 	explicit Derived(const U&);
 	Derived(const T&, const U&);
 	Derived(const Derived&);
 	Derived(Derived&&);
-	~Derived(void) override final;
 
-	decltype(auto) operator = (const Derived&);
-	decltype(auto) operator = (Derived&&);
+	decltype(auto) operator =(const Derived&);
+	decltype(auto) operator =(Derived&&);
 
 	void Print(void) const;
 	auto Value(void) const;
 
-	std::ostream& PrintBraces(std::ostream&) const override final;
+	std::ostream& PrintBraces(std::ostream&) const override;
 
 private:
 	U* p{nullptr};
@@ -95,7 +97,7 @@ ier::Derived<T, U>::~Derived(void)
 }
 
 template <typename T, typename U>
-decltype(auto) ier::Derived<T, U>::operator = (const Derived& x)
+decltype(auto) ier::Derived<T, U>::operator =(const Derived& x)
 {
 #ifdef DEBUG
 	std::cout << "Derived::operator = (" << x << "): " << *this << " -> ";
@@ -113,7 +115,7 @@ decltype(auto) ier::Derived<T, U>::operator = (const Derived& x)
 }
 
 template <typename T, typename U>
-decltype(auto) ier::Derived<T, U>::operator = (Derived&& x)
+decltype(auto) ier::Derived<T, U>::operator =(Derived&& x)
 {
 #ifdef DEBUG
 	std::cout << "Derived::operator = (&&" << x << "): " << *this << " -> ";
@@ -158,7 +160,7 @@ auto ier::Derived<T, U>::Value(void) const
 }
 
 template <typename T, typename U>
-decltype(auto) ier::operator << (std::ostream& s, const Derived<T, U> &x)
+decltype(auto) ier::operator <<(std::ostream& s, const Derived<T, U> &x)
 {
 	return x.PrintBraces(s);
 }

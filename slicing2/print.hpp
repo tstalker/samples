@@ -9,6 +9,7 @@
 namespace prn
 {
 	using namespace gen;
+
 template <typename T>
 	using list_type = std::pair<std::string_view, std::function<void(const T&)>>;
 
