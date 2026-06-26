@@ -8,7 +8,7 @@ TARGET = work
 all: $(TARGET)
 
 $(TARGET): $(OBJLIST)
-	$(CC) $(LFLAGS) -o $@ $^
+	$(CC) $(LFLAGS) -o $@ $^ -lm
 	$(STRIP) $(SFLAGS) $@
 
 .c.o:
