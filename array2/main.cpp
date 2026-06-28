@@ -4,7 +4,7 @@ int main(void)
 {
 	constexpr std::size_t N1(4);
 	constexpr std::size_t N2(5);
-	const int z[][N1][N2]
+	constexpr int z[][N1][N2]
 	{
 		{
 			{0, 1, 2, 3, 4},
@@ -25,12 +25,17 @@ int main(void)
 			{55, 56, 57, 58, 59}
 		}
 	};
+	constexpr auto N0(std::extent_v<decltype(z)>);
 	prn::print(z);
 	std::cout << std::endl;
-	constexpr auto N0(std::extent_v<decltype(z)>);
 	prn::print(*z, N0);
 	std::cout << std::endl;
 	prn::print(**z, N0, N1, N2);
-	std::cout << z;
+	std::cout << std::endl << z;
 	return EXIT_SUCCESS;
+}
+
+namespace prn
+{
+	std::size_t count_tab{};
 }

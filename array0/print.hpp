@@ -2,51 +2,47 @@
 
 #include <algorithm>
 #include <iostream>
-#include <iterator>
+#include <ranges>
 
 namespace prn
 {
 template <typename T, std::size_t N>
 	void print(const T(&)[N]);
 template <typename T>
-	void print(const std::initializer_list<T>&);
+	void print(std::span<T>);
+
 template <typename T, std::size_t N>
-	decltype(auto) operator << (std::ostream&, const T(&)[N]);
+	decltype(auto) operator <<(std::ostream&, const T(&)[N]);
 template <typename T>
-	decltype(auto) operator << (std::ostream&, const std::initializer_list<T>&);
+	decltype(auto) operator <<(std::ostream&, std::span<T>);
 }
 
 template <typename T, std::size_t N>
-void prn::print(const T(&v)[N])
+void prn::print(const T(&src)[N])
 {
-	std::ostream_iterator<T> it(std::cout, " ");
-	std::copy(std::cbegin(v), std::cend(v), it);
-	std::cout << std::endl;
+	std::span pool(std::ranges::cbegin(src), std::ranges::cend(src));
+	print(pool);
 }
 
 template <typename T>
-void prn::print(const std::initializer_list<T>& v)
+void prn::print(std::span<T> pool)
 {
-	std::ostream_iterator<T> it(std::cout, " ");
-	std::copy(v.begin(), v.end(), it);
-	std::cout << std::endl;
+	std::cout << pool << std::endl;
 }
 
 template <typename T, std::size_t N>
-decltype(auto) prn::operator << (std::ostream& os, const T(&v)[N])
+decltype(auto) prn::operator <<(std::ostream& os, const T(&src)[N])
 {
-	std::ostream_iterator<T> it(std::cout, " ");
-	std::copy(std::cbegin(v), std::cend(v), it);
-	os << std::endl;
+	std::span pool(std::ranges::cbegin(src), std::ranges::cend(src));
+	os << pool;
 	return os;
 }
 
 template <typename T>
-decltype(auto) prn::operator << (std::ostream& os, const std::initializer_list<T>& v)
+decltype(auto) prn::operator <<(std::ostream& os, std::span<T> pool)
 {
-	std::ostream_iterator<T> it(std::cout, " ");
-	std::copy(v.begin(), v.end(), it);
-	os << std::endl;
+	std::ostream_iterator<T> it(os, " ");
+	std::ranges::copy(pool, it);
 	return os;
 }
 

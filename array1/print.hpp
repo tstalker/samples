@@ -4,97 +4,102 @@
 #include <functional>
 #include <iomanip>
 #include <iostream>
+#include <ranges>
 
 namespace prn
 {
-template <typename T>
-	void print1(const T&);
-template <typename T>
-	void print1os(std::ostream&, const T&);
-template <typename T>
-	void print(const T[], std::size_t, std::size_t);
-template <typename T, std::size_t N>
-	void print(const T(&)[N]);
 template <typename T, std::size_t N0, std::size_t N1>
 	void print(const T(&)[N0][N1]);
+template <typename T, std::size_t N>
+	void print(const T(&)[N]);
 template <typename T, std::size_t N1>
 	void print(const T(&)[N1], std::size_t);
 template <typename T>
-	void printv(const T[], std::size_t);
+	void print(const T[], std::size_t, std::size_t);
+template <typename T>
+	void print_elem(const T&);
+template <typename T>
+	void print_elem_os(std::ostream&, const T&);
+template <typename T>
+	void print_line(const T[], std::size_t);
+
 template <typename T, std::size_t N>
-	decltype(auto) operator << (std::ostream&, const T(&)[N]);
+	decltype(auto) operator <<(std::ostream&, const T(&)[N]);
 template <typename T, std::size_t N0, std::size_t N1>
-	decltype(auto) operator << (std::ostream&, const T(&)[N0][N1]);
+	decltype(auto) operator <<(std::ostream&, const T(&)[N0][N1]);
+}
+
+template <typename T, std::size_t N0, std::size_t N1>
+void prn::print(const T(&src)[N0][N1])
+{
+	for(auto& line : src)
+	{
+		print(line);
+	}
 }
 
 template <typename T, std::size_t N>
-void prn::print(const T(&v)[N])
+void prn::print(const T(&src)[N])
 {
-	std::for_each(std::cbegin(v), std::cend(v), print1<T>);
+	std::span pool(std::ranges::cbegin(src), std::ranges::cend(src));
+	std::ranges::for_each(pool, print_elem<T>);
 	std::cout << std::endl;
 }
 
 template <typename T, std::size_t N1>
-void prn::print(const T(&v)[N1], std::size_t n0)
+void prn::print(const T(&src)[N1], std::size_t n0)
 {
 	for(std::size_t i{}; i < n0; i++)
 	{
-		printv(v + N1 * i, N1);
-	}
-}
-
-template <typename T, std::size_t N0, std::size_t N1>
-void prn::print(const T(&v)[N0][N1])
-{
-	for(auto& w : v)
-	{
-		print(w);
+		print_line(src + N1 * i, N1);
 	}
 }
 
 template <typename T>
-void prn::print(const T v[], std::size_t n0, std::size_t n1)
+void prn::print(const T src[], std::size_t n0, std::size_t n1)
 {
 	for(std::size_t i{}; i < n0; i++)
 	{
-		printv(v + n1 * i, n1);
+		print_line(src + n1 * i, n1);
 	}
 }
 
 template <typename T>
-void prn::printv(const T v[], std::size_t n)
+void prn::print_line(const T src[], std::size_t count)
 {
-	std::for_each_n(v, n, print1<T>);
+	std::span pool(src, count);
+	std::ranges::for_each(pool, print_elem<T>);
 	std::cout << std::endl;
 }
 
 template <typename T>
-void prn::print1(const T& x)
+void prn::print_elem(const T& elem)
 {
-	print1os(std::cout, x);
+	print_elem_os(std::cout, elem);
 }
 
 template <typename T>
-void prn::print1os(std::ostream& os, const T& x)
+void prn::print_elem_os(std::ostream& os, const T& elem)
 {
-	os << std::setw(3) << x;
+	os << std::setw(3) << elem;
 }
 
 template <typename T, std::size_t N0, std::size_t N1>
-decltype(auto) prn::operator << (std::ostream& os, const T(&v)[N0][N1])
+decltype(auto) prn::operator <<(std::ostream& os, const T(&src)[N0][N1])
 {
-	for(auto& w: v)
+	for(auto& line: src)
 	{
-		os << w;
+		os << line;
 	}
 	return os;
 }
 
 template <typename T, std::size_t N>
-decltype(auto) prn::operator << (std::ostream& os, const T(&v)[N])
+decltype(auto) prn::operator <<(std::ostream& os, const T(&src)[N])
 {
-	auto fn(std::bind(print1os<T>, std::ref(os), std::placeholders::_1));
-	std::for_each(std::cbegin(v), std::cend(v), fn);
+	std::span pool(std::ranges::cbegin(src), std::ranges::cend(src));
+	auto fn(std::bind(print_elem_os<T>, std::ref(os), std::placeholders::_1));
+	std::ranges::for_each(pool, fn);
 	os << std::endl;
 	return os;
 }
